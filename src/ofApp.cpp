@@ -2,13 +2,7 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    //video = new Video("001.mp4");
     layerStack = new LayerStack();
-    /*
-    layer->insert(new Video("001.mov"));
-    layer->insert(new Video("002.mov"));
-    layer->insert(new Video("003.mov"));
-     */
     layerStack->insert(new Layer(new Video("001.mov"), 1, OF_BLENDMODE_ADD));
     layerStack->insert(new Layer(new Video("002.mov"), 0.5, OF_BLENDMODE_ADD));
 }
@@ -21,25 +15,6 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     layerStack->draw();
-/*
- 
- ofEnableAlphaBlending();
- 
- for (auto layer:Layers::getInstance().getList()) {
- if (layer!=NULL) {
- ofSetColor(255, 255, 255, (int) (layer->getProperties()->getAlpha() * 255.0));
- ofEnableBlendMode((ofBlendMode) layer->getProperties()->getBlendMode());
- layer->draw(
- 0,
- 0,
- EngineProperties::getInstance().getMixerWidth(),
- EngineProperties::getInstance().getMixerHeight()
- );
- ofDisableBlendMode();
- }
- }
- ofDisableAlphaBlending();
- */
  }
 
 //--------------------------------------------------------------

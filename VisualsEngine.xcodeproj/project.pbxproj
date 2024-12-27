@@ -9,12 +9,6 @@
 /* Begin PBXBuildFile section */
 		653C1DCD2C3B4D01003B4CC4 /* Video.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 653C1DCB2C3B4D01003B4CC4 /* Video.cpp */; };
 		6593905B2D1DD31900FC8957 /* Layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6593905A2D1DD31200FC8957 /* Layer.cpp */; };
-		659390632D1DFFE900FC8957 /* 001.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6593905C2D1DFFDF00FC8957 /* 001.mov */; };
-		659390642D1DFFE900FC8957 /* 002.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6593905D2D1DFFDF00FC8957 /* 002.mov */; };
-		659390652D1DFFE900FC8957 /* 003.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6593905E2D1DFFDF00FC8957 /* 003.mov */; };
-		659390662D1DFFE900FC8957 /* 004.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6593905F2D1DFFDF00FC8957 /* 004.mov */; };
-		659390672D1DFFE900FC8957 /* 005.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 659390602D1DFFDF00FC8957 /* 005.mov */; };
-		659390682D1DFFE900FC8957 /* 006.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 659390612D1DFFDF00FC8957 /* 006.mov */; };
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
 		E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */; };
 /* End PBXBuildFile section */
@@ -35,12 +29,6 @@
 			dstPath = data;
 			dstSubfolderSpec = 16;
 			files = (
-				659390632D1DFFE900FC8957 /* 001.mov in CopyFiles */,
-				659390642D1DFFE900FC8957 /* 002.mov in CopyFiles */,
-				659390652D1DFFE900FC8957 /* 003.mov in CopyFiles */,
-				659390662D1DFFE900FC8957 /* 004.mov in CopyFiles */,
-				659390672D1DFFE900FC8957 /* 005.mov in CopyFiles */,
-				659390682D1DFFE900FC8957 /* 006.mov in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,12 +43,10 @@
 		659390582D1DD1C800FC8957 /* Layer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Layer.hpp; sourceTree = "<group>"; };
 		659390592D1DD1E900FC8957 /* BaseClasses.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BaseClasses.hpp; sourceTree = "<group>"; };
 		6593905A2D1DD31200FC8957 /* Layer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Layer.cpp; sourceTree = "<group>"; };
-		6593905C2D1DFFDF00FC8957 /* 001.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 001.mov; sourceTree = "<group>"; };
-		6593905D2D1DFFDF00FC8957 /* 002.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 002.mov; sourceTree = "<group>"; };
-		6593905E2D1DFFDF00FC8957 /* 003.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 003.mov; sourceTree = "<group>"; };
-		6593905F2D1DFFDF00FC8957 /* 004.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 004.mov; sourceTree = "<group>"; };
-		659390602D1DFFDF00FC8957 /* 005.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 005.mov; sourceTree = "<group>"; };
-		659390612D1DFFDF00FC8957 /* 006.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 006.mov; sourceTree = "<group>"; };
+		659390692D1E3CB000FC8957 /* 001.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 001.mov; sourceTree = "<group>"; };
+		6593906A2D1E3CB000FC8957 /* 002.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 002.mov; sourceTree = "<group>"; };
+		6593906B2D1E3CB000FC8957 /* 003.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 003.mov; sourceTree = "<group>"; };
+		6593906C2D1E3CB000FC8957 /* 004.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 004.mov; sourceTree = "<group>"; };
 		E4B69B5B0A3A1756003C02F2 /* emptyExampleDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = emptyExampleDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ofApp.cpp; path = src/ofApp.cpp; sourceTree = SOURCE_ROOT; };
@@ -80,17 +66,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		659390622D1DFFDF00FC8957 /* Resources 2 */ = {
+		6593906F2D1E3CB000FC8957 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				6593905C2D1DFFDF00FC8957 /* 001.mov */,
-				6593905D2D1DFFDF00FC8957 /* 002.mov */,
-				6593905E2D1DFFDF00FC8957 /* 003.mov */,
-				6593905F2D1DFFDF00FC8957 /* 004.mov */,
-				659390602D1DFFDF00FC8957 /* 005.mov */,
-				659390612D1DFFDF00FC8957 /* 006.mov */,
+				659390692D1E3CB000FC8957 /* 001.mov */,
+				6593906A2D1E3CB000FC8957 /* 002.mov */,
+				6593906B2D1E3CB000FC8957 /* 003.mov */,
+				6593906C2D1E3CB000FC8957 /* 004.mov */,
 			);
-			path = "Resources 2";
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		BB4B014C10F69532006C3DED /* addons */ = {
@@ -107,7 +91,7 @@
 				191CD6FA2847E21E0085CBB6 /* of.entitlements */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
-				659390622D1DFFDF00FC8957 /* Resources 2 */,
+				6593906F2D1E3CB000FC8957 /* Resources */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
 				191EF70929D778A400F35F26 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
