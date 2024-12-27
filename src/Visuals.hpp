@@ -37,6 +37,11 @@ public:
     }
 };
 
+/** ofVideoGrabber partial specializations */
+template<> inline void Visual<ofVideoGrabber>::play(){};
+template<> inline void Visual<ofVideoGrabber>::stop(){};
+
+
 class VisualsBuilder {
 public:
     static Visual<ofVideoPlayer>* Video(std::string path) {
@@ -50,6 +55,20 @@ public:
         
         return visual;
     };
+    
+    static Visual<ofVideoGrabber> *VideoGrabber(int _deviceId) {
+        Visual<ofVideoGrabber> *visual;
+        
+        visual = new Visual<ofVideoGrabber>([&] {
+            ofVideoGrabber grabber;
+            grabber.setDeviceID(_deviceId);
+            grabber.initGrabber(ofGetWidth(), ofGetHeight());
+            
+            return grabber;
+        }(), ofRectangle(0,0,ofGetWidth(), ofGetHeight()));
+        
+        return visual;
+    }
 };
 
 #endif

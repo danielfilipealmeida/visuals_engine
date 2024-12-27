@@ -5,7 +5,7 @@ void ofApp::setup(){
     layerStack = new LayerStack();
     layerStack->insert(new Layer(VisualsBuilder::Video("001.mov")));
     layerStack->insert(new Layer(VisualsBuilder::Video("002.mov")));
-
+    layerStack->insert(new Layer(VisualsBuilder::VideoGrabber(0)));
 }
 
 //--------------------------------------------------------------
