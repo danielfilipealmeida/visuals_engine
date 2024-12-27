@@ -3,10 +3,11 @@
 #include "ofMain.h"
 #include "Video.hpp"
 #include "Layer.hpp"
+#include "Visuals.hpp"
 
 class ofApp : public ofBaseApp{
     LayerStack *layerStack;
-    
+    Visual<ofVideoPlayer> *video;
     
 	public:
 		void setup();

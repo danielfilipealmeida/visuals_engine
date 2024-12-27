@@ -5,16 +5,28 @@ void ofApp::setup(){
     layerStack = new LayerStack();
     layerStack->insert(new Layer(new Video("001.mov"), 1, OF_BLENDMODE_ADD));
     layerStack->insert(new Layer(new Video("002.mov"), 0.5, OF_BLENDMODE_ADD));
+    /*
+    video = new Visual<ofVideoPlayer>([]{
+        ofVideoPlayer player;
+        player.load("003.mov");
+        return player;
+    }(), ofRectangle(0, 0, ofGetWidth(), ofGetHeight()));
+     */
+    video = VisualsBuilder::Video("003.mov");
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     layerStack->update();
+    
+    video->update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
     layerStack->draw();
+    
+    video->draw();
  }
 
 //--------------------------------------------------------------
