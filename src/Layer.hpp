@@ -12,13 +12,29 @@
 #include <vector>
 
 
+
 class Layer: Drawable {
-    std::vector<VisualsInterface *> visuals;
+    float alpha;
+    VisualsInterface* visual;
+    ofBlendMode blendMode;
+    
+public:
+    Layer(
+          VisualsInterface* _visual,
+          float alpha,
+          ofBlendMode blendMode
+        );
+    void update();
+    void draw();
+};
+
+
+class LayerStack: Drawable {
+    std::vector<Layer *> layers;
     
 public:
     void update();
     void draw();
-    void insert(VisualsInterface* visual);
+    void insert(Layer* visual);
 };
-
 #endif

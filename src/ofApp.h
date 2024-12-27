@@ -5,8 +5,7 @@
 #include "Layer.hpp"
 
 class ofApp : public ofBaseApp{
-    //Video *video;
-    Layer *layer;
+    LayerStack *layerStack;
     
     
 	public:
