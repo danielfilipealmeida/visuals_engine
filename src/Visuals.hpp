@@ -12,7 +12,7 @@
 #import "ofMain.h"
 
 template<class T>
-class Visual: public Drawable, public Playable {
+class Visual: public VisualsInterface {
 private:
     T visual;
     

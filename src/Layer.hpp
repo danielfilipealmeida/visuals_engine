@@ -21,8 +21,8 @@ class Layer: Drawable {
 public:
     Layer(
           VisualsInterface* _visual,
-          float alpha,
-          ofBlendMode blendMode
+          float alpha = 1,
+          ofBlendMode blendMode = OF_BLENDMODE_ADD
         );
     void update();
     void draw();
