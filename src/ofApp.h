@@ -5,6 +5,7 @@
 #include "Layer.hpp"
 #include "Visuals.hpp"
 #include "Mixer.hpp"
+#include "Signals.hpp"
 
 class ofApp : public ofBaseApp{
     LayerStack *layerStackA, *layerStackB;
@@ -12,6 +13,8 @@ class ofApp : public ofBaseApp{
     Visual<ofVideoPlayer> *video;
     float bufferWidth = 640;
     float bufferHeight = 480;
+    
+    Signal<float> sineWave;
     
 	public:
 		void setup();
