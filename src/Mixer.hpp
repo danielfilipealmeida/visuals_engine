@@ -17,6 +17,7 @@ public:
     Mixer(LayerStack* _A, LayerStack* _B);
    
     void update();
+    void draw();
     void draw(ofRectangle rect);
     
     void setMix(float _mix);

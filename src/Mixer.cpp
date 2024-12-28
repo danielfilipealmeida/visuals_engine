@@ -20,12 +20,20 @@ void Mixer::update() {
     B->update();
 }
 
+void Mixer::draw() {
+    draw(rect);
+}
+
 void Mixer::draw(ofRectangle rect) {
+    ofEnableAlphaBlending();
+    //ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    ofClear(0,0,0);
     ofSetColor(255,255,255);
     a->draw(rect);
-    ofEnableAlphaBlending();
-    ofSetColor(255, 255, 255, (int) round(255 * mix));
+    int alpha = (int) round(255.0 * mix);
+    ofSetColor(255, 255, 255, alpha);
     B->draw(rect);
+    //ofDisableBlendMode();
     ofDisableAlphaBlending();
 }
 

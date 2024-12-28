@@ -2,23 +2,30 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    layerStack = new LayerStack(640, 480);
-    VisualsBuilder builder(640, 480);
-    layerStack->insert(new Layer(builder.Video("001.mov")));
-    layerStack->insert(new Layer(builder.Video("002.mov")));
+    layerStackA = new LayerStack(bufferWidth, bufferHeight);
+    VisualsBuilder builder(bufferWidth, bufferHeight);
+    layerStackA->insert(new Layer(builder.Video("001.mov")));
+    layerStackA->insert(new Layer(builder.Video("002.mov")));
     /*
     layerStack->insert(new Layer(builder.VideoGrabber(0)));
      */
+    
+    layerStackB = new LayerStack(bufferWidth, bufferHeight);
+    layerStackB->insert(new Layer(builder.Video("003.mov")));
+    layerStackB->insert(new Layer(builder.Video("004.mov")));
+    
+    mixer = new Mixer(layerStackA, layerStackB);
+    mixer->setMix(0.5);
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    layerStack->update();
+    mixer->update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    layerStack->draw(ofRectangle(0, 0, ofGetWidth(), ofGetHeight()));
+    mixer->draw(ofRectangle(0.0, 0.0, ofGetWidth(), ofGetHeight()));
  }
 
 //--------------------------------------------------------------

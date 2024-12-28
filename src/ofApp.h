@@ -4,10 +4,14 @@
 #include "Video.hpp"
 #include "Layer.hpp"
 #include "Visuals.hpp"
+#include "Mixer.hpp"
 
 class ofApp : public ofBaseApp{
-    LayerStack *layerStack;
+    LayerStack *layerStackA, *layerStackB;
+    Mixer *mixer;
     Visual<ofVideoPlayer> *video;
+    float bufferWidth = 640;
+    float bufferHeight = 480;
     
 	public:
 		void setup();

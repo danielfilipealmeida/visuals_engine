@@ -56,7 +56,7 @@ void LayerStack::draw() {
 
 void LayerStack::draw(ofRectangle rect) {
     buffer.begin();
-    ofBackground(0, 0, 0);
+    ofClear(0, 0, 0);
     ofSetColor(255, 255, 255);
     for (auto layer: layers) {
         layer->draw();

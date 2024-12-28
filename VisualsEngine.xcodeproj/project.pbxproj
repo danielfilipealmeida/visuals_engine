@@ -10,6 +10,10 @@
 		653C1DCD2C3B4D01003B4CC4 /* Video.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 653C1DCB2C3B4D01003B4CC4 /* Video.cpp */; };
 		6593905B2D1DD31900FC8957 /* Layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6593905A2D1DD31200FC8957 /* Layer.cpp */; };
 		659390732D1F0BED00FC8957 /* Mixer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 659390722D1F0BE900FC8957 /* Mixer.cpp */; };
+		659390742D1F7E4F00FC8957 /* 001.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 659390692D1E3CB000FC8957 /* 001.mov */; };
+		659390752D1F7E4F00FC8957 /* 002.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6593906A2D1E3CB000FC8957 /* 002.mov */; };
+		659390762D1F7E4F00FC8957 /* 003.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6593906B2D1E3CB000FC8957 /* 003.mov */; };
+		659390772D1F7E4F00FC8957 /* 004.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6593906C2D1E3CB000FC8957 /* 004.mov */; };
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
 		E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */; };
 /* End PBXBuildFile section */
@@ -30,6 +34,10 @@
 			dstPath = data;
 			dstSubfolderSpec = 16;
 			files = (
+				659390742D1F7E4F00FC8957 /* 001.mov in CopyFiles */,
+				659390752D1F7E4F00FC8957 /* 002.mov in CopyFiles */,
+				659390762D1F7E4F00FC8957 /* 003.mov in CopyFiles */,
+				659390772D1F7E4F00FC8957 /* 004.mov in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
