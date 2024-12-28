@@ -32,6 +32,14 @@ public:
 class SignalsBuilder {
     
 public:
+    
+    /// \brief Creates a sine wave signal
+    ///
+    /// \param freq
+    /// \param amplitude
+    /// \param phase
+    ///
+    /// \return the configured signal
     static Signal<float> SineWave(float freq = 1, float amplitude = 1, float phase=0){
         Signal<float> signal;
         signal.setCalculator(SignalsBuilder::getSineWaveCalculator(freq, amplitude, phase));
@@ -39,9 +47,30 @@ public:
         return signal;
     }
     
+    /// \brief Creates a square wave signal
+    ///
+    /// \param freq
+    /// \param amplitude
+    /// \param phase
+    ///
+    /// \return the configured signal
     static Signal<float> SquareWave(float freq = 1, float amplitude = 1, float phase=0){
         Signal<float> signal;
         signal.setCalculator(SignalsBuilder::getSquareWaveCalculator(freq, amplitude, phase));
+        
+        return signal;
+    }
+    
+    /// \brief Creates a Random signal
+    ///
+    /// \param amplitude the amplitude of the signal, starting from 0 to amplitude
+    /// \param sampleDuration the amount of seconds a random number is set
+    ///
+    /// \return the configured signal
+    static Signal<float> Random(float amplitude = 1, float sampleDuration=0){
+        Signal<float> signal;
+        signal
+            .setCalculator(SignalsBuilder::getRandomCalculator(amplitude, sampleDuration));
         
         return signal;
     }
@@ -57,7 +86,7 @@ public:
     ///
     /// \returns a lambda already configured
     static std::function<float()> getSineWaveCalculator(float freq = 1, float amplitude = 1, float phase=0) {
-        return [&](float freq = 1, float amplitude = 1, float phase=0) {
+        return [freq, amplitude, phase]() {
             float time = ((float) ofGetElapsedTimef());
             float result = amplitude * std::sin(2.0 * M_PI * freq * time + phase);
             
@@ -75,14 +104,35 @@ public:
     ///
     /// \returns a lambda already configured
     static std::function<float()> getSquareWaveCalculator(float freq = 1, float amplitude = 1, float phase=0) {
-        return [&](float freq = 1, float amplitude = 1, float phase=0) {
+        return [freq, amplitude, phase]() {
             float time = ((float) ofGetElapsedTimef());
             float sine = amplitude * std::sin(1.0 * M_PI * freq * time + phase);
             float result = amplitude * (sine>0 ? 1 : -1);
             
             return result;
         };
-        
+    }
+    
+    /// \brief Returns a lambda that generates random numbers. This generator has a "sample-and-hold" functionality
+    ///
+    /// \param amplitude The amplitude of the noise, will return random numbers from 0 to amplitude
+    /// \param sampleDuration the time a value will be hold by the calculator. in seconds
+    ///
+    /// \returns a lambda configured to produce a noise value
+    static std::function<float()> getRandomCalculator(float amplitude=1, float sampleDuration=0) {
+        return [amplitude, sampleDuration]() {
+            static float lastTime;
+            static float result;
+            float diff = ofGetElapsedTimef() - lastTime;
+            if (diff < sampleDuration) {
+                return result;
+            }
+            
+            result = ofRandom(amplitude);
+            
+            lastTime = ofGetElapsedTimef();
+            return result;
+        };
     }
 };
 

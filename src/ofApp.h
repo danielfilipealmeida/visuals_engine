@@ -14,7 +14,7 @@ class ofApp : public ofBaseApp{
     float bufferWidth = 640;
     float bufferHeight = 480;
     
-    Signal<float> sineWave;
+    Signal<float> signal;
     
 	public:
 		void setup();

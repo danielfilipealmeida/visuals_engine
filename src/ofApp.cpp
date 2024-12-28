@@ -17,18 +17,18 @@ void ofApp::setup(){
     mixer = new Mixer(layerStackA, layerStackB);
     mixer->setMix(0.5);
     
-    sineWave = SignalsBuilder::SineWave(0.1);
+    signal = SignalsBuilder::Random(1, 1);
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     mixer->update();
-    sineWave.update();
+    signal.update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    mixer->setMix(sineWave.getValue() + 1.0);
+    mixer->setMix(signal.getValue());
     mixer->draw(ofRectangle(0.0, 0.0, ofGetWidth(), ofGetHeight()));
  }
 
