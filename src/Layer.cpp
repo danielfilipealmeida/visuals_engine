@@ -19,6 +19,10 @@ Layer::Layer(VisualsInterface* _visual,
 }
 
 void Layer::draw() {
+    draw(rect);
+}
+
+void Layer::draw(ofRectangle _rect) {
     ofEnableAlphaBlending();
     ofEnableBlendMode(blendMode);
     ofSetColor(255, 255, 255, (int) (alpha * 255.0));
@@ -32,6 +36,14 @@ void Layer::update() {
 }
 
 
+/** Layer Stack implementation */
+
+LayerStack::LayerStack(float _width, float _height) {
+    width = _width;
+    height = _height;
+    buffer.allocate(width, height);
+}
+
 void LayerStack::update() {
     for (auto layer: layers) {
         layer->update();
@@ -39,9 +51,19 @@ void LayerStack::update() {
 }
 
 void LayerStack::draw() {
+    draw(rect);
+}
+
+void LayerStack::draw(ofRectangle rect) {
+    buffer.begin();
+    ofBackground(0, 0, 0);
+    ofSetColor(255, 255, 255);
     for (auto layer: layers) {
         layer->draw();
     }
+    buffer.end();
+    
+    buffer.draw(rect);
 }
 
 void LayerStack::insert(Layer *layer) {

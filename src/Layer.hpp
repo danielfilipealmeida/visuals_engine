@@ -12,7 +12,6 @@
 #include <vector>
 
 
-
 class Layer: Drawable {
     float alpha;
     VisualsInterface* visual;
@@ -26,15 +25,21 @@ public:
         );
     void update();
     void draw();
+    void draw(ofRectangle rect);
 };
 
 
 class LayerStack: Drawable {
     std::vector<Layer *> layers;
+    ofFbo buffer;
+    float width;
+    float height;
     
 public:
+    LayerStack(float _width, float _height);
     void update();
     void draw();
+    void draw(ofRectangle rect);
     void insert(Layer* visual);
 };
 #endif

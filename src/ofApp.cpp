@@ -2,10 +2,13 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    layerStack = new LayerStack();
-    layerStack->insert(new Layer(VisualsBuilder::Video("001.mov")));
-    layerStack->insert(new Layer(VisualsBuilder::Video("002.mov")));
-    layerStack->insert(new Layer(VisualsBuilder::VideoGrabber(0)));
+    layerStack = new LayerStack(640, 480);
+    VisualsBuilder builder(640, 480);
+    layerStack->insert(new Layer(builder.Video("001.mov")));
+    layerStack->insert(new Layer(builder.Video("002.mov")));
+    /*
+    layerStack->insert(new Layer(builder.VideoGrabber(0)));
+     */
 }
 
 //--------------------------------------------------------------
@@ -15,7 +18,7 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    layerStack->draw();
+    layerStack->draw(ofRectangle(0, 0, ofGetWidth(), ofGetHeight()));
  }
 
 //--------------------------------------------------------------

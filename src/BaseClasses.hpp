@@ -16,6 +16,7 @@ public:
     
     virtual void update() = 0;
     virtual void draw() = 0;
+    virtual void draw(ofRectangle _rect) = 0;
     
     // methods that are shared across all classes
     void setRect(ofRectangle rect) {

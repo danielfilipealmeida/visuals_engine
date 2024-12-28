@@ -28,6 +28,9 @@ public:
     void draw() {
         visual.draw(rect);
     }
+    void draw(ofRectangle _rect) {
+        visual.draw(_rect);
+    }
 
     void play() {
         visual.play();
@@ -43,20 +46,27 @@ template<> inline void Visual<ofVideoGrabber>::stop(){};
 
 
 class VisualsBuilder {
+    float width;
+    float height;
 public:
-    static Visual<ofVideoPlayer>* Video(std::string path) {
+    VisualsBuilder(float _width, float _height) {
+        width = _width;
+        height = _height;
+    }
+    
+    Visual<ofVideoPlayer>* Video(std::string path) {
         Visual<ofVideoPlayer> *visual;
         
         visual = new Visual<ofVideoPlayer>([&]{
             ofVideoPlayer player;
             player.load(path);
             return player;
-        }(), ofRectangle(0, 0, ofGetWidth(), ofGetHeight()));
+        }(), ofRectangle(0, 0, width, height));
         
         return visual;
     };
     
-    static Visual<ofVideoGrabber> *VideoGrabber(int _deviceId) {
+    Visual<ofVideoGrabber> *VideoGrabber(int _deviceId) {
         Visual<ofVideoGrabber> *visual;
         
         visual = new Visual<ofVideoGrabber>([&] {
@@ -65,7 +75,7 @@ public:
             grabber.initGrabber(ofGetWidth(), ofGetHeight());
             
             return grabber;
-        }(), ofRectangle(0,0,ofGetWidth(), ofGetHeight()));
+        }(), ofRectangle(0,0,width, height));
         
         return visual;
     }
