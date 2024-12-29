@@ -1,4 +1,5 @@
 #include "ofApp.h"
+//#include "UI/Primitives.hpp"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -18,6 +19,12 @@ void ofApp::setup(){
     mixer->setMix(0.5);
     
     signal = SignalsBuilder::Random(1, 1);
+    
+    
+    ui.rect = ofGetWindowRect();
+    ui.add(UI::ElementBuilder::Button("test Button"));
+    
+    ui.calculate();
 }
 
 //--------------------------------------------------------------
@@ -30,7 +37,21 @@ void ofApp::update(){
 void ofApp::draw(){
     mixer->setMix(signal.getValue());
     mixer->draw(ofRectangle(0.0, 0.0, ofGetWidth(), ofGetHeight()));
- }
+    
+    ui.draw();
+    /*
+    UI::Primitives primitives = UI::Primitives();
+    
+    primitives.button(ofRectangle(100, 100, 128, 28), "Test Button");
+    primitives.slider(ofRectangle(100,140,128, 28), "Test Slider");
+    primitives.textBox(ofRectangle(100,180,128, 27), "Text Box");
+    primitives
+        .label(ofRectangle(100,220, 128, 27),
+                 "Label Example",
+               UI::HorizontalAlign::Center);
+     */
+    
+}
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){

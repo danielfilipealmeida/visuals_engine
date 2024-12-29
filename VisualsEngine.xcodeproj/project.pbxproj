@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		653C1DCD2C3B4D01003B4CC4 /* Video.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 653C1DCB2C3B4D01003B4CC4 /* Video.cpp */; };
-		6593905B2D1DD31900FC8957 /* Layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6593905A2D1DD31200FC8957 /* Layer.cpp */; };
-		659390732D1F0BED00FC8957 /* Mixer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 659390722D1F0BE900FC8957 /* Mixer.cpp */; };
+		656DC8792D2193AC00A63D6E /* OpenSans-Regular.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 656DC8782D21939C00A63D6E /* OpenSans-Regular.ttf */; };
 		659390742D1F7E4F00FC8957 /* 001.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 659390692D1E3CB000FC8957 /* 001.mov */; };
 		659390752D1F7E4F00FC8957 /* 002.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6593906A2D1E3CB000FC8957 /* 002.mov */; };
 		659390762D1F7E4F00FC8957 /* 003.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6593906B2D1E3CB000FC8957 /* 003.mov */; };
@@ -34,6 +32,7 @@
 			dstPath = data;
 			dstSubfolderSpec = 16;
 			files = (
+				656DC8792D2193AC00A63D6E /* OpenSans-Regular.ttf in CopyFiles */,
 				659390742D1F7E4F00FC8957 /* 001.mov in CopyFiles */,
 				659390752D1F7E4F00FC8957 /* 002.mov in CopyFiles */,
 				659390762D1F7E4F00FC8957 /* 003.mov in CopyFiles */,
@@ -46,17 +45,13 @@
 /* Begin PBXFileReference section */
 		191CD6FA2847E21E0085CBB6 /* of.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = of.entitlements; sourceTree = "<group>"; };
 		191EF70929D778A400F35F26 /* openFrameworks */ = {isa = PBXFileReference; lastKnownFileType = folder; name = openFrameworks; path = ../../../libs/openFrameworks; sourceTree = SOURCE_ROOT; };
-		653C1DCB2C3B4D01003B4CC4 /* Video.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Video.cpp; sourceTree = "<group>"; };
-		653C1DCC2C3B4D01003B4CC4 /* Video.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Video.hpp; sourceTree = "<group>"; };
 		65471B152BE7F7CD0051FA78 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		659390582D1DD1C800FC8957 /* Layer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Layer.hpp; sourceTree = "<group>"; };
-		6593905A2D1DD31200FC8957 /* Layer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Layer.cpp; sourceTree = "<group>"; };
+		656DC8752D20E9B300A63D6E /* Cousine-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cousine-Regular.ttf"; sourceTree = "<group>"; };
+		656DC8782D21939C00A63D6E /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		659390692D1E3CB000FC8957 /* 001.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 001.mov; sourceTree = "<group>"; };
 		6593906A2D1E3CB000FC8957 /* 002.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 002.mov; sourceTree = "<group>"; };
 		6593906B2D1E3CB000FC8957 /* 003.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 003.mov; sourceTree = "<group>"; };
 		6593906C2D1E3CB000FC8957 /* 004.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 004.mov; sourceTree = "<group>"; };
-		659390712D1F0B3E00FC8957 /* Mixer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Mixer.hpp; sourceTree = "<group>"; };
-		659390722D1F0BE900FC8957 /* Mixer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Mixer.cpp; sourceTree = "<group>"; };
 		E4B69B5B0A3A1756003C02F2 /* emptyExampleDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = emptyExampleDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ofApp.cpp; path = src/ofApp.cpp; sourceTree = SOURCE_ROOT; };
@@ -66,6 +61,8 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		656DC86F2D20BB8900A63D6E /* UI */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = UI; sourceTree = "<group>"; };
+		656DC8772D21920E00A63D6E /* Engine */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Engine; sourceTree = "<group>"; };
 		659390792D203FA100FC8957 /* Elements */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Elements; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -83,6 +80,8 @@
 		6593906F2D1E3CB000FC8957 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				656DC8782D21939C00A63D6E /* OpenSans-Regular.ttf */,
+				656DC8752D20E9B300A63D6E /* Cousine-Regular.ttf */,
 				659390692D1E3CB000FC8957 /* 001.mov */,
 				6593906A2D1E3CB000FC8957 /* 002.mov */,
 				6593906B2D1E3CB000FC8957 /* 003.mov */,
@@ -117,14 +116,10 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				656DC8772D21920E00A63D6E /* Engine */,
+				656DC86F2D20BB8900A63D6E /* UI */,
 				659390792D203FA100FC8957 /* Elements */,
-				659390722D1F0BE900FC8957 /* Mixer.cpp */,
-				659390712D1F0B3E00FC8957 /* Mixer.hpp */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
-				653C1DCB2C3B4D01003B4CC4 /* Video.cpp */,
-				653C1DCC2C3B4D01003B4CC4 /* Video.hpp */,
-				659390582D1DD1C800FC8957 /* Layer.hpp */,
-				6593905A2D1DD31200FC8957 /* Layer.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 			);
@@ -150,6 +145,8 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				656DC86F2D20BB8900A63D6E /* UI */,
+				656DC8772D21920E00A63D6E /* Engine */,
 				659390792D203FA100FC8957 /* Elements */,
 			);
 			name = emptyExample;
@@ -225,11 +222,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				659390732D1F0BED00FC8957 /* Mixer.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
-				653C1DCD2C3B4D01003B4CC4 /* Video.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
-				6593905B2D1DD31900FC8957 /* Layer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

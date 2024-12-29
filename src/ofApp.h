@@ -6,6 +6,7 @@
 #include "Visuals.hpp"
 #include "Mixer.hpp"
 #include "Signals.hpp"
+#include "UI/UI.hpp"
 
 class ofApp : public ofBaseApp{
     LayerStack *layerStackA, *layerStackB;
@@ -15,6 +16,8 @@ class ofApp : public ofBaseApp{
     float bufferHeight = 480;
     
     Signal<float> signal;
+    
+    UI::UserInterface ui;
     
 	public:
 		void setup();
