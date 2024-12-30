@@ -22,8 +22,10 @@ void ofApp::setup(){
     
     
     ui.rect = ofGetWindowRect();
-    ui.add(UI::ElementBuilder::Button("test Button"));
-    
+    ui.add(new UI::Button("test Button"));
+    ui.add(new UI::Slider("test Slider", 0.5));
+    ui.add(new UI::TextBox("Test Textbox"));
+    ui.add(new UI::Label("Test Label"));
     ui.calculate();
 }
 
