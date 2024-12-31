@@ -21,7 +21,9 @@ namespace UI {
     enum class ElementState {
         Idle,
         Hover,
+        MouseDown,
         Clicked,
+        Dragged,
         InUse
     };
     
@@ -32,9 +34,38 @@ namespace UI {
         ofRectangle rect;
         float padding = DEFAULT_UI_PADDING;
         float height = DEFAULT_UI_ELEMENT_HEIGHT;
+        int previousMouseX, previousMouseY;
+        bool previousButton1 = false, previousButton2 = false;
+        std::function<void(Element*)> callback;
         
         virtual ~Element() = default;
         virtual void draw(Primitives primitives) {};
+        virtual void update(int mouseX, int mouseY, bool button1, bool button2) {
+            if (!rect.inside(mouseX, mouseY)) {
+                state = ElementState::Idle;
+                
+            } else if (!button1) {
+                state = previousButton1 ?  ElementState::Clicked : ElementState::Hover;
+            }
+            else {
+                state = previousButton1 ? ElementState::Dragged : ElementState::MouseDown;
+            }
+            
+            // last thing to do
+            previousMouseX = mouseX;
+            previousMouseY = mouseY;
+            previousButton1 = button1;
+            previousButton2 = button2;
+        }
+        ofColor getBackgroundColorForState(Primitives primitives, ElementState state) {
+            if (state == ElementState::Hover || state == ElementState::MouseDown || state == ElementState::Dragged) {
+                return primitives.uiTemplate[TemplateField::HighlightedPrimaryColor];
+            } else if (state == ElementState::Clicked) {
+                return primitives.uiTemplate[TemplateField::DarkenPrimaryColor];
+            }
+            
+            return primitives.uiTemplate[TemplateField::PrimaryColor];
+        }
     };
     
     /// \brief An UI Element that Contains other Elements
@@ -68,17 +99,34 @@ namespace UI {
                 element->draw(primitives);
             }
         }
+        
+        void update(int mouseX, int mouseY, bool button1, bool button2) {
+            for(Element* element: children) {
+                element->update(mouseX, mouseY, button1, button2);
+            }
+        }
     };
     
     class Button: public Element {
     public:
         string title;
         
-        Button(string _title) {
+        
+        Button(string _title, std::function<void(Element*)> _callback = 0) {
             title = _title;
+            callback = _callback;
         }
+
         void draw(Primitives primitives) {
-            primitives.button(rect, title);
+            ofColor bgColor = getBackgroundColorForState(primitives, state);
+            primitives.button(rect, title, bgColor);
+        }
+        
+        void update(int mouseX, int mouseY, bool button1, bool button2) {
+            Element::update(mouseX, mouseY, button1, button2);
+            if (state == ElementState::Clicked && callback) {
+                callback(this);
+            }
         }
     };
     
@@ -87,17 +135,49 @@ namespace UI {
         string caption;
         float value, max, min;
         
-        Slider(string _caption, float _value, float _min=0.0, float _max=1.0) {
+        Slider(
+               string _caption,
+               float _value,
+               float _min=0.0,
+               float _max=1.0,
+               std::function<void(Element*)> _callback = 0
+        ) {
             caption = _caption;
             min = _min;
             max = _max;
             setValue(_value);
+            callback = _callback;
         }
         void setValue(float _value) {
             value = ofClamp(_value, min, max);
         }
         void draw(Primitives primitives) {
-            primitives.slider(rect, caption, value, min, max);
+            ofColor bgColor = getBackgroundColorForState(primitives, state);
+            primitives.slider(rect, caption, value, min, max, bgColor);
+        }
+        void update(int mouseX, int mouseY, bool button1, bool button2) {
+            Element::update(mouseX, mouseY, button1, button2);
+            if (state == ElementState::Idle || state == ElementState::Hover) {
+                return;
+            }
+            
+            const float percent = (mouseX - rect.x) / (rect.width);
+            value = min + (max - min) * percent;
+            
+            if (state == ElementState::Clicked && callback) {
+                callback(this);
+            }
+        }
+    };
+    
+    class CrossFader : public Slider {
+    public:
+        CrossFader(string _caption,
+                   std::function<void(Element*)> _callback = 0
+                   ) : Slider(_caption, 0.0, -1.0, 1.0, _callback) {}
+        void draw(Primitives primitives) {
+            ofColor bgColor = getBackgroundColorForState(primitives, state);
+            primitives.crossFader(rect, caption, value, bgColor);
         }
     };
     

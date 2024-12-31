@@ -11,7 +11,7 @@
 using namespace UI;
 
 Primitives::Primitives() {
-    font.load("OpenSans-Regular.ttf", 10);
+    font.load("OpenSans-Regular.ttf", DEFAULT_FONT_SIZE, true, false, false, 0.1, 96);
     setDefaultTemplate();
 };
 
@@ -79,26 +79,49 @@ void Primitives::alignedText(ofRectangle rect, string text, HorizontalAlign hAli
 
 
 
-void Primitives::button(ofRectangle rect, string title) {
-    ofSetColor(uiTemplate[TemplateField::PrimaryColor]);
+void Primitives::button(
+                        ofRectangle rect,
+                        string title,
+                        ofColor bgColor
+                        ) {
+    ofSetColor(bgColor);
     ofDrawRectangle(rect);
     ofSetColor(uiTemplate[TemplateField::TextColor]);
     centeredText(rect, title);
 }
 
-void Primitives::slider(ofRectangle rect, string title, float value, float min, float max) {
+void Primitives::slider(ofRectangle rect, string title, float value, float min, float max, ofColor bgColor) {
     const float amount = value / (max - min) ;
     const float valueX = rect.width * amount;
     
-    ofSetColor(uiTemplate[TemplateField::PrimaryColor]);
+    ofSetColor(bgColor);
     ofDrawRectangle(rect.x, rect.y, valueX, rect.height);
     
     ofSetColor(uiTemplate[TemplateField::BackgroundColor]);
     ofDrawRectangle(rect.x + valueX, rect.y, rect.width - valueX, rect.height);
     
     ofSetColor(uiTemplate[TemplateField::TextColor]);
+    alignedText(shrinkRectangle(rect, 2),
+                title,
+                HorizontalAlign::Left,
+                VerticalAlign::Center);
+}
+
+void Primitives::crossFader(ofRectangle rect, string title, float value, ofColor bgColor) {
+    const float amount = (value + 1) / 2.0 ;
+    const float valueX = (rect.width -2) * amount;
+    
+    ofSetColor(uiTemplate[TemplateField::BackgroundColor]);
+    ofDrawRectangle(rect);
+    
+    ofSetColor(bgColor);
+    ofDrawRectangle(rect.x + valueX
+                     + 1, rect.y, 3, rect.height);
+    
+    ofSetColor(uiTemplate[TemplateField::TextColor]);
     alignedText(rect, title, HorizontalAlign::Center, VerticalAlign::Center);
 }
+
 
 void Primitives::textBox(ofRectangle rect, string text) {
     ofSetColor(uiTemplate[TemplateField::BackgroundColor]);
@@ -124,25 +147,27 @@ void Primitives::setDefaultTemplate() {
     const ofColor secundaryColor = ofColor::saddleBrown;
     const ofColor backgroundColor = ofColor::black;
     const ofColor textColor = ofColor::white;
-    const float contrastFactor = 0.3;
+    const float brightness = 50;
     
     generateTemplate(primaryColor,
                      secundaryColor,
                      textColor,
                      backgroundColor,
-                     contrastFactor);
+                     brightness);
 }
 
 void Primitives::generateTemplate(ofColor primaryColor,
                       ofColor secundaryColor,
                       ofColor textColor,
                       ofColor backgroundColor,
-                      float contrast
+                      float brightness
                       ) {
     uiTemplate[TemplateField::PrimaryColor] = primaryColor;
     uiTemplate[TemplateField::SecundaryColor] = secundaryColor;
     uiTemplate[TemplateField::BackgroundColor] = backgroundColor;
-    uiTemplate[TemplateField::HighlightedPrimaryColor] = primaryColor * contrast;
-    uiTemplate[TemplateField::HighlightedPrimaryColor] = primaryColor / contrast;
+    uiTemplate[TemplateField::HighlightedPrimaryColor] = primaryColor + brightness;
+    uiTemplate[TemplateField::DarkenPrimaryColor] = primaryColor - brightness;
     uiTemplate[TemplateField::TextColor] = textColor;
 }
+
+

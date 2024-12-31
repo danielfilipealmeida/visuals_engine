@@ -7,9 +7,6 @@ void ofApp::setup(){
     VisualsBuilder builder(bufferWidth, bufferHeight);
     layerStackA->insert(new Layer(builder.Video("001.mov")));
     layerStackA->insert(new Layer(builder.Video("002.mov")));
-    /*
-    layerStack->insert(new Layer(builder.VideoGrabber(0)));
-     */
     
     layerStackB = new LayerStack(bufferWidth, bufferHeight);
     layerStackB->insert(new Layer(builder.Video("003.mov")));
@@ -22,8 +19,22 @@ void ofApp::setup(){
     
     
     ui.rect = ofGetWindowRect();
-    ui.add(new UI::Button("test Button"));
-    ui.add(new UI::Slider("test Slider", 0.5));
+    ui.add(new UI::Button(
+                          "test Button",
+                          [](UI::Element *element) {
+                              UI::Button* button = static_cast<UI::Button*>(element);
+                              std::cout << button->title <<endl;
+                          }));
+    ui.add(new UI::Slider(
+                          "test Slider",
+                          0.5,
+                          0.0,
+                          1.0,
+                          [](UI::Element *element) {
+                              UI::Slider* slider = static_cast<UI::Slider*>(element);
+                              std::cout << slider->value << std::endl;
+                          }));
+    ui.add(new UI::CrossFader("Mix"));
     ui.add(new UI::TextBox("Test Textbox"));
     ui.add(new UI::Label("Test Label"));
     ui.calculate();
@@ -33,6 +44,11 @@ void ofApp::setup(){
 void ofApp::update(){
     mixer->update();
     signal.update();
+    ui.update(ofGetMouseX(),
+                ofGetMouseY(),
+                ofGetMousePressed(OF_MOUSE_BUTTON_1),
+                ofGetMousePressed(OF_MOUSE_BUTTON_2)
+                );
 }
 
 //--------------------------------------------------------------
@@ -41,18 +57,6 @@ void ofApp::draw(){
     mixer->draw(ofRectangle(0.0, 0.0, ofGetWidth(), ofGetHeight()));
     
     ui.draw();
-    /*
-    UI::Primitives primitives = UI::Primitives();
-    
-    primitives.button(ofRectangle(100, 100, 128, 28), "Test Button");
-    primitives.slider(ofRectangle(100,140,128, 28), "Test Slider");
-    primitives.textBox(ofRectangle(100,180,128, 27), "Text Box");
-    primitives
-        .label(ofRectangle(100,220, 128, 27),
-                 "Label Example",
-               UI::HorizontalAlign::Center);
-     */
-    
 }
 
 //--------------------------------------------------------------
@@ -97,7 +101,8 @@ void ofApp::mouseExited(int x, int y){
 
 //--------------------------------------------------------------
 void ofApp::windowResized(int w, int h){
-
+    ui.rect = ofGetWindowRect();
+    ui.calculate();
 }
 
 //--------------------------------------------------------------

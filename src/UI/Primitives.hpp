@@ -12,6 +12,9 @@
 #include "ofMain.h"
 
 namespace UI {
+    
+#define DEFAULT_FONT_SIZE 11
+
 
 enum class HorizontalAlign {
     Left, Center, Right
@@ -32,10 +35,11 @@ enum class TemplateField {
 
 class Primitives {
     ofTrueTypeFont font;
+        
+public:
     
     std::map<TemplateField, ofColor> uiTemplate;
     
-public:
     Primitives();
     
     // Drawing helpers
@@ -66,7 +70,8 @@ public:
     ///
     /// \param rect
     /// \param title
-    void button(ofRectangle rect, string title);
+    /// \param bgColor
+    void button(ofRectangle rect, string title, ofColor bgColor);
     
     
     /// \brief draws a silder
@@ -76,8 +81,16 @@ public:
     /// \param value
     /// \param min
     /// \param max
-    void slider(ofRectangle rect, string title, float value=0.5, float min=0.0, float max=1.0);
+    void slider(ofRectangle rect, string title, float value, float min, float max, ofColor bgColor);
     
+    /// \brief draws a crossfader, with values from -1 to 1
+    ///
+    /// \param rect
+    /// \param title
+    /// \param value
+    /// \param min
+    /// \param max
+    void crossFader(ofRectangle rect, string title, float value, ofColor bgColor);
     
     /// \brief Draw a text box
     ///
@@ -113,6 +126,7 @@ public:
                           ofColor backgroundColor,
                           float contrast
                           );
+    
 };
 
 }
