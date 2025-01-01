@@ -15,15 +15,22 @@ class Signal {
 private:
     T value;
     std::function<T()> calculator;
+    std::function<void(T)> callback;
 public:
     void setCalculator(std::function<T()> _calculator) {
         calculator = _calculator;
     }
     void update() {
         value = calculator();
+        if (callback) {
+            callback(value);
+        }
     }
     T getValue() {
         return value;
+    }
+    void setCallback(std::function<void(T)> _callback) {
+        callback = _callback;
     }
 };
 

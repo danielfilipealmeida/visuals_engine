@@ -18,6 +18,8 @@ class ofApp : public ofBaseApp{
     Signal<float> signal;
     
     UI::UserInterface ui;
+    UI::HorizontalSplitter horizontalSplitter;
+    UI::CrossFader *mixCrossfader;
     
 	public:
 		void setup();

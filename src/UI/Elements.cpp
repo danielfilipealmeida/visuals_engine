@@ -1,0 +1,145 @@
+//
+//  Elements.cpp
+//  emptyExample
+//
+//  Created by Daniel Almeida on 01/01/2025.
+//
+
+#include "Elements.hpp"
+
+using namespace UI;
+
+
+void Element::update(int mouseX, int mouseY, bool button1, bool button2) {
+    if (!rect.inside(mouseX, mouseY)) {
+        state = ElementState::Idle;
+        
+    } else if (!button1) {
+        state = previousButton1 ?  ElementState::Clicked : ElementState::Hover;
+    }
+    else {
+        state = previousButton1 ? ElementState::Dragged : ElementState::MouseDown;
+    }
+    
+    // last thing to do
+    previousMouseX = mouseX;
+    previousMouseY = mouseY;
+    previousButton1 = button1;
+    previousButton2 = button2;
+}
+
+ofColor Element::getBackgroundColorForState(Primitives primitives, ElementState state) {
+    if (state == ElementState::Hover || state == ElementState::MouseDown || state == ElementState::Dragged) {
+        return primitives.uiTemplate[TemplateField::HighlightedPrimaryColor];
+    } else if (state == ElementState::Clicked) {
+        return primitives.uiTemplate[TemplateField::DarkenPrimaryColor];
+    }
+    
+    return primitives.uiTemplate[TemplateField::PrimaryColor];
+}
+
+
+
+
+void Container::calculate() {
+    std::vector<Element *>expandable;
+    
+    // get all expandables
+    for(Element* element : children) {
+        if (element->expandY) {
+            expandable.push_back(element);
+        }
+    }
+    
+    std::function<float()> calculateChildrenRectsAndGetOccupiedHeight = [&](){
+        float currentY = rect.y;
+        
+        for(Element* element : children) {
+            const float padding = element->padding;
+            currentY = currentY + element->padding;
+            const float height = element->height;
+            
+            element->rect = ofRectangle(rect.x + element->padding,rect.y + currentY, rect.width - (element->padding * 2), height);
+            currentY = currentY + height + element->padding;
+        }
+        return currentY;
+    };
+    
+    // do a first pass to get the fully ocupied height, without the elements that need to expand
+    float occupiedHeight = calculateChildrenRectsAndGetOccupiedHeight();
+    
+    // calculate the height of the expandables
+    float expandableHeight = (rect.height - occupiedHeight) / expandable.size();
+    
+    // exits if the height is negative. not space to expand
+    if (expandableHeight < 0) {
+        return;
+    }
+    
+    for(Element* element : expandable) {
+        element->height = expandableHeight;
+    }
+    
+    // recalculate everything
+    calculateChildrenRectsAndGetOccupiedHeight();
+    
+    // calculate all child that are also containers
+    for(auto element : children) {
+        
+        HorizontalSplitter* hSplitter = dynamic_cast<HorizontalSplitter*>(element);
+        if (hSplitter) {
+            hSplitter->calculate();
+            continue;
+        }
+
+        /* todo: add other specialized containers here */
+    }
+};
+
+void Container::add(Element* element) {
+    children.push_back(element);
+}
+
+void Container::draw(Primitives primitives) {
+    for(Element* element: children) {
+        element->draw(primitives);
+    }
+}
+
+void Container::update(int mouseX, int mouseY, bool button1, bool button2) {
+    for(Element* element: children) {
+        element->update(mouseX, mouseY, button1, button2);
+    }
+}
+
+// ***************************
+// Horizontal Splitter
+
+HorizontalSplitter::HorizontalSplitter() {
+    padding = 0;
+    expandY = true;
+}
+void HorizontalSplitter::addColumn(Container* container, float size) {
+    columns.push_back({container, size});
+}
+void HorizontalSplitter::calculate() {
+    float x = rect.x;
+    for(auto column : columns) {
+        float width = rect.width * column.second;
+        column.first->rect = ofRectangle(x, rect.y, width, rect.height);
+        x = x + width;
+        column.first->calculate();
+    }
+}
+void HorizontalSplitter::draw(Primitives primitives) {
+    for(auto column : columns) {
+        column.first->draw(primitives);
+    }
+}
+void HorizontalSplitter::update(int mouseX, int mouseY, bool button1, bool button2) {
+    for(auto column : columns) {
+        column.first->update(mouseX, mouseY, button1, button2);
+    }
+}
+
+

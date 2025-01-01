@@ -17,8 +17,30 @@ void ofApp::setup(){
     
     signal = SignalsBuilder::Random(1, 1);
     
+    horizontalSplitter.addColumn([]() {
+        UI::Container *container = new UI::Container();
+        container->add(new UI::Button(
+                                    "test Button",
+                                    [](UI::Element *element) {
+                                        UI::Button* button = static_cast<UI::Button*>(element);
+                                        std::cout << button->title <<endl;
+                                    }));
+        return container;
+    }(), 0.5);
+    horizontalSplitter.addColumn([]() {
+        UI::Container *container = new UI::Container();
+        container->add(new UI::Button(
+                                      "test Button",
+                                      [](UI::Element *element) {
+                                          UI::Button* button = static_cast<UI::Button*>(element);
+                                          std::cout << button->title <<endl;
+                                      }));
+        return container;
+    }(), 0.5);
     
     ui.rect = ofGetWindowRect();
+    ui.add(&horizontalSplitter);
+    /*
     ui.add(new UI::Button(
                           "test Button",
                           [](UI::Element *element) {
@@ -34,9 +56,15 @@ void ofApp::setup(){
                               UI::Slider* slider = static_cast<UI::Slider*>(element);
                               std::cout << slider->value << std::endl;
                           }));
-    ui.add(new UI::CrossFader("Mix"));
+    mixCrossfader = new UI::CrossFader("Mix");
+    ui.add(mixCrossfader);
+    signal.setCallback([&](float value){
+        mixCrossfader->setValue((value * 2) -1);
+    });
     ui.add(new UI::TextBox("Test Textbox"));
     ui.add(new UI::Label("Test Label"));
+     */
+   
     ui.calculate();
 }
 
