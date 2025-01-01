@@ -11,8 +11,11 @@
 using namespace UI;
 
 Primitives::Primitives() {
-    font.load("OpenSans-Regular.ttf", DEFAULT_FONT_SIZE, true, false, false, 0.1, 96);
+    ofTrueTypeFont::setGlobalDpi(72);
+    font.load("OpenSans-Regular.ttf", DEFAULT_FONT_SIZE, true, false, false);
     setDefaultTemplate();
+    font.setLetterSpacing(1.037);
+    font.setLineHeight(DEFAULT_FONT_SIZE+4);
 };
 
 
@@ -101,7 +104,7 @@ void Primitives::slider(ofRectangle rect, string title, float value, float min, 
     ofDrawRectangle(rect.x + valueX, rect.y, rect.width - valueX, rect.height);
     
     ofSetColor(uiTemplate[TemplateField::TextColor]);
-    alignedText(shrinkRectangle(rect, 2),
+    alignedText(shrinkRectangle(rect, 4),
                 title,
                 HorizontalAlign::Left,
                 VerticalAlign::Center);
@@ -128,7 +131,7 @@ void Primitives::textBox(ofRectangle rect, string text) {
     ofDrawRectangle(rect);
     ofSetColor(uiTemplate[TemplateField::TextColor]);
     
-    alignedText(shrinkRectangle(rect, 2),
+    alignedText(shrinkRectangle(rect, 4),
                 text,
                 HorizontalAlign::Left,
                 VerticalAlign::Center);
@@ -143,7 +146,7 @@ void Primitives::label(ofRectangle rect,
 
 
 void Primitives::setDefaultTemplate() {
-    const ofColor primaryColor = ofColor::orange;
+    const ofColor primaryColor = ofColor::darkSlateBlue;
     const ofColor secundaryColor = ofColor::saddleBrown;
     const ofColor backgroundColor = ofColor::black;
     const ofColor textColor = ofColor::white;

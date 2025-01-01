@@ -14,7 +14,7 @@
 
 namespace UI {
 
-#define DEFAULT_UI_ELEMENT_HEIGHT 28
+#define DEFAULT_UI_ELEMENT_HEIGHT 24
 #define DEFAULT_UI_PADDING 4
 
 /// \brief Defines the possible states of UI elements

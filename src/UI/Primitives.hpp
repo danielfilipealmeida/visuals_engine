@@ -13,8 +13,7 @@
 
 namespace UI {
     
-#define DEFAULT_FONT_SIZE 11
-
+#define DEFAULT_FONT_SIZE 14
 
 enum class HorizontalAlign {
     Left, Center, Right
