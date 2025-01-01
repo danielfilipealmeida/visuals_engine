@@ -68,8 +68,36 @@ public:
 };
 
 
+/// \brief Template function to return a container already populated with its children
+template<typename T>
+T *CREATE(std::vector<Element*> children) {
+    T *container = new T();
+    
+    for(auto child : children) {
+        container->add(child);
+    }
+    
+    return container;
+};
+
+/*
+
+template<>
+HorizontalSplitter *CREATE<HorizontalSplitter>(std::vector<Element*> children) {
+    HorizontalSplitter *container = new HorizontalSplitter();
+    
+    for(auto child : children) {
+        container->addColumn(static_cast<Container*>(child), 1.0 / (float) children.size());
+    }
+    
+    return container;
+}
+ */
+
+
 /// \brief Implements all the logic needed to draw and handle a button
 class Button: public Element {
+   
     
 public:
     string title;
@@ -157,9 +185,12 @@ public:
     T *obj;
     string title;
     
-    Viewer(T *_obj, string _title="") {
+    Viewer(T *_obj, string _title="", float _height = NULL) {
         obj =  _obj;
         title = _title;
+        if (height) {
+            height = _height;
+        }
     };
     void draw(Primitives primitives) {
         ofSetColor(0,0,0);

@@ -17,58 +17,54 @@ void ofApp::setup(){
     
     signal = SignalsBuilder::Random(1, 1);
     
-    horizontalSplitter.addColumn([&]() {
-        UI::Container *container = new UI::Container();
-        container->add(new UI::Button(
-                                    "test Button",
-                                    [](UI::Element *element) {
-                                        UI::Button* button = static_cast<UI::Button*>(element);
-                                        std::cout << button->title <<endl;
-                                    }));
+
+    horizontalSplitter.addColumn(UI::CREATE<UI::Container>({
+        new UI::Button(
+                       "test Button",
+                       [](UI::Element *element) {
+                           UI::Button* button = static_cast<UI::Button*>(element);
+                           std::cout << button->title <<endl;
+                       }),
+        new UI::Viewer<Mixer>(mixer, "Mixer", 100)
         
-        container->add([&](){
-            auto element = new UI::Viewer<Mixer>(mixer, "Mixer");
-            element->height = 200;
-            return element;
-        }());
-         
-        return container;
-    }(), 0.5);
-    horizontalSplitter.addColumn([&]() {
-        UI::Container *container = new UI::Container();
-        container->add(new UI::Button(
-                                      "test Button",
-                                      [](UI::Element *element) {
-                                          UI::Button* button = static_cast<UI::Button*>(element);
-                                          std::cout << button->title <<endl;
-                                      }));
-        container->add(new UI::VSpacer());
-        container->add(new UI::Slider(
-                                      "test Slider",
-                                      0.5,
-                                      0.0,
-                                      1.0,
-                                      [](UI::Element *element) {
-                                          UI::Slider* slider = static_cast<UI::Slider*>(element);
-                                          std::cout << slider->value << std::endl;
-                                      })    );
-        
-        container->add(new UI::VSpacer());
-        container->add(new UI::Slider(
-                                      "test Slider",
-                                      0.5,
-                                      0.0,
-                                      1.0,
-                                      [](UI::Element *element) {
-                                          UI::Slider* slider = static_cast<UI::Slider*>(element);
-                                          std::cout << slider->value << std::endl;
-                                      })    );
-        
-        return container;
-    }(), 0.5);
+    }), 0.25);
+                                 
+    horizontalSplitter.addColumn(UI::CREATE<UI::Container>({
+        new UI::Button(
+                       "test Button",
+                       [](UI::Element *element) {
+                           UI::Button* button = static_cast<UI::Button*>(element);
+                           std::cout << button->title <<endl;
+                       }),
+        new UI::VSpacer(),
+        new UI::Slider(
+                       "test Slider",
+                       0.5,
+                       0.0,
+                       1.0,
+                       [](UI::Element *element) {
+                           UI::Slider* slider = static_cast<UI::Slider*>(element);
+                           std::cout << slider->value << std::endl;
+                       }),
+        new UI::VSpacer(),
+        new UI::Slider(
+                       "test Slider",
+                       0.5,
+                       0.0,
+                       1.0,
+                       [](UI::Element *element) {
+                           UI::Slider* slider = static_cast<UI::Slider*>(element);
+                           std::cout << slider->value << std::endl;
+                       })
+    }), 0.25);
     
     ui.rect = ofGetWindowRect();
     ui.add(&horizontalSplitter);
+    
+    
+    
+    
+    
     /*
     ui.add(new UI::Button(
                           "test Button",
@@ -94,6 +90,18 @@ void ofApp::setup(){
     ui.add(new UI::Label("Test Label"));
      */
    
+    /*
+    ui.rect = ofGetWindowRect();
+    ui.add(UI::CREATE<UI::Container>({
+        new UI::Viewer<Mixer>(mixer, "Mixer"),
+        new UI::Button(
+                       "test Button",
+                       [](UI::Element *element) {
+                           UI::Button* button = static_cast<UI::Button*>(element);
+                           std::cout << button->title <<endl;
+                       })
+    }));
+      */
     ui.calculate();
 }
 

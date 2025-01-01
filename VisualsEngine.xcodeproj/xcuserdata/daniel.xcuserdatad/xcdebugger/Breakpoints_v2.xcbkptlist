@@ -46,9 +46,9 @@
             filePath = "src/ofApp.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
-            landmarkName = "ofApp::draw()"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "ofApp::setup()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
