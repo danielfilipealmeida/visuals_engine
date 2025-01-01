@@ -35,6 +35,28 @@ void ofApp::setup(){
                                           UI::Button* button = static_cast<UI::Button*>(element);
                                           std::cout << button->title <<endl;
                                       }));
+        container->add(new UI::VSpacer());
+        container->add(new UI::Slider(
+                                      "test Slider",
+                                      0.5,
+                                      0.0,
+                                      1.0,
+                                      [](UI::Element *element) {
+                                          UI::Slider* slider = static_cast<UI::Slider*>(element);
+                                          std::cout << slider->value << std::endl;
+                                      })    );
+        
+        container->add(new UI::VSpacer());
+        container->add(new UI::Slider(
+                                      "test Slider",
+                                      0.5,
+                                      0.0,
+                                      1.0,
+                                      [](UI::Element *element) {
+                                          UI::Slider* slider = static_cast<UI::Slider*>(element);
+                                          std::cout << slider->value << std::endl;
+                                      })    );
+        
         return container;
     }(), 0.5);
     

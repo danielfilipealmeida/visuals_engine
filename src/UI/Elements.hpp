@@ -96,6 +96,7 @@ public:
     }
 };
 
+/// \brief Implements all the logic needed to draw and handle a slider
 class Slider: public Element {
 public:
     string caption;
@@ -136,6 +137,7 @@ public:
     }
 };
 
+/// \brief Implements all the logic needed to draw and handle a cross fader, which is a special case of a slider
 class CrossFader : public Slider {
 public:
     CrossFader(string _caption,
@@ -147,6 +149,7 @@ public:
     }
 };
 
+/// \brief Implements all the logic needed to draw and handle a text box
 class TextBox: public Element {
 public:
     string value;
@@ -158,6 +161,7 @@ public:
     }
 };
 
+/// \brief Implements all the logic needed to draw and handle a label
 class Label: public Element {
 public:
     string caption;
@@ -169,6 +173,12 @@ public:
     }
 };
 
+class VSpacer: public Element {
+public:
+    VSpacer() {
+        expandY = true;
+    }
+};
 
 }
 

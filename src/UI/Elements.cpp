@@ -54,19 +54,28 @@ void Container::calculate() {
     std::function<float()> calculateChildrenRectsAndGetOccupiedHeight = [&](){
         float currentY = rect.y;
         
-        for(Element* element : children) {
+        int count = 0;
+        for(auto element : children) {
             const float padding = element->padding;
-            currentY = currentY + element->padding;
+            currentY = currentY + padding;
             const float height = element->height;
             
-            element->rect = ofRectangle(rect.x + element->padding,rect.y + currentY, rect.width - (element->padding * 2), height);
-            currentY = currentY + height + element->padding;
+            element->rect = ofRectangle(rect.x + padding,rect.y + currentY, rect.width - (padding * 2), height);
+            
+            currentY = currentY + height + padding;
+            
+            count++;
+            if (count == children.size()) {
+                currentY = currentY - height;
+            }
         }
         return currentY;
     };
     
     // do a first pass to get the fully ocupied height, without the elements that need to expand
     float occupiedHeight = calculateChildrenRectsAndGetOccupiedHeight();
+    
+    if (expandable.size() == 0 ) return;
     
     // calculate the height of the expandables
     float expandableHeight = (rect.height - occupiedHeight) / expandable.size();
