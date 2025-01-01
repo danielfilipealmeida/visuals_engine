@@ -10,6 +10,11 @@
 using namespace UI;
 
 
+
+// *****************************************
+// Element
+// *****************************************
+
 void Element::update(int mouseX, int mouseY, bool button1, bool button2) {
     if (!rect.inside(mouseX, mouseY)) {
         state = ElementState::Idle;
@@ -39,7 +44,9 @@ ofColor Element::getBackgroundColorForState(Primitives primitives, ElementState 
 }
 
 
-
+// *****************************************
+// Container
+// *****************************************
 
 void Container::calculate() {
     std::vector<Element *>expandable;
@@ -121,8 +128,105 @@ void Container::update(int mouseX, int mouseY, bool button1, bool button2) {
     }
 }
 
-// ***************************
+
+// *****************************************
+// Button
+// *****************************************
+
+Button::Button(string _title, std::function<void(Element*)> _callback = 0) {
+    title = _title;
+    callback = _callback;
+}
+
+void Button::draw(Primitives primitives) {
+    ofColor bgColor = getBackgroundColorForState(primitives, state);
+    primitives.button(rect, title, bgColor);
+}
+
+void Button::update(int mouseX, int mouseY, bool button1, bool button2) {
+    Element::update(mouseX, mouseY, button1, button2);
+    if (state == ElementState::Clicked && callback) {
+        callback(this);
+    }
+}
+
+
+// *****************************************
+// Slider
+// *****************************************
+
+Slider::Slider(
+               string _caption,
+               float _value,
+               float _min,
+               float _max,
+               std::function<void(Element*)> _callback
+               ) {
+    caption = _caption;
+    min = _min;
+    max = _max;
+    setValue(_value);
+    callback = _callback;
+}
+void Slider::setValue(float _value) {
+    value = ofClamp(_value, min, max);
+}
+void Slider::draw(Primitives primitives) {
+    ofColor bgColor = getBackgroundColorForState(primitives, state);
+    primitives.slider(rect, caption, value, min, max, bgColor);
+}
+void Slider::update(int mouseX, int mouseY, bool button1, bool button2) {
+    Element::update(mouseX, mouseY, button1, button2);
+    if (state == ElementState::Idle || state == ElementState::Hover) {
+        return;
+    }
+    
+    const float percent = (mouseX - rect.x) / (rect.width);
+    value = min + (max - min) * percent;
+    
+    if (state == ElementState::Clicked && callback) {
+        callback(this);
+    }
+}
+
+
+// *****************************************
+// Cross Fader
+// *****************************************
+
+
+void CrossFader::draw(Primitives primitives) {
+    ofColor bgColor = getBackgroundColorForState(primitives, state);
+    primitives.crossFader(rect, caption, value, bgColor);
+}
+
+
+// *****************************************
+// Text Box
+// *****************************************
+
+TextBox::TextBox(string _value){
+    value = _value;
+}
+void TextBox::draw(Primitives primitives) {
+    primitives.textBox(rect, value);
+}
+
+
+// *****************************************
+// Label
+// *****************************************
+
+Label::Label(string _caption){
+    caption = _caption;
+}
+void Label::draw(Primitives primitives) {
+    primitives.label(rect, caption);
+}
+
+// *****************************************
 // Horizontal Splitter
+// *****************************************
 
 HorizontalSplitter::HorizontalSplitter() {
     padding = 0;
