@@ -12,7 +12,7 @@
 #include <vector>
 
 
-class Layer: Drawable {
+class Layer: public Drawable {
     float alpha;
     VisualsInterface* visual;
     ofBlendMode blendMode;

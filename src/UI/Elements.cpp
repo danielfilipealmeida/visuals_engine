@@ -194,7 +194,6 @@ void Slider::update(int mouseX, int mouseY, bool button1, bool button2) {
 // Cross Fader
 // *****************************************
 
-
 void CrossFader::draw(Primitives primitives) {
     ofColor bgColor = getBackgroundColorForState(primitives, state);
     primitives.crossFader(rect, caption, value, bgColor);
@@ -223,6 +222,7 @@ Label::Label(string _caption){
 void Label::draw(Primitives primitives) {
     primitives.label(rect, caption);
 }
+
 
 // *****************************************
 // Horizontal Splitter

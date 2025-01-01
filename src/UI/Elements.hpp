@@ -124,7 +124,56 @@ public:
     }
 };
 
+/// \brief A Template to be able to draw any object with a `draw` method and a `rect` inside an `ofRectangle` without changing the aspect Ratio
+template<typename T>
+void DrawInsideRect(T *obj, ofRectangle rect) {
+    float objAspectRatio = obj->rect.width / obj->rect.height;
+    float rectAspectRatio = rect.width / rect.height;
+    
+    float drawWidth, drawHeight;
+    
+    if (objAspectRatio > rectAspectRatio) {
+        // FBO is wider than the rect
+        drawWidth = rect.getWidth();
+        drawHeight = drawWidth / objAspectRatio;
+    } else {
+        // FBO is taller or the same aspect ratio as the rect
+        drawHeight = rect.getHeight();
+        drawWidth = drawHeight * objAspectRatio;
+    }
+    
+    // Calculate position to center the FBO inside the rectangle
+    float x = rect.getX() + (rect.getWidth() - drawWidth) / 2.0f;
+    float y = rect.getY() + (rect.getHeight() - drawHeight) / 2.0f;
+    
+    // Draw the FBO
+    obj->draw(ofRectangle(x, y, drawWidth, drawHeight));
 }
 
+/// \brief Template to create a UI Element to draw any OpenFrameworks object that has a `draw` method
+template <class T>
+class Viewer : public Element {
+public:
+    T *obj;
+    string title;
+    
+    Viewer(T *_obj, string _title="") {
+        obj =  _obj;
+        title = _title;
+    };
+    void draw(Primitives primitives) {
+        ofSetColor(0,0,0);
+        ofDrawRectangle(rect);
+        ofSetColor(255,255,255);
+        DrawInsideRect(obj, rect);
+        ofSetColor(255.255, 255);
+        primitives.alignedText(primitives.shrinkRectangle(rect, 2), title, HorizontalAlign::Left, VerticalAlign::Top);
+    };
+    
+};
 
+
+
+
+}
 #endif

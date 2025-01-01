@@ -8,23 +8,22 @@
 #include "Mixer.hpp"
 #include <cmath>
 
-Mixer::Mixer(LayerStack* _a, LayerStack* _b) {
+Mixer::Mixer(LayerStack* _a, LayerStack* _b, float _bufferWidth, float _bufferHeight) {
     a = _a;
     B = _b;
     mix = 0.5;
+    buffer = new ofFbo();
+    buffer->allocate(_bufferWidth, _bufferHeight);
+    rect = ofRectangle(0,0, _bufferWidth, _bufferHeight);
 }
 
 
 void Mixer::update() {
     a->update();
     B->update();
-}
-
-void Mixer::draw() {
-    draw(rect);
-}
-
-void Mixer::draw(ofRectangle rect) {
+    
+    
+    buffer->begin();
     ofEnableAlphaBlending();
     //ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofClear(0,0,0);
@@ -35,6 +34,18 @@ void Mixer::draw(ofRectangle rect) {
     B->draw(rect);
     //ofDisableBlendMode();
     ofDisableAlphaBlending();
+    ofSetColor(255,255,255);
+    buffer->end();
+}
+
+void Mixer::draw() {
+    draw(rect);
+}
+
+void Mixer::draw(ofRectangle rect) {
+    
+    ofSetColor(255,255,255);
+    buffer->draw(rect);
 }
 
 void Mixer::setMix(float _mix) {

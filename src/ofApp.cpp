@@ -12,12 +12,12 @@ void ofApp::setup(){
     layerStackB->insert(new Layer(builder.Video("003.mov")));
     layerStackB->insert(new Layer(builder.Video("004.mov")));
     
-    mixer = new Mixer(layerStackA, layerStackB);
+    mixer = new Mixer(layerStackA, layerStackB, bufferWidth, bufferHeight);
     mixer->setMix(0.5);
     
     signal = SignalsBuilder::Random(1, 1);
     
-    horizontalSplitter.addColumn([]() {
+    horizontalSplitter.addColumn([&]() {
         UI::Container *container = new UI::Container();
         container->add(new UI::Button(
                                     "test Button",
@@ -25,9 +25,16 @@ void ofApp::setup(){
                                         UI::Button* button = static_cast<UI::Button*>(element);
                                         std::cout << button->title <<endl;
                                     }));
+        
+        container->add([&](){
+            auto element = new UI::Viewer<Mixer>(mixer, "Mixer");
+            element->height = 200;
+            return element;
+        }());
+         
         return container;
     }(), 0.5);
-    horizontalSplitter.addColumn([]() {
+    horizontalSplitter.addColumn([&]() {
         UI::Container *container = new UI::Container();
         container->add(new UI::Button(
                                       "test Button",

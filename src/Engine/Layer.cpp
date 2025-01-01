@@ -45,16 +45,12 @@ LayerStack::LayerStack(float _width, float _height) {
 }
 
 void LayerStack::update() {
+    // updates all
     for (auto layer: layers) {
         layer->update();
     }
-}
-
-void LayerStack::draw() {
-    draw(rect);
-}
-
-void LayerStack::draw(ofRectangle rect) {
+    
+    // draws all into buffer
     buffer.begin();
     ofClear(0, 0, 0);
     ofSetColor(255, 255, 255);
@@ -62,7 +58,13 @@ void LayerStack::draw(ofRectangle rect) {
         layer->draw();
     }
     buffer.end();
-    
+}
+
+void LayerStack::draw() {
+    draw(rect);
+}
+
+void LayerStack::draw(ofRectangle rect) {
     buffer.draw(rect);
 }
 
