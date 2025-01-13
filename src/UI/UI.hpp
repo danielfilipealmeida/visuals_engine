@@ -10,16 +10,17 @@
 
 
 #include "Elements.hpp"
+#include "Containers.hpp"
 #include "Primitives.hpp"
 #include <vector>
 
 namespace UI {
 
-struct UserInterface: Container {
+/// \brief The main class used to implement a User Inteface.
+struct UserInterface: public Container {
     Primitives primitives;
     
     void draw();
-
 };
 
 

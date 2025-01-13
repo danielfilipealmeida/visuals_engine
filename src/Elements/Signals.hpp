@@ -82,6 +82,12 @@ public:
         return signal;
     }
     
+    static Signal<float> Pulse(float freq = 1, float amplitude = 1, float dutyCycle = 0.1) {
+        Signal<float> signal;
+        signal.setCalculator(SignalsBuilder::getPulseCalculator(freq, amplitude, dutyCycle));
+        
+        return signal;
+    }
     
     /// \brief Returns a lambda configured to produce a sinewave
     ///
@@ -113,7 +119,7 @@ public:
     static std::function<float()> getSquareWaveCalculator(float freq = 1, float amplitude = 1, float phase=0) {
         return [freq, amplitude, phase]() {
             float time = ((float) ofGetElapsedTimef());
-            float sine = amplitude * std::sin(1.0 * M_PI * freq * time + phase);
+            float sine = amplitude * std::sin(M_PI * freq * time + phase);
             float result = amplitude * (sine>0 ? 1 : -1);
             
             return result;
@@ -139,6 +145,15 @@ public:
             
             lastTime = ofGetElapsedTimef();
             return result;
+        };
+    }
+    
+    static std::function<float()> getPulseCalculator(float freq, float amplitude, float dutyCycle) {
+        return [freq, amplitude, dutyCycle]() {
+            float time = ((float) ofGetElapsedTimef());
+            double period = 1.0 / freq;
+            double modTime = fmod(time, period);
+            return (modTime < dutyCycle * period) ? amplitude : 0.0;
         };
     }
 };

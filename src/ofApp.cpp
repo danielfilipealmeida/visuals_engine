@@ -1,4 +1,5 @@
 #include "ofApp.h"
+
 //#include "UI/Primitives.hpp"
 
 //--------------------------------------------------------------
@@ -15,8 +16,8 @@ void ofApp::setup(){
     mixer = new Mixer(layerStackA, layerStackB, bufferWidth, bufferHeight);
     mixer->setMix(0.5);
     
-    signal = SignalsBuilder::Random(1, 1);
-    
+    //signal = SignalsBuilder::Random(1, 1);
+    signal = SignalsBuilder::Pulse();
 
     horizontalSplitter.addColumn(UI::CREATE<UI::Container>({
         new UI::Button(
@@ -62,7 +63,10 @@ void ofApp::setup(){
     ui.add(&horizontalSplitter);
     
     
-    
+    signal.setCallback([&](float value){
+        UI::Slider *slider = ((UI::Slider *) horizontalSplitter.columns[1].first->children[2]);
+        slider->setValue((value));
+    });
     
     
     /*

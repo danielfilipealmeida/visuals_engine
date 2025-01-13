@@ -22,7 +22,6 @@ void Mixer::update() {
     a->update();
     B->update();
     
-    
     buffer->begin();
     ofEnableAlphaBlending();
     //ofEnableBlendMode(OF_BLENDMODE_ALPHA);

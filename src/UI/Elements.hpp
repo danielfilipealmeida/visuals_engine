@@ -45,27 +45,9 @@ public:
     ofColor getBackgroundColorForState(Primitives primitives, ElementState state);
 };
 
-/// \brief An UI Element that Contains other Elements
-class Container: public Element {
-public:
-    std::vector<Element*> children;
-    void calculate();
-    void add(Element* element);
-    void draw(Primitives primitives);
-    void update(int mouseX, int mouseY, bool button1, bool button2);
-};
 
 
-/// \brief Implement a mechanism to divide horizontally the screen and have several columns of widgets
-class HorizontalSplitter: public Container {
-    std::vector<std::pair<Container*, float>> columns;
-public:
-    HorizontalSplitter();
-    void addColumn(Container* container, float size);
-    void calculate();
-    void draw(Primitives primitives);
-    void update(int mouseX, int mouseY, bool button1, bool button2);
-};
+
 
 
 /// \brief Template function to return a container already populated with its children
