@@ -10,6 +10,8 @@
 
 #import "BaseClasses.hpp"
 #import "ofMain.h"
+#import "Signals.hpp"
+#import "SignalPlotter.hpp"
 
 template<class T>
 class Visual: public VisualsInterface {
@@ -80,6 +82,17 @@ public:
             grabber.initGrabber(ofGetWidth(), ofGetHeight());
             
             return grabber;
+        }(), ofRectangle(0,0,width, height));
+        
+        return visual;
+    }
+    
+    Visual<SignalPlotter> *Plotter(Signal<float> *signal) {
+        Visual<SignalPlotter> *visual;
+        
+        visual = new Visual<SignalPlotter>([&](){
+            SignalPlotter plotter = SignalPlotter(signal);
+            return plotter;
         }(), ofRectangle(0,0,width, height));
         
         return visual;

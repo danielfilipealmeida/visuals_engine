@@ -82,6 +82,13 @@ public:
         return signal;
     }
     
+    /// \brief Create a Pulse signal
+    ///
+    /// \param freq the frequency of the pulse
+    /// \param amplitude the amplitude of the pulse
+    /// \param dutyCycle the duration of the pulse
+    ///
+    /// \return the configured signal
     static Signal<float> Pulse(float freq = 1, float amplitude = 1, float dutyCycle = 0.1) {
         Signal<float> signal;
         signal.setCalculator(SignalsBuilder::getPulseCalculator(freq, amplitude, dutyCycle));

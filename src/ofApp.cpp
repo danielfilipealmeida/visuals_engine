@@ -4,20 +4,24 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    //signal = SignalsBuilder::Random(1, 1);
+    //signal = SignalsBuilder::Pulse();
+    signal = SignalsBuilder::SineWave();
+    
     layerStackA = new LayerStack(bufferWidth, bufferHeight);
     VisualsBuilder builder(bufferWidth, bufferHeight);
     layerStackA->insert(new Layer(builder.Video("001.mov")));
-    layerStackA->insert(new Layer(builder.Video("002.mov")));
+    //layerStackA->insert(new Layer(builder.Video("002.mov")));
     
     layerStackB = new LayerStack(bufferWidth, bufferHeight);
-    layerStackB->insert(new Layer(builder.Video("003.mov")));
-    layerStackB->insert(new Layer(builder.Video("004.mov")));
+    layerStackB->insert(new Layer(builder.Plotter(&signal)));
+    //layerStackB->insert(new Layer(builder.Video("003.mov")));
+    //layerStackB->insert(new Layer(builder.Video("004.mov")));
     
     mixer = new Mixer(layerStackA, layerStackB, bufferWidth, bufferHeight);
     mixer->setMix(0.5);
     
-    //signal = SignalsBuilder::Random(1, 1);
-    signal = SignalsBuilder::Pulse();
+    
 
     horizontalSplitter.addColumn(UI::CREATE<UI::Container>({
         new UI::Button(
@@ -65,7 +69,7 @@ void ofApp::setup(){
     
     signal.setCallback([&](float value){
         UI::Slider *slider = ((UI::Slider *) horizontalSplitter.columns[1].first->children[2]);
-        slider->setValue((value));
+        slider->setValue((value + 1) / 2.0);
     });
     
     
@@ -122,7 +126,7 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    mixer->setMix(signal.getValue());
+    mixer->setMix(signal.getValue() + 1 /2.0);
     mixer->draw(ofRectangle(0.0, 0.0, ofGetWidth(), ofGetHeight()));
     
     ui.draw();
