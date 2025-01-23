@@ -1,20 +1,24 @@
 #include "ofApp.h"
 
-//#include "UI/Primitives.hpp"
-
 //--------------------------------------------------------------
 void ofApp::setup(){
     //signal = SignalsBuilder::Random(1, 1);
     //signal = SignalsBuilder::Pulse();
     signal = SignalsBuilder::SineWave();
     
-    layerStackA = new LayerStack(bufferWidth, bufferHeight);
     VisualsBuilder builder(bufferWidth, bufferHeight);
-    layerStackA->insert(new Layer(builder.Video("001.mov")));
+    set.addVisual(builder.Video("001.mov"));
+    set.addVisual(builder.Video("002.mov"));
+    set.addVisual(builder.Video("003.mov"));
+    set.addVisual(builder.Video("004.mov"));
+    set.addVisual(builder.Plotter(&signal));
+    
+    layerStackA = new LayerStack(bufferWidth, bufferHeight);
+    layerStackA->insert(new Layer(set.visuals[0]));
     //layerStackA->insert(new Layer(builder.Video("002.mov")));
     
     layerStackB = new LayerStack(bufferWidth, bufferHeight);
-    layerStackB->insert(new Layer(builder.Plotter(&signal)));
+    layerStackB->insert(new Layer(set.visuals[4]));
     //layerStackB->insert(new Layer(builder.Video("003.mov")));
     //layerStackB->insert(new Layer(builder.Video("004.mov")));
     

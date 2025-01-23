@@ -19,6 +19,9 @@ private:
     T visual;
     
 public:
+    /// Will store needed data that cannot be accessed in the visual
+    ofJson data;
+    
     Visual(T _visual, ofRectangle _rect) {
         visual = _visual;
         rect = _rect;
@@ -40,11 +43,38 @@ public:
     void stop() {
         visual.stop();
     }
+    ofJson encode() {
+        return {};
+    }
 };
 
 /** ofVideoGrabber partial specializations */
 template<> inline void Visual<ofVideoGrabber>::play(){};
 template<> inline void Visual<ofVideoGrabber>::stop(){};
+template<> inline ofJson Visual<ofVideoGrabber>::encode(){
+    return {
+        {"deviceId", data["deviceId"]},
+        {"width", visual.getWidth()},
+        {"height", visual.getHeight()}
+    };
+};
+
+/** ofVideoPlayer partial specializations */
+template<> inline ofJson Visual<ofVideoPlayer>::encode(){
+    return {
+        {"path", visual.getMoviePath()},
+        {"width", visual.getWidth()},
+        {"height", visual.getHeight()}
+    };
+};
+
+template<> inline ofJson Visual<SignalPlotter>::encode() {
+    return {
+        {"signal", "todo"}
+    };
+};
+
+
 
 
 /// Class containing a compilation of methods to work as builders of visuals
@@ -83,6 +113,9 @@ public:
             
             return grabber;
         }(), ofRectangle(0,0,width, height));
+        
+        // manually add the device id to the json variable because this isn't accessible on ofVideoGrabber
+        visual->data["deviceId"];
         
         return visual;
     }

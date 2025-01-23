@@ -24,7 +24,16 @@ public:
     }
 };
 
-class VisualsInterface: public Drawable {
+class Encodable {
+public:
+    virtual ofJson encode() = 0;
 };
+
+class VisualsInterface: public Drawable, public Encodable {
+};
+
+
+
+
 
 #endif

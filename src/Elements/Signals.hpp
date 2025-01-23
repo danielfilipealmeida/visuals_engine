@@ -10,6 +10,9 @@
 
 #include <cmath>
 
+
+
+
 template<class T>
 class Signal {
 private:
@@ -35,7 +38,7 @@ public:
 };
 
 
-
+// todo: renams to SignalsFactory
 class SignalsBuilder {
     
 public:

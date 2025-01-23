@@ -7,12 +7,19 @@ An extensible Engine for Real-time Video generation made with OpenFramwork. The 
 
 ## Roadmap / ToDo
 
-- [ ] Layers
+- [x] Layers
 - [ ] Scene
-- [ ] Visuals
+- [x] Visuals
     - [+] Video player
         - [ ] Play mode (normal, inverse, loop, random)
         - [ ] Speed (basically is the interval until new frame)
         
 - [ ] Make the engine be a lib
 - [ ] Make several apps.
+- [ ] Split code into libs
+- [ ] effects as Decorators. can have several decorators to anything that draws
+- [ ] Syphon
+- [ ] FFT as a signal generator
+- [ ] Beat detection
+- [ ] FFGL Effects
+

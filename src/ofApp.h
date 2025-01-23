@@ -7,6 +7,7 @@
 #include "Mixer.hpp"
 #include "Signals.hpp"
 #include "UI/UI.hpp"
+#include "Engine/Set.hpp"
 
 class ofApp : public ofBaseApp{
     LayerStack *layerStackA, *layerStackB;
@@ -14,6 +15,8 @@ class ofApp : public ofBaseApp{
     Visual<ofVideoPlayer> *video;
     float bufferWidth = 640;
     float bufferHeight = 480;
+    
+    Set set;
     
     Signal<float> signal;
     
