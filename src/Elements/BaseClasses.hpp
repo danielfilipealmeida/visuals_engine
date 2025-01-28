@@ -24,6 +24,7 @@ public:
     }
 };
 
+/// \brief Interface that defines a method for returning the information of the object on a JSON
 class Encodable {
 public:
     virtual ofJson encode() = 0;

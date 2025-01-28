@@ -11,8 +11,6 @@
 #include <cmath>
 
 
-
-
 template<class T>
 class Signal {
 private:

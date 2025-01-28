@@ -22,25 +22,25 @@ public:
     /// \brief Adds a visual to the list of visuals in the set
     ///
     /// \param visual an object that inherints VisualsInterface
-    void addVisual(VisualsInterface* visual) {
-        visuals.push_back(visual);
-    };
+    void addVisual(VisualsInterface* visual);
+    
+    /// \brief Generates a JSON representation of the set
+    ///
+    /// \return a ofJson object representing the current state of the sets
+    ofJson encode();
     
     
-    ofJson encode() {
-        ofJson visualsJson;
-        
-        for (VisualsInterface *visual : visuals) {
-            visualsJson.push_back(visual->encode());
-        }
-        
-        ofJson result = {
-            {"visuals", visualsJson}
-        };
-        
-        
-        return result;
-    };
+    /// Sets the set data from the json
+    /// @param data json data
+    void decode(ofJson data);
+    
+    /// Saves a set to the filesystem into a json gile
+    /// @param path a string defining the filepath
+    void save(std::string path);
+    
+    /// Loads the content of a json file storing a set
+    /// @param path the path of the file to load in a string
+    void load(std::string path);
 };
 
 #endif

@@ -115,6 +115,10 @@ void ofApp::setup(){
     }));
       */
     ui.calculate();
+    
+    set.save("/Users/daniel/set.json");
+    ofJson data = set.encode();
+    set.decode(data);
 }
 
 //--------------------------------------------------------------

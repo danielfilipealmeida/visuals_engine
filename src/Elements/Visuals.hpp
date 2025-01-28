@@ -13,15 +13,32 @@
 #import "Signals.hpp"
 #import "SignalPlotter.hpp"
 
+enum VisualTypes {
+    camera,
+    loop,
+    plot
+};
+
+NLOHMANN_JSON_SERIALIZE_ENUM(
+                             VisualTypes, {
+                                 { VisualTypes::camera, "camera" },
+                                 { VisualTypes::loop, "loop" },
+                                 { VisualTypes::plot, "plot" }
+                             }
+);
+
+
 template<class T>
 class Visual: public VisualsInterface {
 private:
     T visual;
     
 public:
+    
     /// Will store needed data that cannot be accessed in the visual
     ofJson data;
     
+    Visual(ofJson data) {}
     Visual(T _visual, ofRectangle _rect) {
         visual = _visual;
         rect = _rect;
@@ -48,11 +65,13 @@ public:
     }
 };
 
+
 /** ofVideoGrabber partial specializations */
 template<> inline void Visual<ofVideoGrabber>::play(){};
 template<> inline void Visual<ofVideoGrabber>::stop(){};
 template<> inline ofJson Visual<ofVideoGrabber>::encode(){
     return {
+        {"type", VisualTypes::camera},
         {"deviceId", data["deviceId"]},
         {"width", visual.getWidth()},
         {"height", visual.getHeight()}
@@ -62,6 +81,7 @@ template<> inline ofJson Visual<ofVideoGrabber>::encode(){
 /** ofVideoPlayer partial specializations */
 template<> inline ofJson Visual<ofVideoPlayer>::encode(){
     return {
+        {"type", VisualTypes::loop},
         {"path", visual.getMoviePath()},
         {"width", visual.getWidth()},
         {"height", visual.getHeight()}
@@ -70,7 +90,10 @@ template<> inline ofJson Visual<ofVideoPlayer>::encode(){
 
 template<> inline ofJson Visual<SignalPlotter>::encode() {
     return {
-        {"signal", "todo"}
+        {"type", VisualTypes::plot},
+        {"signal", "todo"},
+        {"samples", visual.nSamples},
+        {"height", visual.height}
     };
 };
 
