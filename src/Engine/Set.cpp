@@ -37,18 +37,18 @@ void Set::decode(ofJson data){
     visuals.empty();
     
     for(auto visual : data["visuals"]) {
-        VisualsBuilder *builder;
+        VisualsFactory *factory;
         switch (visual["type"].get<VisualTypes>()){
             case VisualTypes::camera:
-                 builder = new VisualsBuilder(visual["width"].get<float>(), visual["height"].get<float>());
-                addVisual(builder->VideoGrabber(visual["deviceId"]));
-                delete builder;
+                 factory = new VisualsFactory(visual["width"].get<float>(), visual["height"].get<float>());
+                addVisual(factory->VideoGrabber(visual["deviceId"]));
+                delete factory;
                 break;
                 
             case VisualTypes::loop:
-                builder = new VisualsBuilder(visual["width"].get<float>(), visual["height"].get<float>());
-                addVisual(builder->Video(visual["path"].get<string>()));
-                delete builder;
+                factory = new VisualsFactory(visual["width"].get<float>(), visual["height"].get<float>());
+                addVisual(factory->Video(visual["path"].get<string>()));
+                delete factory;
                 break;
                 
             case VisualTypes::plot:

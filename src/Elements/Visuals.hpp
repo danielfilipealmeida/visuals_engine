@@ -88,6 +88,7 @@ template<> inline ofJson Visual<ofVideoPlayer>::encode(){
     };
 };
 
+/** SignalPloter partial specializations */
 template<> inline ofJson Visual<SignalPlotter>::encode() {
     return {
         {"type", VisualTypes::plot},
@@ -95,7 +96,7 @@ template<> inline ofJson Visual<SignalPlotter>::encode() {
         {"samples", visual.nSamples},
         {"height", visual.height}
     };
-};
+}; // no way to export a signal. 
 
 
 
@@ -105,15 +106,17 @@ template<> inline ofJson Visual<SignalPlotter>::encode() {
 /// 
 /// @param _width: the width of the rendering buffer
 /// @param _height: the height of the rendering buffers
-class VisualsBuilder {
+class VisualsFactory {
     float width;
     float height;
 public:
-    VisualsBuilder(float _width, float _height) {
+    VisualsFactory(float _width, float _height) {
         width = _width;
         height = _height;
     }
     
+    /// Returns a configured video loop visual
+    /// \param path
     Visual<ofVideoPlayer>* Video(std::string path) {
         Visual<ofVideoPlayer> *visual;
         
@@ -126,6 +129,8 @@ public:
         return visual;
     };
     
+    /// Returns a configured camera visual
+    /// \param deviceId
     Visual<ofVideoGrabber> *VideoGrabber(int _deviceId) {
         Visual<ofVideoGrabber> *visual;
         
@@ -143,6 +148,8 @@ public:
         return visual;
     }
     
+    /// Returns a signal plotter visual
+    /// \param *signal 
     Visual<SignalPlotter> *Plotter(Signal<float> *signal) {
         Visual<SignalPlotter> *visual;
         

@@ -20,6 +20,7 @@ namespace UI {
 struct UserInterface: public Container {
     Primitives primitives;
     
+    /// Draws the User Interface
     void draw();
 };
 

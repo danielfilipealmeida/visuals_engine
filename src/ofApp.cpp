@@ -4,14 +4,14 @@
 void ofApp::setup(){
     //signal = SignalsBuilder::Random(1, 1);
     //signal = SignalsBuilder::Pulse();
-    signal = SignalsBuilder::SineWave();
+    signal = SignalsFactory::SineWave();
     
-    VisualsBuilder builder(bufferWidth, bufferHeight);
-    set.addVisual(builder.Video("001.mov"));
-    set.addVisual(builder.Video("002.mov"));
-    set.addVisual(builder.Video("003.mov"));
-    set.addVisual(builder.Video("004.mov"));
-    set.addVisual(builder.Plotter(&signal));
+    VisualsFactory factory(bufferWidth, bufferHeight);
+    set.addVisual(factory.Video("001.mov"));
+    set.addVisual(factory.Video("002.mov"));
+    set.addVisual(factory.Video("003.mov"));
+    set.addVisual(factory.Video("004.mov"));
+    set.addVisual(factory.Plotter(&signal));
     
     layerStackA = new LayerStack(bufferWidth, bufferHeight);
     layerStackA->insert(new Layer(set.visuals[0]));
