@@ -1,7 +1,6 @@
 #pragma once
 
 #include "ofMain.h"
-#include "Video.hpp"
 #include "Layer.hpp"
 #include "Visuals.hpp"
 #include "Mixer.hpp"

@@ -10,6 +10,7 @@
 
 #include "Layer.hpp"
 
+
 class Mixer: public Drawable {
     LayerStack *a, *B;
     float mix;

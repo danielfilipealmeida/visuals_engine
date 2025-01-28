@@ -11,8 +11,7 @@
 #include <cmath>
 
 
-
-
+/// Signal template. will receive any value type and be configured with a callback that generates values with the template type
 template<class T>
 class Signal {
 private:
@@ -20,27 +19,38 @@ private:
     std::function<T()> calculator;
     std::function<void(T)> callback;
 public:
+    
+    /// Defines the anonymous function that will calculate the value in each  update cycle
+    /// \param _calculator
     void setCalculator(std::function<T()> _calculator) {
         calculator = _calculator;
     }
+    
+    /// Updates the signal by retrieving the value from the calculator and sending it to the callback if set
     void update() {
         value = calculator();
         if (callback) {
             callback(value);
         }
     }
+    
+    /// Returns the current value of the signal
+    /// \return the current value
     T getValue() {
         return value;
     }
+    
+    /// Sets the callback to be executed on update. This callback receives the value
     void setCallback(std::function<void(T)> _callback) {
         callback = _callback;
     }
 };
 
-
-// todo: renams to SignalsFactory
-class SignalsBuilder {
-    
+/***
+ Factory for creating different kind od signals.
+ Contains Static methods that return pre-configured signals.
+ */
+class SignalsFactory {
 public:
     
     /// \brief Creates a sine wave signal
@@ -52,7 +62,7 @@ public:
     /// \return the configured signal
     static Signal<float> SineWave(float freq = 1, float amplitude = 1, float phase=0){
         Signal<float> signal;
-        signal.setCalculator(SignalsBuilder::getSineWaveCalculator(freq, amplitude, phase));
+        signal.setCalculator(SignalsFactory::getSineWaveCalculator(freq, amplitude, phase));
         
         return signal;
     }
@@ -66,7 +76,7 @@ public:
     /// \return the configured signal
     static Signal<float> SquareWave(float freq = 1, float amplitude = 1, float phase=0){
         Signal<float> signal;
-        signal.setCalculator(SignalsBuilder::getSquareWaveCalculator(freq, amplitude, phase));
+        signal.setCalculator(SignalsFactory::getSquareWaveCalculator(freq, amplitude, phase));
         
         return signal;
     }
@@ -80,7 +90,7 @@ public:
     static Signal<float> Random(float amplitude = 1, float sampleDuration=0){
         Signal<float> signal;
         signal
-            .setCalculator(SignalsBuilder::getRandomCalculator(amplitude, sampleDuration));
+            .setCalculator(SignalsFactory::getRandomCalculator(amplitude, sampleDuration));
         
         return signal;
     }
@@ -94,7 +104,7 @@ public:
     /// \return the configured signal
     static Signal<float> Pulse(float freq = 1, float amplitude = 1, float dutyCycle = 0.1) {
         Signal<float> signal;
-        signal.setCalculator(SignalsBuilder::getPulseCalculator(freq, amplitude, dutyCycle));
+        signal.setCalculator(SignalsFactory::getPulseCalculator(freq, amplitude, dutyCycle));
         
         return signal;
     }

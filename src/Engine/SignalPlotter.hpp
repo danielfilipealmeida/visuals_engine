@@ -10,6 +10,7 @@
 
 #include "BaseClasses.hpp"
 #include "ofMain.h"
+#include "Signals.hpp"
 
 
 enum class SignalPlotterMode {
@@ -27,65 +28,28 @@ public:
     ofColor color;
     
     
-    SignalPlotter() {}
+    /// Constructor of the Signal Plotter
+    SignalPlotter();
     
-    SignalPlotter(Signal<float> *_signal, unsigned int _nSamples=256, unsigned int _height=256) {
-        signal = _signal;
-        nSamples = _nSamples;
-        height = _height;
-        buffer.allocate(nSamples, height);
-        color = ofColor::white;
-        mode = SignalPlotterMode::Lines;
-    };
     
-    void update() {
-        if (samples.size() == nSamples) {
-            samples.erase(samples.begin());
-        }
-        samples.push_back(signal->getValue());
-        
-        buffer.begin();
-        ofClear(0, 0, 0, 255);          // Clear the FBO
-        ofSetColor(color);
-        
-        float previousY, currentY;
-        
-        float half = height / 2.0;
-        for (int f=0; f<nSamples; f++) {
-            if (f==samples.size()) {
-                break;
-            }
-            
-            currentY = half + samples[f] * half;
-            switch (mode) {
-                case SignalPlotterMode::Dots:
-                    ofDrawRectangle(f,currentY, 1, 1);
-                    break;
-                    
-                case SignalPlotterMode::Lines:
-                    if (f == 0) {
-                        continue;
-                    }
-                    ofDrawLine(f-1, previousY, f, currentY);
-                    break;
-            }
-            previousY = currentY;
-            
-        }
-         
-        buffer.end();
-    };
+    /// Constructor of the Signal Plotter with parameters
+    /// - Parameter _signal: The signal to be plotted
+    /// - Parameter _nSamples: the number of samples to plot on the screen. will be also considerd the width of the signal
+    /// - Parameter _height: the height of the FBO where the signal is internally plotted
+    SignalPlotter(Signal<float> *_signal, unsigned int _nSamples=256, unsigned int _height=256);
     
-    void draw() {
-        buffer.draw(ofRectangle(0,0,ofGetWidth(), ofGetHeight()));
-    };
+    void update();
     
-    void draw(ofRectangle _rect) {
-        buffer.draw(_rect);
-    };
+    void draw();
     
-    void play(){}
-    void stop(){}
+    void draw(ofRectangle _rect);
+    
+    void play();
+    void stop();
+    
+    void getWidth();
+    
+    void getHeight();
 };
 
 #endif

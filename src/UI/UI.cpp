@@ -10,10 +10,8 @@
 using namespace UI;
 
 
-
 void UserInterface::draw() {
     for(Element* element : children) {
         element->draw(primitives);
     }
-    
 };
