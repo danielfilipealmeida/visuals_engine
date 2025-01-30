@@ -16,7 +16,7 @@ class TransformationDecorator : public VisualsInterface {
 public:
     TransformationDecorator(VisualsInterface *_visual) {
         visual = _visual;
-        shader.load("FastBlur.vert", "Base.frag");
+        shader.load("Base.vert", "FastBlur.frag");
     }
     void update() {
         visual->update();

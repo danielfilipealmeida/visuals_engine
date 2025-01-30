@@ -1,14 +1,8 @@
 #extension GL_ARB_texture_rectangle : enable
 uniform sampler2DRect src_tex_unit0;
 uniform sampler2D tex;
-uniform float contrast;
-uniform float brightness;
-uniform float saturation;
 uniform float blurH;
 uniform float blurV;
-uniform float redTint;
-uniform float greenTint;
-uniform float blueTint;
 
 
 void main()

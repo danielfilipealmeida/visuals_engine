@@ -72,6 +72,8 @@
 		65F070242D4AEFC900019282 /* layerShader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = layerShader.frag; sourceTree = "<group>"; };
 		65F070252D4AEFC900019282 /* Base.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Base.vert; sourceTree = "<group>"; };
 		65F070282D4AF69800019282 /* FastBlur.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = FastBlur.frag; sourceTree = "<group>"; };
+		65F0708E2D4AF91A00019282 /* ContrastBrightnessSaturation.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = ContrastBrightnessSaturation.frag; sourceTree = "<group>"; };
+		65F0708F2D4AF9F600019282 /* RGBTint.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = RGBTint.frag; sourceTree = "<group>"; };
 		E4B69B5B0A3A1756003C02F2 /* emptyExampleDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = emptyExampleDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ofApp.cpp; path = src/ofApp.cpp; sourceTree = SOURCE_ROOT; };
@@ -118,6 +120,8 @@
 		6593906F2D1E3CB000FC8957 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				65F0708F2D4AF9F600019282 /* RGBTint.frag */,
+				65F0708E2D4AF91A00019282 /* ContrastBrightnessSaturation.frag */,
 				65F070282D4AF69800019282 /* FastBlur.frag */,
 				65F070242D4AEFC900019282 /* layerShader.frag */,
 				65F070252D4AEFC900019282 /* Base.vert */,
