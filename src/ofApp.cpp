@@ -1,4 +1,5 @@
 #include "ofApp.h"
+#include "Transformations.hpp"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -22,7 +23,7 @@ void ofApp::setup(){
     //layerStackB->insert(new Layer(builder.Video("003.mov")));
     //layerStackB->insert(new Layer(builder.Video("004.mov")));
     
-    mixer = new Mixer(layerStackA, layerStackB, bufferWidth, bufferHeight);
+    mixer = new Mixer(TransformationFactory::GLSL(layerStackA), layerStackB, bufferWidth, bufferHeight);
     mixer->setMix(0.5);
     
     

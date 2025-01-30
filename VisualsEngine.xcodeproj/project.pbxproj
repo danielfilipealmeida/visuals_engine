@@ -12,6 +12,10 @@
 		659390752D1F7E4F00FC8957 /* 002.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6593906A2D1E3CB000FC8957 /* 002.mov */; };
 		659390762D1F7E4F00FC8957 /* 003.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6593906B2D1E3CB000FC8957 /* 003.mov */; };
 		659390772D1F7E4F00FC8957 /* 004.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6593906C2D1E3CB000FC8957 /* 004.mov */; };
+		65F070262D4AF13F00019282 /* layerShader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65F070242D4AEFC900019282 /* layerShader.frag */; };
+		65F070272D4AF13F00019282 /* Base.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65F070252D4AEFC900019282 /* Base.vert */; };
+		65F070292D4AF6A200019282 /* FastBlur.frag in Sources */ = {isa = PBXBuildFile; fileRef = 65F070282D4AF69800019282 /* FastBlur.frag */; };
+		65F0702A2D4AF72E00019282 /* FastBlur.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65F070282D4AF69800019282 /* FastBlur.frag */; };
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
 		E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */; };
 /* End PBXBuildFile section */
@@ -41,6 +45,9 @@
 			dstPath = data;
 			dstSubfolderSpec = 16;
 			files = (
+				65F0702A2D4AF72E00019282 /* FastBlur.frag in CopyFiles */,
+				65F070262D4AF13F00019282 /* layerShader.frag in CopyFiles */,
+				65F070272D4AF13F00019282 /* Base.vert in CopyFiles */,
 				656DC8792D2193AC00A63D6E /* OpenSans-Regular.ttf in CopyFiles */,
 				659390742D1F7E4F00FC8957 /* 001.mov in CopyFiles */,
 				659390752D1F7E4F00FC8957 /* 002.mov in CopyFiles */,
@@ -62,6 +69,9 @@
 		6593906A2D1E3CB000FC8957 /* 002.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 002.mov; sourceTree = "<group>"; };
 		6593906B2D1E3CB000FC8957 /* 003.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 003.mov; sourceTree = "<group>"; };
 		6593906C2D1E3CB000FC8957 /* 004.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 004.mov; sourceTree = "<group>"; };
+		65F070242D4AEFC900019282 /* layerShader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = layerShader.frag; sourceTree = "<group>"; };
+		65F070252D4AEFC900019282 /* Base.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Base.vert; sourceTree = "<group>"; };
+		65F070282D4AF69800019282 /* FastBlur.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = FastBlur.frag; sourceTree = "<group>"; };
 		E4B69B5B0A3A1756003C02F2 /* emptyExampleDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = emptyExampleDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ofApp.cpp; path = src/ofApp.cpp; sourceTree = SOURCE_ROOT; };
@@ -108,6 +118,9 @@
 		6593906F2D1E3CB000FC8957 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				65F070282D4AF69800019282 /* FastBlur.frag */,
+				65F070242D4AEFC900019282 /* layerShader.frag */,
+				65F070252D4AEFC900019282 /* Base.vert */,
 				656DC8782D21939C00A63D6E /* OpenSans-Regular.ttf */,
 				656DC8752D20E9B300A63D6E /* Cousine-Regular.ttf */,
 				659390692D1E3CB000FC8957 /* 001.mov */,
@@ -287,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65F070292D4AF6A200019282 /* FastBlur.frag in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 			);

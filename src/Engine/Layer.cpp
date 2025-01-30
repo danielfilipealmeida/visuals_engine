@@ -35,6 +35,12 @@ void Layer::update() {
     visual->update();
 }
 
+ofJson Layer::encode() {
+    ofJson json;
+    
+    return json;
+}
+
 
 /** Layer Stack implementation */
 
@@ -70,4 +76,10 @@ void LayerStack::draw(ofRectangle rect) {
 
 void LayerStack::insert(Layer *layer) {
     layers.push_back(layer);
+}
+
+ofJson LayerStack::encode() {
+    ofJson json;
+    
+    return json;
 }

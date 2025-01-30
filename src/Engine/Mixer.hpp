@@ -12,11 +12,11 @@
 
 
 class Mixer: public Drawable {
-    LayerStack *a, *B;
+    VisualsInterface *a, *B;
     float mix;
     ofFbo *buffer;
 public:
-    Mixer(LayerStack* _A, LayerStack* _B, float _bufferWidth, float _bufferHeight);
+    Mixer(VisualsInterface* _A, VisualsInterface* _B, float _bufferWidth, float _bufferHeight);
    
     void update();
     void draw();

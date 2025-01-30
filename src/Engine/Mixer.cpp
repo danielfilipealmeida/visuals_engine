@@ -8,7 +8,7 @@
 #include "Mixer.hpp"
 #include <cmath>
 
-Mixer::Mixer(LayerStack* _a, LayerStack* _b, float _bufferWidth, float _bufferHeight) {
+Mixer::Mixer(VisualsInterface* _a, VisualsInterface* _b, float _bufferWidth, float _bufferHeight) {
     a = _a;
     B = _b;
     mix = 0.5;
