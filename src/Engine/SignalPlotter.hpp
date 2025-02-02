@@ -18,14 +18,15 @@ enum class SignalPlotterMode {
     Lines
 };
     
-class SignalPlotter {
+class SignalPlotter: public Drawable {
 public:
     Signal<float> *signal;
-    unsigned int nSamples, height;
+    unsigned int nSamples;
     vector<float> samples;
     ofFbo buffer;
     SignalPlotterMode mode;
     ofColor color;
+    float sampleWidth, lineWidth, dotWidth;
     
     
     /// Constructor of the Signal Plotter
@@ -36,7 +37,7 @@ public:
     /// - Parameter _signal: The signal to be plotted
     /// - Parameter _nSamples: the number of samples to plot on the screen. will be also considerd the width of the signal
     /// - Parameter _height: the height of the FBO where the signal is internally plotted
-    SignalPlotter(Signal<float> *_signal, unsigned int _nSamples=256, unsigned int _height=256);
+    SignalPlotter(Signal<float> *_signal, unsigned int _nSamples=256, unsigned int _width=640,unsigned int _height=480);
     
     void update();
     
