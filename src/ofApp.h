@@ -17,7 +17,7 @@ class ofApp : public ofBaseApp{
     
     Set set;
     
-    Signal<float> signal;
+    Signal<float> signal, signal2;
     
     UI::UserInterface ui;
     UI::HorizontalSplitter horizontalSplitter;

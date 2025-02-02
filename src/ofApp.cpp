@@ -6,6 +6,7 @@ void ofApp::setup(){
     //signal = SignalsBuilder::Random(1, 1);
     //signal = SignalsBuilder::Pulse();
     signal = SignalsFactory::SineWave();
+    signal2 = SignalsFactory::Random(10, 10);
     
     VisualsFactory factory(bufferWidth, bufferHeight);
     set.addVisual(factory.Video("001.mov"));
@@ -23,7 +24,18 @@ void ofApp::setup(){
     //layerStackB->insert(new Layer(builder.Video("003.mov")));
     //layerStackB->insert(new Layer(builder.Video("004.mov")));
     
-    mixer = new Mixer(TransformationFactory::GLSL(layerStackA), layerStackB, bufferWidth, bufferHeight);
+    mixer = new Mixer(
+                      TransformationFactory::GLSL(
+                                                  layerStackA,
+                                                  "FastBlur",
+                                                  true,
+                                                  {
+                                                    {"blurH", &signal2},
+                                                    {"blurV", &signal2}
+                                                  }
+                                                  ),
+                      layerStackB,
+                      bufferWidth, bufferHeight);
     mixer->setMix(0.5);
     
     
@@ -126,6 +138,7 @@ void ofApp::setup(){
 void ofApp::update(){
     mixer->update();
     signal.update();
+    signal2.update();
     ui.update(ofGetMouseX(),
                 ofGetMouseY(),
                 ofGetMousePressed(OF_MOUSE_BUTTON_1),
