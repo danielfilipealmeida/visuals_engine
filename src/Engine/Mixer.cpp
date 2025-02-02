@@ -8,9 +8,9 @@
 #include "Mixer.hpp"
 #include <cmath>
 
-Mixer::Mixer(LayerStack* _a, LayerStack* _b, float _bufferWidth, float _bufferHeight) {
+Mixer::Mixer(VisualsInterface* _a, VisualsInterface* _b, float _bufferWidth, float _bufferHeight) {
     a = _a;
-    B = _b;
+    b = _b;
     mix = 0.5;
     buffer = new ofFbo();
     buffer->allocate(_bufferWidth, _bufferHeight);
@@ -20,7 +20,7 @@ Mixer::Mixer(LayerStack* _a, LayerStack* _b, float _bufferWidth, float _bufferHe
 
 void Mixer::update() {
     a->update();
-    B->update();
+    b->update();
     
     buffer->begin();
     ofEnableAlphaBlending();
@@ -30,7 +30,7 @@ void Mixer::update() {
     a->draw(rect);
     int alpha = (int) round(255.0 * mix);
     ofSetColor(255, 255, 255, alpha);
-    B->draw(rect);
+    b->draw(rect);
     //ofDisableBlendMode();
     ofDisableAlphaBlending();
     ofSetColor(255,255,255);

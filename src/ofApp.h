@@ -7,6 +7,7 @@
 #include "Signals.hpp"
 #include "UI/UI.hpp"
 #include "Engine/Set.hpp"
+#include "UserInterface.hpp"
 
 class ofApp : public ofBaseApp{
     LayerStack *layerStackA, *layerStackB;
@@ -17,11 +18,11 @@ class ofApp : public ofBaseApp{
     
     Set set;
     
-    Signal<float> signal;
+    Signal<float> signal1, signal2;
     
-    UI::UserInterface ui;
-    UI::HorizontalSplitter horizontalSplitter;
-    UI::CrossFader *mixCrossfader;
+    UserInterface userInterface;
+    
+   
     
 	public:
 		void setup();

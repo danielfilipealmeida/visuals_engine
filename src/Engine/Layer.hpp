@@ -12,7 +12,7 @@
 #include <vector>
 
 
-class Layer: public Drawable {
+class Layer: public VisualsInterface {
     float alpha;
     VisualsInterface* visual;
     ofBlendMode blendMode;
@@ -26,10 +26,11 @@ public:
     void update();
     void draw();
     void draw(ofRectangle rect);
+    ofJson encode();
 };
 
 
-class LayerStack: Drawable {
+class LayerStack: public VisualsInterface {
     std::vector<Layer *> layers;
     ofFbo buffer;
     float width;
@@ -41,5 +42,6 @@ public:
     void draw();
     void draw(ofRectangle rect);
     void insert(Layer* visual);
+    ofJson encode();
 };
 #endif
