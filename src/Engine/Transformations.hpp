@@ -27,6 +27,8 @@ public:
     }
     void update() {
         visual->update();
+        rect = visual->rect;
+        
     }
     void draw() {
         draw(rect);

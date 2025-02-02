@@ -16,6 +16,7 @@
 		65F070272D4AF13F00019282 /* Base.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65F070252D4AEFC900019282 /* Base.vert */; };
 		65F070292D4AF6A200019282 /* FastBlur.frag in Sources */ = {isa = PBXBuildFile; fileRef = 65F070282D4AF69800019282 /* FastBlur.frag */; };
 		65F0702A2D4AF72E00019282 /* FastBlur.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65F070282D4AF69800019282 /* FastBlur.frag */; };
+		65F070922D4FD4BA00019282 /* UserInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65F070912D4FD4B400019282 /* UserInterface.cpp */; };
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
 		E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */; };
 /* End PBXBuildFile section */
@@ -74,6 +75,8 @@
 		65F070282D4AF69800019282 /* FastBlur.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = FastBlur.frag; sourceTree = "<group>"; };
 		65F0708E2D4AF91A00019282 /* ContrastBrightnessSaturation.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = ContrastBrightnessSaturation.frag; sourceTree = "<group>"; };
 		65F0708F2D4AF9F600019282 /* RGBTint.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = RGBTint.frag; sourceTree = "<group>"; };
+		65F070902D4FD2CF00019282 /* UserInterface.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UserInterface.hpp; sourceTree = "<group>"; };
+		65F070912D4FD4B400019282 /* UserInterface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UserInterface.cpp; sourceTree = "<group>"; };
 		E4B69B5B0A3A1756003C02F2 /* emptyExampleDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = emptyExampleDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ofApp.cpp; path = src/ofApp.cpp; sourceTree = SOURCE_ROOT; };
@@ -167,6 +170,8 @@
 				656DC86F2D20BB8900A63D6E /* UI */,
 				659390792D203FA100FC8957 /* Elements */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
+				65F070902D4FD2CF00019282 /* UserInterface.hpp */,
+				65F070912D4FD4B400019282 /* UserInterface.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 			);
@@ -306,6 +311,7 @@
 			files = (
 				65F070292D4AF6A200019282 /* FastBlur.frag in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				65F070922D4FD4BA00019282 /* UserInterface.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

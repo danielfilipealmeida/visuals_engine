@@ -146,7 +146,7 @@ void DrawInsideRect(T *obj, ofRectangle rect) {
         // FBO is wider than the rect
         drawWidth = rect.getWidth();
         drawHeight = drawWidth / objAspectRatio;
-    } else {
+    } else {		
         // FBO is taller or the same aspect ratio as the rect
         drawHeight = rect.getHeight();
         drawWidth = drawHeight * objAspectRatio;
@@ -170,7 +170,7 @@ public:
     Viewer(T *_obj, string _title="", float _height = NULL) {
         obj =  _obj;
         title = _title;
-        if (height) {
+        if (_height) {
             height = _height;
         }
     };

@@ -48,6 +48,7 @@ LayerStack::LayerStack(float _width, float _height) {
     width = _width;
     height = _height;
     buffer.allocate(width, height);
+    rect = ofRectangle(0,0,width, height);
 }
 
 void LayerStack::update() {
@@ -70,8 +71,8 @@ void LayerStack::draw() {
     draw(rect);
 }
 
-void LayerStack::draw(ofRectangle rect) {
-    buffer.draw(rect);
+void LayerStack::draw(ofRectangle _rect) {
+    buffer.draw(_rect);
 }
 
 void LayerStack::insert(Layer *layer) {

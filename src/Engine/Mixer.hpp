@@ -12,10 +12,11 @@
 
 
 class Mixer: public Drawable {
-    VisualsInterface *a, *B;
     float mix;
     ofFbo *buffer;
 public:
+    VisualsInterface *a, *b;
+    
     Mixer(VisualsInterface* _A, VisualsInterface* _B, float _bufferWidth, float _bufferHeight);
    
     void update();
