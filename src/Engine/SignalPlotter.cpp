@@ -16,13 +16,17 @@
 
 SignalPlotter::SignalPlotter(){}
 
-SignalPlotter::SignalPlotter(Signal<float> *_signal, unsigned int _nSamples, unsigned int _height) {
+SignalPlotter::SignalPlotter(Signal<float> *_signal, unsigned int _nSamples, unsigned int _width, unsigned int _height) {
     signal = _signal;
     nSamples = _nSamples;
-    height = _height;
-    buffer.allocate(nSamples, height);
+    rect = ofRectangle(0,0,_width, _height);
+    buffer.allocate(rect.width, rect.height);
     color = ofColor::white;
     mode = SignalPlotterMode::Lines;
+    sampleWidth = rect.width / (float) nSamples;
+    
+    lineWidth = 2.0;
+    dotWidth = 2.0;
 };
 
 void SignalPlotter::update() {
@@ -37,7 +41,7 @@ void SignalPlotter::update() {
     
     float previousY, currentY;
     
-    float half = height / 2.0;
+    float half = rect.height / 2.0;
     for (int f=0; f<nSamples; f++) {
         if (f==samples.size()) {
             break;
@@ -46,14 +50,15 @@ void SignalPlotter::update() {
         currentY = half + samples[f] * half;
         switch (mode) {
             case SignalPlotterMode::Dots:
-                ofDrawRectangle(f,currentY, 1, 1);
+                ofDrawCircle(f*sampleWidth,currentY, dotWidth);
                 break;
                 
             case SignalPlotterMode::Lines:
                 if (f == 0) {
                     continue;
                 }
-                ofDrawLine(f-1, previousY, f, currentY);
+                ofSetLineWidth(lineWidth);
+                ofDrawLine((f-1)*sampleWidth, previousY, f * sampleWidth, currentY);
                 break;
         }
         previousY = currentY;

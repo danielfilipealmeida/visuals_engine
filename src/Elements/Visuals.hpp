@@ -94,7 +94,8 @@ template<> inline ofJson Visual<SignalPlotter>::encode() {
         {"type", VisualTypes::plot},
         {"signal", "todo"},
         {"samples", visual.nSamples},
-        {"height", visual.height}
+        {"width", visual.rect.width},
+        {"height", visual.rect.height}
     };
 }; // no way to export a signal. 
 
