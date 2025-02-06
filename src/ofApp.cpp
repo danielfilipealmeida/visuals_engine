@@ -39,7 +39,7 @@ void ofApp::setup(){
 
     userInterface.setup(ofGetWindowRect(), mixer, &signal1, &signal2);
     
-    
+    signal1.regist(mixer);
    
     
     /*
@@ -60,7 +60,7 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    mixer->setMix(signal1.getValue() + 1 /2.0);
+    //mixer->setMix(signal1.getValue() + 1 /2.0);
     mixer->draw(ofRectangle(0.0, 0.0, ofGetWidth(), ofGetHeight()));
     
     userInterface.draw();

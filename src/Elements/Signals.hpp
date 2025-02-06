@@ -9,11 +9,12 @@
 #define __Signals_hpp__
 
 #include <cmath>
+#include "Observer.hpp"
 
 
 /// Signal template. will receive any value type and be configured with a callback that generates values with the template type
 template<class T>
-class Signal {
+class Signal : public Subject<T> {
 private:
     T value;
     std::function<T()> calculator;
@@ -29,6 +30,8 @@ public:
     /// Updates the signal by retrieving the value from the calculator and sending it to the callback if set
     void update() {
         value = calculator();
+        this->notify(value);
+        
         if (callback) {
             callback(value);
         }
