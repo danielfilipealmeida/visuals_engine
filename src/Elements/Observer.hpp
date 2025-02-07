@@ -12,26 +12,26 @@
 template<class T>
 class Observer {
 public:
-    virtual void update(T val) {}
+    virtual void update(T val, std::string key) {}
 };
 
+// todo: add third element to the vector, which is the transform.
+// this is a lambda that can be used to operate on the value.
+// if no lambda is set, use the value directly
 template<class T>
 class Subject {
-    std::vector<Observer<T> *> observers;
+    std::vector<std::pair<Observer<T> *, std::string>> observers;
     
 public:
-    void regist(Observer<T> *observer) {
-        observers.push_back(observer);
+    void regist(Observer<T> *observer, std::string key) {
+        observers.push_back({observer, key});
     };
     
     void notify(T val) {
-        for(Observer<T>* observer : observers) {
-            observer->update(val);
+        for(const auto& pair: observers) {
+            pair.first->update(val, pair.second);
         }
-    };
-    
+    };    
 };
-
-
 
 #endif

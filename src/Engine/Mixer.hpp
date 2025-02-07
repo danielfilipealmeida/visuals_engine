@@ -11,11 +11,19 @@
 #include "Layer.hpp"
 #include "Observer.hpp"
 
+enum class MixerObservableParameters {
+    MIX
+};
+
 class Mixer: public Drawable, public Observer<float> {
     float mix;
     ofFbo *buffer;
 public:
     VisualsInterface *a, *b;
+    
+    std::map<MixerObservableParameters, std::string> parameters = {
+        {MixerObservableParameters::MIX, "mix"}
+    };
     
     Mixer(VisualsInterface* _A, VisualsInterface* _B, float _bufferWidth, float _bufferHeight);
    
@@ -25,9 +33,9 @@ public:
     
     void setMix(float _mix);
     
-    void update(float val) override {
-        mix = val;
-    }
+    void update(float val, std::string key) override;
 };
+
+
 
 #endif

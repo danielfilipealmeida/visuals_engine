@@ -39,7 +39,7 @@ void ofApp::setup(){
 
     userInterface.setup(ofGetWindowRect(), mixer, &signal1, &signal2);
     
-    signal1.regist(mixer);
+    signal1.regist(mixer, mixer->parameters[MixerObservableParameters::MIX]);
    
     
     /*
