@@ -17,6 +17,7 @@ void ofApp::setup(){
     
     layerStackA = new LayerStack(bufferWidth, bufferHeight);
     layerStackA->insert(new Layer(set.visuals[0]));
+    layerStackA->insert(new Layer());
     
     layerStackB = new LayerStack(bufferWidth, bufferHeight);
     layerStackB->insert(new Layer(set.visuals[4]));
