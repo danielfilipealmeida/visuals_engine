@@ -9,21 +9,58 @@
 #define __Mixer_hpp__
 
 #include "Layer.hpp"
+#include "Observer.hpp"
 
+//! @brief an enum defining all parameters of the Mixer that can be observed
+enum class MixerObservableParameters {
+    MIX
+};
 
-class Mixer: public Drawable {
+/// Implements a simple two channel mixer.
+/// This mixer mixes two VisualInterfaces (channel A and B).
+class Mixer: public Drawable, public Observer<float> {
+    ///
     float mix;
     ofFbo *buffer;
 public:
-    VisualsInterface *a, *b;
+    //! @var a
+    //! @abstract the A channel as VisualInterface
+    VisualsInterface *a;
     
+    //! @var b
+    //! @abstract the B channel as VisualInterface
+    VisualsInterface *b;
+    
+    //! @var parameters the parameters of this Drawable that can be observed
+    std::map<MixerObservableParameters, std::string> parameters = {
+        {MixerObservableParameters::MIX, "mix"}
+    };
+    
+    /// The constructor
+    /// @param _A the chanel A visual interface
+    /// @param _B the channel B visual interface
+    /// @param _bufferWidth the width dimention of the fbo that will store the mix
+    /// @param _bufferHeight the height dimention of the fbo that will store the mix
     Mixer(VisualsInterface* _A, VisualsInterface* _B, float _bufferWidth, float _bufferHeight);
    
-    void update();
-    void draw();
-    void draw(ofRectangle rect);
+    //! @brief update the layer stack by rendering to the FBO
+    void update() override;
     
+    //! @brief update the layer stack by rendering to the FBO
+    void draw() override;
+    
+    //! @brief draw the FBO in the specified rect
+    //! @param rect
+    void draw(ofRectangle rect)  override;
+    
+    //! @brief sets the value of the mix of the mixer
+    //! @param _mix the value from 0.0 to 1.0 (channel A <-> channel B)
     void setMix(float _mix);
+    
+    //! @brief updates a value
+    //! @param val the value to update
+    //! @param key the key of the value to update
+    void update(float val, std::string key) override;
 };
 
 #endif

@@ -9,7 +9,8 @@
 #include "Layer.hpp"
 #include "ofMain.h"
 
-Layer::Layer(VisualsInterface* _visual,
+Layer::Layer(
+             VisualsInterface* _visual,
              float _alpha,
              ofBlendMode _blendMode
 ) {
@@ -23,6 +24,9 @@ void Layer::draw() {
 }
 
 void Layer::draw(ofRectangle _rect) {
+    if (!visual) {
+        return;
+    }
     ofEnableAlphaBlending();
     ofEnableBlendMode(blendMode);
     ofSetColor(255, 255, 255, (int) (alpha * 255.0));
@@ -32,6 +36,9 @@ void Layer::draw(ofRectangle _rect) {
 }
 
 void Layer::update() {
+    if (!visual) {
+        return;
+    }
     visual->update();
 }
 

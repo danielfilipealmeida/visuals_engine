@@ -55,7 +55,7 @@ void SignalPlotter::update() {
                 
             case SignalPlotterMode::Lines:
                 if (f == 0) {
-                    continue;
+                    break;
                 }
                 ofSetLineWidth(lineWidth);
                 ofDrawLine((f-1)*sampleWidth, previousY, f * sampleWidth, currentY);

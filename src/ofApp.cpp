@@ -17,6 +17,7 @@ void ofApp::setup(){
     
     layerStackA = new LayerStack(bufferWidth, bufferHeight);
     layerStackA->insert(new Layer(set.visuals[0]));
+    layerStackA->insert(new Layer());
     
     layerStackB = new LayerStack(bufferWidth, bufferHeight);
     layerStackB->insert(new Layer(set.visuals[4]));
@@ -39,7 +40,7 @@ void ofApp::setup(){
 
     userInterface.setup(ofGetWindowRect(), mixer, &signal1, &signal2);
     
-    
+    signal1.regist(mixer, mixer->parameters[MixerObservableParameters::MIX]);
    
     
     /*
@@ -60,7 +61,7 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    mixer->setMix(signal1.getValue() + 1 /2.0);
+    //mixer->setMix(signal1.getValue() + 1 /2.0);
     mixer->draw(ofRectangle(0.0, 0.0, ofGetWidth(), ofGetHeight()));
     
     userInterface.draw();
