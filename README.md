@@ -1,25 +1,41 @@
 # Visuals Engine
 
-Copyright (C) 2024 Daniel Filipe Almeida (danielf dot almeida __at__ gmail dot com)
+**Visuals Engine** is a library designed for creating real-time, reactive multimedia applications. Built with [openFrameworks](https://openframeworks.cc/), it provides a foundation for developers to craft dynamic visual experiences. While the repository includes example applications—such as a simple VJing tool—the primary focus is on the underlying engine tailored for new media and reactive multimedia projects.
 
-An extensible Engine for Real-time Video generation made with OpenFramwork. The current extension language planed is `Python` with others in the pipeline, such as `Lua` and `Ocaml`.
+## Getting Started
 
+### Prerequisites
 
-## Roadmap / ToDo
+- [openFrameworks](https://openframeworks.cc/download/) (version 0.11.0 or later)
 
-- [x] Layers
-- [ ] Scene
-- [x] Visuals
-    - [+] Video player
-        - [ ] Play mode (normal, inverse, loop, random)
-        - [ ] Speed (basically is the interval until new frame)
-        
-- [ ] Make the engine be a lib
-- [ ] Make several apps.
-- [ ] Split code into libs
-- [ ] effects as Decorators. can have several decorators to anything that draws
-- [ ] Syphon
-- [ ] FFT as a signal generator
-- [ ] Beat detection
-- [ ] FFGL Effects
+### Installation
 
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/danielfilipealmeida/visuals_engine.git
+   ```
+
+2. **Navigate to the Project Directory**:
+   ```bash
+   cd visuals_engine
+   ```
+
+3. **Set Up Dependencies**:
+   - Ensure openFrameworks is installed and properly configured.
+   - Install any additional libraries or addons as specified in `addons.make`.
+
+4. **Build the Project**:
+   - For macOS users, open `VisualsEngine.xcodeproj` with Xcode and build.
+   - For other platforms, use the appropriate IDE or command-line tools compatible with openFrameworks.
+
+## Usage
+
+After building the project, you can run the example VJing application or develop your own applications using the Visuals Engine library. Refer to the `examples` directory (to be added) for sample projects demonstrating various features.
+
+## Contributing
+
+Contributions are welcome! Feel free to submit issues, fork the repository, and create pull requests. Please ensure that your contributions align with the project's coding standards and include appropriate documentation.
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
