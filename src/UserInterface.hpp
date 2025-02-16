@@ -14,8 +14,14 @@
 #include "Mixer.hpp"
 #include "Elements/Signals.hpp"
 
+//! @brief Implements the User interface of the applicatication<D-s>
 class UserInterface {
+    
+    //! @var ui
+    //! @abstract the UserInterface object that is used to implement the UI
     UI::UserInterface ui;
+    
+    
     UI::HorizontalSplitter horizontalSplitter;
     UI::CrossFader *mixCrossfader;
 public:
