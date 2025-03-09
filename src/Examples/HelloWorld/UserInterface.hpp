@@ -12,7 +12,7 @@
 
 #include "UI/UI.hpp"
 #include "Mixer.hpp"
-#include "Elements/Signals.hpp"
+#include "Engine/Elements/Signals.hpp"
 
 //! @brief Implements the User interface of the applicatication<D-s>
 class UserInterface {

@@ -15,9 +15,37 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-               BuildableName = "emptyExample.app"
-               BlueprintName = "emptyExample"
-               ReferencedContainer = "container:emptyExample.xcodeproj">
+               BuildableName = "Hello World.app"
+               BlueprintName = "Hello World"
+               ReferencedContainer = "container:VisualsEngine.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "657037462D7E4C9000185E7B"
+               BuildableName = "libUI.a"
+               BlueprintName = "UI"
+               ReferencedContainer = "container:VisualsEngine.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6570371C2D7E454B00185E7B"
+               BuildableName = "libEngine.a"
+               BlueprintName = "Engine"
+               ReferencedContainer = "container:VisualsEngine.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -54,9 +82,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-            BuildableName = "emptyExample.app"
-            BlueprintName = "emptyExample"
-            ReferencedContainer = "container:emptyExample.xcodeproj">
+            BuildableName = "Hello World.app"
+            BlueprintName = "Hello World"
+            ReferencedContainer = "container:VisualsEngine.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -66,16 +94,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "NO">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
-            BuildableName = "emptyExample.app"
-            BlueprintName = "emptyExample"
-            ReferencedContainer = "container:emptyExample.xcodeproj">
+            BuildableName = "Hello World.app"
+            BlueprintName = "Hello World"
+            ReferencedContainer = "container:VisualsEngine.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
