@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		656DC8792D2193AC00A63D6E /* OpenSans-Regular.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 656DC8782D21939C00A63D6E /* OpenSans-Regular.ttf */; };
+		657037612D7E513900185E7B /* libEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6570371D2D7E454B00185E7B /* libEngine.a */; };
+		657037622D7E513900185E7B /* libUI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 657037472D7E4C9000185E7B /* libUI.a */; };
 		659390742D1F7E4F00FC8957 /* 001.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 659390692D1E3CB000FC8957 /* 001.mov */; };
 		659390752D1F7E4F00FC8957 /* 002.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6593906A2D1E3CB000FC8957 /* 002.mov */; };
 		659390762D1F7E4F00FC8957 /* 003.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6593906B2D1E3CB000FC8957 /* 003.mov */; };
@@ -189,12 +191,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				657037612D7E513900185E7B /* libEngine.a in Frameworks */,
+				657037622D7E513900185E7B /* libUI.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		657037602D7E513900185E7B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6593906F2D1E3CB000FC8957 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +248,7 @@
 				656DC8892D25E7A700A63D6E /* Catch2Tests */,
 				6570371D2D7E454B00185E7B /* libEngine.a */,
 				657037472D7E4C9000185E7B /* libUI.a */,
+				657037602D7E513900185E7B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -910,8 +922,6 @@
 					"$(OF_CORE_LIBS)",
 					"$(OF_CORE_FRAMEWORKS)",
 					"$(LIB_OF_DEBUG)",
-					"$(SYMROOT)/libEngine.a",
-					"$(SYMROOT)/libUI.a",
 				);
 			};
 			name = Debug;
