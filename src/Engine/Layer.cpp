@@ -66,11 +66,13 @@ void LayerStack::update() {
     
     // draws all into buffer
     buffer.begin();
+    ofEnableAlphaBlending();
     ofClear(0, 0, 0);
     ofSetColor(255, 255, 255);
     for (auto layer: layers) {
         layer->draw();
     }
+    ofDisableAlphaBlending();
     buffer.end();
 }
 

@@ -16,11 +16,17 @@ enum class MixerObservableParameters {
     MIX
 };
 
-/// Implements a simple two channel mixer.
-/// This mixer mixes two VisualInterfaces (channel A and B).
+//! @class Mixer
+//! @abstract Implements a simple two channel mixer.
+//! @discussion This mixer mixes two VisualInterfaces (channel A and B).
 class Mixer: public Drawable, public Observer<float> {
-    ///
+    
+    //! @var mix
+    //! @abstract a float value from 0.0 to 1.0, representing the percentage of the mix of channel B, over channel A.
+    //! @discussion 0.0 is just channel A, 0.5 is channel A with 0.5 channel B and 1.0 is just channel B
     float mix;
+    
+    
     ofFbo *buffer;
 public:
     //! @var a

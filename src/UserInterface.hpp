@@ -33,8 +33,16 @@ public:
                Signal<float> *signal1,
                Signal<float> *signal2
                );
+
+    //! @brief Draws the user interface
     void draw();
+
+    //! @brief Updated the user interface
     void update();
+
+    //! @brief Resizes the user interface
+    //! @param width the new width of the UI
+    //! @param height the new height of the UI
     void resize(int width, int height);
     
 };

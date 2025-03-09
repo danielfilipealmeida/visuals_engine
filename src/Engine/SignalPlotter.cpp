@@ -25,8 +25,8 @@ SignalPlotter::SignalPlotter(Signal<float> *_signal, unsigned int _nSamples, uns
     mode = SignalPlotterMode::Lines;
     sampleWidth = rect.width / (float) nSamples;
     
-    lineWidth = 2.0;
-    dotWidth = 2.0;
+    lineWidth = 8.0;
+    dotWidth = 8.0;
 };
 
 void SignalPlotter::update() {
@@ -46,11 +46,12 @@ void SignalPlotter::update() {
         if (f==samples.size()) {
             break;
         }
-        
+        ofEnableAntiAliasing();
         currentY = half + samples[f] * half;
         switch (mode) {
             case SignalPlotterMode::Dots:
                 ofDrawCircle(f*sampleWidth,currentY, dotWidth);
+                
                 break;
                 
             case SignalPlotterMode::Lines:
@@ -59,8 +60,34 @@ void SignalPlotter::update() {
                 }
                 ofSetLineWidth(lineWidth);
                 ofDrawLine((f-1)*sampleWidth, previousY, f * sampleWidth, currentY);
+                
+                break;
+                
+            case SignalPlotterMode::Steps:
+                ofSetLineWidth(lineWidth);
+                ofDrawLine(f*sampleWidth, currentY, ((f+1) * sampleWidth) - 1, currentY);
+                
+                break;
+                
+            case SignalPlotterMode::FilledSteps:
+                if (f == 0) {
+                    break;
+                }
+                ofSetLineWidth(lineWidth);
+                ofDrawRectangle((f-1)*sampleWidth, previousY, sampleWidth, currentY - previousY);
+                
+                break;
+                
+            case SignalPlotterMode::Wave:
+                if (f == 0) {
+                    break;
+                }
+                ofSetLineWidth(lineWidth);
+                ofDrawRectangle((f-1)*sampleWidth, previousY, f * sampleWidth, currentY);
+                
                 break;
         }
+        ofDisableAntiAliasing();
         previousY = currentY;
         
     }

@@ -48,24 +48,11 @@ void Mixer::draw(ofRectangle rect) {
     buffer->draw(rect);
 }
 
-/// \brief Sets the mix,
-///
-/// \param _mix 0 is for A channel and 1 is for B channel. in betwen is the mix value
 void Mixer::setMix(float _mix) {
     mix = ofClamp(_mix, 0.0, 1.0);
 }
 
 void Mixer::update(float val, std::string key) {
-    /*
-    switch (key) {
-        case parameters[MixerObservableParameters::MIX]:
-            mix = val;
-            break;
-            
-        default:
-            break;
-    }
-     */
     if (key == parameters[MixerObservableParameters::MIX]) {
         mix = val;
     }
