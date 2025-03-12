@@ -58,3 +58,11 @@ void Mixer::update(float val, std::string key) {
     }
     
 }
+
+ofPixels Mixer::getPixels()
+{
+    ofTexture& tex = buffer->getTexture();
+    tex.readToPixels(pixels);
+    
+    return pixels;
+}

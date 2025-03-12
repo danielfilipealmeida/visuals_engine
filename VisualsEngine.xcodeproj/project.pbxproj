@@ -10,6 +10,8 @@
 		656DC8792D2193AC00A63D6E /* OpenSans-Regular.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 656DC8782D21939C00A63D6E /* OpenSans-Regular.ttf */; };
 		657037612D7E513900185E7B /* libEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6570371D2D7E454B00185E7B /* libEngine.a */; };
 		657037622D7E513900185E7B /* libUI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 657037472D7E4C9000185E7B /* libUI.a */; };
+		6570377E2D7FADC700185E7B /* ofxVideoRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = 657037762D7FADC700185E7B /* ofxVideoRecorder.h */; };
+		657037822D7FADC700185E7B /* ofxVideoRecorder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 657037772D7FADC700185E7B /* ofxVideoRecorder.cpp */; };
 		659390742D1F7E4F00FC8957 /* 001.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 659390692D1E3CB000FC8957 /* 001.mov */; };
 		659390752D1F7E4F00FC8957 /* 002.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6593906A2D1E3CB000FC8957 /* 002.mov */; };
 		659390762D1F7E4F00FC8957 /* 003.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6593906B2D1E3CB000FC8957 /* 003.mov */; };
@@ -66,6 +68,12 @@
 		656DC8882D25E7A700A63D6E /* Catch2Tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Catch2Tests; sourceTree = BUILT_PRODUCTS_DIR; };
 		6570371D2D7E454B00185E7B /* libEngine.a */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libEngine.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		657037472D7E4C9000185E7B /* libUI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libUI.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		657037762D7FADC700185E7B /* ofxVideoRecorder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxVideoRecorder.h; sourceTree = "<group>"; };
+		657037772D7FADC700185E7B /* ofxVideoRecorder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxVideoRecorder.cpp; sourceTree = "<group>"; };
+		657037792D7FADC700185E7B /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		6570377A2D7FADC700185E7B /* License.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = License.md; sourceTree = "<group>"; };
+		6570377B2D7FADC700185E7B /* ofxaddons_thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ofxaddons_thumbnail.png; sourceTree = "<group>"; };
+		6570377C2D7FADC700185E7B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		659390692D1E3CB000FC8957 /* 001.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 001.mov; sourceTree = "<group>"; };
 		6593906A2D1E3CB000FC8957 /* 002.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 002.mov; sourceTree = "<group>"; };
 		6593906B2D1E3CB000FC8957 /* 003.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 003.mov; sourceTree = "<group>"; };
@@ -88,6 +96,8 @@
 				Mixer.cpp,
 				Set.cpp,
 				SignalPlotter.cpp,
+				VideoRecorder.cpp,
+				VideoRecorder.hpp,
 			);
 			target = 6570371C2D7E454B00185E7B /* Engine */;
 		};
@@ -108,6 +118,7 @@
 				Mixer.cpp,
 				Set.cpp,
 				SignalPlotter.cpp,
+				VideoRecorder.cpp,
 			);
 			target = E4B69B5A0A3A1756003C02F2 /* Hello World */;
 		};
@@ -162,7 +173,7 @@
 		656DC86F2D20BB8900A63D6E /* UI */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (6570375F2D7E4D4D00185E7B /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 6570375A2D7E4CAB00185E7B /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 6570375B2D7E4CAB00185E7B /* PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = UI; sourceTree = "<group>"; };
 		656DC8772D21920E00A63D6E /* Engine */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (6570375E2D7E4D4B00185E7B /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 657037352D7E45C700185E7B /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 6570372B2D7E45A400185E7B /* PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Engine; sourceTree = "<group>"; };
 		656DC8892D25E7A700A63D6E /* Catch2Tests */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (65B9A5922D27555700ADCDBE /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Catch2Tests; sourceTree = "<group>"; };
-		6570375C2D7E4CFB00185E7B /* Examples */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {HelloWorld/src/Examples/HelloWorld/ofApp.cpp = sourcecode.cpp.cpp; }; explicitFolders = (); path = Examples; sourceTree = "<group>"; };
+		6570375C2D7E4CFB00185E7B /* Examples */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Examples; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +217,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		657037782D7FADC700185E7B /* src */ = {
+			isa = PBXGroup;
+			children = (
+				657037762D7FADC700185E7B /* ofxVideoRecorder.h */,
+				657037772D7FADC700185E7B /* ofxVideoRecorder.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		6570377D2D7FADC700185E7B /* ofxVideoRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				657037782D7FADC700185E7B /* src */,
+				657037792D7FADC700185E7B /* .gitignore */,
+				6570377A2D7FADC700185E7B /* License.md */,
+				6570377B2D7FADC700185E7B /* ofxaddons_thumbnail.png */,
+				6570377C2D7FADC700185E7B /* README.md */,
+			);
+			path = ofxVideoRecorder;
+			sourceTree = "<group>";
+		};
 		6593906F2D1E3CB000FC8957 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +259,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				6570377D2D7FADC700185E7B /* ofxVideoRecorder */,
 			);
 			name = addons;
 			path = ../../../addons;
@@ -269,6 +302,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6570377E2D7FADC700185E7B /* ofxVideoRecorder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +490,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				657037822D7FADC700185E7B /* ofxVideoRecorder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -668,12 +703,18 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					src,
+					"$(OFX_VIDEO_RECORDER)",
+				);
 				LD_DYLIB_INSTALL_NAME = "";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
+				OFX_VIDEO_RECORDER = "\"$(OF_PATH)/addons/ofxVideoRecorder/src\"";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -734,12 +775,18 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					src,
+					"$(OFX_VIDEO_RECORDER)",
+				);
 				LD_DYLIB_INSTALL_NAME = "";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OFX_VIDEO_RECORDER = "\"$(OF_PATH)/addons/ofxVideoRecorder/src\"";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;

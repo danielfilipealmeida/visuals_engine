@@ -48,6 +48,10 @@ void ofApp::setup(){
     ofJson data = set.encode();
     set.decode(data);
      */
+    
+    recorder = new VideoRecorder();
+    
+    //
 }
 
 //--------------------------------------------------------------
@@ -57,6 +61,8 @@ void ofApp::update(){
     signal2.update();
     
     userInterface.update();
+    
+    recorder->update(mixer->getPixels());
 }
 
 //--------------------------------------------------------------
@@ -121,4 +127,11 @@ void ofApp::gotMessage(ofMessage msg){
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
+}
+
+
+void ofApp::exit() {
+    // Cleanup code here
+    delete recorder;
+    ofLog() << "Application is closing...";
 }

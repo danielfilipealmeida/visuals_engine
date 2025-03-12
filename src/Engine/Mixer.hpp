@@ -26,9 +26,11 @@ class Mixer: public Drawable, public Observer<float> {
     //! @discussion 0.0 is just channel A, 0.5 is channel A with 0.5 channel B and 1.0 is just channel B
     float mix;
     
-    
-    ofFbo *buffer;
 public:
+
+    ofFbo *buffer;
+    ofPixels pixels;
+    
     //! @var a
     //! @abstract the A channel as VisualInterface
     VisualsInterface *a;
@@ -67,6 +69,10 @@ public:
     //! @param val the value to update
     //! @param key the key of the value to update
     void update(float val, std::string key) override;
+    
+    //! @brief Returns the pixels of the output of the mixer
+    //! @return the pixels
+    ofPixels getPixels();
 };
 
 #endif

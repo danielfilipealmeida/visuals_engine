@@ -8,6 +8,7 @@
 #include "UI/UI.hpp"
 #include "Engine/Set.hpp"
 #include "UserInterface.hpp"
+#include "Engine/VideoRecorder.hpp"
 
 class ofApp : public ofBaseApp{
     LayerStack *layerStackA, *layerStackB;
@@ -17,6 +18,7 @@ class ofApp : public ofBaseApp{
     float bufferHeight = 480;
     
     Set set;
+    VideoRecorder *recorder;
     
     Signal<float> signal1, signal2;
     
@@ -40,4 +42,6 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+    
+    void exit(); // Declare the exit function
 };
