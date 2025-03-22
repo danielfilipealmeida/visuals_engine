@@ -22,7 +22,9 @@ class ofApp : public ofBaseApp{
     
     UserInterface userInterface;
     
-   
+    vector<float> audioInput;
+    vector<float> fftOutput;
+    int bufferSize;
     
 	public:
 		void setup();
@@ -40,4 +42,13 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+    
+        ofSoundStream soundStream;
+        void audioIn( ofSoundBuffer& buffer );
+        //void audioIn( float * input, int bufferSize, int nChannels );
+
+    vector<float> left;
+    vector<float> right;
+    vector<float> mono;
+    vector<float> volHistory;
 };

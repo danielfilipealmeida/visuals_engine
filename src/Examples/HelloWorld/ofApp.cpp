@@ -1,5 +1,6 @@
 #include "ofApp.h"
 #include "Transformations.hpp"
+#include "FFT.hpp"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -48,6 +49,44 @@ void ofApp::setup(){
     ofJson data = set.encode();
     set.decode(data);
      */
+    
+    bufferSize = 512;
+    FFT::getInstance().setup(bufferSize);
+    left.resize(bufferSize);
+    right.resize(bufferSize);
+    mono.resize(bufferSize);
+    
+    ofSoundStreamSettings settings;
+    
+    // if you want to set the device id to be different than the default
+    // auto devices = soundStream.getDeviceList();
+    // settings.device = devices[4];
+    
+    // you can also get devices for an specific api
+    // auto devices = soundStream.getDevicesByApi(ofSoundDevice::Api::PULSE);
+    // settings.device = devices[0];
+    
+    // or get the default device for an specific api:
+    // settings.api = ofSoundDevice::Api::PULSE;
+    
+    // or by name
+    auto devices = soundStream.getMatchingDevices("default");
+    
+    if(!devices.empty()){
+        settings.setInDevice(devices[0]);
+    }
+     
+    
+    settings.setInListener(this);
+    settings.sampleRate = 44100;
+#ifdef TARGET_EMSCRIPTEN
+    settings.numOutputChannels = 2;
+#else
+    settings.numOutputChannels = 0;
+#endif
+    settings.numInputChannels = 1;
+    settings.bufferSize = bufferSize;
+    soundStream.setup(settings);
 }
 
 //--------------------------------------------------------------
@@ -122,3 +161,36 @@ void ofApp::gotMessage(ofMessage msg){
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
 }
+
+void ofApp::audioIn( ofSoundBuffer& buffer ) {
+    float curVol = 0.0;
+    float maxValue = 0;
+    
+    // samples are "interleaved"
+    int numCounted = 0;
+    
+    for (size_t i = 0; i < buffer.getNumFrames(); i++){
+        left[i] = buffer[i*2]*0.5;
+        right[i] = buffer[i*2+1]*0.5;
+        mono[i] = (left[2] + right[i]) / 2.0;
+        
+        curVol += left[i] * left[i];
+        curVol += right[i] * right[i];
+        numCounted+=2;
+        
+        if(abs(mono[i]) > maxValue) {
+            maxValue = abs(mono[i]);
+        }
+        
+        for(int i = 0; i < bufferSize; i++) {
+            mono[i] /= maxValue;
+        }
+    }
+    FFT::getInstance().setSignal(mono, maxValue);
+}
+
+/*
+ void ofApp::audioIn( float * input, int bufferSize, int nChannels ) {
+ 
+ }
+ */
