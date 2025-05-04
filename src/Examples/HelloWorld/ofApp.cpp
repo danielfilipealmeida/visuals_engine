@@ -20,16 +20,14 @@ void ofApp::setup(){
     set.addVisual(factory.Video("003.mov"));
     set.addVisual(factory.Video("004.mov"));
     set.addVisual(factory.Plotter(&audioInput));
+    set.addVisual(factory.Plotter(&FFT::getInstance().audioBins));
 
     
     layerStackA = new LayerStack(bufferWidth, bufferHeight);
-    layerStackA->insert(new Layer(set.visuals[0]));
-    //layerStackA->insert(new Layer());
+    layerStackA->insert(new Layer(set.visuals[4]));
     
     layerStackB = new LayerStack(bufferWidth, bufferHeight);
-    //layerStackB->insert(new Layer(set.visuals[4]));
-    
-    layerStackB->insert(new Layer(set.visuals[4]));
+    layerStackB->insert(new Layer(set.visuals[5]));
     
     mixer = new Mixer(
                       TransformationFactory::GLSL(
@@ -80,16 +78,11 @@ void ofApp::setup(){
         settings.setInDevice(devices[0]);
     }
      
-    
     settings.setInListener(this);
     settings.sampleRate = 44100;
-#ifdef TARGET_EMSCRIPTEN
-    settings.numOutputChannels = 2;
-#else
-    settings.numOutputChannels = 0;
-#endif
     settings.numInputChannels = 1;
     settings.bufferSize = bufferSize;
+    settings.numBuffers = 1;
     soundStream.setup(settings);
 }
 
@@ -183,8 +176,6 @@ void ofApp::audioIn( ofSoundBuffer& buffer ) {
         audioInput[i] = buffer[i];
     }
     FFT::getInstance().setSignal(audioInput);
-     
-    //FFT::getInstance().setSignal(buffer);
 }
 
 /*

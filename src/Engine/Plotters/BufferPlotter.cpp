@@ -18,6 +18,7 @@ BufferPlotter::BufferPlotter(
     nSamples = _data->size();
     setSampleWith(data->size());
     gain = 255.0;
+    lineWidth = 1.0;
 }
 
 void BufferPlotter::update() {
@@ -25,14 +26,15 @@ void BufferPlotter::update() {
     ofClear(0, 0, 0, 255);          // Clear the FBO
     ofSetColor(color);
     ofPath path;
+    ofEnableAntiAliasing();
     path.setStrokeColor(ofColor::white);
-    path.setStrokeWidth(2);
+    path.setStrokeWidth(lineWidth);
     path.setFilled(false);
     
     float midScreen = rect.height / 2.0;
     
-    path.moveTo(0, midScreen);
-    for(int f=0; f<data->size(); f++) {
+    path.moveTo(0, midScreen - (*data)[0] * gain);
+    for(int f=1; f<data->size(); f++) {
         float val = (*data)[f] * gain;
         path.lineTo(f * sampleWidth, midScreen - val);
     }
