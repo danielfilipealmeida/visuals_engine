@@ -11,7 +11,10 @@
 #include "BaseClasses.hpp"
 #include "ofMain.h"
 #include "Plotter.hpp"
+#include <functional>
 
+//! @class BufferPloter
+//! @abstract A plotter specialized on displaying buffers. buffers are set currently just vectors of float. if new types of data are needed in the future, this must be transformed into a class template
 class BufferPlotter: public Plotter {
     vector<float> *data;
     
@@ -19,21 +22,33 @@ class BufferPlotter: public Plotter {
     //! @abstract the number of samples to draw on the plotter
     unsigned int nSamples;
     
-    //! @var buffer
-    //! @abstract a FBO to draw the plotter in memory
-    ofFbo buffer;
  
 public:
     
-    BufferPlotter(vector<float> *_data, unsigned int _nSamples, unsigned int _width, unsigned int _height);
+    BufferPlotter() {}
+    
+    //! @abstract Default constructor
+    //!
+    //! @param *_data
+    //! @param _width
+    //! @param _height
+    BufferPlotter(vector<float> *_data, unsigned int _width=640, unsigned int _height=480);
     
     void update();
     
     void draw();
     
+    /**
+     * @abstract draws the Signal ploter inside a rectangle
+     * @param _rect defines the location where to draw the signal plotter
+     */
+    void draw(ofRectangle _rect);
+    
     void play();
     
     void stop();
+    
+    void setSampleWith(unsigned long newSize);
 };
 
 #endif

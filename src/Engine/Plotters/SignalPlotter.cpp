@@ -18,7 +18,8 @@ SignalPlotter::SignalPlotter(
                              Signal<float> *_signal,
                              unsigned int _nSamples,
                              unsigned int _width,
-                             unsigned int _height) : Plotter(_width, _height)
+                             unsigned int _height
+                             ) : Plotter(_width, _height)
 {
     signal = _signal;
     nSamples = _nSamples;

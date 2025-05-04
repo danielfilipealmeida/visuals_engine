@@ -19,7 +19,10 @@ Plotter::Plotter(unsigned int _width, unsigned int _height) {
     dotWidth = 8.0;
     
     color = ofColor::white;
-    mode = PlotterMode::VerticalLines;
+    mode = PlotterMode::Dots;
+
+    gain = 1;
+    
 }
 
 
@@ -38,7 +41,7 @@ void Plotter::draw(vector<float> points, unsigned int nPoints) {
             break;
         }
         
-        currentY = half + points[f] * half;
+        currentY = half + points[f] * half * gain;
         switch (mode) {
             case PlotterMode::Dots:
                 ofDrawCircle(f*sampleWidth,currentY, dotWidth);

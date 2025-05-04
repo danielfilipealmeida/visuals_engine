@@ -12,7 +12,7 @@
 #include "ofMain.h"
 #include "Signals.hpp"
 #include "Plotter.hpp"
-
+#include <functional>
 
    
 /**

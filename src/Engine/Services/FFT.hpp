@@ -39,13 +39,13 @@ public:
         
     }
     
-    void setSignal(vector<float> signal, float maxValue) {
+    void setSignal(vector<float> signal) {
         fft->setSignal(signal);
         
+        float maxValue = 0;
         float* curFft = fft->getAmplitude();
         memcpy(&audioBins[0], curFft, sizeof(float) * fft->getBinSize());
         
-        maxValue = 0;
         for(int i = 0; i < fft->getBinSize(); i++) {
             if(abs(audioBins[i]) > maxValue) {
                 maxValue = abs(audioBins[i]);

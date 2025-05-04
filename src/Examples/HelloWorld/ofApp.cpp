@@ -4,23 +4,31 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    bufferSize = 128;
+    audioInput.resize(bufferSize);
+    FFT::getInstance().setup(bufferSize);
+    
     //signal = SignalsBuilder::Random(1, 1);
     //signal = SignalsBuilder::Pulse();
     signal1 = SignalsFactory::SineWave();
     signal2 = SignalsFactory::Random(10, 1);
+    showInterface = true;
     
     VisualsFactory factory(bufferWidth, bufferHeight);
     set.addVisual(factory.Video("001.mov"));
     set.addVisual(factory.Video("002.mov"));
     set.addVisual(factory.Video("003.mov"));
     set.addVisual(factory.Video("004.mov"));
-    set.addVisual(factory.Plotter(&signal1));
+    set.addVisual(factory.Plotter(&audioInput));
+
     
     layerStackA = new LayerStack(bufferWidth, bufferHeight);
     layerStackA->insert(new Layer(set.visuals[0]));
-    layerStackA->insert(new Layer());
+    //layerStackA->insert(new Layer());
     
     layerStackB = new LayerStack(bufferWidth, bufferHeight);
+    //layerStackB->insert(new Layer(set.visuals[4]));
+    
     layerStackB->insert(new Layer(set.visuals[4]));
     
     mixer = new Mixer(
@@ -50,11 +58,7 @@ void ofApp::setup(){
     set.decode(data);
      */
     
-    bufferSize = 512;
-    FFT::getInstance().setup(bufferSize);
-    left.resize(bufferSize);
-    right.resize(bufferSize);
-    mono.resize(bufferSize);
+   
     
     ofSoundStreamSettings settings;
     
@@ -103,6 +107,10 @@ void ofApp::draw(){
     //mixer->setMix(signal1.getValue() + 1 /2.0);
     mixer->draw(ofRectangle(0.0, 0.0, ofGetWidth(), ofGetHeight()));
     
+    if (!showInterface) {
+        return;
+    }
+     
     userInterface.draw();
 }
 
@@ -113,7 +121,12 @@ void ofApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-
+    cout << ofToString(key) <<endl;
+    
+    switch (key) {
+    case 32:
+        showInterface = !showInterface;
+    }
 }
 
 //--------------------------------------------------------------
@@ -165,28 +178,13 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
 void ofApp::audioIn( ofSoundBuffer& buffer ) {
     float curVol = 0.0;
     float maxValue = 0;
-    
-    // samples are "interleaved"
-    int numCounted = 0;
-    
+        
     for (size_t i = 0; i < buffer.getNumFrames(); i++){
-        left[i] = buffer[i*2]*0.5;
-        right[i] = buffer[i*2+1]*0.5;
-        mono[i] = (left[2] + right[i]) / 2.0;
-        
-        curVol += left[i] * left[i];
-        curVol += right[i] * right[i];
-        numCounted+=2;
-        
-        if(abs(mono[i]) > maxValue) {
-            maxValue = abs(mono[i]);
-        }
-        
-        for(int i = 0; i < bufferSize; i++) {
-            mono[i] /= maxValue;
-        }
+        audioInput[i] = buffer[i];
     }
-    FFT::getInstance().setSignal(mono, maxValue);
+    FFT::getInstance().setSignal(audioInput);
+     
+    //FFT::getInstance().setSignal(buffer);
 }
 
 /*

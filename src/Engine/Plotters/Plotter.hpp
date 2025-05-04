@@ -11,6 +11,7 @@
 
 #include "BaseClasses.hpp"
 #include "ofMain.h"
+#include <functional>
 
 /**
  * @enum PlotterMode
@@ -48,6 +49,9 @@ public:
     //! @abstract the radius of the dot in the Dots mode
     float dotWidth;
     
+    //! @var gain
+    //! @abstract how much to multiply to the signal
+    float gain;
     
     Plotter();
     
