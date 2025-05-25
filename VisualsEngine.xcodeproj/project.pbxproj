@@ -17,6 +17,21 @@
 		65F070262D4AF13F00019282 /* layerShader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65F070242D4AEFC900019282 /* layerShader.frag */; };
 		65F070272D4AF13F00019282 /* Base.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65F070252D4AEFC900019282 /* Base.vert */; };
 		65F0702A2D4AF72E00019282 /* FastBlur.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65F070282D4AF69800019282 /* FastBlur.frag */; };
+		65FD1DEE2D86423600D357F9 /* ofxFftw.h in Headers */ = {isa = PBXBuildFile; fileRef = 65FD1DE92D86423600D357F9 /* ofxFftw.h */; };
+		65FD1DEF2D86423600D357F9 /* ofxFft.h in Headers */ = {isa = PBXBuildFile; fileRef = 65FD1DE52D86423600D357F9 /* ofxFft.h */; };
+		65FD1DF02D86423600D357F9 /* ofxFftBasic.h in Headers */ = {isa = PBXBuildFile; fileRef = 65FD1DE72D86423600D357F9 /* ofxFftBasic.h */; };
+		65FD1DF12D86423600D357F9 /* ofxEasyFft.h in Headers */ = {isa = PBXBuildFile; fileRef = 65FD1DE32D86423600D357F9 /* ofxEasyFft.h */; };
+		65FD1DF22D86423600D357F9 /* ofxProcessFFT.h in Headers */ = {isa = PBXBuildFile; fileRef = 65FD1DEB2D86423600D357F9 /* ofxProcessFFT.h */; };
+		65FD1DF32D86423600D357F9 /* ofxFftw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65FD1DEA2D86423600D357F9 /* ofxFftw.cpp */; };
+		65FD1DF42D86423600D357F9 /* ofxEasyFft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65FD1DE42D86423600D357F9 /* ofxEasyFft.cpp */; };
+		65FD1DF52D86423600D357F9 /* ofxFft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65FD1DE62D86423600D357F9 /* ofxFft.cpp */; };
+		65FD1DF62D86423600D357F9 /* ofxProcessFFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65FD1DEC2D86423600D357F9 /* ofxProcessFFT.cpp */; };
+		65FD1DF72D86423600D357F9 /* ofxFftBasic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65FD1DE82D86423600D357F9 /* ofxFftBasic.cpp */; };
+		65FD1E002D86449600D357F9 /* kiss_fft.h in Headers */ = {isa = PBXBuildFile; fileRef = 65FD1DFB2D86449600D357F9 /* kiss_fft.h */; };
+		65FD1E012D86449600D357F9 /* _kiss_fft_guts.h in Headers */ = {isa = PBXBuildFile; fileRef = 65FD1DF92D86449600D357F9 /* _kiss_fft_guts.h */; };
+		65FD1E022D86449600D357F9 /* kiss_fftr.h in Headers */ = {isa = PBXBuildFile; fileRef = 65FD1DFD2D86449600D357F9 /* kiss_fftr.h */; };
+		65FD1E032D86449600D357F9 /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = 65FD1DFC2D86449600D357F9 /* kiss_fft.c */; };
+		65FD1E042D86449600D357F9 /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = 65FD1DFE2D86449600D357F9 /* kiss_fftr.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -75,6 +90,22 @@
 		65F070282D4AF69800019282 /* FastBlur.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = FastBlur.frag; sourceTree = "<group>"; };
 		65F0708E2D4AF91A00019282 /* ContrastBrightnessSaturation.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = ContrastBrightnessSaturation.frag; sourceTree = "<group>"; };
 		65F0708F2D4AF9F600019282 /* RGBTint.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = RGBTint.frag; sourceTree = "<group>"; };
+		65FD1DE32D86423600D357F9 /* ofxEasyFft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxEasyFft.h; sourceTree = "<group>"; };
+		65FD1DE42D86423600D357F9 /* ofxEasyFft.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxEasyFft.cpp; sourceTree = "<group>"; };
+		65FD1DE52D86423600D357F9 /* ofxFft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxFft.h; sourceTree = "<group>"; };
+		65FD1DE62D86423600D357F9 /* ofxFft.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFft.cpp; sourceTree = "<group>"; };
+		65FD1DE72D86423600D357F9 /* ofxFftBasic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxFftBasic.h; sourceTree = "<group>"; };
+		65FD1DE82D86423600D357F9 /* ofxFftBasic.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFftBasic.cpp; sourceTree = "<group>"; };
+		65FD1DE92D86423600D357F9 /* ofxFftw.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxFftw.h; sourceTree = "<group>"; };
+		65FD1DEA2D86423600D357F9 /* ofxFftw.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFftw.cpp; sourceTree = "<group>"; };
+		65FD1DEB2D86423600D357F9 /* ofxProcessFFT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxProcessFFT.h; sourceTree = "<group>"; };
+		65FD1DEC2D86423600D357F9 /* ofxProcessFFT.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxProcessFFT.cpp; sourceTree = "<group>"; };
+		65FD1DF92D86449600D357F9 /* _kiss_fft_guts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _kiss_fft_guts.h; sourceTree = "<group>"; };
+		65FD1DFA2D86449600D357F9 /* .keep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .keep; sourceTree = "<group>"; };
+		65FD1DFB2D86449600D357F9 /* kiss_fft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kiss_fft.h; sourceTree = "<group>"; };
+		65FD1DFC2D86449600D357F9 /* kiss_fft.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = kiss_fft.c; sourceTree = "<group>"; };
+		65FD1DFD2D86449600D357F9 /* kiss_fftr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kiss_fftr.h; sourceTree = "<group>"; };
+		65FD1DFE2D86449600D357F9 /* kiss_fftr.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = kiss_fftr.c; sourceTree = "<group>"; };
 		E4B69B5B0A3A1756003C02F2 /* Hello WorldDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hello WorldDebug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
@@ -86,8 +117,13 @@
 			membershipExceptions = (
 				Layer.cpp,
 				Mixer.cpp,
+				Plotters/BufferPlotter.cpp,
+				Plotters/BufferPlotter.hpp,
+				Plotters/Plotter.cpp,
+				Plotters/Plotter.hpp,
+				Plotters/SignalPlotter.cpp,
+				Services/FFT.hpp,
 				Set.cpp,
-				SignalPlotter.cpp,
 			);
 			target = 6570371C2D7E454B00185E7B /* Engine */;
 		};
@@ -106,8 +142,10 @@
 			membershipExceptions = (
 				Layer.cpp,
 				Mixer.cpp,
+				Plotters/BufferPlotter.cpp,
+				Plotters/Plotter.cpp,
+				Plotters/SignalPlotter.cpp,
 				Set.cpp,
-				SignalPlotter.cpp,
 			);
 			target = E4B69B5A0A3A1756003C02F2 /* Hello World */;
 		};
@@ -141,8 +179,8 @@
 				Elements/Visuals.hpp,
 				Layer.hpp,
 				Mixer.hpp,
+				Plotters/SignalPlotter.hpp,
 				Set.hpp,
-				SignalPlotter.hpp,
 				Transformations.hpp,
 			);
 		};
@@ -162,7 +200,7 @@
 		656DC86F2D20BB8900A63D6E /* UI */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (6570375F2D7E4D4D00185E7B /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 6570375A2D7E4CAB00185E7B /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 6570375B2D7E4CAB00185E7B /* PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = UI; sourceTree = "<group>"; };
 		656DC8772D21920E00A63D6E /* Engine */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (6570375E2D7E4D4B00185E7B /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 657037352D7E45C700185E7B /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 6570372B2D7E45A400185E7B /* PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Engine; sourceTree = "<group>"; };
 		656DC8892D25E7A700A63D6E /* Catch2Tests */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (65B9A5922D27555700ADCDBE /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Catch2Tests; sourceTree = "<group>"; };
-		6570375C2D7E4CFB00185E7B /* Examples */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {HelloWorld/src/Examples/HelloWorld/ofApp.cpp = sourcecode.cpp.cpp; }; explicitFolders = (); path = Examples; sourceTree = "<group>"; };
+		6570375C2D7E4CFB00185E7B /* Examples */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Examples; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,9 +262,49 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		65FD1DED2D86423600D357F9 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				65FD1DE32D86423600D357F9 /* ofxEasyFft.h */,
+				65FD1DE42D86423600D357F9 /* ofxEasyFft.cpp */,
+				65FD1DE52D86423600D357F9 /* ofxFft.h */,
+				65FD1DE62D86423600D357F9 /* ofxFft.cpp */,
+				65FD1DE72D86423600D357F9 /* ofxFftBasic.h */,
+				65FD1DE82D86423600D357F9 /* ofxFftBasic.cpp */,
+				65FD1DE92D86423600D357F9 /* ofxFftw.h */,
+				65FD1DEA2D86423600D357F9 /* ofxFftw.cpp */,
+				65FD1DEB2D86423600D357F9 /* ofxProcessFFT.h */,
+				65FD1DEC2D86423600D357F9 /* ofxProcessFFT.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		65FD1DF82D86448800D357F9 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				65FD1DFF2D86449600D357F9 /* kiss */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		65FD1DFF2D86449600D357F9 /* kiss */ = {
+			isa = PBXGroup;
+			children = (
+				65FD1DF92D86449600D357F9 /* _kiss_fft_guts.h */,
+				65FD1DFA2D86449600D357F9 /* .keep */,
+				65FD1DFB2D86449600D357F9 /* kiss_fft.h */,
+				65FD1DFC2D86449600D357F9 /* kiss_fft.c */,
+				65FD1DFD2D86449600D357F9 /* kiss_fftr.h */,
+				65FD1DFE2D86449600D357F9 /* kiss_fftr.c */,
+			);
+			path = kiss;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				65FD1DF82D86448800D357F9 /* libs */,
+				65FD1DED2D86423600D357F9 /* src */,
 			);
 			name = addons;
 			path = ../../../addons;
@@ -255,8 +333,8 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				6570375C2D7E4CFB00185E7B /* Examples */,
 				656DC8772D21920E00A63D6E /* Engine */,
+				6570375C2D7E4CFB00185E7B /* Examples */,
 				656DC86F2D20BB8900A63D6E /* UI */,
 			);
 			path = src;
@@ -269,6 +347,14 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65FD1DEE2D86423600D357F9 /* ofxFftw.h in Headers */,
+				65FD1DEF2D86423600D357F9 /* ofxFft.h in Headers */,
+				65FD1DF02D86423600D357F9 /* ofxFftBasic.h in Headers */,
+				65FD1E002D86449600D357F9 /* kiss_fft.h in Headers */,
+				65FD1E012D86449600D357F9 /* _kiss_fft_guts.h in Headers */,
+				65FD1E022D86449600D357F9 /* kiss_fftr.h in Headers */,
+				65FD1DF12D86423600D357F9 /* ofxEasyFft.h in Headers */,
+				65FD1DF22D86423600D357F9 /* ofxProcessFFT.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +542,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65FD1DF32D86423600D357F9 /* ofxFftw.cpp in Sources */,
+				65FD1DF42D86423600D357F9 /* ofxEasyFft.cpp in Sources */,
+				65FD1DF52D86423600D357F9 /* ofxFft.cpp in Sources */,
+				65FD1DF62D86423600D357F9 /* ofxProcessFFT.cpp in Sources */,
+				65FD1DF72D86423600D357F9 /* ofxFftBasic.cpp in Sources */,
+				65FD1E032D86449600D357F9 /* kiss_fft.c in Sources */,
+				65FD1E042D86449600D357F9 /* kiss_fftr.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -655,7 +748,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				EXECUTABLE_EXTENSION = a;
 				EXECUTABLE_PREFIX = lib;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_C_LANGUAGE_STANDARD = c17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -668,12 +761,18 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					src,
+					"$(OFX_FFT_HEADER)",
+				);
 				LD_DYLIB_INSTALL_NAME = "";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
+				OFX_FFT_HEADER = "\"$(OF_PATH)/addons/ofxFft/src\" \"$(OF_PATH)/addons/ofxFft/libs/kiss\"";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -726,7 +825,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				EXECUTABLE_EXTENSION = a;
 				EXECUTABLE_PREFIX = lib;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_C_LANGUAGE_STANDARD = c17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -734,12 +833,18 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					src,
+					"$(OFX_FFT_HEADER)",
+				);
 				LD_DYLIB_INSTALL_NAME = "";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OFX_FFT_HEADER = "\"$(OF_PATH)/addons/ofxFft/src\" \"$(OF_PATH)/addons/ofxFft/libs/kiss\"";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -916,8 +1021,10 @@
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
 					src,
+					"$(OFX_FFT_HEADER)",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OFX_FFT = "\"$(OF_PATH)/addons/ofxFft/src\" \"$(OF_PATH)/addons/ofxFft/libs/kiss\"";
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
 					"$(OF_CORE_FRAMEWORKS)",
@@ -936,8 +1043,10 @@
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
 					src,
+					"$(OFX_FFT_HEADER)",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OFX_FFT = "\"$(OF_PATH)/addons/ofxFft/src\" \"$(OF_PATH)/addons/ofxFft/libs/kiss\"";
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
 					"$(OF_CORE_FRAMEWORKS)",

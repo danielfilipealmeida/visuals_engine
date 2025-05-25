@@ -12,6 +12,7 @@
 #import "ofMain.h"
 #import "Signals.hpp"
 #import "SignalPlotter.hpp"
+#import "BufferPlotter.hpp"
 
 enum VisualTypes {
     camera,
@@ -102,15 +103,17 @@ template<> inline ofJson Visual<SignalPlotter>::encode() {
 
 
 
-/// Class containing a compilation of methods to work as builders of visuals
-/// It needs to know in advance the dimentions of the existing rendering buffers on the application.
-/// 
-/// @param _width: the width of the rendering buffer
-/// @param _height: the height of the rendering buffers
+//! Class containing a compilation of methods to work as builders of visuals
+//! It needs to know in advance the dimentions of the existing rendering buffers on the application.
 class VisualsFactory {
     float width;
     float height;
 public:
+    
+    //! @abstract Factory constructor, used to set the default of width and height to be used when seting up new visuals
+    //!
+    //! @param _width: the width of the rendering buffer
+    //! @param _height: the height of the rendering buffers
     VisualsFactory(float _width, float _height) {
         width = _width;
         height = _height;
@@ -149,8 +152,9 @@ public:
         return visual;
     }
     
-    /// Returns a signal plotter visual
-    /// \param *signal 
+    //! @abstract Returns a signal plotter visual
+    //!
+    //! @param *signal the actual signal to be printed.
     Visual<SignalPlotter> *Plotter(Signal<float> *signal) {
         Visual<SignalPlotter> *visual;
         
@@ -158,6 +162,21 @@ public:
             SignalPlotter plotter = SignalPlotter(signal);
             return plotter;
         }(), ofRectangle(0,0,width, height));
+        
+        return visual;
+    }
+    
+    //! @abstract Creates a Visual of type bufferPlotter and returns it configured
+    //!
+    //! @param *buffer
+    Visual<BufferPlotter> *Plotter(vector<float> *buffer) {
+        Visual<BufferPlotter> *visual;
+        
+        visual = new Visual<BufferPlotter>([&](){
+            BufferPlotter plotter = BufferPlotter(buffer);
+            
+            return plotter;
+        }(), ofRectangle(0,0,width,height));
         
         return visual;
     }

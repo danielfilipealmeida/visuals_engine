@@ -16,13 +16,15 @@ class ofApp : public ofBaseApp{
     float bufferWidth = 640;
     float bufferHeight = 480;
     
+    bool showInterface;
+    
     Set set;
     
     Signal<float> signal1, signal2;
     
     UserInterface userInterface;
     
-   
+
     
 	public:
 		void setup();
@@ -40,4 +42,14 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+    
+        ofSoundStream soundStream;
+        void audioIn( ofSoundBuffer& buffer );
+        //void audioIn( float * input, int bufferSize, int nChannels );
+
+    /** todo: move to its own class */
+    vector<float> volHistory;
+    vector<float> audioInput;
+    vector<float> fftOutput;
+    int bufferSize;
 };
