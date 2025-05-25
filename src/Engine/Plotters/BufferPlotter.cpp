@@ -17,7 +17,7 @@ BufferPlotter::BufferPlotter(
     data = _data;
     nSamples = _data->size();
     setSampleWith(data->size());
-    gain = 255.0;
+    gain = 256;
     lineWidth = 1.0;
 }
 

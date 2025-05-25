@@ -80,7 +80,7 @@ public:
     void setup(int bufferSize) {
         this->bufferSize = bufferSize;
         
-        fft = ofxFft::create(bufferSize, OF_FFT_WINDOW_HAMMING, OF_FFT_FFTW);
+        fft = ofxFft::create(bufferSize, OF_FFT_WINDOW_HAMMING);
         audioBins.resize(fft->getBinSize());
         
         hanningWindow = FFT::buildHanningWindow(windowSize);
