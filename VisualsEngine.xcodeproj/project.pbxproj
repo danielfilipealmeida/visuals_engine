@@ -17,21 +17,37 @@
 		65F070262D4AF13F00019282 /* layerShader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65F070242D4AEFC900019282 /* layerShader.frag */; };
 		65F070272D4AF13F00019282 /* Base.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65F070252D4AEFC900019282 /* Base.vert */; };
 		65F0702A2D4AF72E00019282 /* FastBlur.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65F070282D4AF69800019282 /* FastBlur.frag */; };
-		65FD1DEE2D86423600D357F9 /* ofxFftw.h in Headers */ = {isa = PBXBuildFile; fileRef = 65FD1DE92D86423600D357F9 /* ofxFftw.h */; };
-		65FD1DEF2D86423600D357F9 /* ofxFft.h in Headers */ = {isa = PBXBuildFile; fileRef = 65FD1DE52D86423600D357F9 /* ofxFft.h */; };
-		65FD1DF02D86423600D357F9 /* ofxFftBasic.h in Headers */ = {isa = PBXBuildFile; fileRef = 65FD1DE72D86423600D357F9 /* ofxFftBasic.h */; };
-		65FD1DF12D86423600D357F9 /* ofxEasyFft.h in Headers */ = {isa = PBXBuildFile; fileRef = 65FD1DE32D86423600D357F9 /* ofxEasyFft.h */; };
-		65FD1DF22D86423600D357F9 /* ofxProcessFFT.h in Headers */ = {isa = PBXBuildFile; fileRef = 65FD1DEB2D86423600D357F9 /* ofxProcessFFT.h */; };
-		65FD1DF32D86423600D357F9 /* ofxFftw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65FD1DEA2D86423600D357F9 /* ofxFftw.cpp */; };
-		65FD1DF42D86423600D357F9 /* ofxEasyFft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65FD1DE42D86423600D357F9 /* ofxEasyFft.cpp */; };
-		65FD1DF52D86423600D357F9 /* ofxFft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65FD1DE62D86423600D357F9 /* ofxFft.cpp */; };
-		65FD1DF62D86423600D357F9 /* ofxProcessFFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65FD1DEC2D86423600D357F9 /* ofxProcessFFT.cpp */; };
-		65FD1DF72D86423600D357F9 /* ofxFftBasic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65FD1DE82D86423600D357F9 /* ofxFftBasic.cpp */; };
-		65FD1E002D86449600D357F9 /* kiss_fft.h in Headers */ = {isa = PBXBuildFile; fileRef = 65FD1DFB2D86449600D357F9 /* kiss_fft.h */; };
-		65FD1E012D86449600D357F9 /* _kiss_fft_guts.h in Headers */ = {isa = PBXBuildFile; fileRef = 65FD1DF92D86449600D357F9 /* _kiss_fft_guts.h */; };
-		65FD1E022D86449600D357F9 /* kiss_fftr.h in Headers */ = {isa = PBXBuildFile; fileRef = 65FD1DFD2D86449600D357F9 /* kiss_fftr.h */; };
-		65FD1E032D86449600D357F9 /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = 65FD1DFC2D86449600D357F9 /* kiss_fft.c */; };
-		65FD1E042D86449600D357F9 /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = 65FD1DFE2D86449600D357F9 /* kiss_fftr.c */; };
+		65F101D92E1209E20013F416 /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = 65F1011C2E12046A0013F416 /* kiss_fft.c */; };
+		65F101DA2E1209EC0013F416 /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = 65F1011E2E12046A0013F416 /* kiss_fftr.c */; };
+		65F101DB2E120A040013F416 /* ofxFft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65F101242E12046A0013F416 /* ofxFft.cpp */; };
+		65F101DC2E120A040013F416 /* ofxEasyFft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65F101222E12046A0013F416 /* ofxEasyFft.cpp */; };
+		65F101DD2E120A040013F416 /* ofxProcessFFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65F1012A2E12046A0013F416 /* ofxProcessFFT.cpp */; };
+		65F101DE2E120A040013F416 /* ofxFftBasic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65F101262E12046A0013F416 /* ofxFftBasic.cpp */; };
+		65F101DF2E120A040013F416 /* ofxFftw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65F101282E12046A0013F416 /* ofxFftw.cpp */; };
+		65F102342E120A4A0013F416 /* RtMidi.h in Headers */ = {isa = PBXBuildFile; fileRef = 65F1022B2E120A4A0013F416 /* RtMidi.h */; };
+		65F102382E120A4A0013F416 /* RtMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65F1022C2E120A4A0013F416 /* RtMidi.cpp */; };
+		65F1025C2E120BFB0013F416 /* ofxMidiIn.h in Headers */ = {isa = PBXBuildFile; fileRef = 65F102522E120BFB0013F416 /* ofxMidiIn.h */; };
+		65F1025D2E120BFB0013F416 /* ofxMidiMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 65F102542E120BFB0013F416 /* ofxMidiMessage.h */; };
+		65F1025F2E120BFB0013F416 /* ofxMidiOut.h in Headers */ = {isa = PBXBuildFile; fileRef = 65F102562E120BFB0013F416 /* ofxMidiOut.h */; };
+		65F102602E120BFB0013F416 /* ofxMidiConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 65F102512E120BFB0013F416 /* ofxMidiConstants.h */; };
+		65F102622E120BFB0013F416 /* ofxMidiClock.h in Headers */ = {isa = PBXBuildFile; fileRef = 65F1024F2E120BFB0013F416 /* ofxMidiClock.h */; };
+		65F102632E120BFB0013F416 /* ofxBaseMidi.h in Headers */ = {isa = PBXBuildFile; fileRef = 65F1024B2E120BFB0013F416 /* ofxBaseMidi.h */; };
+		65F102652E120BFB0013F416 /* ofxRtMidiIn.h in Headers */ = {isa = PBXBuildFile; fileRef = 65F1023B2E120BFB0013F416 /* ofxRtMidiIn.h */; };
+		65F102672E120BFB0013F416 /* ofxMidiTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 65F1025A2E120BFB0013F416 /* ofxMidiTypes.h */; };
+		65F102692E120BFB0013F416 /* ofxRtMidiOut.h in Headers */ = {isa = PBXBuildFile; fileRef = 65F1023D2E120BFB0013F416 /* ofxRtMidiOut.h */; };
+		65F1026A2E120BFB0013F416 /* ofxMidiTimecode.h in Headers */ = {isa = PBXBuildFile; fileRef = 65F102582E120BFB0013F416 /* ofxMidiTimecode.h */; };
+		65F1026B2E120BFB0013F416 /* ofxMidi.h in Headers */ = {isa = PBXBuildFile; fileRef = 65F1024D2E120BFB0013F416 /* ofxMidi.h */; };
+		65F1026C2E120BFB0013F416 /* ofxMidiIn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65F102532E120BFB0013F416 /* ofxMidiIn.cpp */; };
+		65F1026D2E120BFB0013F416 /* ofxMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65F1024E2E120BFB0013F416 /* ofxMidi.cpp */; };
+		65F1026E2E120BFB0013F416 /* ofxRtMidiIn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65F1023C2E120BFB0013F416 /* ofxRtMidiIn.cpp */; };
+		65F1026F2E120BFB0013F416 /* ofxRtMidiOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65F1023E2E120BFB0013F416 /* ofxRtMidiOut.cpp */; };
+		65F102712E120BFB0013F416 /* ofxMidiTimecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65F102592E120BFB0013F416 /* ofxMidiTimecode.cpp */; };
+		65F102742E120BFB0013F416 /* ofxMidiMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65F102552E120BFB0013F416 /* ofxMidiMessage.cpp */; };
+		65F102762E120BFB0013F416 /* ofxMidiClock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65F102502E120BFB0013F416 /* ofxMidiClock.cpp */; };
+		65F102782E120BFB0013F416 /* ofxBaseMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65F1024C2E120BFB0013F416 /* ofxBaseMidi.cpp */; };
+		65F102792E120BFB0013F416 /* ofxMidiOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65F102572E120BFB0013F416 /* ofxMidiOut.cpp */; };
+		65F1027D2E12FA9E0013F416 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F102392E120ACD0013F416 /* CoreMIDI.framework */; };
+		65F1027F2E12FAA40013F416 /* CoreAudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F1027E2E12FAA40013F416 /* CoreAudioKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -90,22 +106,49 @@
 		65F070282D4AF69800019282 /* FastBlur.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = FastBlur.frag; sourceTree = "<group>"; };
 		65F0708E2D4AF91A00019282 /* ContrastBrightnessSaturation.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = ContrastBrightnessSaturation.frag; sourceTree = "<group>"; };
 		65F0708F2D4AF9F600019282 /* RGBTint.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = RGBTint.frag; sourceTree = "<group>"; };
-		65FD1DE32D86423600D357F9 /* ofxEasyFft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxEasyFft.h; sourceTree = "<group>"; };
-		65FD1DE42D86423600D357F9 /* ofxEasyFft.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxEasyFft.cpp; sourceTree = "<group>"; };
-		65FD1DE52D86423600D357F9 /* ofxFft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxFft.h; sourceTree = "<group>"; };
-		65FD1DE62D86423600D357F9 /* ofxFft.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFft.cpp; sourceTree = "<group>"; };
-		65FD1DE72D86423600D357F9 /* ofxFftBasic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxFftBasic.h; sourceTree = "<group>"; };
-		65FD1DE82D86423600D357F9 /* ofxFftBasic.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFftBasic.cpp; sourceTree = "<group>"; };
-		65FD1DE92D86423600D357F9 /* ofxFftw.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxFftw.h; sourceTree = "<group>"; };
-		65FD1DEA2D86423600D357F9 /* ofxFftw.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFftw.cpp; sourceTree = "<group>"; };
-		65FD1DEB2D86423600D357F9 /* ofxProcessFFT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxProcessFFT.h; sourceTree = "<group>"; };
-		65FD1DEC2D86423600D357F9 /* ofxProcessFFT.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxProcessFFT.cpp; sourceTree = "<group>"; };
-		65FD1DF92D86449600D357F9 /* _kiss_fft_guts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _kiss_fft_guts.h; sourceTree = "<group>"; };
-		65FD1DFA2D86449600D357F9 /* .keep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .keep; sourceTree = "<group>"; };
-		65FD1DFB2D86449600D357F9 /* kiss_fft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kiss_fft.h; sourceTree = "<group>"; };
-		65FD1DFC2D86449600D357F9 /* kiss_fft.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = kiss_fft.c; sourceTree = "<group>"; };
-		65FD1DFD2D86449600D357F9 /* kiss_fftr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kiss_fftr.h; sourceTree = "<group>"; };
-		65FD1DFE2D86449600D357F9 /* kiss_fftr.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = kiss_fftr.c; sourceTree = "<group>"; };
+		65F101192E12046A0013F416 /* _kiss_fft_guts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _kiss_fft_guts.h; sourceTree = "<group>"; };
+		65F1011A2E12046A0013F416 /* .keep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .keep; sourceTree = "<group>"; };
+		65F1011B2E12046A0013F416 /* kiss_fft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kiss_fft.h; sourceTree = "<group>"; };
+		65F1011C2E12046A0013F416 /* kiss_fft.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = kiss_fft.c; sourceTree = "<group>"; };
+		65F1011D2E12046A0013F416 /* kiss_fftr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kiss_fftr.h; sourceTree = "<group>"; };
+		65F1011E2E12046A0013F416 /* kiss_fftr.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = kiss_fftr.c; sourceTree = "<group>"; };
+		65F101212E12046A0013F416 /* ofxEasyFft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxEasyFft.h; sourceTree = "<group>"; };
+		65F101222E12046A0013F416 /* ofxEasyFft.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxEasyFft.cpp; sourceTree = "<group>"; };
+		65F101232E12046A0013F416 /* ofxFft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxFft.h; sourceTree = "<group>"; };
+		65F101242E12046A0013F416 /* ofxFft.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFft.cpp; sourceTree = "<group>"; };
+		65F101252E12046A0013F416 /* ofxFftBasic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxFftBasic.h; sourceTree = "<group>"; };
+		65F101262E12046A0013F416 /* ofxFftBasic.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFftBasic.cpp; sourceTree = "<group>"; };
+		65F101272E12046A0013F416 /* ofxFftw.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxFftw.h; sourceTree = "<group>"; };
+		65F101282E12046A0013F416 /* ofxFftw.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFftw.cpp; sourceTree = "<group>"; };
+		65F101292E12046A0013F416 /* ofxProcessFFT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxProcessFFT.h; sourceTree = "<group>"; };
+		65F1012A2E12046A0013F416 /* ofxProcessFFT.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxProcessFFT.cpp; sourceTree = "<group>"; };
+		65F1012D2E12046A0013F416 /* addon_config.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = addon_config.mk; sourceTree = "<group>"; };
+		65F1022A2E120A4A0013F416 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		65F1022B2E120A4A0013F416 /* RtMidi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RtMidi.h; sourceTree = "<group>"; };
+		65F1022C2E120A4A0013F416 /* RtMidi.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RtMidi.cpp; sourceTree = "<group>"; };
+		65F102392E120ACD0013F416 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
+		65F1023B2E120BFB0013F416 /* ofxRtMidiIn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxRtMidiIn.h; sourceTree = "<group>"; };
+		65F1023C2E120BFB0013F416 /* ofxRtMidiIn.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxRtMidiIn.cpp; sourceTree = "<group>"; };
+		65F1023D2E120BFB0013F416 /* ofxRtMidiOut.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxRtMidiOut.h; sourceTree = "<group>"; };
+		65F1023E2E120BFB0013F416 /* ofxRtMidiOut.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxRtMidiOut.cpp; sourceTree = "<group>"; };
+		65F1024B2E120BFB0013F416 /* ofxBaseMidi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxBaseMidi.h; sourceTree = "<group>"; };
+		65F1024C2E120BFB0013F416 /* ofxBaseMidi.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBaseMidi.cpp; sourceTree = "<group>"; };
+		65F1024D2E120BFB0013F416 /* ofxMidi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxMidi.h; sourceTree = "<group>"; };
+		65F1024E2E120BFB0013F416 /* ofxMidi.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMidi.cpp; sourceTree = "<group>"; };
+		65F1024F2E120BFB0013F416 /* ofxMidiClock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxMidiClock.h; sourceTree = "<group>"; };
+		65F102502E120BFB0013F416 /* ofxMidiClock.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMidiClock.cpp; sourceTree = "<group>"; };
+		65F102512E120BFB0013F416 /* ofxMidiConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxMidiConstants.h; sourceTree = "<group>"; };
+		65F102522E120BFB0013F416 /* ofxMidiIn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxMidiIn.h; sourceTree = "<group>"; };
+		65F102532E120BFB0013F416 /* ofxMidiIn.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMidiIn.cpp; sourceTree = "<group>"; };
+		65F102542E120BFB0013F416 /* ofxMidiMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxMidiMessage.h; sourceTree = "<group>"; };
+		65F102552E120BFB0013F416 /* ofxMidiMessage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMidiMessage.cpp; sourceTree = "<group>"; };
+		65F102562E120BFB0013F416 /* ofxMidiOut.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxMidiOut.h; sourceTree = "<group>"; };
+		65F102572E120BFB0013F416 /* ofxMidiOut.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMidiOut.cpp; sourceTree = "<group>"; };
+		65F102582E120BFB0013F416 /* ofxMidiTimecode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxMidiTimecode.h; sourceTree = "<group>"; };
+		65F102592E120BFB0013F416 /* ofxMidiTimecode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMidiTimecode.cpp; sourceTree = "<group>"; };
+		65F1025A2E120BFB0013F416 /* ofxMidiTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxMidiTypes.h; sourceTree = "<group>"; };
+		65F1027B2E12FA890013F416 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		65F1027E2E12FAA40013F416 /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
 		E4B69B5B0A3A1756003C02F2 /* Hello WorldDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hello WorldDebug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
@@ -123,6 +166,7 @@
 				Plotters/Plotter.hpp,
 				Plotters/SignalPlotter.cpp,
 				Services/FFT.hpp,
+				Services/MIDI.hpp,
 				Set.cpp,
 			);
 			target = 6570371C2D7E454B00185E7B /* Engine */;
@@ -229,6 +273,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65F1027F2E12FAA40013F416 /* CoreAudioKit.framework in Frameworks */,
+				65F1027D2E12FA9E0013F416 /* CoreMIDI.framework in Frameworks */,
 				657037612D7E513900185E7B /* libEngine.a in Frameworks */,
 				657037622D7E513900185E7B /* libUI.a in Frameworks */,
 			);
@@ -240,6 +286,9 @@
 		657037602D7E513900185E7B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				65F1027E2E12FAA40013F416 /* CoreAudioKit.framework */,
+				65F1027B2E12FA890013F416 /* CoreAudio.framework */,
+				65F102392E120ACD0013F416 /* CoreMIDI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -262,49 +311,121 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		65FD1DED2D86423600D357F9 /* src */ = {
+		65F1011F2E12046A0013F416 /* kiss */ = {
 			isa = PBXGroup;
 			children = (
-				65FD1DE32D86423600D357F9 /* ofxEasyFft.h */,
-				65FD1DE42D86423600D357F9 /* ofxEasyFft.cpp */,
-				65FD1DE52D86423600D357F9 /* ofxFft.h */,
-				65FD1DE62D86423600D357F9 /* ofxFft.cpp */,
-				65FD1DE72D86423600D357F9 /* ofxFftBasic.h */,
-				65FD1DE82D86423600D357F9 /* ofxFftBasic.cpp */,
-				65FD1DE92D86423600D357F9 /* ofxFftw.h */,
-				65FD1DEA2D86423600D357F9 /* ofxFftw.cpp */,
-				65FD1DEB2D86423600D357F9 /* ofxProcessFFT.h */,
-				65FD1DEC2D86423600D357F9 /* ofxProcessFFT.cpp */,
+				65F101192E12046A0013F416 /* _kiss_fft_guts.h */,
+				65F1011A2E12046A0013F416 /* .keep */,
+				65F1011B2E12046A0013F416 /* kiss_fft.h */,
+				65F1011C2E12046A0013F416 /* kiss_fft.c */,
+				65F1011D2E12046A0013F416 /* kiss_fftr.h */,
+				65F1011E2E12046A0013F416 /* kiss_fftr.c */,
 			);
-			path = src;
+			path = kiss;
 			sourceTree = "<group>";
 		};
-		65FD1DF82D86448800D357F9 /* libs */ = {
+		65F101202E12046A0013F416 /* libs */ = {
 			isa = PBXGroup;
 			children = (
-				65FD1DFF2D86449600D357F9 /* kiss */,
+				65F1011F2E12046A0013F416 /* kiss */,
 			);
 			path = libs;
 			sourceTree = "<group>";
 		};
-		65FD1DFF2D86449600D357F9 /* kiss */ = {
+		65F1012B2E12046A0013F416 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				65FD1DF92D86449600D357F9 /* _kiss_fft_guts.h */,
-				65FD1DFA2D86449600D357F9 /* .keep */,
-				65FD1DFB2D86449600D357F9 /* kiss_fft.h */,
-				65FD1DFC2D86449600D357F9 /* kiss_fft.c */,
-				65FD1DFD2D86449600D357F9 /* kiss_fftr.h */,
-				65FD1DFE2D86449600D357F9 /* kiss_fftr.c */,
+				65F101212E12046A0013F416 /* ofxEasyFft.h */,
+				65F101222E12046A0013F416 /* ofxEasyFft.cpp */,
+				65F101232E12046A0013F416 /* ofxFft.h */,
+				65F101242E12046A0013F416 /* ofxFft.cpp */,
+				65F101252E12046A0013F416 /* ofxFftBasic.h */,
+				65F101262E12046A0013F416 /* ofxFftBasic.cpp */,
+				65F101272E12046A0013F416 /* ofxFftw.h */,
+				65F101282E12046A0013F416 /* ofxFftw.cpp */,
+				65F101292E12046A0013F416 /* ofxProcessFFT.h */,
+				65F1012A2E12046A0013F416 /* ofxProcessFFT.cpp */,
 			);
-			path = kiss;
+			path = src;
+			sourceTree = "<group>";
+		};
+		65F101302E12046A0013F416 /* ofxFft */ = {
+			isa = PBXGroup;
+			children = (
+				65F101202E12046A0013F416 /* libs */,
+				65F1012B2E12046A0013F416 /* src */,
+				65F1012D2E12046A0013F416 /* addon_config.mk */,
+			);
+			path = ofxFft;
+			sourceTree = "<group>";
+		};
+		65F101E02E120A0F0013F416 /* ofxMidi */ = {
+			isa = PBXGroup;
+			children = (
+				65F1025B2E120BFB0013F416 /* src */,
+				65F1022E2E120A4A0013F416 /* libs */,
+			);
+			path = ofxMidi;
+			sourceTree = "<group>";
+		};
+		65F1022D2E120A4A0013F416 /* rtmidi */ = {
+			isa = PBXGroup;
+			children = (
+				65F1022A2E120A4A0013F416 /* README.md */,
+				65F1022B2E120A4A0013F416 /* RtMidi.h */,
+				65F1022C2E120A4A0013F416 /* RtMidi.cpp */,
+			);
+			path = rtmidi;
+			sourceTree = "<group>";
+		};
+		65F1022E2E120A4A0013F416 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				65F1022D2E120A4A0013F416 /* rtmidi */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		65F1023F2E120BFB0013F416 /* desktop */ = {
+			isa = PBXGroup;
+			children = (
+				65F1023B2E120BFB0013F416 /* ofxRtMidiIn.h */,
+				65F1023C2E120BFB0013F416 /* ofxRtMidiIn.cpp */,
+				65F1023D2E120BFB0013F416 /* ofxRtMidiOut.h */,
+				65F1023E2E120BFB0013F416 /* ofxRtMidiOut.cpp */,
+			);
+			path = desktop;
+			sourceTree = "<group>";
+		};
+		65F1025B2E120BFB0013F416 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				65F1023F2E120BFB0013F416 /* desktop */,
+				65F1024B2E120BFB0013F416 /* ofxBaseMidi.h */,
+				65F1024C2E120BFB0013F416 /* ofxBaseMidi.cpp */,
+				65F1024D2E120BFB0013F416 /* ofxMidi.h */,
+				65F1024E2E120BFB0013F416 /* ofxMidi.cpp */,
+				65F1024F2E120BFB0013F416 /* ofxMidiClock.h */,
+				65F102502E120BFB0013F416 /* ofxMidiClock.cpp */,
+				65F102512E120BFB0013F416 /* ofxMidiConstants.h */,
+				65F102522E120BFB0013F416 /* ofxMidiIn.h */,
+				65F102532E120BFB0013F416 /* ofxMidiIn.cpp */,
+				65F102542E120BFB0013F416 /* ofxMidiMessage.h */,
+				65F102552E120BFB0013F416 /* ofxMidiMessage.cpp */,
+				65F102562E120BFB0013F416 /* ofxMidiOut.h */,
+				65F102572E120BFB0013F416 /* ofxMidiOut.cpp */,
+				65F102582E120BFB0013F416 /* ofxMidiTimecode.h */,
+				65F102592E120BFB0013F416 /* ofxMidiTimecode.cpp */,
+				65F1025A2E120BFB0013F416 /* ofxMidiTypes.h */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				65FD1DF82D86448800D357F9 /* libs */,
-				65FD1DED2D86423600D357F9 /* src */,
+				65F101E02E120A0F0013F416 /* ofxMidi */,
+				65F101302E12046A0013F416 /* ofxFft */,
 			);
 			name = addons;
 			path = ../../../addons;
@@ -347,14 +468,18 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65FD1DEE2D86423600D357F9 /* ofxFftw.h in Headers */,
-				65FD1DEF2D86423600D357F9 /* ofxFft.h in Headers */,
-				65FD1DF02D86423600D357F9 /* ofxFftBasic.h in Headers */,
-				65FD1E002D86449600D357F9 /* kiss_fft.h in Headers */,
-				65FD1E012D86449600D357F9 /* _kiss_fft_guts.h in Headers */,
-				65FD1E022D86449600D357F9 /* kiss_fftr.h in Headers */,
-				65FD1DF12D86423600D357F9 /* ofxEasyFft.h in Headers */,
-				65FD1DF22D86423600D357F9 /* ofxProcessFFT.h in Headers */,
+				65F102342E120A4A0013F416 /* RtMidi.h in Headers */,
+				65F1025C2E120BFB0013F416 /* ofxMidiIn.h in Headers */,
+				65F1025D2E120BFB0013F416 /* ofxMidiMessage.h in Headers */,
+				65F1025F2E120BFB0013F416 /* ofxMidiOut.h in Headers */,
+				65F102602E120BFB0013F416 /* ofxMidiConstants.h in Headers */,
+				65F102622E120BFB0013F416 /* ofxMidiClock.h in Headers */,
+				65F102632E120BFB0013F416 /* ofxBaseMidi.h in Headers */,
+				65F102652E120BFB0013F416 /* ofxRtMidiIn.h in Headers */,
+				65F102672E120BFB0013F416 /* ofxMidiTypes.h in Headers */,
+				65F102692E120BFB0013F416 /* ofxRtMidiOut.h in Headers */,
+				65F1026A2E120BFB0013F416 /* ofxMidiTimecode.h in Headers */,
+				65F1026B2E120BFB0013F416 /* ofxMidi.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -542,13 +667,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65FD1DF32D86423600D357F9 /* ofxFftw.cpp in Sources */,
-				65FD1DF42D86423600D357F9 /* ofxEasyFft.cpp in Sources */,
-				65FD1DF52D86423600D357F9 /* ofxFft.cpp in Sources */,
-				65FD1DF62D86423600D357F9 /* ofxProcessFFT.cpp in Sources */,
-				65FD1DF72D86423600D357F9 /* ofxFftBasic.cpp in Sources */,
-				65FD1E032D86449600D357F9 /* kiss_fft.c in Sources */,
-				65FD1E042D86449600D357F9 /* kiss_fftr.c in Sources */,
+				65F101DA2E1209EC0013F416 /* kiss_fftr.c in Sources */,
+				65F101DB2E120A040013F416 /* ofxFft.cpp in Sources */,
+				65F101DC2E120A040013F416 /* ofxEasyFft.cpp in Sources */,
+				65F102382E120A4A0013F416 /* RtMidi.cpp in Sources */,
+				65F101DD2E120A040013F416 /* ofxProcessFFT.cpp in Sources */,
+				65F101DE2E120A040013F416 /* ofxFftBasic.cpp in Sources */,
+				65F101DF2E120A040013F416 /* ofxFftw.cpp in Sources */,
+				65F101D92E1209E20013F416 /* kiss_fft.c in Sources */,
+				65F1026C2E120BFB0013F416 /* ofxMidiIn.cpp in Sources */,
+				65F1026D2E120BFB0013F416 /* ofxMidi.cpp in Sources */,
+				65F1026E2E120BFB0013F416 /* ofxRtMidiIn.cpp in Sources */,
+				65F1026F2E120BFB0013F416 /* ofxRtMidiOut.cpp in Sources */,
+				65F102712E120BFB0013F416 /* ofxMidiTimecode.cpp in Sources */,
+				65F102742E120BFB0013F416 /* ofxMidiMessage.cpp in Sources */,
+				65F102762E120BFB0013F416 /* ofxMidiClock.cpp in Sources */,
+				65F102782E120BFB0013F416 /* ofxBaseMidi.cpp in Sources */,
+				65F102792E120BFB0013F416 /* ofxMidiOut.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -765,6 +900,8 @@
 					"$(OF_CORE_HEADERS)",
 					src,
 					"$(OFX_FFT_HEADER)",
+					../../../addons/ofxMidi/src,
+					../../../addons/ofxMidi/libs/rtmidi,
 				);
 				LD_DYLIB_INSTALL_NAME = "";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
@@ -837,6 +974,8 @@
 					"$(OF_CORE_HEADERS)",
 					src,
 					"$(OFX_FFT_HEADER)",
+					../../../addons/ofxMidi/src,
+					../../../addons/ofxMidi/libs/rtmidi,
 				);
 				LD_DYLIB_INSTALL_NAME = "";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;

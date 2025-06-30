@@ -1,6 +1,7 @@
 #include "ofApp.h"
 #include "Transformations.hpp"
 #include "FFT.hpp"
+#include "MIDI.hpp"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -84,6 +85,9 @@ void ofApp::setup(){
     settings.bufferSize = bufferSize;
     settings.numBuffers = 1;
     soundStream.setup(settings);
+    
+    // midi setup
+    MIDI::getInstance().setup(0);
 }
 
 //--------------------------------------------------------------

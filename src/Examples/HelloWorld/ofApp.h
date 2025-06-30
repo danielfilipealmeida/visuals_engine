@@ -9,6 +9,7 @@
 #include "Engine/Set.hpp"
 #include "UserInterface.hpp"
 
+
 class ofApp : public ofBaseApp{
     LayerStack *layerStackA, *layerStackB;
     Mixer *mixer;
@@ -23,8 +24,6 @@ class ofApp : public ofBaseApp{
     Signal<float> signal1, signal2;
     
     UserInterface userInterface;
-    
-
     
 	public:
 		void setup();
