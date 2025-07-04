@@ -8,9 +8,10 @@
 #include "UI/UI.hpp"
 #include "Engine/Set.hpp"
 #include "UserInterface.hpp"
+#include "MIDI.hpp"
 
 
-class ofApp : public ofBaseApp{
+class ofApp : public ofBaseApp, public Observer<ofxMidiMessage> {
     LayerStack *layerStackA, *layerStackB;
     Mixer *mixer;
     Visual<ofVideoPlayer> *video;
@@ -24,6 +25,7 @@ class ofApp : public ofBaseApp{
     Signal<float> signal1, signal2;
     
     UserInterface userInterface;
+
     
 	public:
 		void setup();

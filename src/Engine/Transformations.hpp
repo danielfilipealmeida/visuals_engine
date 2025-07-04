@@ -11,11 +11,14 @@
 #include "Visuals.hpp"
 #include "Signals.hpp"
 
+
+/// \brief A Visual Interface Decorator that wraps a visual around a GLSL shader
 class GLSLTransformationDecorator : public VisualsInterface {
     VisualsInterface *visual;
     ofShader shader;
 public:
     std::map<std::string, Signal<float>*> floatParameters;
+    std::vector<string> parameterNames;
     
     GLSLTransformationDecorator(VisualsInterface *_visual, std::string shaderName, bool useDefaultBase = true) {
         visual = _visual;
@@ -28,11 +31,15 @@ public:
     void update() {
         visual->update();
         rect = visual->rect;
-        
     }
+    
+    /// \brief Draws the shader around the decorated visua
     void draw() {
         draw(rect);
     }
+    
+    /// \brief Draws the shader around the decorated visual in a rect
+    /// \param _rect - the rectangular area where to draw the decorated visual
     void draw(ofRectangle _rect) {
         shader.begin();
         for (auto parameter : floatParameters) {
@@ -42,6 +49,15 @@ public:
         visual->draw(_rect);
         shader.end();
     }
+    
+    /// \brief Sets the value of a float parameter
+    /// \param parameter - a string naming the parameter
+    /// \param value - the float value
+    void setParameter(string parameterName, Signal<float>* signal) {
+        delete floatParameters[parameterName];
+        floatParameters[parameterName] = signal;
+    }
+    
     
     void play() {}
     void stop() {}

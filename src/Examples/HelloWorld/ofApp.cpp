@@ -88,6 +88,21 @@ void ofApp::setup(){
     
     // midi setup
     MIDI::getInstance().setup(0);
+    MIDI::getInstance().debug = true;
+    MIDI::getInstance().regist((MIDIAction){
+        MIDI_CONTROL_CHANGE,
+        1,
+        112,
+        0
+    }, [&](ofxMidiMessage message) {
+        GLSLTransformationDecorator *glslDecorator = (GLSLTransformationDecorator*) mixer->a;
+        /// This isn't working because I need each MIDI control to be a single.
+        /// I need to create a signal generator on MIDI class and be able to
+        /// assign it to control objects with the Observer protocal
+        /*
+        glslDecorator->setParameter("blurH", SignalsFactory::Float(message.value / 10.0));
+         */
+    });
 }
 
 //--------------------------------------------------------------
