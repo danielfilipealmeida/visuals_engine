@@ -79,8 +79,6 @@ HorizontalSplitter *CREATE<HorizontalSplitter>(std::vector<Element*> children) {
 
 /// \brief Implements all the logic needed to draw and handle a button
 class Button: public Element {
-   
-    
 public:
     string title;
     
@@ -89,14 +87,50 @@ public:
     void update(int mouseX, int mouseY, bool button1, bool button2);
 };
 
+
 /// \brief Implements all the logic needed to draw and handle a slider
 class Slider: public Element {
 public:
     string caption;
     float value, max, min;
+    float *observedValue;
     
-    Slider(string _caption, float _value,  float _min=0.0, float _max=1.0,  std::function<void(Element*)> _callback = 0
+    /// \brief Creates a slider with a callback to handle changes
+    ///
+    /// \abstract This is the callback version of the Slider. You'll have to set what happens anytime a change occurs. This is the most flexible usage of the slider
+    ///
+    /// \param _caption - the title of the slider
+    /// \param _value - the value when creating the slider
+    /// \param _min - the minimum possible value for the slider
+    /// \param _max - the maximum possible value for the slider
+    /// \param _callback - anonymous function to execute when a change occurs
+    ///
+    /// \returns a configured slider
+    Slider(
+           string _caption,
+           float _value,
+           float _min=0.0,
+           float _max=1.0,
+           std::function<void(Element*)> _callback = 0
            );
+    
+    /// \brief Creates a slider that is observing a value. it will automatically update the value when a change occurs, as well as update itself when the
+    /// value us changed by other means
+    ///
+    /// \param {string} _caption - the title of the slider
+    /// \param {float} _value - the value when creating the slider
+    /// \param {float} _min - the minimum possible value for the slider
+    /// \param {float} _max - the maximum possible value for the slider
+    ///
+    /// \returns a configured slider
+    Slider(
+           string _caption,
+           float *value,
+           float _min=0.0,
+           float _max=1.0
+           );
+    
+    
     void setValue(float _value);
     void draw(Primitives primitives);
     void update(int mouseX, int mouseY, bool button1, bool button2);

@@ -13,6 +13,7 @@
 #include "UI/UI.hpp"
 #include "Mixer.hpp"
 #include "Engine/Elements/Signals.hpp"
+#include "State.hpp"
 
 //! @brief Implements the User interface of the applicatication<D-s>
 class UserInterface {
@@ -24,6 +25,8 @@ class UserInterface {
     
     UI::HorizontalSplitter horizontalSplitter;
     UI::CrossFader *mixCrossfader;
+    
+    State *state;
 public:
     
     /// Sets up the User Interface of the application
@@ -31,7 +34,8 @@ public:
                ofRectangle rect,
                Mixer *mixer,
                Signal<float> *signal1,
-               Signal<float> *signal2
+               Signal<float> *signal2,
+               State *state
                );
 
     //! @brief Draws the user interface

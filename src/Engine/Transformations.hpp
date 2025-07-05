@@ -11,13 +11,14 @@
 #include "Visuals.hpp"
 #include "Signals.hpp"
 
+using glslParameterType = std::variant<float*, Signal<float>*>;
 
 /// \brief A Visual Interface Decorator that wraps a visual around a GLSL shader
 class GLSLTransformationDecorator : public VisualsInterface {
     VisualsInterface *visual;
     ofShader shader;
 public:
-    std::map<std::string, Signal<float>*> floatParameters;
+    std::map<std::string, glslParameterType> floatParameters;
     std::vector<string> parameterNames;
     
     GLSLTransformationDecorator(VisualsInterface *_visual, std::string shaderName, bool useDefaultBase = true) {
@@ -43,7 +44,18 @@ public:
     void draw(ofRectangle _rect) {
         shader.begin();
         for (auto parameter : floatParameters) {
-            float value = parameter.second->getValue();
+            float value;
+            
+            /// gets the actual value for the parameter
+            if (std::holds_alternative<Signal<float>*>(parameter.second)) {
+                Signal<float>* signalPtr = std::get<Signal<float>*>(parameter.second);
+                value = signalPtr->getValue();
+            }
+            if (std::holds_alternative<float*>(parameter.second)) {
+                float *parameterFloat = std::get<float*>(parameter.second);
+                value = *(parameterFloat);
+            }
+            
             shader.setUniform1f(parameter.first, value);
         }
         visual->draw(_rect);
@@ -53,9 +65,8 @@ public:
     /// \brief Sets the value of a float parameter
     /// \param parameter - a string naming the parameter
     /// \param value - the float value
-    void setParameter(string parameterName, Signal<float>* signal) {
-        delete floatParameters[parameterName];
-        floatParameters[parameterName] = signal;
+    void setParameter(string parameterName, float value) {
+        floatParameters[parameterName] = &value;
     }
     
     
@@ -70,11 +81,12 @@ public:
 class TransformationFactory {
 public:
     
+    
     static VisualsInterface* GLSL(
                                   VisualsInterface *visual,
                                   std::string shaderName,
                                   bool useDefaultBase = true,
-                                  std::map<std::string, Signal<float>*> _floatParameters = {}
+                                  std::map<std::string, glslParameterType> _floatParameters = {}
                                   ) {
         GLSLTransformationDecorator *transformation = new GLSLTransformationDecorator(visual, shaderName, useDefaultBase);
         

@@ -3,7 +3,7 @@
 #include "FFT.hpp"
 #include "MIDI.hpp"
 
-//--------------------------------------------------------------
+
 void ofApp::setup(){
     bufferSize = 128;
     audioInput.resize(bufferSize);
@@ -36,8 +36,8 @@ void ofApp::setup(){
                                                   "FastBlur",
                                                   true,
                                                   {
-                                                    {"blurH", &signal2},
-                                                    {"blurV", &signal2}
+                                                    {"blurH", &state.blurAmount},
+                                                    {"blurV", &state.blurAmount}
                                                   }
                                                   ),
                       layerStackB,
@@ -46,7 +46,7 @@ void ofApp::setup(){
     
     
 
-    userInterface.setup(ofGetWindowRect(), mixer, &signal1, &signal2);
+    userInterface.setup(ofGetWindowRect(), mixer, &signal1, &signal2, &state);
     
     signal1.regist(mixer, mixer->parameters[MixerObservableParameters::MIX]);
    
@@ -88,20 +88,14 @@ void ofApp::setup(){
     
     // midi setup
     MIDI::getInstance().setup(0);
-    MIDI::getInstance().debug = true;
+    //MIDI::getInstance().debug = true;
     MIDI::getInstance().regist((MIDIAction){
         MIDI_CONTROL_CHANGE,
         1,
         112,
         0
     }, [&](ofxMidiMessage message) {
-        GLSLTransformationDecorator *glslDecorator = (GLSLTransformationDecorator*) mixer->a;
-        /// This isn't working because I need each MIDI control to be a single.
-        /// I need to create a signal generator on MIDI class and be able to
-        /// assign it to control objects with the Observer protocal
-        /*
-        glslDecorator->setParameter("blurH", SignalsFactory::Float(message.value / 10.0));
-         */
+        state.blurAmount = (message.value /127.0) * 10;
     });
 }
 
@@ -196,9 +190,3 @@ void ofApp::audioIn( ofSoundBuffer& buffer ) {
     }
     FFT::getInstance().setSignal(audioInput);
 }
-
-/*
- void ofApp::audioIn( float * input, int bufferSize, int nChannels ) {
- 
- }
- */

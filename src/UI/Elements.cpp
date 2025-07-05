@@ -80,16 +80,39 @@ Slider::Slider(
     caption = _caption;
     min = _min;
     max = _max;
+    observedValue = nullptr;
     setValue(_value);
     callback = _callback;
 }
+
+Slider::Slider(
+       string _caption,
+       float *value,
+       float _min,
+       float _max
+       ) {
+    caption = _caption;
+    observedValue = value;
+    setValue(*observedValue);
+    max = _max;
+    min = _min;
+}
+
 void Slider::setValue(float _value) {
     value = ofClamp(_value, min, max);
 }
+
 void Slider::draw(Primitives primitives) {
     ofColor bgColor = getBackgroundColorForState(primitives, state);
+    
+    /// Updates the slider''s value if it is set to be used in observer mode
+    if(observedValue) {
+        value = *observedValue;
+    }
+    
     primitives.slider(rect, caption, value, min, max, bgColor);
 }
+
 void Slider::update(int mouseX, int mouseY, bool button1, bool button2) {
     Element::update(mouseX, mouseY, button1, button2);
     if (state == ElementState::Idle || state == ElementState::Hover) {
@@ -101,6 +124,10 @@ void Slider::update(int mouseX, int mouseY, bool button1, bool button2) {
     
     if (state == ElementState::Clicked && callback) {
         callback(this);
+    }
+    
+    if (observedValue) {
+        *observedValue = value;
     }
 }
 

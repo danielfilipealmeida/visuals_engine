@@ -18,9 +18,8 @@ struct MIDIAction {
     int portNum;
 } ;
 
-/**
- Class wrapper for controlling MIDI using the singleton pattern
- */
+///
+/// \brief Class wrapper for controlling MIDI using the singleton pattern
 class MIDI : public ofxMidiListener {
     ofxMidiIn midiIn;
     std::vector<ofxMidiMessage> midiMessages;
@@ -34,15 +33,15 @@ public:
     MIDI(const MIDI&) = delete;
     MIDI& operator=(const MIDI&) = delete;
     
-    //! Returns the instance of the MIDI singleton
+    /// \brief Returns the instance of the MIDI singleton
     static MIDI& getInstance() {
         static MIDI instance;
         return instance;
     }
     
     
-    /// Setups up midi to the selected port
-    /// @param {unsigned int} port - the port
+    /// \brief setups up midi to the selected port
+    /// \param {unsigned int} port - the port
     void setup(unsigned int port) {
         midiIn.openPort(port);
         midiIn.ignoreTypes(false, false, false);

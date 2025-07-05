@@ -47,6 +47,15 @@ public:
     void setCallback(std::function<void(T)> _callback) {
         callback = _callback;
     }
+    
+    /// \brief defines a callback calculator that will return always a the same value
+    ///
+    /// \param {T} value - the value to always return:w
+    void setConstantValue(T value) {
+        callback = [value](T) {
+            return value;
+        };
+    }
 };
 
 /***

@@ -9,6 +9,7 @@
 #include "Engine/Set.hpp"
 #include "UserInterface.hpp"
 #include "MIDI.hpp"
+#include "State.hpp"
 
 
 class ofApp : public ofBaseApp, public Observer<ofxMidiMessage> {
@@ -26,6 +27,7 @@ class ofApp : public ofBaseApp, public Observer<ofxMidiMessage> {
     
     UserInterface userInterface;
 
+    State state;
     
 	public:
 		void setup();

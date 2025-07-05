@@ -9,6 +9,7 @@
 #include "Layer.hpp"
 #include "ofMain.h"
 
+
 Layer::Layer(
              VisualsInterface* _visual,
              float _alpha,

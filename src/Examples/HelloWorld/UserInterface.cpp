@@ -11,8 +11,11 @@ void UserInterface::setup(
                           ofRectangle rect,
                           Mixer *mixer,
                           Signal<float> *signal1,
-                          Signal<float> *signal2
+                          Signal<float> *signal2,
+                          State *state
                           ) {
+    this->state = state;
+    
     horizontalSplitter.addColumn(UI::CREATE<UI::Container>({
         new UI::Viewer<Mixer>(mixer, "Mixer", 100),
         new UI::Viewer<LayerStack>((LayerStack*) mixer->a, "A", 100),
@@ -29,7 +32,6 @@ void UserInterface::setup(
                        1.0,
                        [](UI::Element *element) {
                            UI::Slider* slider = static_cast<UI::Slider*>(element);
-                           std::cout << slider->value << std::endl;
                        }),
         
         new UI::Slider(
@@ -39,8 +41,13 @@ void UserInterface::setup(
                        10.0,
                        [](UI::Element *element) {
                            UI::Slider* slider = static_cast<UI::Slider*>(element);
-                           std::cout << slider->value << std::endl;
-                       })
+                       }),
+        
+        new UI::Slider(
+                       "Blur Amount",
+                       &state->blurAmount,
+                       0.0,
+                       10.0)
     }), 0.66);
     
     ui.rect = rect;
