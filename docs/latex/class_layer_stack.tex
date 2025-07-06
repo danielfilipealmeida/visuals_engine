@@ -1,0 +1,152 @@
+\doxysection{Layer\+Stack Class Reference}
+\hypertarget{class_layer_stack}{}\label{class_layer_stack}\index{LayerStack@{LayerStack}}
+
+
+{\ttfamily \#include $<$Layer.\+hpp$>$}
+
+Inheritance diagram for Layer\+Stack\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_layer_stack}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_layer_stack_a2e12bc8d2e79d50b6df3955dcff67658}{Layer\+Stack}} (float \+\_\+width, float \+\_\+height)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_layer_stack_ad7f0d161760624e28fffc4dfd671bba3}{update}} ()
+\begin{DoxyCompactList}\small\item\em update the layer stack by rendering to the FBO \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_layer_stack_a39f5ad3e996782d4b4c00aabb4efa7e9}{draw}} ()
+\begin{DoxyCompactList}\small\item\em update the layer stack by rendering to the FBO \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_layer_stack_a2102b0a28c8546b430e202458439c5f7}{draw}} (of\+Rectangle rect)
+\begin{DoxyCompactList}\small\item\em draw the FBO in the specified rect \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_layer_stack_a2aa682ce61634da888a009cb5eaf5170}{insert}} (\mbox{\hyperlink{class_layer}{Layer}} \texorpdfstring{$\ast$}{*}layer)
+\begin{DoxyCompactList}\small\item\em add a new layer to the stack \end{DoxyCompactList}\item 
+of\+Json \mbox{\hyperlink{class_layer_stack_a4422b3a49bb41c09253312a62ede0d2c}{encode}} ()
+\begin{DoxyCompactList}\small\item\em encode the data of the \doxylink{class_layer}{Layer} stack into a JSON \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_drawable}{Drawable}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_drawable_a9d48ab982709881874cf3377ece823dd}{set\+Rect}} (of\+Rectangle \+\_\+rect)
+\begin{DoxyCompactList}\small\item\em Sets internal rectangle definition. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_drawable}{Drawable}}}
+\begin{DoxyCompactItemize}
+\item 
+of\+Rectangle {\bfseries rect}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+@abstract Implements a stack of layers 
+
+\label{doc-constructors}
+\Hypertarget{class_layer_stack_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_layer_stack_a2e12bc8d2e79d50b6df3955dcff67658}\index{LayerStack@{LayerStack}!LayerStack@{LayerStack}}
+\index{LayerStack@{LayerStack}!LayerStack@{LayerStack}}
+\doxysubsubsection{\texorpdfstring{LayerStack()}{LayerStack()}}
+{\footnotesize\ttfamily \label{class_layer_stack_a2e12bc8d2e79d50b6df3955dcff67658} 
+Layer\+Stack\+::\+Layer\+Stack (\begin{DoxyParamCaption}\item[{float}]{\+\_\+width}{, }\item[{float}]{\+\_\+height}{}\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+\doxylink{class_layer}{Layer} Stack implementation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+width} & the width of the FBO \\
+\hline
+{\em \+\_\+height} & the height of the FBO \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_layer_stack_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_layer_stack_a39f5ad3e996782d4b4c00aabb4efa7e9}\index{LayerStack@{LayerStack}!draw@{draw}}
+\index{draw@{draw}!LayerStack@{LayerStack}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_layer_stack_a39f5ad3e996782d4b4c00aabb4efa7e9} 
+void Layer\+Stack\+::draw (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+update the layer stack by rendering to the FBO 
+
+
+
+Implements \mbox{\hyperlink{class_drawable_aa37d7b328240d343134adcfe5e4dcd38}{Drawable}}.
+
+\Hypertarget{class_layer_stack_a2102b0a28c8546b430e202458439c5f7}\index{LayerStack@{LayerStack}!draw@{draw}}
+\index{draw@{draw}!LayerStack@{LayerStack}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_layer_stack_a2102b0a28c8546b430e202458439c5f7} 
+void Layer\+Stack\+::draw (\begin{DoxyParamCaption}\item[{of\+Rectangle}]{rect}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+draw the FBO in the specified rect 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rect} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_drawable_ac49bac4bc279e48e1ae700c86c1527d0}{Drawable}}.
+
+\Hypertarget{class_layer_stack_a4422b3a49bb41c09253312a62ede0d2c}\index{LayerStack@{LayerStack}!encode@{encode}}
+\index{encode@{encode}!LayerStack@{LayerStack}}
+\doxysubsubsection{\texorpdfstring{encode()}{encode()}}
+{\footnotesize\ttfamily \label{class_layer_stack_a4422b3a49bb41c09253312a62ede0d2c} 
+of\+Json Layer\+Stack\+::encode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+encode the data of the \doxylink{class_layer}{Layer} stack into a JSON 
+
+
+
+Implements \mbox{\hyperlink{class_encodable_af3e56dde52afad14fdd60dab638020fa}{Encodable}}.
+
+\Hypertarget{class_layer_stack_a2aa682ce61634da888a009cb5eaf5170}\index{LayerStack@{LayerStack}!insert@{insert}}
+\index{insert@{insert}!LayerStack@{LayerStack}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily \label{class_layer_stack_a2aa682ce61634da888a009cb5eaf5170} 
+void Layer\+Stack\+::insert (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_layer}{Layer}} \texorpdfstring{$\ast$}{*}}]{layer}{}\end{DoxyParamCaption})}
+
+
+
+add a new layer to the stack 
+
+
+\begin{DoxyParams}{Parameters}
+{\em visual} & a pointer to a layer \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_layer_stack_ad7f0d161760624e28fffc4dfd671bba3}\index{LayerStack@{LayerStack}!update@{update}}
+\index{update@{update}!LayerStack@{LayerStack}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_layer_stack_ad7f0d161760624e28fffc4dfd671bba3} 
+void Layer\+Stack\+::update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+update the layer stack by rendering to the FBO 
+
+
+
+Implements \mbox{\hyperlink{class_drawable_aced52a49793b1902dd96eb46f61d30f4}{Drawable}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Engine/Layer.\+hpp\item 
+src/\+Engine/Layer.\+cpp\end{DoxyCompactItemize}

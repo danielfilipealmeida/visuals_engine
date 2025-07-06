@@ -1,0 +1,133 @@
+\doxysection{MIDI Class Reference}
+\hypertarget{class_m_i_d_i}{}\label{class_m_i_d_i}\index{MIDI@{MIDI}}
+
+
+Class wrapper for controlling \doxylink{class_m_i_d_i}{MIDI} using the singleton pattern.  
+
+
+
+
+{\ttfamily \#include $<$MIDI.\+hpp$>$}
+
+Inheritance diagram for MIDI\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_m_i_d_i}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_m_i_d_i_a32d656c535f955feb0fc29e92281e49e}\label{class_m_i_d_i_a32d656c535f955feb0fc29e92281e49e} 
+{\bfseries MIDI} (const \mbox{\hyperlink{class_m_i_d_i}{MIDI}} \&)=delete
+\item 
+\Hypertarget{class_m_i_d_i_aad64b5a5cf00f39cfb43064d4a22049a}\label{class_m_i_d_i_aad64b5a5cf00f39cfb43064d4a22049a} 
+\mbox{\hyperlink{class_m_i_d_i}{MIDI}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_m_i_d_i}{MIDI}} \&)=delete
+\item 
+void \mbox{\hyperlink{class_m_i_d_i_a23e73b904874f41682ddb7f7acafb8a5}{setup}} (unsigned int port)
+\begin{DoxyCompactList}\small\item\em setups up midi to the selected port \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_m_i_d_i_a57700c29ca2ce2b62fd823a16f8b1230}{update}} ()
+\begin{DoxyCompactList}\small\item\em Handles update. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_m_i_d_i_a5167695cb8921752f5da0befc9944c6a}{new\+Midi\+Message}} (ofx\+Midi\+Message \&message)
+\begin{DoxyCompactList}\small\item\em Handles new Midi Message comming in. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_m_i_d_i_a4862ef2c14cd9c48bbc7969c9ddcc39b}{regist}} (\mbox{\hyperlink{struct_m_i_d_i_action}{MIDIAction}} action, std\+::function$<$ void(ofx\+Midi\+Message)$>$ lambda)
+\begin{DoxyCompactList}\small\item\em add a new observer to midi. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_m_i_d_i_a1a07891753c5357245bc003d345d77a2}{notify}} (ofx\+Midi\+Message message)
+\begin{DoxyCompactList}\small\item\em Traverse all observers and execute all anonymous functions triggered by the current message. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_m_i_d_i_a3f9f8c4b3107a72505a80e7ceab6f2b3}\label{class_m_i_d_i_a3f9f8c4b3107a72505a80e7ceab6f2b3} 
+static \mbox{\hyperlink{class_m_i_d_i}{MIDI}} \& {\bfseries get\+Instance} ()
+\begin{DoxyCompactList}\small\item\em Returns the instance of the \doxylink{class_m_i_d_i}{MIDI} singleton. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_m_i_d_i_aa74b4458b502b2c435064de581d4c399}\label{class_m_i_d_i_aa74b4458b502b2c435064de581d4c399} 
+bool {\bfseries debug} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class wrapper for controlling \doxylink{class_m_i_d_i}{MIDI} using the singleton pattern. 
+
+\label{doc-func-members}
+\Hypertarget{class_m_i_d_i_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_m_i_d_i_a5167695cb8921752f5da0befc9944c6a}\index{MIDI@{MIDI}!newMidiMessage@{newMidiMessage}}
+\index{newMidiMessage@{newMidiMessage}!MIDI@{MIDI}}
+\doxysubsubsection{\texorpdfstring{newMidiMessage()}{newMidiMessage()}}
+{\footnotesize\ttfamily \label{class_m_i_d_i_a5167695cb8921752f5da0befc9944c6a} 
+void MIDI\+::new\+Midi\+Message (\begin{DoxyParamCaption}\item[{ofx\+Midi\+Message \&}]{message}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Handles new Midi Message comming in. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{ofx\+Midi\+Message\}} & messate -\/ the new midi message \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_m_i_d_i_a1a07891753c5357245bc003d345d77a2}\index{MIDI@{MIDI}!notify@{notify}}
+\index{notify@{notify}!MIDI@{MIDI}}
+\doxysubsubsection{\texorpdfstring{notify()}{notify()}}
+{\footnotesize\ttfamily \label{class_m_i_d_i_a1a07891753c5357245bc003d345d77a2} 
+void MIDI\+::notify (\begin{DoxyParamCaption}\item[{ofx\+Midi\+Message}]{message}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Traverse all observers and execute all anonymous functions triggered by the current message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & -\/ the current midi message being handled \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_m_i_d_i_a4862ef2c14cd9c48bbc7969c9ddcc39b}\index{MIDI@{MIDI}!regist@{regist}}
+\index{regist@{regist}!MIDI@{MIDI}}
+\doxysubsubsection{\texorpdfstring{regist()}{regist()}}
+{\footnotesize\ttfamily \label{class_m_i_d_i_a4862ef2c14cd9c48bbc7969c9ddcc39b} 
+void MIDI\+::regist (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_m_i_d_i_action}{MIDIAction}}}]{action}{, }\item[{std\+::function$<$ void(ofx\+Midi\+Message)$>$}]{lambda}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+add a new observer to midi. 
+
+\textbackslash{}abstract everytime the action condition is meet, the lambda is executed with the message 
+\begin{DoxyParams}{Parameters}
+{\em action} & -\/ the condition fot the midi action \\
+\hline
+{\em lambda} & -\/ the anonymous function to be executed with the midi message as argument \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_m_i_d_i_a23e73b904874f41682ddb7f7acafb8a5}\index{MIDI@{MIDI}!setup@{setup}}
+\index{setup@{setup}!MIDI@{MIDI}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily \label{class_m_i_d_i_a23e73b904874f41682ddb7f7acafb8a5} 
+void MIDI\+::setup (\begin{DoxyParamCaption}\item[{unsigned int}]{port}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+setups up midi to the selected port 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{unsigned} & int\} port -\/ the port \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_m_i_d_i_a57700c29ca2ce2b62fd823a16f8b1230}\index{MIDI@{MIDI}!update@{update}}
+\index{update@{update}!MIDI@{MIDI}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_m_i_d_i_a57700c29ca2ce2b62fd823a16f8b1230} 
+void MIDI\+::update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Handles update. 
+
+queued message handling
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Engine/\+Services/MIDI.\+hpp\end{DoxyCompactItemize}

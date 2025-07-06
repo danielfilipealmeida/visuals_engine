@@ -1,0 +1,101 @@
+\doxysection{UI\+::Container Class Reference}
+\hypertarget{class_u_i_1_1_container}{}\label{class_u_i_1_1_container}\index{UI::Container@{UI::Container}}
+
+
+An UI \doxylink{class_u_i_1_1_element}{Element} that Contains other Elements.  
+
+
+
+
+{\ttfamily \#include $<$Containers.\+hpp$>$}
+
+Inheritance diagram for UI\+::Container\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_u_i_1_1_container}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_u_i_1_1_container_a6e097c6ca50a019fd0328a3b66123b89}\label{class_u_i_1_1_container_a6e097c6ca50a019fd0328a3b66123b89} 
+void {\bfseries calculate} ()
+\item 
+\Hypertarget{class_u_i_1_1_container_a3ceed91b8de8de4330f9da30cf38b3a3}\label{class_u_i_1_1_container_a3ceed91b8de8de4330f9da30cf38b3a3} 
+void {\bfseries add} (\mbox{\hyperlink{class_u_i_1_1_element}{Element}} \texorpdfstring{$\ast$}{*}element)
+\item 
+void \mbox{\hyperlink{class_u_i_1_1_container_ae1cce81e56f5310b55765ea31d9af6af}{draw}} (\mbox{\hyperlink{class_u_i_1_1_primitives}{Primitives}} primitives)
+\item 
+void \mbox{\hyperlink{class_u_i_1_1_container_ac6a2ac761755bbc49d9535dff4644707}{update}} (int mouseX, int mouseY, bool button1, bool button2)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_u_i_1_1_element}{UI\+::\+Element}}}
+\begin{DoxyCompactItemize}
+\item 
+of\+Color {\bfseries get\+Background\+Color\+For\+State} (\mbox{\hyperlink{class_u_i_1_1_primitives}{Primitives}} primitives, Element\+State state)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_u_i_1_1_container_a0ca9322c134e4c4aeccf44da8e8ddbb8}\label{class_u_i_1_1_container_a0ca9322c134e4c4aeccf44da8e8ddbb8} 
+Element\+Packing\+Direction {\bfseries packing\+Direction} = Element\+Packing\+Direction\+::\+Vertical
+\item 
+\Hypertarget{class_u_i_1_1_container_af6f843bbc500aabe4857cd5088c95ce7}\label{class_u_i_1_1_container_af6f843bbc500aabe4857cd5088c95ce7} 
+std\+::vector$<$ \mbox{\hyperlink{class_u_i_1_1_element}{Element}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries children}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_u_i_1_1_element}{UI\+::\+Element}}}
+\begin{DoxyCompactItemize}
+\item 
+Element\+State {\bfseries state}
+\item 
+of\+Rectangle {\bfseries rect}
+\item 
+float {\bfseries padding} = DEFAULT\+\_\+\+UI\+\_\+\+PADDING
+\item 
+float {\bfseries height} = DEFAULT\+\_\+\+UI\+\_\+\+ELEMENT\+\_\+\+HEIGHT
+\item 
+int {\bfseries previous\+MouseX}
+\item 
+int {\bfseries previous\+MouseY}
+\item 
+bool {\bfseries previous\+Button1} = false
+\item 
+bool {\bfseries previous\+Button2} = false
+\item 
+std\+::function$<$ void(\mbox{\hyperlink{class_u_i_1_1_element}{Element}} \texorpdfstring{$\ast$}{*})$>$ {\bfseries callback}
+\item 
+bool {\bfseries expandY} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An UI \doxylink{class_u_i_1_1_element}{Element} that Contains other Elements. 
+
+\label{doc-func-members}
+\Hypertarget{class_u_i_1_1_container_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_u_i_1_1_container_ae1cce81e56f5310b55765ea31d9af6af}\index{UI::Container@{UI::Container}!draw@{draw}}
+\index{draw@{draw}!UI::Container@{UI::Container}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily \label{class_u_i_1_1_container_ae1cce81e56f5310b55765ea31d9af6af} 
+void Container\+::draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_u_i_1_1_primitives}{Primitives}}}]{primitives}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_u_i_1_1_element}{UI\+::\+Element}}.
+
+\Hypertarget{class_u_i_1_1_container_ac6a2ac761755bbc49d9535dff4644707}\index{UI::Container@{UI::Container}!update@{update}}
+\index{update@{update}!UI::Container@{UI::Container}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_u_i_1_1_container_ac6a2ac761755bbc49d9535dff4644707} 
+void Container\+::update (\begin{DoxyParamCaption}\item[{int}]{mouseX}{, }\item[{int}]{mouseY}{, }\item[{bool}]{button1}{, }\item[{bool}]{button2}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_u_i_1_1_element}{UI\+::\+Element}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+UI/Containers.\+hpp\item 
+src/\+UI/Containers.\+cpp\end{DoxyCompactItemize}

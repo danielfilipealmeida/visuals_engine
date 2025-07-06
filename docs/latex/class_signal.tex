@@ -1,0 +1,102 @@
+\doxysection{Signal\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_signal}{}\label{class_signal}\index{Signal$<$ T $>$@{Signal$<$ T $>$}}
+
+
+\doxylink{class_signal}{Signal} template. will receive any value type and be configured with a callback that generates values with the template type.  
+
+
+
+
+{\ttfamily \#include $<$Signals.\+hpp$>$}
+
+Inheritance diagram for Signal\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_signal}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_signal_a7b11fe437e60dd98cd20ae0ab5e0e596}{set\+Calculator}} (std\+::function$<$ T()$>$ \+\_\+calculator)
+\begin{DoxyCompactList}\small\item\em Defines the anonymous function that will calculate the value in each update cycle. \end{DoxyCompactList}\item 
+\Hypertarget{class_signal_a77906b28809f72a2952d3fbd2b87b405}\label{class_signal_a77906b28809f72a2952d3fbd2b87b405} 
+void {\bfseries update} ()
+\begin{DoxyCompactList}\small\item\em Updates the signal by retrieving the value from the calculator and sending it to the callback if set. \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{class_signal_a4af58dfdc44d3b217f3f23f671167448}{get\+Value}} ()
+\begin{DoxyCompactList}\small\item\em Returns the current value of the signal. \end{DoxyCompactList}\item 
+\Hypertarget{class_signal_aa6c7db8a94c7044fe025a19b2ddce635}\label{class_signal_aa6c7db8a94c7044fe025a19b2ddce635} 
+void {\bfseries set\+Callback} (std\+::function$<$ void(T)$>$ \+\_\+callback)
+\begin{DoxyCompactList}\small\item\em Sets the callback to be executed on update. This callback receives the value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_signal_a7c9c1f0e22dc917c73179a80479e8b46}{set\+Constant\+Value}} (T value)
+\begin{DoxyCompactList}\small\item\em defines a callback calculator that will return always a the same value \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_subject}{Subject$<$ T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries regist} (\mbox{\hyperlink{class_observer}{Observer}}$<$ T $>$ \texorpdfstring{$\ast$}{*}observer, std\+::string key)
+\item 
+void {\bfseries regist} (\mbox{\hyperlink{class_observer}{Observer}}$<$ T $>$ \texorpdfstring{$\ast$}{*}observer, std\+::function$<$ void(\mbox{\hyperlink{class_observer}{Observer}}$<$ T $>$)$>$ lambda)
+\item 
+void {\bfseries notify} (T val)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class Signal$<$ T $>$}
+\doxylink{class_signal}{Signal} template. will receive any value type and be configured with a callback that generates values with the template type. 
+
+\label{doc-func-members}
+\Hypertarget{class_signal_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_signal_a4af58dfdc44d3b217f3f23f671167448}\index{Signal$<$ T $>$@{Signal$<$ T $>$}!getValue@{getValue}}
+\index{getValue@{getValue}!Signal$<$ T $>$@{Signal$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getValue()}{getValue()}}
+{\footnotesize\ttfamily \label{class_signal_a4af58dfdc44d3b217f3f23f671167448} 
+template$<$class T$>$ \\
+T \mbox{\hyperlink{class_signal}{Signal}}$<$ T $>$\+::get\+Value (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the current value of the signal. 
+
+\begin{DoxyReturn}{Returns}
+the current value 
+\end{DoxyReturn}
+\Hypertarget{class_signal_a7b11fe437e60dd98cd20ae0ab5e0e596}\index{Signal$<$ T $>$@{Signal$<$ T $>$}!setCalculator@{setCalculator}}
+\index{setCalculator@{setCalculator}!Signal$<$ T $>$@{Signal$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{setCalculator()}{setCalculator()}}
+{\footnotesize\ttfamily \label{class_signal_a7b11fe437e60dd98cd20ae0ab5e0e596} 
+template$<$class T$>$ \\
+void \mbox{\hyperlink{class_signal}{Signal}}$<$ T $>$\+::set\+Calculator (\begin{DoxyParamCaption}\item[{std\+::function$<$ T()$>$}]{\+\_\+calculator}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Defines the anonymous function that will calculate the value in each update cycle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+calculator} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_signal_a7c9c1f0e22dc917c73179a80479e8b46}\index{Signal$<$ T $>$@{Signal$<$ T $>$}!setConstantValue@{setConstantValue}}
+\index{setConstantValue@{setConstantValue}!Signal$<$ T $>$@{Signal$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{setConstantValue()}{setConstantValue()}}
+{\footnotesize\ttfamily \label{class_signal_a7c9c1f0e22dc917c73179a80479e8b46} 
+template$<$class T$>$ \\
+void \mbox{\hyperlink{class_signal}{Signal}}$<$ T $>$\+::set\+Constant\+Value (\begin{DoxyParamCaption}\item[{T}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+defines a callback calculator that will return always a the same value 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{\+T\}} & value -\/ the value to always return\+:w \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Engine/\+Elements/Signals.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,131 @@
+\doxysection{Drawable Class Reference}
+\hypertarget{class_drawable}{}\label{class_drawable}\index{Drawable@{Drawable}}
+
+
+base-\/class/interface for all classes that will be drawed on-\/screen  
+
+
+
+
+{\ttfamily \#include $<$Base\+Classes.\+hpp$>$}
+
+Inheritance diagram for Drawable\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.250000cm]{class_drawable}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_drawable_aced52a49793b1902dd96eb46f61d30f4}{update}} ()=0
+\begin{DoxyCompactList}\small\item\em Executed on every frame, before drawing. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_drawable_aa37d7b328240d343134adcfe5e4dcd38}{draw}} ()=0
+\begin{DoxyCompactList}\small\item\em Draws the object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_drawable_ac49bac4bc279e48e1ae700c86c1527d0}{draw}} (of\+Rectangle \+\_\+rect)=0
+\begin{DoxyCompactList}\small\item\em Draws the object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drawable_a9d48ab982709881874cf3377ece823dd}{set\+Rect}} (of\+Rectangle \+\_\+rect)
+\begin{DoxyCompactList}\small\item\em Sets internal rectangle definition. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_drawable_ae468ec29e2d97847ce1ba522924ff79d}\label{class_drawable_ae468ec29e2d97847ce1ba522924ff79d} 
+of\+Rectangle {\bfseries rect}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+base-\/class/interface for all classes that will be drawed on-\/screen 
+
+All classes that will be drawn should inherit from \doxylink{class_drawable}{Drawable} and implement all the virtual virtual methods 
+
+\label{doc-func-members}
+\Hypertarget{class_drawable_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_drawable_aa37d7b328240d343134adcfe5e4dcd38}\index{Drawable@{Drawable}!draw@{draw}}
+\index{draw@{draw}!Drawable@{Drawable}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_drawable_aa37d7b328240d343134adcfe5e4dcd38} 
+virtual void Drawable\+::draw (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Draws the object. 
+
+This method for drawing the has no rectangle parameters, so it will use de stored rectangle in {\ttfamily this.\+rect}.
+
+\begin{DoxyNote}{Note}
+This virtual method must be implemented on the class that inherits this class 
+\end{DoxyNote}
+
+
+Implemented in \mbox{\hyperlink{class_buffer_plotter_a10136b96660b3c6e87056e007d663fdf}{Buffer\+Plotter}}, \mbox{\hyperlink{class_g_l_s_l_transformation_decorator_a47fe3d0a9a451a2a9c9fff845775d9b3}{GLSLTransformation\+Decorator}}, \mbox{\hyperlink{class_layer_ac1ee7fa15f5e82285c33f04f6b5924e2}{Layer}}, \mbox{\hyperlink{class_layer_stack_a39f5ad3e996782d4b4c00aabb4efa7e9}{Layer\+Stack}}, \mbox{\hyperlink{class_mixer_aefdef4998214bb0e907af6c4fd0fee2a}{Mixer}}, \mbox{\hyperlink{class_signal_plotter_a91b9d2e81b312fe1e4b911c1efa9d5b4}{Signal\+Plotter}}, and \mbox{\hyperlink{class_visual_a43c5ac051a4dda9e69154f699ba3f5be}{Visual$<$ T $>$}}.
+
+\Hypertarget{class_drawable_ac49bac4bc279e48e1ae700c86c1527d0}\index{Drawable@{Drawable}!draw@{draw}}
+\index{draw@{draw}!Drawable@{Drawable}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_drawable_ac49bac4bc279e48e1ae700c86c1527d0} 
+virtual void Drawable\+::draw (\begin{DoxyParamCaption}\item[{of\+Rectangle}]{\+\_\+rect}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Draws the object. 
+
+The Draw function should be executed on every frame and will draw the content of the drawable object. This is executed on the main application {\ttfamily \doxylink{class_drawable_aa37d7b328240d343134adcfe5e4dcd38}{draw()}} function. This {\ttfamily draw} method has the rectangle as a parameter and will use this instead of the internal {\ttfamily this.\+rect}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+rect} & -\/ the rectangular area where to draw into\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+This virtual method must be implemented on the class that inherits this class 
+\end{DoxyNote}
+
+
+Implemented in \mbox{\hyperlink{class_buffer_plotter_ac81923c192867274ce1ade64fa87e816}{Buffer\+Plotter}}, \mbox{\hyperlink{class_g_l_s_l_transformation_decorator_a7c07bdda7ee4b3e06680d89b2a7e1f0e}{GLSLTransformation\+Decorator}}, \mbox{\hyperlink{class_layer_abf59f19798dd96d0b1e97cde56242ac2}{Layer}}, \mbox{\hyperlink{class_layer_stack_a2102b0a28c8546b430e202458439c5f7}{Layer\+Stack}}, \mbox{\hyperlink{class_mixer_ad3b9ce7b9651a34b413220994e931418}{Mixer}}, \mbox{\hyperlink{class_signal_plotter_a1f07c4f3205e09402a88268c2fa5866d}{Signal\+Plotter}}, and \mbox{\hyperlink{class_visual_ac0a8aae220d0d72e118029d7211cdc9c}{Visual$<$ T $>$}}.
+
+\Hypertarget{class_drawable_a9d48ab982709881874cf3377ece823dd}\index{Drawable@{Drawable}!setRect@{setRect}}
+\index{setRect@{setRect}!Drawable@{Drawable}}
+\doxysubsubsection{\texorpdfstring{setRect()}{setRect()}}
+{\footnotesize\ttfamily \label{class_drawable_a9d48ab982709881874cf3377ece823dd} 
+void Drawable\+::set\+Rect (\begin{DoxyParamCaption}\item[{of\+Rectangle}]{\+\_\+rect}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets internal rectangle definition. 
+
+Sets the internal {\ttfamily this.\+rect} variable, that is used with {\ttfamily this.\+draw()}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+rect} & -\/ the rectangular area where to draw into\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+This virtual method must be implemented on the class that inherits this class 
+\end{DoxyNote}
+\Hypertarget{class_drawable_aced52a49793b1902dd96eb46f61d30f4}\index{Drawable@{Drawable}!update@{update}}
+\index{update@{update}!Drawable@{Drawable}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_drawable_aced52a49793b1902dd96eb46f61d30f4} 
+virtual void Drawable\+::update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Executed on every frame, before drawing. 
+
+All major processing should be done here, while the draw function should just draw the frame that generated here
+
+\begin{DoxyNote}{Note}
+This virtual method must be implemented on the class that inherits this class 
+\end{DoxyNote}
+
+
+Implemented in \mbox{\hyperlink{class_buffer_plotter_ac1e00ce462f73b4ca84232a885f8798b}{Buffer\+Plotter}}, \mbox{\hyperlink{class_g_l_s_l_transformation_decorator_a99d8219c4bf640d79598eff426d9ebaa}{GLSLTransformation\+Decorator}}, \mbox{\hyperlink{class_layer_a4243d1a4b059eb7433cbfe7cdfc2c191}{Layer}}, \mbox{\hyperlink{class_layer_stack_ad7f0d161760624e28fffc4dfd671bba3}{Layer\+Stack}}, \mbox{\hyperlink{class_mixer_af6df657a8d334e5bcd2dbb9a78cab241}{Mixer}}, \mbox{\hyperlink{class_signal_plotter_af453d2f2422cd7dbc8c3631b2857581f}{Signal\+Plotter}}, and \mbox{\hyperlink{class_visual_a9787a8ca4af1d79979d874c058f22035}{Visual$<$ T $>$}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Engine/\+Elements/Base\+Classes.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,52 @@
+\doxysection{Signal\+Plotter.\+hpp}
+\hypertarget{_signal_plotter_8hpp_source}{}\label{_signal_plotter_8hpp_source}\index{src/Engine/Plotters/SignalPlotter.hpp@{src/Engine/Plotters/SignalPlotter.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ SignalPlotter.hpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ VisualsEngine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ Created\ by\ Daniel\ Almeida\ on\ 13/01/2025.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_\_SignalPlotter\_H\_\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_\_SignalPlotter\_H\_\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}BaseClasses.hpp"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}ofMain.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}Signals.hpp"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}Plotter.hpp"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }SignalPlotter:\ \textcolor{keyword}{public}\ Plotter\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{class_signal}{Signal<float>}}\ *\mbox{\hyperlink{class_signal_plotter_ae0c2f493eed9d59363976482be36c449}{signal}};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_signal_plotter_a6bc3e9c91412849ef8318e25cd8d91dd}{nSamples}};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00035\ \ \ \ \ vector<float>\ \mbox{\hyperlink{class_signal_plotter_a54f6224a6f2dae4b3464a30d37f9c839}{samples}};}
+\DoxyCodeLine{00036\ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ SignalPlotter()\{\};}
+\DoxyCodeLine{00038\ \ \ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{class_signal_plotter}{SignalPlotter}}(\mbox{\hyperlink{class_signal}{Signal<float>}}\ *\_signal,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \_nSamples=32,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \_width=640,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \_height=480);}
+\DoxyCodeLine{00046\ \ \ \ \ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_signal_plotter_af453d2f2422cd7dbc8c3631b2857581f}{update}}();}
+\DoxyCodeLine{00052\ \ \ \ \ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_signal_plotter_a91b9d2e81b312fe1e4b911c1efa9d5b4}{draw}}();}
+\DoxyCodeLine{00058\ \ \ \ \ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_signal_plotter_a91b9d2e81b312fe1e4b911c1efa9d5b4}{draw}}(ofRectangle\ \_rect);}
+\DoxyCodeLine{00064\ \ \ \ \ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_signal_plotter_a923f47d261d6bbe15486c81c44995d7d}{play}}();}
+\DoxyCodeLine{00069\ \ \ \ \ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_signal_plotter_a0b12ee317c53b4ec26ed70f9ddc7bd54}{stop}}();}
+\DoxyCodeLine{00074\ \ \ \ \ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_signal_plotter_a6bf741d95fa0789e88329dcb323294e8}{getWidth}}();}
+\DoxyCodeLine{00079\ \ \ \ \ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_signal_plotter_ab268fdb00ebe658e643e3063c75e2c00}{getHeight}}();}
+\DoxyCodeLine{00084\ \};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

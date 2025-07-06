@@ -1,0 +1,89 @@
+\doxysection{Primitives.\+hpp}
+\hypertarget{_primitives_8hpp_source}{}\label{_primitives_8hpp_source}\index{src/UI/Primitives.hpp@{src/UI/Primitives.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ Elements.hpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ emptyExample}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ Created\ by\ Daniel\ Almeida\ on\ 28/12/2024.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ \_\_ui\_primitives\_hpp\_\_}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ \_\_ui\_primitives\_hpp\_\_}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}ofMain.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{namespace\ }UI\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ DEFAULT\_FONT\_SIZE\ 14}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{enum\ class}\ HorizontalAlign\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ Left,\ Center,\ Right}
+\DoxyCodeLine{00020\ \};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{enum\ class}\ VerticalAlign\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ Top,\ Center,\ Bottom}
+\DoxyCodeLine{00024\ \};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{enum\ class}\ TemplateField\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ PrimaryColor,}
+\DoxyCodeLine{00028\ \ \ \ \ BackgroundColor,}
+\DoxyCodeLine{00029\ \ \ \ \ SecundaryColor,}
+\DoxyCodeLine{00030\ \ \ \ \ HighlightedPrimaryColor,}
+\DoxyCodeLine{00031\ \ \ \ \ DarkenPrimaryColor,}
+\DoxyCodeLine{00032\ \ \ \ \ TextColor}
+\DoxyCodeLine{00033\ \};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{class\ }Primitives\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ ofTrueTypeFont\ font;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00039\ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ std::map<TemplateField,\ ofColor>\ uiTemplate;}
+\DoxyCodeLine{00041\ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ Primitives();}
+\DoxyCodeLine{00043\ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ Drawing\ helpers}}
+\DoxyCodeLine{00045\ \ \ \ \ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_i_1_1_primitives_a4cec3013ce2bc2e037045ded74a1d8f2}{centeredText}}(ofRectangle\ rect,\ \textcolor{keywordtype}{string}\ text);}
+\DoxyCodeLine{00051\ \ \ \ \ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_i_1_1_primitives_aabb3eb663bdba0acee924af178c01862}{alignedText}}(ofRectangle\ rect,\ \textcolor{keywordtype}{string}\ text,\ HorizontalAlign\ hAlign,\ VerticalAlign\ vAlign);}
+\DoxyCodeLine{00059\ \ \ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ ofRectangle\ \mbox{\hyperlink{class_u_i_1_1_primitives_ae9096913d5ed6774476b4ef17decaf2d}{shrinkRectangle}}(ofRectangle\ rect,\ \textcolor{keywordtype}{float}\ pixels);}
+\DoxyCodeLine{00065\ \ \ \ \ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{comment}{//\ Widgets}}
+\DoxyCodeLine{00067\ \ \ \ \ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_i_1_1_primitives_a75cc7467eca29744491c08c7da766aa6}{button}}(ofRectangle\ rect,\ \textcolor{keywordtype}{string}\ title,\ ofColor\ bgColor);}
+\DoxyCodeLine{00074\ \ \ \ \ }
+\DoxyCodeLine{00075\ \ \ \ \ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_i_1_1_primitives_a57139696b9e833d2e3db9d2784dbcef8}{slider}}(ofRectangle\ rect,\ \textcolor{keywordtype}{string}\ title,\ \textcolor{keywordtype}{float}\ value,\ \textcolor{keywordtype}{float}\ min,\ \textcolor{keywordtype}{float}\ max,\ ofColor\ bgColor);}
+\DoxyCodeLine{00084\ \ \ \ \ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_i_1_1_primitives_aa3048507f11b5bcc45c0bbca576033d3}{crossFader}}(ofRectangle\ rect,\ \textcolor{keywordtype}{string}\ title,\ \textcolor{keywordtype}{float}\ value,\ ofColor\ bgColor);}
+\DoxyCodeLine{00093\ \ \ \ \ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_i_1_1_primitives_afe087bd1d790e53d95a6dd0a866d7795}{textBox}}(ofRectangle\ rect,\ \textcolor{keywordtype}{string}\ text);}
+\DoxyCodeLine{00099\ \ \ \ \ }
+\DoxyCodeLine{00100\ \ \ \ \ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_i_1_1_primitives_a6b8a2e83740f2fc1f0a2053e71a8ef3f}{label}}(ofRectangle\ rect,}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ text,}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HorizontalAlign\ align\ =\ HorizontalAlign::Left);}
+\DoxyCodeLine{00109\ \ \ \ \ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{comment}{//\ other\ methods}}
+\DoxyCodeLine{00111\ \ \ \ \ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_i_1_1_primitives_af9cd32105ee78669f5269aaa2920c40a}{setDefaultTemplate}}();}
+\DoxyCodeLine{00114\ \ \ \ \ }
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_i_1_1_primitives_ab5e42a69237f8a55f279d093c2687c70}{generateTemplate}}(ofColor\ primaryColor,}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ofColor\ secundaryColor,}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ofColor\ textColor,}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ofColor\ backgroundColor,}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ contrast}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00128\ \ \ \ \ }
+\DoxyCodeLine{00129\ \};}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \}}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

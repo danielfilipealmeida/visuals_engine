@@ -7,6 +7,18 @@
 
 #include "UserInterface.hpp"
 
+void UserInterface::setupPreviews(Mixer *mixer,
+                                  Signal<float> *signal1,
+                                  Signal<float> *signal2) {
+    horizontalSplitter.addColumn(UI::CREATE<UI::Container>({
+        new UI::Viewer<Mixer>(mixer, "Mixer", 100),
+        new UI::Viewer<LayerStack>((LayerStack*) mixer->a, "A", 100),
+        new UI::Viewer<LayerStack>((LayerStack*) mixer->b, "B", 100)
+        
+    }), 0.33);
+}
+
+
 void UserInterface::setup(
                           ofRectangle rect,
                           Mixer *mixer,
@@ -16,12 +28,7 @@ void UserInterface::setup(
                           ) {
     this->state = state;
     
-    horizontalSplitter.addColumn(UI::CREATE<UI::Container>({
-        new UI::Viewer<Mixer>(mixer, "Mixer", 100),
-        new UI::Viewer<LayerStack>((LayerStack*) mixer->a, "A", 100),
-        new UI::Viewer<LayerStack>((LayerStack*) mixer->b, "B", 100)
-        
-    }), 0.33);
+    setupPreviews(mixer, signal1, signal2);
     
     horizontalSplitter.addColumn(UI::CREATE<UI::Container>({
 

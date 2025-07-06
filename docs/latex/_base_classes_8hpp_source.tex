@@ -1,0 +1,51 @@
+\doxysection{Base\+Classes.\+hpp}
+\hypertarget{_base_classes_8hpp_source}{}\label{_base_classes_8hpp_source}\index{src/Engine/Elements/BaseClasses.hpp@{src/Engine/Elements/BaseClasses.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ BaseClasses.hpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ emptyExample}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ Created\ by\ Daniel\ Almeida\ on\ 26/12/2024.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ BaseClasses\_hpp}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ BaseClasses\_hpp}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}ofMain.h"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_drawable}{Drawable}}\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ ofRectangle\ rect;}
+\DoxyCodeLine{00020\ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_drawable_aced52a49793b1902dd96eb46f61d30f4}{update}}()\ =\ 0;}
+\DoxyCodeLine{00027\ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_drawable_aa37d7b328240d343134adcfe5e4dcd38}{draw}}()\ =\ 0;}
+\DoxyCodeLine{00034\ \ \ \ \ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_drawable_ac49bac4bc279e48e1ae700c86c1527d0}{draw}}(ofRectangle\ \_rect)\ =\ 0;}
+\DoxyCodeLine{00044\ \ \ \ \ }
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#pragma\ mark\ Drawable\ -\/\ methods\ that\ are\ shared\ across\ all\ classes}}
+\DoxyCodeLine{00046\ \ \ \ \ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_drawable_a9d48ab982709881874cf3377ece823dd}{setRect}}(ofRectangle\ \_rect)\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ this-\/>rect\ =\ \_rect;}
+\DoxyCodeLine{00056\ \ \ \ \ \}}
+\DoxyCodeLine{00057\ \};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00061\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_encodable}{Encodable}}\ \{}
+\DoxyCodeLine{00062\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{virtual}\ ofJson\ \mbox{\hyperlink{class_encodable_af3e56dde52afad14fdd60dab638020fa}{encode}}()\ =\ 0;}
+\DoxyCodeLine{00066\ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00072\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_visuals_interface}{VisualsInterface}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_drawable}{Drawable}},\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_encodable}{Encodable}}\ \{}
+\DoxyCodeLine{00073\ \};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,90 @@
+\doxysection{UI\+::Viewer\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_u_i_1_1_viewer}{}\label{class_u_i_1_1_viewer}\index{UI::Viewer$<$ T $>$@{UI::Viewer$<$ T $>$}}
+
+
+Template to create a UI \doxylink{class_u_i_1_1_element}{Element} to draw any Open\+Frameworks object that has a {\ttfamily draw} method.  
+
+
+
+
+{\ttfamily \#include $<$Elements.\+hpp$>$}
+
+Inheritance diagram for UI\+::Viewer\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_u_i_1_1_viewer}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_u_i_1_1_viewer_ae72209bd64b23e5d48a9b01821503e69}\label{class_u_i_1_1_viewer_ae72209bd64b23e5d48a9b01821503e69} 
+{\bfseries Viewer} (T \texorpdfstring{$\ast$}{*}\+\_\+obj, string \+\_\+title="{}"{}, float \+\_\+height=NULL)
+\item 
+void \mbox{\hyperlink{class_u_i_1_1_viewer_acf09d5e8382e6d4d1ce15deb68544fc9}{draw}} (\mbox{\hyperlink{class_u_i_1_1_primitives}{Primitives}} primitives)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_u_i_1_1_element}{UI\+::\+Element}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void {\bfseries update} (int mouseX, int mouseY, bool button1, bool button2)
+\item 
+of\+Color {\bfseries get\+Background\+Color\+For\+State} (\mbox{\hyperlink{class_u_i_1_1_primitives}{Primitives}} primitives, Element\+State state)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_u_i_1_1_viewer_a70860a5c04c39fde0db958d25489e13b}\label{class_u_i_1_1_viewer_a70860a5c04c39fde0db958d25489e13b} 
+T \texorpdfstring{$\ast$}{*} {\bfseries obj}
+\item 
+\Hypertarget{class_u_i_1_1_viewer_a54534b2d0f3e3ad8f19062c525170d7b}\label{class_u_i_1_1_viewer_a54534b2d0f3e3ad8f19062c525170d7b} 
+string {\bfseries title}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_u_i_1_1_element}{UI\+::\+Element}}}
+\begin{DoxyCompactItemize}
+\item 
+Element\+State {\bfseries state}
+\item 
+of\+Rectangle {\bfseries rect}
+\item 
+float {\bfseries padding} = DEFAULT\+\_\+\+UI\+\_\+\+PADDING
+\item 
+float {\bfseries height} = DEFAULT\+\_\+\+UI\+\_\+\+ELEMENT\+\_\+\+HEIGHT
+\item 
+int {\bfseries previous\+MouseX}
+\item 
+int {\bfseries previous\+MouseY}
+\item 
+bool {\bfseries previous\+Button1} = false
+\item 
+bool {\bfseries previous\+Button2} = false
+\item 
+std\+::function$<$ void(\mbox{\hyperlink{class_u_i_1_1_element}{Element}} \texorpdfstring{$\ast$}{*})$>$ {\bfseries callback}
+\item 
+bool {\bfseries expandY} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class UI\+::\+Viewer$<$ T $>$}
+Template to create a UI \doxylink{class_u_i_1_1_element}{Element} to draw any Open\+Frameworks object that has a {\ttfamily draw} method. 
+
+\label{doc-func-members}
+\Hypertarget{class_u_i_1_1_viewer_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_u_i_1_1_viewer_acf09d5e8382e6d4d1ce15deb68544fc9}\index{UI::Viewer$<$ T $>$@{UI::Viewer$<$ T $>$}!draw@{draw}}
+\index{draw@{draw}!UI::Viewer$<$ T $>$@{UI::Viewer$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily \label{class_u_i_1_1_viewer_acf09d5e8382e6d4d1ce15deb68544fc9} 
+template$<$class T$>$ \\
+void \mbox{\hyperlink{class_u_i_1_1_viewer}{UI\+::\+Viewer}}$<$ T $>$\+::draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_u_i_1_1_primitives}{Primitives}}}]{primitives}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_u_i_1_1_element}{UI\+::\+Element}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+UI/Elements.\+hpp\end{DoxyCompactItemize}

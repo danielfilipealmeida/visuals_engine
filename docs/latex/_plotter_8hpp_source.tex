@@ -1,0 +1,55 @@
+\doxysection{Plotter.\+hpp}
+\hypertarget{_plotter_8hpp_source}{}\label{_plotter_8hpp_source}\index{src/Engine/Plotters/Plotter.hpp@{src/Engine/Plotters/Plotter.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ Plotter.hpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ VisualsEngine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ Created\ by\ Daniel\ Almeida\ on\ 17/03/2025.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ \_\_Plotter\_Hpp\_\_}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ \_\_Plotter\_Hpp\_\_}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}BaseClasses.hpp"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}ofMain.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{enum\ class}\ PlotterMode\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ Dots,\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00022\ \ \ \ \ Lines,\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \ \ Steps,\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ FilledSteps,\ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ Wave,\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ VerticalLines\ \ \ }
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }Plotter\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_drawable}{Drawable}}\ \{}
+\DoxyCodeLine{00030\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ ofFbo\ \mbox{\hyperlink{class_plotter_a0bc8401b76cd13ee26b28ce80e3ebd93}{buffer}};}
+\DoxyCodeLine{00035\ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ ofColor\ \mbox{\hyperlink{class_plotter_ae08422f33ee63d9ade8fe8cf1ade5b5f}{color}};}
+\DoxyCodeLine{00039\ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_plotter_aad88b30e28b7a75d75b25fde49e4dd69}{sampleWidth}};}
+\DoxyCodeLine{00043\ \ \ \ \ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_plotter_a8463cc5430e96501b0f3c6b4459583c8}{lineWidth}};}
+\DoxyCodeLine{00047\ \ \ \ \ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_plotter_a7592e8d9ae36ee93720f6e27af75d648}{dotWidth}};}
+\DoxyCodeLine{00051\ \ \ \ \ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_plotter_a040e2958bbe81a812e2a84296f391b50}{gain}};}
+\DoxyCodeLine{00055\ \ \ \ \ }
+\DoxyCodeLine{00056\ \ \ \ \ Plotter();}
+\DoxyCodeLine{00057\ \ \ \ \ }
+\DoxyCodeLine{00060\ \ \ \ \ PlotterMode\ \mbox{\hyperlink{class_plotter_a3f38806fc65a86110915754370feea54}{mode}};}
+\DoxyCodeLine{00061\ \ \ \ \ }
+\DoxyCodeLine{00062\ \ \ \ \ Plotter(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \_width,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \_height);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_drawable_aa37d7b328240d343134adcfe5e4dcd38}{draw}}(vector<float>\ points,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ nPoints);}
+\DoxyCodeLine{00066\ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

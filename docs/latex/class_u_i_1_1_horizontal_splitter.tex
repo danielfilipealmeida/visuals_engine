@@ -1,0 +1,112 @@
+\doxysection{UI\+::Horizontal\+Splitter Class Reference}
+\hypertarget{class_u_i_1_1_horizontal_splitter}{}\label{class_u_i_1_1_horizontal_splitter}\index{UI::HorizontalSplitter@{UI::HorizontalSplitter}}
+
+
+Implement a mechanism to divide horizontally the screen and have several columns of widgets.  
+
+
+
+
+{\ttfamily \#include $<$Containers.\+hpp$>$}
+
+Inheritance diagram for UI\+::Horizontal\+Splitter\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_u_i_1_1_horizontal_splitter}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_u_i_1_1_horizontal_splitter_ab96b28d5a3490f2694e2d0e9f2c3523b}\label{class_u_i_1_1_horizontal_splitter_ab96b28d5a3490f2694e2d0e9f2c3523b} 
+void {\bfseries add\+Column} (\mbox{\hyperlink{class_u_i_1_1_container}{Container}} \texorpdfstring{$\ast$}{*}container, float size)
+\item 
+\Hypertarget{class_u_i_1_1_horizontal_splitter_ad26b473aaf12a1d1f4ebf318c6304fcb}\label{class_u_i_1_1_horizontal_splitter_ad26b473aaf12a1d1f4ebf318c6304fcb} 
+void {\bfseries calculate} ()
+\item 
+void \mbox{\hyperlink{class_u_i_1_1_horizontal_splitter_ab9a8a7ff8a6cb817bbe7f115f7341710}{draw}} (\mbox{\hyperlink{class_u_i_1_1_primitives}{Primitives}} primitives)
+\item 
+void \mbox{\hyperlink{class_u_i_1_1_horizontal_splitter_ab68a9a1aac92a0e9a0536f6e776066fb}{update}} (int mouseX, int mouseY, bool button1, bool button2)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_u_i_1_1_container}{UI\+::\+Container}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries calculate} ()
+\item 
+void {\bfseries add} (\mbox{\hyperlink{class_u_i_1_1_element}{Element}} \texorpdfstring{$\ast$}{*}element)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_u_i_1_1_element}{UI\+::\+Element}}}
+\begin{DoxyCompactItemize}
+\item 
+of\+Color {\bfseries get\+Background\+Color\+For\+State} (\mbox{\hyperlink{class_u_i_1_1_primitives}{Primitives}} primitives, Element\+State state)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_u_i_1_1_horizontal_splitter_a54d718ee6b68c117b96e99255bdf4a47}\label{class_u_i_1_1_horizontal_splitter_a54d718ee6b68c117b96e99255bdf4a47} 
+std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{class_u_i_1_1_container}{Container}} \texorpdfstring{$\ast$}{*}, float $>$ $>$ {\bfseries columns}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_u_i_1_1_container}{UI\+::\+Container}}}
+\begin{DoxyCompactItemize}
+\item 
+Element\+Packing\+Direction {\bfseries packing\+Direction} = Element\+Packing\+Direction\+::\+Vertical
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_u_i_1_1_element}{Element}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries children}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_u_i_1_1_element}{UI\+::\+Element}}}
+\begin{DoxyCompactItemize}
+\item 
+Element\+State {\bfseries state}
+\item 
+of\+Rectangle {\bfseries rect}
+\item 
+float {\bfseries padding} = DEFAULT\+\_\+\+UI\+\_\+\+PADDING
+\item 
+float {\bfseries height} = DEFAULT\+\_\+\+UI\+\_\+\+ELEMENT\+\_\+\+HEIGHT
+\item 
+int {\bfseries previous\+MouseX}
+\item 
+int {\bfseries previous\+MouseY}
+\item 
+bool {\bfseries previous\+Button1} = false
+\item 
+bool {\bfseries previous\+Button2} = false
+\item 
+std\+::function$<$ void(\mbox{\hyperlink{class_u_i_1_1_element}{Element}} \texorpdfstring{$\ast$}{*})$>$ {\bfseries callback}
+\item 
+bool {\bfseries expandY} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implement a mechanism to divide horizontally the screen and have several columns of widgets. 
+
+\label{doc-func-members}
+\Hypertarget{class_u_i_1_1_horizontal_splitter_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_u_i_1_1_horizontal_splitter_ab9a8a7ff8a6cb817bbe7f115f7341710}\index{UI::HorizontalSplitter@{UI::HorizontalSplitter}!draw@{draw}}
+\index{draw@{draw}!UI::HorizontalSplitter@{UI::HorizontalSplitter}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily \label{class_u_i_1_1_horizontal_splitter_ab9a8a7ff8a6cb817bbe7f115f7341710} 
+void Horizontal\+Splitter\+::draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_u_i_1_1_primitives}{Primitives}}}]{primitives}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_u_i_1_1_container}{UI\+::\+Container}}.
+
+\Hypertarget{class_u_i_1_1_horizontal_splitter_ab68a9a1aac92a0e9a0536f6e776066fb}\index{UI::HorizontalSplitter@{UI::HorizontalSplitter}!update@{update}}
+\index{update@{update}!UI::HorizontalSplitter@{UI::HorizontalSplitter}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_u_i_1_1_horizontal_splitter_ab68a9a1aac92a0e9a0536f6e776066fb} 
+void Horizontal\+Splitter\+::update (\begin{DoxyParamCaption}\item[{int}]{mouseX}{, }\item[{int}]{mouseY}{, }\item[{bool}]{button1}{, }\item[{bool}]{button2}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_u_i_1_1_container}{UI\+::\+Container}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+UI/Containers.\+hpp\item 
+src/\+UI/Containers.\+cpp\end{DoxyCompactItemize}

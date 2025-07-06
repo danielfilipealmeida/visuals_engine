@@ -1,0 +1,39 @@
+\doxysection{Set.\+hpp}
+\hypertarget{_set_8hpp_source}{}\label{_set_8hpp_source}\index{src/Engine/Set.hpp@{src/Engine/Set.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ Set.hpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ VisualsEngine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ Created\ by\ Daniel\ Almeida\ on\ 13/01/2025.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ \_\_set\_hpp\_\_}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ \_\_set\_hpp\_\_}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Elements/Visuals.hpp"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}Elements/BaseClasses.hpp"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_set}{Set}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_encodable}{Encodable}}\ \{}
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ std::vector<VisualsInterface*>\ \mbox{\hyperlink{class_set_aa9b3ee718ce257a09452b6f4680e7585}{visuals}};}
+\DoxyCodeLine{00023\ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ std::vector<ofFbo>\ thumbnails;}
+\DoxyCodeLine{00027\ \ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_set_a5a15a833296ffd39f9b1fc28ed00fdc5}{addVisual}}(\mbox{\hyperlink{class_visuals_interface}{VisualsInterface}}*\ visual);}
+\DoxyCodeLine{00032\ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ ofJson\ \mbox{\hyperlink{class_set_a6247352a8cf8c60db97d57b536171d39}{encode}}();}
+\DoxyCodeLine{00037\ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_set_abe0f60d34192100e2f3e586d26c20226}{decode}}(ofJson\ data);}
+\DoxyCodeLine{00041\ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_set_a788a138bc69b4a2b9eebb1b018825caa}{save}}(std::string\ path);}
+\DoxyCodeLine{00045\ \ \ \ \ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_set_a31ced39c966a1c2611feb9059dfe16c0}{load}}(std::string\ path);}
+\DoxyCodeLine{00049\ \};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

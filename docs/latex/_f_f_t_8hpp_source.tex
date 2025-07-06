@@ -1,0 +1,158 @@
+\doxysection{FFT.\+hpp}
+\hypertarget{_f_f_t_8hpp_source}{}\label{_f_f_t_8hpp_source}\index{src/Engine/Services/FFT.hpp@{src/Engine/Services/FFT.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ FFT.hpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ VisualsEngine}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ Created\ by\ Daniel\ Almeida\ on\ 13/03/2025.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_\_fft\_\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_\_fft\_\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}ofxFft.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <format>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }FFT\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ ofxFft*\ fft;}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ bufferSize;}
+\DoxyCodeLine{00021\ \ \ \ \ }
+\DoxyCodeLine{00022\ \ \ \ \ ofMutex\ soundMutex;}
+\DoxyCodeLine{00023\ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ std::deque<float>\ energyHistory;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ historySize\ =\ 50;}
+\DoxyCodeLine{00026\ \ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ std::vector<float>\ hanningWindow;}
+\DoxyCodeLine{00030\ \ \ \ \ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_f_f_t_afcf00eb9a338c14af2aa9750b55cf685}{sensitivity}}\ =\ 2.5f;}
+\DoxyCodeLine{00035\ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_f_f_t_a64356a00bbc051bc8abf64742b6d0dec}{beatDetectionBin}}\ =\ 5;}
+\DoxyCodeLine{00039\ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_f_f_t_a28e4503c79031e5edaeffe5a14080490}{windowSize}}\ =\ 7;}
+\DoxyCodeLine{00043\ \ \ \ \ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_f_f_t_a9f0918ab761eb845a9fab50fac55522e}{totalBeatCount}}\ =\ 0;}
+\DoxyCodeLine{00047\ \ \ \ \ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_f_f_t_a62451bd843c1c8184663e1b4ad1652e9}{minBeatEnergy}}\ =\ 0.00005;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_f_f_t_a08d57c30cee19f0684bf110bde40c2f2}{offBeatFactor}}\ =\ 0.10;}
+\DoxyCodeLine{00055\ \ \ \ \ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_f_f_t_acb369c396162d56c1ce5de5e7284a146}{maximumEnergyMeasured}};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_f_f_t_abebd0aa66152e5db4f505990638fdd26}{beatOn}};}
+\DoxyCodeLine{00064\ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ vector<float>\ audioBins;}
+\DoxyCodeLine{00066\ \ \ \ \ }
+\DoxyCodeLine{00067\ \ \ \ \ FFT(\textcolor{keyword}{const}\ FFT\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00068\ \ \ \ \ FFT\&\ operator=(\textcolor{keyword}{const}\ FFT\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00069\ \ \ \ \ }
+\DoxyCodeLine{00070\ \ \ \ \ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{static}\ FFT\&\ \mbox{\hyperlink{class_f_f_t_a2d6dea341b8f72985d5944ad1762e323}{getInstance}}()\ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ FFT\ instance;}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ instance;}
+\DoxyCodeLine{00075\ \ \ \ \ \}}
+\DoxyCodeLine{00076\ \ \ \ \ }
+\DoxyCodeLine{00077\ \ \ \ \ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_f_f_t_a3aa95b6746275f9626d9494e4a8d3971}{setup}}(\textcolor{keywordtype}{int}\ bufferSize)\ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ this-\/>bufferSize\ =\ bufferSize;}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ fft\ =\ ofxFft::create(bufferSize,\ OF\_FFT\_WINDOW\_HAMMING);}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ audioBins.resize(fft-\/>getBinSize());}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ hanningWindow\ =\ \mbox{\hyperlink{class_f_f_t_afb51d5217405d8c46c5aaf608ab4d1a7}{FFT::buildHanningWindow}}(\mbox{\hyperlink{class_f_f_t_a28e4503c79031e5edaeffe5a14080490}{windowSize}});}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ energyHistory.resize(historySize);}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_f_f_t_abebd0aa66152e5db4f505990638fdd26}{beatOn}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_f_f_t_acb369c396162d56c1ce5de5e7284a146}{maximumEnergyMeasured}}\ =\ 0;}
+\DoxyCodeLine{00091\ \ \ \ \ \}}
+\DoxyCodeLine{00092\ \ \ \ \ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_f_f_t_a2d6e6172b2457e544f36f78e251e7b83}{setSignal}}(vector<float>\ signal)\ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ fft-\/>setSignal(signal);}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{comment}{//float\ maxValue\ =\ 0;}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}*\ curFft\ =\ fft-\/>getAmplitude();}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ memcpy(\&audioBins[0],\ curFft,\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})\ *\ fft-\/>getBinSize());}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ currentEnergy\ =\ \mbox{\hyperlink{class_f_f_t_a9fe191f3d41f7c01f2bba66a3da7b715}{FFT::calculateEnergyWithHanningWindow}}(audioBins,\ \mbox{\hyperlink{class_f_f_t_a64356a00bbc051bc8abf64742b6d0dec}{beatDetectionBin}},\ hanningWindow);}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ energyHistory.push\_back(currentEnergy);}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (energyHistory.size()\ >\ historySize)\ energyHistory.pop\_front();}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentEnergy\ >\ \mbox{\hyperlink{class_f_f_t_acb369c396162d56c1ce5de5e7284a146}{maximumEnergyMeasured}})\ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_f_f_t_acb369c396162d56c1ce5de5e7284a146}{maximumEnergyMeasured}}\ =\ currentEnergy;}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ check\ if\ it\ is\ a\ beat}}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ todo:\ using\ pubsub\ warn\ subscribers\ of\ beat}}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ average\ =\ std::accumulate(energyHistory.begin(),\ energyHistory.end(),\ 0.0f)\ /\ energyHistory.size();}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ checks\ it\ a\ beat\ that\ was\ previously\ detected\ has\ stopped.}}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_f_f_t_abebd0aa66152e5db4f505990638fdd26}{beatOn}})\ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ check\ if\ the\ energy\ is\ still\ above\ the\ threshold}}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentEnergy\ >\ average\ *\ \mbox{\hyperlink{class_f_f_t_afcf00eb9a338c14af2aa9750b55cf685}{sensitivity}}\ *\ \mbox{\hyperlink{class_f_f_t_a08d57c30cee19f0684bf110bde40c2f2}{offBeatFactor}})\ \{}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ energy\ as\ fallon\ below\ the\ threshold.\ we\ can\ considere\ it\ has\ finished}}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_f_f_t_abebd0aa66152e5db4f505990638fdd26}{beatOn}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ only\ continues\ detecting\ the\ beat\ if\ the\ energy\ us\ bigger\ or\ equal\ to\ than\ the\ threshold}}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentEnergy\ <\ \mbox{\hyperlink{class_f_f_t_a62451bd843c1c8184663e1b4ad1652e9}{minBeatEnergy}})\ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ a\ beat\ has\ been\ detected}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentEnergy\ >\ (average\ *\ \mbox{\hyperlink{class_f_f_t_afcf00eb9a338c14af2aa9750b55cf685}{sensitivity}}))\ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_f_f_t_abebd0aa66152e5db4f505990638fdd26}{beatOn}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_f_f_t_a9f0918ab761eb845a9fab50fac55522e}{totalBeatCount}}++;}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ warn\ all\ subscribers}}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}beat:\ "{}}\ <<\ \mbox{\hyperlink{class_f_f_t_a9f0918ab761eb845a9fab50fac55522e}{totalBeatCount}}\ <<\ \textcolor{stringliteral}{"{},\ "{}}\ <<\ currentEnergy\ <<\ \textcolor{stringliteral}{"{}\ /\ "{}}\ <<\ \mbox{\hyperlink{class_f_f_t_acb369c396162d56c1ce5de5e7284a146}{maximumEnergyMeasured}}\ <<\ endl;}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//cout\ <<\ std::format("{}Beat:\ \{\},\ \{\}\ /\ \{\}"{},\ totalBeatCount,\ currentEnergy,\ maximumEnergyMeasured);}}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00142\ \ \ \ \ \}}
+\DoxyCodeLine{00143\ \ \ \ \ }
+\DoxyCodeLine{00144\ \ \ \ \ }
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keyword}{static}\ std::vector<float>\ \mbox{\hyperlink{class_f_f_t_afb51d5217405d8c46c5aaf608ab4d1a7}{buildHanningWindow}}(\textcolor{keywordtype}{int}\ \_windowSize)\ \{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ std::vector<float>\ window(\_windowSize);}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ n\ =\ 0;\ n\ <\ \_windowSize;\ ++n)\ \{}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ window[n]\ =\ 0.5\ *\ (1.0f\ -\/\ cosf((2.0f\ *\ M\_PI\ *\ n)\ /\ (\_windowSize\ -\/1\ )));}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ window;}
+\DoxyCodeLine{00155\ \ \ \ \ \}}
+\DoxyCodeLine{00156\ \ \ \ \ }
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_f_f_t_a9fe191f3d41f7c01f2bba66a3da7b715}{calculateEnergyWithHanningWindow}}(}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<float>\ in,}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ centerBin,}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<float>\ \_hanningWindow}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\ \{}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ energy\ =\ 0.0f;}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ halfWindow\ =\ \_hanningWindow.size()\ /\ 2;}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ n\ =\ 0;\ n\ <\ \_hanningWindow.size();\ ++n)\ \{}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ bin\ =\ centerBin\ -\/\ halfWindow\ +\ n;}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bin\ >=\ 0\ \&\&\ bin\ <\ in.size())\ \{}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ energy\ +=\ in[bin]\ *\ in[bin]\ *\ \_hanningWindow[n];}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ energy;}
+\DoxyCodeLine{00177\ \ \ \ \ \}}
+\DoxyCodeLine{00178\ \ \ \ \ }
+\DoxyCodeLine{00179\ \ \ \ \ }
+\DoxyCodeLine{00180\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00181\ \ \ \ \ \mbox{\hyperlink{class_f_f_t}{FFT}}()\ \{}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ cout<<\textcolor{stringliteral}{"{}FFT\ Singleton\ instanciated"{}}<<endl;}
+\DoxyCodeLine{00183\ \ \ \ \ \}}
+\DoxyCodeLine{00184\ \};}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00186\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

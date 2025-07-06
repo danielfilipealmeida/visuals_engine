@@ -1,0 +1,103 @@
+\doxysection{Plotter Class Reference}
+\hypertarget{class_plotter}{}\label{class_plotter}\index{Plotter@{Plotter}}
+Inheritance diagram for Plotter\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_plotter}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_plotter_a0fa3e68c2d3ca94ff3ea2408ea765aed}\label{class_plotter_a0fa3e68c2d3ca94ff3ea2408ea765aed} 
+{\bfseries Plotter} (unsigned int \+\_\+width, unsigned int \+\_\+height)
+\item 
+\Hypertarget{class_plotter_a179f61b7405977d2cd3bb004636950bc}\label{class_plotter_a179f61b7405977d2cd3bb004636950bc} 
+void {\bfseries draw} (vector$<$ float $>$ points, unsigned int n\+Points)
+\begin{DoxyCompactList}\small\item\em is n\+Points really needed? remove it \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_drawable}{Drawable}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_drawable_aced52a49793b1902dd96eb46f61d30f4}{update}} ()=0
+\begin{DoxyCompactList}\small\item\em Executed on every frame, before drawing. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_drawable_aa37d7b328240d343134adcfe5e4dcd38}{draw}} ()=0
+\begin{DoxyCompactList}\small\item\em Draws the object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_drawable_ac49bac4bc279e48e1ae700c86c1527d0}{draw}} (of\+Rectangle \+\_\+rect)=0
+\begin{DoxyCompactList}\small\item\em Draws the object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drawable_a9d48ab982709881874cf3377ece823dd}{set\+Rect}} (of\+Rectangle \+\_\+rect)
+\begin{DoxyCompactList}\small\item\em Sets internal rectangle definition. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+of\+Fbo \mbox{\hyperlink{class_plotter_a0bc8401b76cd13ee26b28ce80e3ebd93}{buffer}}
+\item 
+of\+Color \mbox{\hyperlink{class_plotter_ae08422f33ee63d9ade8fe8cf1ade5b5f}{color}}
+\item 
+float \mbox{\hyperlink{class_plotter_aad88b30e28b7a75d75b25fde49e4dd69}{sample\+Width}}
+\item 
+float \mbox{\hyperlink{class_plotter_a8463cc5430e96501b0f3c6b4459583c8}{line\+Width}}
+\item 
+float \mbox{\hyperlink{class_plotter_a7592e8d9ae36ee93720f6e27af75d648}{dot\+Width}}
+\item 
+float \mbox{\hyperlink{class_plotter_a040e2958bbe81a812e2a84296f391b50}{gain}}
+\item 
+Plotter\+Mode \mbox{\hyperlink{class_plotter_a3f38806fc65a86110915754370feea54}{mode}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_drawable}{Drawable}}}
+\begin{DoxyCompactItemize}
+\item 
+of\+Rectangle {\bfseries rect}
+\end{DoxyCompactItemize}
+
+
+\label{doc-variable-members}
+\Hypertarget{class_plotter_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_plotter_a0bc8401b76cd13ee26b28ce80e3ebd93}\index{Plotter@{Plotter}!buffer@{buffer}}
+\index{buffer@{buffer}!Plotter@{Plotter}}
+\doxysubsubsection{\texorpdfstring{buffer}{buffer}}
+{\footnotesize\ttfamily \label{class_plotter_a0bc8401b76cd13ee26b28ce80e3ebd93} 
+of\+Fbo Plotter\+::buffer}
+
+@abstract a FBO to draw the plotter in memory \Hypertarget{class_plotter_ae08422f33ee63d9ade8fe8cf1ade5b5f}\index{Plotter@{Plotter}!color@{color}}
+\index{color@{color}!Plotter@{Plotter}}
+\doxysubsubsection{\texorpdfstring{color}{color}}
+{\footnotesize\ttfamily \label{class_plotter_ae08422f33ee63d9ade8fe8cf1ade5b5f} 
+of\+Color Plotter\+::color}
+
+@abstract what color the plotter will use to draw \Hypertarget{class_plotter_a7592e8d9ae36ee93720f6e27af75d648}\index{Plotter@{Plotter}!dotWidth@{dotWidth}}
+\index{dotWidth@{dotWidth}!Plotter@{Plotter}}
+\doxysubsubsection{\texorpdfstring{dotWidth}{dotWidth}}
+{\footnotesize\ttfamily \label{class_plotter_a7592e8d9ae36ee93720f6e27af75d648} 
+float Plotter\+::dot\+Width}
+
+@abstract the radius of the dot in the Dots mode \Hypertarget{class_plotter_a040e2958bbe81a812e2a84296f391b50}\index{Plotter@{Plotter}!gain@{gain}}
+\index{gain@{gain}!Plotter@{Plotter}}
+\doxysubsubsection{\texorpdfstring{gain}{gain}}
+{\footnotesize\ttfamily \label{class_plotter_a040e2958bbe81a812e2a84296f391b50} 
+float Plotter\+::gain}
+
+@abstract how much to multiply to the signal \Hypertarget{class_plotter_a8463cc5430e96501b0f3c6b4459583c8}\index{Plotter@{Plotter}!lineWidth@{lineWidth}}
+\index{lineWidth@{lineWidth}!Plotter@{Plotter}}
+\doxysubsubsection{\texorpdfstring{lineWidth}{lineWidth}}
+{\footnotesize\ttfamily \label{class_plotter_a8463cc5430e96501b0f3c6b4459583c8} 
+float Plotter\+::line\+Width}
+
+@abstract the thickness of the line for the Lines mode \Hypertarget{class_plotter_a3f38806fc65a86110915754370feea54}\index{Plotter@{Plotter}!mode@{mode}}
+\index{mode@{mode}!Plotter@{Plotter}}
+\doxysubsubsection{\texorpdfstring{mode}{mode}}
+{\footnotesize\ttfamily \label{class_plotter_a3f38806fc65a86110915754370feea54} 
+Plotter\+Mode Plotter\+::mode}
+
+@abstract the mode that the plotter is going to be set \Hypertarget{class_plotter_aad88b30e28b7a75d75b25fde49e4dd69}\index{Plotter@{Plotter}!sampleWidth@{sampleWidth}}
+\index{sampleWidth@{sampleWidth}!Plotter@{Plotter}}
+\doxysubsubsection{\texorpdfstring{sampleWidth}{sampleWidth}}
+{\footnotesize\ttfamily \label{class_plotter_aad88b30e28b7a75d75b25fde49e4dd69} 
+float Plotter\+::sample\+Width}
+
+@abstract how much a sample occupies in the fbo 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Engine/\+Plotters/Plotter.\+hpp\item 
+src/\+Engine/\+Plotters/Plotter.\+cpp\end{DoxyCompactItemize}

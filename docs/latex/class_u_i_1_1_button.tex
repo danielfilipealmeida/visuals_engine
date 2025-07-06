@@ -1,0 +1,95 @@
+\doxysection{UI\+::Button Class Reference}
+\hypertarget{class_u_i_1_1_button}{}\label{class_u_i_1_1_button}\index{UI::Button@{UI::Button}}
+
+
+Implements all the logic needed to draw and handle a button.  
+
+
+
+
+{\ttfamily \#include $<$Elements.\+hpp$>$}
+
+Inheritance diagram for UI\+::Button\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_u_i_1_1_button}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_u_i_1_1_button_a1dae3f7880a878e473a5a5b14bdade7f}\label{class_u_i_1_1_button_a1dae3f7880a878e473a5a5b14bdade7f} 
+{\bfseries Button} (string \+\_\+title, std\+::function$<$ void(\mbox{\hyperlink{class_u_i_1_1_element}{Element}} \texorpdfstring{$\ast$}{*})$>$ \+\_\+callback)
+\item 
+void \mbox{\hyperlink{class_u_i_1_1_button_a896cf1772f46e0d21278eab49759071e}{draw}} (\mbox{\hyperlink{class_u_i_1_1_primitives}{Primitives}} primitives)
+\item 
+void \mbox{\hyperlink{class_u_i_1_1_button_ab95387728a14f27bdd8abf4e887480c2}{update}} (int mouseX, int mouseY, bool button1, bool button2)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_u_i_1_1_element}{UI\+::\+Element}}}
+\begin{DoxyCompactItemize}
+\item 
+of\+Color {\bfseries get\+Background\+Color\+For\+State} (\mbox{\hyperlink{class_u_i_1_1_primitives}{Primitives}} primitives, Element\+State state)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_u_i_1_1_button_afcbb8a9ec50b2d7f55991d93a7db47d3}\label{class_u_i_1_1_button_afcbb8a9ec50b2d7f55991d93a7db47d3} 
+string {\bfseries title}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_u_i_1_1_element}{UI\+::\+Element}}}
+\begin{DoxyCompactItemize}
+\item 
+Element\+State {\bfseries state}
+\item 
+of\+Rectangle {\bfseries rect}
+\item 
+float {\bfseries padding} = DEFAULT\+\_\+\+UI\+\_\+\+PADDING
+\item 
+float {\bfseries height} = DEFAULT\+\_\+\+UI\+\_\+\+ELEMENT\+\_\+\+HEIGHT
+\item 
+int {\bfseries previous\+MouseX}
+\item 
+int {\bfseries previous\+MouseY}
+\item 
+bool {\bfseries previous\+Button1} = false
+\item 
+bool {\bfseries previous\+Button2} = false
+\item 
+std\+::function$<$ void(\mbox{\hyperlink{class_u_i_1_1_element}{Element}} \texorpdfstring{$\ast$}{*})$>$ {\bfseries callback}
+\item 
+bool {\bfseries expandY} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implements all the logic needed to draw and handle a button. 
+
+\label{doc-func-members}
+\Hypertarget{class_u_i_1_1_button_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_u_i_1_1_button_a896cf1772f46e0d21278eab49759071e}\index{UI::Button@{UI::Button}!draw@{draw}}
+\index{draw@{draw}!UI::Button@{UI::Button}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily \label{class_u_i_1_1_button_a896cf1772f46e0d21278eab49759071e} 
+void Button\+::draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_u_i_1_1_primitives}{Primitives}}}]{primitives}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_u_i_1_1_element}{UI\+::\+Element}}.
+
+\Hypertarget{class_u_i_1_1_button_ab95387728a14f27bdd8abf4e887480c2}\index{UI::Button@{UI::Button}!update@{update}}
+\index{update@{update}!UI::Button@{UI::Button}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_u_i_1_1_button_ab95387728a14f27bdd8abf4e887480c2} 
+void Button\+::update (\begin{DoxyParamCaption}\item[{int}]{mouseX}{, }\item[{int}]{mouseY}{, }\item[{bool}]{button1}{, }\item[{bool}]{button2}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_u_i_1_1_element}{UI\+::\+Element}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+UI/Elements.\+hpp\item 
+src/\+UI/Elements.\+cpp\end{DoxyCompactItemize}

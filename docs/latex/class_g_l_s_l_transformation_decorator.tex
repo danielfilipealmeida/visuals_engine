@@ -1,0 +1,157 @@
+\doxysection{GLSLTransformation\+Decorator Class Reference}
+\hypertarget{class_g_l_s_l_transformation_decorator}{}\label{class_g_l_s_l_transformation_decorator}\index{GLSLTransformationDecorator@{GLSLTransformationDecorator}}
+
+
+A \doxylink{class_visual}{Visual} Interface Decorator that wraps a visual around a GLSL shader.  
+
+
+
+
+{\ttfamily \#include $<$Transformations.\+hpp$>$}
+
+Inheritance diagram for GLSLTransformation\+Decorator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_g_l_s_l_transformation_decorator}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_g_l_s_l_transformation_decorator_abe499ea024cf3f625a4ac4a6dae48ecf}\label{class_g_l_s_l_transformation_decorator_abe499ea024cf3f625a4ac4a6dae48ecf} 
+{\bfseries GLSLTransformation\+Decorator} (\mbox{\hyperlink{class_visuals_interface}{Visuals\+Interface}} \texorpdfstring{$\ast$}{*}\+\_\+visual, std\+::string shader\+Name, bool use\+Default\+Base=true)
+\item 
+void \mbox{\hyperlink{class_g_l_s_l_transformation_decorator_a99d8219c4bf640d79598eff426d9ebaa}{update}} ()
+\begin{DoxyCompactList}\small\item\em Executed on every frame, before drawing. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_g_l_s_l_transformation_decorator_a47fe3d0a9a451a2a9c9fff845775d9b3}{draw}} ()
+\begin{DoxyCompactList}\small\item\em Draws the shader around the decorated visua. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_g_l_s_l_transformation_decorator_a7c07bdda7ee4b3e06680d89b2a7e1f0e}{draw}} (of\+Rectangle \+\_\+rect)
+\begin{DoxyCompactList}\small\item\em Draws the shader around the decorated visual in a rect. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_g_l_s_l_transformation_decorator_ae9715312ace0cce2faa43a9240116580}{set\+Parameter}} (string parameter\+Name, float value)
+\begin{DoxyCompactList}\small\item\em Sets the value of a float parameter. \end{DoxyCompactList}\item 
+\Hypertarget{class_g_l_s_l_transformation_decorator_a222b8b8c79e8e002fdcd19f3499dd2f5}\label{class_g_l_s_l_transformation_decorator_a222b8b8c79e8e002fdcd19f3499dd2f5} 
+void {\bfseries play} ()
+\item 
+\Hypertarget{class_g_l_s_l_transformation_decorator_a4c704e50993173ca54855632594fcf06}\label{class_g_l_s_l_transformation_decorator_a4c704e50993173ca54855632594fcf06} 
+void {\bfseries stop} ()
+\item 
+of\+Json \mbox{\hyperlink{class_g_l_s_l_transformation_decorator_a509199aba349bbbdeb4a86a60ae5bb37}{encode}} ()
+\begin{DoxyCompactList}\small\item\em Generate an {\ttfamily of\+Json} with the contents of the object that inherented this class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_drawable}{Drawable}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_drawable_a9d48ab982709881874cf3377ece823dd}{set\+Rect}} (of\+Rectangle \+\_\+rect)
+\begin{DoxyCompactList}\small\item\em Sets internal rectangle definition. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_g_l_s_l_transformation_decorator_aea2b7a9244ac76f71dc1d0ce7a07281a}\label{class_g_l_s_l_transformation_decorator_aea2b7a9244ac76f71dc1d0ce7a07281a} 
+std\+::map$<$ std\+::string, glsl\+Parameter\+Type $>$ {\bfseries float\+Parameters}
+\item 
+\Hypertarget{class_g_l_s_l_transformation_decorator_a45dba26babe46f9b67b196a7e501da75}\label{class_g_l_s_l_transformation_decorator_a45dba26babe46f9b67b196a7e501da75} 
+std\+::vector$<$ string $>$ {\bfseries parameter\+Names}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_drawable}{Drawable}}}
+\begin{DoxyCompactItemize}
+\item 
+of\+Rectangle {\bfseries rect}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A \doxylink{class_visual}{Visual} Interface Decorator that wraps a visual around a GLSL shader. 
+
+\label{doc-func-members}
+\Hypertarget{class_g_l_s_l_transformation_decorator_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_g_l_s_l_transformation_decorator_a47fe3d0a9a451a2a9c9fff845775d9b3}\index{GLSLTransformationDecorator@{GLSLTransformationDecorator}!draw@{draw}}
+\index{draw@{draw}!GLSLTransformationDecorator@{GLSLTransformationDecorator}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_g_l_s_l_transformation_decorator_a47fe3d0a9a451a2a9c9fff845775d9b3} 
+void GLSLTransformation\+Decorator\+::draw (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Draws the shader around the decorated visua. 
+
+
+
+Implements \mbox{\hyperlink{class_drawable_aa37d7b328240d343134adcfe5e4dcd38}{Drawable}}.
+
+\Hypertarget{class_g_l_s_l_transformation_decorator_a7c07bdda7ee4b3e06680d89b2a7e1f0e}\index{GLSLTransformationDecorator@{GLSLTransformationDecorator}!draw@{draw}}
+\index{draw@{draw}!GLSLTransformationDecorator@{GLSLTransformationDecorator}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_g_l_s_l_transformation_decorator_a7c07bdda7ee4b3e06680d89b2a7e1f0e} 
+void GLSLTransformation\+Decorator\+::draw (\begin{DoxyParamCaption}\item[{of\+Rectangle}]{\+\_\+rect}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Draws the shader around the decorated visual in a rect. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+rect} & -\/ the rectangular area where to draw the decorated visual \\
+\hline
+\end{DoxyParams}
+gets the actual value for the parameter
+
+Implements \mbox{\hyperlink{class_drawable_ac49bac4bc279e48e1ae700c86c1527d0}{Drawable}}.
+
+\Hypertarget{class_g_l_s_l_transformation_decorator_a509199aba349bbbdeb4a86a60ae5bb37}\index{GLSLTransformationDecorator@{GLSLTransformationDecorator}!encode@{encode}}
+\index{encode@{encode}!GLSLTransformationDecorator@{GLSLTransformationDecorator}}
+\doxysubsubsection{\texorpdfstring{encode()}{encode()}}
+{\footnotesize\ttfamily \label{class_g_l_s_l_transformation_decorator_a509199aba349bbbdeb4a86a60ae5bb37} 
+of\+Json GLSLTransformation\+Decorator\+::encode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Generate an {\ttfamily of\+Json} with the contents of the object that inherented this class. 
+
+\begin{DoxyNote}{Note}
+This virtual method must be implemented on the class that inherits this class 
+\end{DoxyNote}
+
+
+Implements \mbox{\hyperlink{class_encodable_af3e56dde52afad14fdd60dab638020fa}{Encodable}}.
+
+\Hypertarget{class_g_l_s_l_transformation_decorator_ae9715312ace0cce2faa43a9240116580}\index{GLSLTransformationDecorator@{GLSLTransformationDecorator}!setParameter@{setParameter}}
+\index{setParameter@{setParameter}!GLSLTransformationDecorator@{GLSLTransformationDecorator}}
+\doxysubsubsection{\texorpdfstring{setParameter()}{setParameter()}}
+{\footnotesize\ttfamily \label{class_g_l_s_l_transformation_decorator_ae9715312ace0cce2faa43a9240116580} 
+void GLSLTransformation\+Decorator\+::set\+Parameter (\begin{DoxyParamCaption}\item[{string}]{parameter\+Name}{, }\item[{float}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the value of a float parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parameter} & -\/ a string naming the parameter \\
+\hline
+{\em value} & -\/ the float value \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_g_l_s_l_transformation_decorator_a99d8219c4bf640d79598eff426d9ebaa}\index{GLSLTransformationDecorator@{GLSLTransformationDecorator}!update@{update}}
+\index{update@{update}!GLSLTransformationDecorator@{GLSLTransformationDecorator}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_g_l_s_l_transformation_decorator_a99d8219c4bf640d79598eff426d9ebaa} 
+void GLSLTransformation\+Decorator\+::update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Executed on every frame, before drawing. 
+
+All major processing should be done here, while the draw function should just draw the frame that generated here
+
+\begin{DoxyNote}{Note}
+This virtual method must be implemented on the class that inherits this class 
+\end{DoxyNote}
+
+
+Implements \mbox{\hyperlink{class_drawable_aced52a49793b1902dd96eb46f61d30f4}{Drawable}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Engine/Transformations.\+hpp\end{DoxyCompactItemize}

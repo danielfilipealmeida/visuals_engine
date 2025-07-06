@@ -38,6 +38,10 @@ public:
                State *state
                );
 
+    void setupPreviews(Mixer *mixer,
+                       Signal<float> *signal1,
+                       Signal<float> *signal2);
+    
     //! @brief Draws the user interface
     void draw();
 
