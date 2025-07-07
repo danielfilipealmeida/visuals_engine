@@ -12,18 +12,16 @@
 #include "State.hpp"
 
 
+/// @brief Hello world main class
+///
+/// This is the main class of the `Hello World` example, the highest level of code for the example.
 class ofApp : public ofBaseApp, public Observer<ofxMidiMessage> {
-    LayerStack *layerStackA, *layerStackB;
-    Mixer *mixer;
-    Visual<ofVideoPlayer> *video;
     float bufferWidth = 640;
     float bufferHeight = 480;
     
     bool showInterface;
     
     Set set;
-    
-    Signal<float> signal1, signal2;
     
     UserInterface userInterface;
 
@@ -48,7 +46,7 @@ class ofApp : public ofBaseApp, public Observer<ofxMidiMessage> {
     
         ofSoundStream soundStream;
         void audioIn( ofSoundBuffer& buffer );
-        //void audioIn( float * input, int bufferSize, int nChannels );
+        
 
     /** todo: move to its own class */
     vector<float> volHistory;

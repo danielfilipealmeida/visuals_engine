@@ -37,7 +37,24 @@ float calculateChildrenRectsAndGetOccupiedHeight(
     return currentY;
 };
 
+
+// todo: unit test this!
 void Container::calculate() {
+    // calculate all child containers
+    /*
+    for(Element* element: children) {
+        //if(typeid(element) == typeid(HorizontalSplitter*)) {
+        if(UI::HorizontalSplitter* hSpliter = dynamic_cast<UI::HorizontalSplitter*>(element)) {
+            //UI::HorizontalSplitter *hSpliter = ((UI::HorizontalSplitter *)element);
+            for(std::pair<Container*, float> column : hSpliter->columns) {
+                column.first->rect.width = rect.width * column.second;
+                column.first->rect.height = rect.height;
+                column.first->calculate();
+            }
+        }
+    }
+     */
+    
     std::vector<Element *>expandable;
     
     // get all expandables
@@ -70,7 +87,7 @@ void Container::calculate() {
     };
      */
     
-    // do a first pass to get the fully ocupied height, without the elements that need to expand
+    // do a first pass to get the fully occupied height, without the elements that need to expand
     float occupiedHeight = calculateChildrenRectsAndGetOccupiedHeight(rect, children);
     
     if (expandable.size() == 0 ) return;

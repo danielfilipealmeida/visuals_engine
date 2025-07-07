@@ -5,6 +5,9 @@
 //  Created by Daniel Almeida on 02/01/2025.
 //
 
+#ifndef __CONTAINERS_HPP__
+#define __CONTAINERS_HPP__
+
 #include "Elements.hpp"
 
 namespace UI {
@@ -42,4 +45,6 @@ public:
 
 }
 
+
+#endif
 

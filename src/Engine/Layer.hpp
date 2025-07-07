@@ -60,10 +60,7 @@ public:
 //! @abstract Implements a stack of layers
 class LayerStack: public VisualsInterface {
     
-    //! @var layers
-    //! @abstract a vector with all layers in the stack
-    std::vector<Layer *> layers;
-    
+
     //! @var buffer
     //! @abstract an FBO to render the layer stack
     ofFbo buffer;
@@ -77,6 +74,11 @@ class LayerStack: public VisualsInterface {
     float height;
     
 public:
+    
+    //! @var layers
+    //! @abstract a vector with all layers in the stack
+    std::vector<Layer *> layers;
+    
     
     //! @brief Constructor
     //! @param _width the width of the FBO

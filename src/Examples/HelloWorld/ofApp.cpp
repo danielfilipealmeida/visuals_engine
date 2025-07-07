@@ -1,5 +1,5 @@
 #include "ofApp.h"
-#include "Transformations.hpp"
+
 #include "FFT.hpp"
 #include "MIDI.hpp"
 
@@ -9,12 +9,9 @@ void ofApp::setup(){
     audioInput.resize(bufferSize);
     FFT::getInstance().setup(bufferSize);
     
-    //signal = SignalsBuilder::Random(1, 1);
-    //signal = SignalsBuilder::Pulse();
-    signal1 = SignalsFactory::SineWave();
-    signal2 = SignalsFactory::Random(10, 1);
     showInterface = true;
-    
+   
+    // todo: have this read from a file or a standard demo set generated elsewhere
     VisualsFactory factory(bufferWidth, bufferHeight);
     set.addVisual(factory.Video("001.mov"));
     set.addVisual(factory.Video("002.mov"));
@@ -24,32 +21,9 @@ void ofApp::setup(){
     set.addVisual(factory.Plotter(&FFT::getInstance().audioBins));
 
     
-    layerStackA = new LayerStack(bufferWidth, bufferHeight);
-    layerStackA->insert(new Layer(set.visuals[0]));
+    state.setup(&set, bufferWidth, bufferHeight);
     
-    layerStackB = new LayerStack(bufferWidth, bufferHeight);
-    layerStackB->insert(new Layer(set.visuals[5]));
-    
-    mixer = new Mixer(
-                      TransformationFactory::GLSL(
-                                                  layerStackA,
-                                                  "FastBlur",
-                                                  true,
-                                                  {
-                                                    {"blurH", &state.blurAmount},
-                                                    {"blurV", &state.blurAmount}
-                                                  }
-                                                  ),
-                      layerStackB,
-                      bufferWidth, bufferHeight);
-    mixer->setMix(0.5);
-    
-    
-
-    userInterface.setup(ofGetWindowRect(), mixer, &signal1, &signal2, &state);
-    
-    signal1.regist(mixer, mixer->parameters[MixerObservableParameters::MIX]);
-   
+    userInterface.setup(ofGetWindowRect(), &state);
     
     /*
     set.save("/Users/daniel/set.json");
@@ -57,7 +31,6 @@ void ofApp::setup(){
     set.decode(data);
      */
     
-   
     
     ofSoundStreamSettings settings;
     
@@ -101,24 +74,23 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    mixer->update();
-    signal1.update();
-    signal2.update();
-    
+    state.update();
     userInterface.update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    //mixer->setMix(signal1.getValue() + 1 /2.0);
-    mixer->draw(ofRectangle(0.0, 0.0, ofGetWidth(), ofGetHeight()));
-    
-    if (!showInterface) {
+    if (showInterface) {
+        ofBackground(32,32,32);
+        userInterface.draw();
+        
         return;
     }
-     
-    userInterface.draw();
+    
+    state.mixer->draw(ofRectangle(0.0, 0.0, ofGetWidth(), ofGetHeight()));
 }
+     
+    
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){

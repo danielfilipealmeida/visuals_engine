@@ -32,15 +32,10 @@ public:
     /// Sets up the User Interface of the application
     void setup(
                ofRectangle rect,
-               Mixer *mixer,
-               Signal<float> *signal1,
-               Signal<float> *signal2,
                State *state
                );
 
-    void setupPreviews(Mixer *mixer,
-                       Signal<float> *signal1,
-                       Signal<float> *signal2);
+    void setupPreviews();
     
     //! @brief Draws the user interface
     void draw();

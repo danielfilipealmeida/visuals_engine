@@ -15,9 +15,11 @@ using glslParameterType = std::variant<float*, Signal<float>*>;
 
 /// \brief A Visual Interface Decorator that wraps a visual around a GLSL shader
 class GLSLTransformationDecorator : public VisualsInterface {
+public:
+
     VisualsInterface *visual;
     ofShader shader;
-public:
+
     std::map<std::string, glslParameterType> floatParameters;
     std::vector<string> parameterNames;
     
