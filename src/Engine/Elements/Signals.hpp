@@ -47,6 +47,15 @@ public:
     void setCallback(std::function<void(T)> _callback) {
         callback = _callback;
     }
+    
+    /// \brief defines a callback calculator that will return always a the same value
+    ///
+    /// \param {T} value - the value to always return:w
+    void setConstantValue(T value) {
+        callback = [value](T) {
+            return value;
+        };
+    }
 };
 
 /***
@@ -56,11 +65,25 @@ public:
 class SignalsFactory {
 public:
     
+    /// \brief Create a signal that returns a single static value
+    ///
+    /// \param value - the value always returned by the signal
+    ///
+    /// \return the configured signal
+    static Signal<float> Float(float value) {
+        Signal<float> signal;
+        signal.setCalculator([value](){
+            return value;
+        });
+        
+        return signal;
+    }
+    
     /// \brief Creates a sine wave signal
     ///
-    /// \param freq
-    /// \param amplitude
-    /// \param phase
+    /// \param freq - the frequency of the sine wave signal
+    /// \param amplitude - the amplitude of the sine wave signal
+    /// \param phase - the phase of the sine wave signal
     ///
     /// \return the configured signal
     static Signal<float> SineWave(float freq = 1, float amplitude = 1, float phase=0){
@@ -72,9 +95,9 @@ public:
     
     /// \brief Creates a square wave signal
     ///
-    /// \param freq
-    /// \param amplitude
-    /// \param phase
+    /// \param freq - the frequency of the square wave
+    /// \param amplitude - the amplitude of the square wave
+    /// \param phase - the phase of the square wave
     ///
     /// \return the configured signal
     static Signal<float> SquareWave(float freq = 1, float amplitude = 1, float phase=0){
@@ -111,6 +134,9 @@ public:
         
         return signal;
     }
+    
+    
+    // todo: MIDIControlSignal
     
     /// \brief Returns a lambda configured to produce a sinewave
     ///
@@ -171,6 +197,13 @@ public:
         };
     }
     
+    /// \brief Returns a lambda that generates a pulso
+    ///
+    /// \param freq The frequency of the pulse
+    /// \param amplitude the amplitude of the pulse
+    /// \param dutyCycle the duration of the pulse
+    ///
+    /// \returns a lambda configured to produce a pulse
     static std::function<float()> getPulseCalculator(float freq, float amplitude, float dutyCycle) {
         return [freq, amplitude, dutyCycle]() {
             float time = ((float) ofGetElapsedTimef());

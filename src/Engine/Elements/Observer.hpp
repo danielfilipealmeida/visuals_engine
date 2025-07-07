@@ -20,12 +20,18 @@ public:
 // if no lambda is set, use the value directly
 template<class T>
 class Subject {
-    std::vector<std::pair<Observer<T> *, std::string>> observers;
+    std::vector<std::pair<Observer<T> *, std::string >> observers;
+    std::vector<std::pair<Observer<T> *, std::function<void (Observer<T>)> >> lambdaObservers;
+    
     
 public:
     void regist(Observer<T> *observer, std::string key) {
         observers.push_back({observer, key});
     };
+    
+    void regist(Observer<T> *observer, std::function<void (Observer<T>)> lambda) {
+        lambdaObservers.push_back({observer, lambda});
+    }
     
     void notify(T val) {
         for(const auto& pair: observers) {

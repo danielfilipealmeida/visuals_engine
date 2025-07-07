@@ -1,5 +1,8 @@
-obj/osx/Release/src/UI/Primitives.o: src/UI/Primitives.cpp \
-  src/UI/Primitives.hpp ../../..//libs/openFrameworks/ofMain.h \
+obj/osx/Release/src/Engine/Plotters/SignalPlotter.o: \
+  src/Engine/Plotters/SignalPlotter.cpp \
+  src/Engine/Plotters/SignalPlotter.hpp \
+  src/Engine/Elements/BaseClasses.hpp \
+  ../../..//libs/openFrameworks/ofMain.h \
   ../../..//libs/openFrameworks/utils/ofConstants.h \
   ../../..//libs/glew/include/GL/glew.h \
   ../../..//libs/tess2/include/tesselator.h \
@@ -426,8 +429,11 @@ obj/osx/Release/src/UI/Primitives.o: src/UI/Primitives.cpp \
   ../../..//libs/openFrameworks/video/ofVideoPlayer.h \
   ../../..//libs/openFrameworks/3d/of3dUtils.h \
   ../../..//libs/openFrameworks/3d/ofCamera.h \
-  ../../..//libs/openFrameworks/3d/ofEasyCam.h
-src/UI/Primitives.hpp:
+  ../../..//libs/openFrameworks/3d/ofEasyCam.h \
+  src/Engine/Elements/Signals.hpp src/Engine/Elements/Observer.hpp \
+  src/Engine/Plotters/Plotter.hpp
+src/Engine/Plotters/SignalPlotter.hpp:
+src/Engine/Elements/BaseClasses.hpp:
 ../../..//libs/openFrameworks/ofMain.h:
 ../../..//libs/openFrameworks/utils/ofConstants.h:
 ../../..//libs/glew/include/GL/glew.h:
@@ -856,3 +862,6 @@ src/UI/Primitives.hpp:
 ../../..//libs/openFrameworks/3d/of3dUtils.h:
 ../../..//libs/openFrameworks/3d/ofCamera.h:
 ../../..//libs/openFrameworks/3d/ofEasyCam.h:
+src/Engine/Elements/Signals.hpp:
+src/Engine/Elements/Observer.hpp:
+src/Engine/Plotters/Plotter.hpp:

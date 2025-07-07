@@ -1,5 +1,6 @@
-obj/osx/Release/src/UI/Primitives.o: src/UI/Primitives.cpp \
-  src/UI/Primitives.hpp ../../..//libs/openFrameworks/ofMain.h \
+obj/osx/Release/src/Examples/HelloWorld/main.o: \
+  src/Examples/HelloWorld/main.cpp \
+  ../../..//libs/openFrameworks/ofMain.h \
   ../../..//libs/openFrameworks/utils/ofConstants.h \
   ../../..//libs/glew/include/GL/glew.h \
   ../../..//libs/tess2/include/tesselator.h \
@@ -426,8 +427,28 @@ obj/osx/Release/src/UI/Primitives.o: src/UI/Primitives.cpp \
   ../../..//libs/openFrameworks/video/ofVideoPlayer.h \
   ../../..//libs/openFrameworks/3d/of3dUtils.h \
   ../../..//libs/openFrameworks/3d/ofCamera.h \
-  ../../..//libs/openFrameworks/3d/ofEasyCam.h
-src/UI/Primitives.hpp:
+  ../../..//libs/openFrameworks/3d/ofEasyCam.h \
+  src/Examples/HelloWorld/ofApp.h src/Engine/Layer.hpp \
+  src/Engine/Elements/BaseClasses.hpp src/Engine/Elements/Visuals.hpp \
+  src/Engine/Elements/Signals.hpp src/Engine/Elements/Observer.hpp \
+  src/Engine/Plotters/SignalPlotter.hpp src/Engine/Plotters/Plotter.hpp \
+  src/Engine/Plotters/BufferPlotter.hpp src/Engine/Mixer.hpp \
+  src/UI/UI.hpp src/UI/Elements.hpp src/UI/Primitives.hpp \
+  src/UI/Containers.hpp src/Engine/Set.hpp \
+  src/Examples/HelloWorld/UserInterface.hpp src/Engine/Services/MIDI.hpp \
+  /Users/daniel/of_v0.12.0_osx_release/addons/ofxMidi/src/ofxMidi.h \
+  /Users/daniel/of_v0.12.0_osx_release/addons/ofxMidi/src/ofxMidiIn.h \
+  /Users/daniel/of_v0.12.0_osx_release/addons/ofxMidi/src/ofxBaseMidi.h \
+  /Users/daniel/of_v0.12.0_osx_release/addons/ofxMidi/src/ofxMidiConstants.h \
+  /Users/daniel/of_v0.12.0_osx_release/addons/ofxMidi/src/ofxMidiMessage.h \
+  /Users/daniel/of_v0.12.0_osx_release/addons/ofxMidi/src/ofxMidiTypes.h \
+  /Users/daniel/of_v0.12.0_osx_release/addons/ofxMidi/src/desktop/ofxRtMidiIn.h \
+  /Users/daniel/of_v0.12.0_osx_release/addons/ofxMidi/libs/rtmidi/RtMidi.h \
+  /Users/daniel/of_v0.12.0_osx_release/addons/ofxMidi/src/desktop/../ofxBaseMidi.h \
+  /Users/daniel/of_v0.12.0_osx_release/addons/ofxMidi/src/ofxMidiOut.h \
+  /Users/daniel/of_v0.12.0_osx_release/addons/ofxMidi/src/desktop/ofxRtMidiOut.h \
+  /Users/daniel/of_v0.12.0_osx_release/addons/ofxMidi/src/ofxMidiClock.h \
+  /Users/daniel/of_v0.12.0_osx_release/addons/ofxMidi/src/ofxMidiTimecode.h
 ../../..//libs/openFrameworks/ofMain.h:
 ../../..//libs/openFrameworks/utils/ofConstants.h:
 ../../..//libs/glew/include/GL/glew.h:
@@ -856,3 +877,33 @@ src/UI/Primitives.hpp:
 ../../..//libs/openFrameworks/3d/of3dUtils.h:
 ../../..//libs/openFrameworks/3d/ofCamera.h:
 ../../..//libs/openFrameworks/3d/ofEasyCam.h:
+src/Examples/HelloWorld/ofApp.h:
+src/Engine/Layer.hpp:
+src/Engine/Elements/BaseClasses.hpp:
+src/Engine/Elements/Visuals.hpp:
+src/Engine/Elements/Signals.hpp:
+src/Engine/Elements/Observer.hpp:
+src/Engine/Plotters/SignalPlotter.hpp:
+src/Engine/Plotters/Plotter.hpp:
+src/Engine/Plotters/BufferPlotter.hpp:
+src/Engine/Mixer.hpp:
+src/UI/UI.hpp:
+src/UI/Elements.hpp:
+src/UI/Primitives.hpp:
+src/UI/Containers.hpp:
+src/Engine/Set.hpp:
+src/Examples/HelloWorld/UserInterface.hpp:
+src/Engine/Services/MIDI.hpp:
+/Users/daniel/of_v0.12.0_osx_release/addons/ofxMidi/src/ofxMidi.h:
+/Users/daniel/of_v0.12.0_osx_release/addons/ofxMidi/src/ofxMidiIn.h:
+/Users/daniel/of_v0.12.0_osx_release/addons/ofxMidi/src/ofxBaseMidi.h:
+/Users/daniel/of_v0.12.0_osx_release/addons/ofxMidi/src/ofxMidiConstants.h:
+/Users/daniel/of_v0.12.0_osx_release/addons/ofxMidi/src/ofxMidiMessage.h:
+/Users/daniel/of_v0.12.0_osx_release/addons/ofxMidi/src/ofxMidiTypes.h:
+/Users/daniel/of_v0.12.0_osx_release/addons/ofxMidi/src/desktop/ofxRtMidiIn.h:
+/Users/daniel/of_v0.12.0_osx_release/addons/ofxMidi/libs/rtmidi/RtMidi.h:
+/Users/daniel/of_v0.12.0_osx_release/addons/ofxMidi/src/desktop/../ofxBaseMidi.h:
+/Users/daniel/of_v0.12.0_osx_release/addons/ofxMidi/src/ofxMidiOut.h:
+/Users/daniel/of_v0.12.0_osx_release/addons/ofxMidi/src/desktop/ofxRtMidiOut.h:
+/Users/daniel/of_v0.12.0_osx_release/addons/ofxMidi/src/ofxMidiClock.h:
+/Users/daniel/of_v0.12.0_osx_release/addons/ofxMidi/src/ofxMidiTimecode.h:

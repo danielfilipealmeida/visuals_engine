@@ -8,11 +8,14 @@
 #include "UI/UI.hpp"
 #include "Engine/Set.hpp"
 #include "UserInterface.hpp"
+#include "MIDI.hpp"
+#include "State.hpp"
 
-class ofApp : public ofBaseApp{
-    LayerStack *layerStackA, *layerStackB;
-    Mixer *mixer;
-    Visual<ofVideoPlayer> *video;
+
+/// @brief Hello world main class
+///
+/// This is the main class of the `Hello World` example, the highest level of code for the example.
+class ofApp : public ofBaseApp, public Observer<ofxMidiMessage> {
     float bufferWidth = 640;
     float bufferHeight = 480;
     
@@ -20,11 +23,9 @@ class ofApp : public ofBaseApp{
     
     Set set;
     
-    Signal<float> signal1, signal2;
-    
     UserInterface userInterface;
-    
 
+    State state;
     
 	public:
 		void setup();
@@ -45,7 +46,7 @@ class ofApp : public ofBaseApp{
     
         ofSoundStream soundStream;
         void audioIn( ofSoundBuffer& buffer );
-        //void audioIn( float * input, int bufferSize, int nChannels );
+        
 
     /** todo: move to its own class */
     vector<float> volHistory;
