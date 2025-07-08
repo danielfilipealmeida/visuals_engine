@@ -172,16 +172,6 @@
 			);
 			target = 6570371C2D7E454B00185E7B /* Engine */;
 		};
-		6570375A2D7E4CAB00185E7B /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Containers.cpp,
-				Elements.cpp,
-				Primitives.cpp,
-				UI.cpp,
-			);
-			target = 657037462D7E4C9000185E7B /* UI */;
-		};
 		6570375E2D7E4D4B00185E7B /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -191,16 +181,6 @@
 				Plotters/Plotter.cpp,
 				Plotters/SignalPlotter.cpp,
 				Set.cpp,
-			);
-			target = E4B69B5A0A3A1756003C02F2 /* Hello World */;
-		};
-		6570375F2D7E4D4D00185E7B /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Containers.cpp,
-				Elements.cpp,
-				Primitives.cpp,
-				UI.cpp,
 			);
 			target = E4B69B5A0A3A1756003C02F2 /* Hello World */;
 		};
@@ -229,20 +209,9 @@
 				Transformations.hpp,
 			);
 		};
-		6570375B2D7E4CAB00185E7B /* PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = 657037442D7E4C9000185E7B /* Sources */;
-			membershipExceptions = (
-				Containers.hpp,
-				Elements.hpp,
-				Primitives.hpp,
-				UI.hpp,
-			);
-		};
 /* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		656DC86F2D20BB8900A63D6E /* UI */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (6570375F2D7E4D4D00185E7B /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 6570375A2D7E4CAB00185E7B /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 6570375B2D7E4CAB00185E7B /* PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = UI; sourceTree = "<group>"; };
 		656DC8772D21920E00A63D6E /* Engine */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (6570375E2D7E4D4B00185E7B /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 657037352D7E45C700185E7B /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 6570372B2D7E45A400185E7B /* PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Engine; sourceTree = "<group>"; };
 		656DC8892D25E7A700A63D6E /* Catch2Tests */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (65B9A5922D27555700ADCDBE /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Catch2Tests; sourceTree = "<group>"; };
 		6570375C2D7E4CFB00185E7B /* Examples */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Examples; sourceTree = "<group>"; };
@@ -458,7 +427,6 @@
 			children = (
 				656DC8772D21920E00A63D6E /* Engine */,
 				6570375C2D7E4CFB00185E7B /* Examples */,
-				656DC86F2D20BB8900A63D6E /* UI */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -571,7 +539,6 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				656DC86F2D20BB8900A63D6E /* UI */,
 				656DC8772D21920E00A63D6E /* Engine */,
 				6570375C2D7E4CFB00185E7B /* Examples */,
 			);

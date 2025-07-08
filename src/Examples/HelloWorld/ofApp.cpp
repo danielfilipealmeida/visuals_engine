@@ -23,7 +23,6 @@ void ofApp::setup(){
     
     state.setup(&set, bufferWidth, bufferHeight);
     
-    userInterface.setup(ofGetWindowRect(), &state);
     
     /*
     set.save("/Users/daniel/set.json");
@@ -75,16 +74,12 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
     state.update();
-    userInterface.update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
     if (showInterface) {
-        ofBackground(32,32,32);
-        userInterface.draw();
-        
-        return;
+        // todo
     }
     
     state.mixer->draw(ofRectangle(0.0, 0.0, ofGetWidth(), ofGetHeight()));
@@ -139,7 +134,7 @@ void ofApp::mouseExited(int x, int y){
 
 //--------------------------------------------------------------
 void ofApp::windowResized(int w, int h){
-    userInterface.resize(w, h);
+
 
 }
 

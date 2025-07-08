@@ -5,9 +5,7 @@
 #include "Visuals.hpp"
 #include "Mixer.hpp"
 #include "Signals.hpp"
-#include "UI/UI.hpp"
 #include "Engine/Set.hpp"
-#include "UserInterface.hpp"
 #include "MIDI.hpp"
 #include "State.hpp"
 
@@ -22,9 +20,6 @@ class ofApp : public ofBaseApp, public Observer<ofxMidiMessage> {
     bool showInterface;
     
     Set set;
-    
-    UserInterface userInterface;
-
     State state;
     
 	public:
