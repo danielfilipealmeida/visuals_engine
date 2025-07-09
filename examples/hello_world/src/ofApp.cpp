@@ -5,6 +5,10 @@
 
 
 void ofApp::setup(){
+    ofSetVerticalSync(true);
+    
+    state = make_shared<State>();
+    
     bufferSize = 128;
     audioInput.resize(bufferSize);
     FFT::getInstance().setup(bufferSize);
@@ -17,11 +21,13 @@ void ofApp::setup(){
     set.addVisual(factory.Video("002.mov"));
     set.addVisual(factory.Video("003.mov"));
     set.addVisual(factory.Video("004.mov"));
-    set.addVisual(factory.Plotter(&audioInput));
-    set.addVisual(factory.Plotter(&FFT::getInstance().audioBins));
+
 
     
-    state.setup(&set, bufferWidth, bufferHeight);
+    state->setup(&set, bufferWidth, bufferHeight);
+    
+    audioPlotter = factory.Plotter(&audioInput);
+    fftPlotter = factory.Plotter(&FFT::getInstance().audioBins);
     
     
     /*
@@ -67,32 +73,36 @@ void ofApp::setup(){
         112,
         0
     }, [&](ofxMidiMessage message) {
-        state.blurAmount = (message.value /127.0) * 10;
+        state->blurAmount = (message.value /127.0) * 10;
     });
-}
-
-//--------------------------------------------------------------
-void ofApp::update(){
-    state.update();
-}
-
-//--------------------------------------------------------------
-void ofApp::draw(){
-    if (showInterface) {
-        // todo
-    }
     
-    state.mixer->draw(ofRectangle(0.0, 0.0, ofGetWidth(), ofGetHeight()));
+    ui.setup(
+             state,
+             {
+             {"Audio input", audioPlotter},
+             {"FFT", fftPlotter}
+             });
+}
+
+void ofApp::update(){
+    state->update();
+    audioPlotter->update();
+    fftPlotter->update();
+}
+
+void ofApp::draw(){    
+    state->mixer->draw(ofRectangle(0.0, 0.0, ofGetWidth(), ofGetHeight()));
+    
+    if (showInterface) {
+        ui.draw();
+    }
 }
      
     
-
-//--------------------------------------------------------------
 void ofApp::keyPressed(int key){
 
 }
 
-//--------------------------------------------------------------
 void ofApp::keyReleased(int key){
     cout << ofToString(key) <<endl;
     
@@ -102,51 +112,46 @@ void ofApp::keyReleased(int key){
     }
 }
 
-//--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y){
 
 }
 
-//--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
 
 }
 
-//--------------------------------------------------------------
+
 void ofApp::mousePressed(int x, int y, int button){
 
 }
 
-//--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
 
 }
 
-//--------------------------------------------------------------
+
 void ofApp::mouseEntered(int x, int y){
 
 }
 
-//--------------------------------------------------------------
 void ofApp::mouseExited(int x, int y){
 
 }
 
-//--------------------------------------------------------------
 void ofApp::windowResized(int w, int h){
 
 
 }
 
-//--------------------------------------------------------------
 void ofApp::gotMessage(ofMessage msg){
 
 }
 
-//--------------------------------------------------------------
-void ofApp::dragEvent(ofDragInfo dragInfo){ 
+void ofApp::dragEvent(ofDragInfo dragInfo){
 
 }
+
+
 
 void ofApp::audioIn( ofSoundBuffer& buffer ) {
     float curVol = 0.0;

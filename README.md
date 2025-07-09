@@ -22,7 +22,10 @@
 
 3. **Set Up Dependencies**:
    - Ensure openFrameworks is installed and properly configured.
-   - Install any additional libraries or addons as specified in `addons.make`.
+   - Install any additional libraries or addons as specified in `addons.make`:
+        - ofxGui
+        - ofxMidi
+        - ofxFft
 
 4. **Build the Project**:
    - For macOS users, open `VisualsEngine.xcodeproj` with Xcode and build.
