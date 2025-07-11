@@ -5,11 +5,10 @@
 #include "Visuals.hpp"
 #include "Mixer.hpp"
 #include "Signals.hpp"
-#include "UI/UI.hpp"
-#include "Engine/Set.hpp"
-#include "UserInterface.hpp"
+#include "Set.hpp"
 #include "MIDI.hpp"
 #include "State.hpp"
+#include "ui.hpp"
 
 
 /// @brief Hello world main class
@@ -22,10 +21,11 @@ class ofApp : public ofBaseApp, public Observer<ofxMidiMessage> {
     bool showInterface;
     
     Set set;
+    shared_ptr<State> state;
     
-    UserInterface userInterface;
-
-    State state;
+    Visual<BufferPlotter> *audioPlotter, *fftPlotter;
+    
+    ui ui;
     
 	public:
 		void setup();
@@ -45,6 +45,10 @@ class ofApp : public ofBaseApp, public Observer<ofxMidiMessage> {
 		void gotMessage(ofMessage msg);
     
         ofSoundStream soundStream;
+    
+        /// \brief Handles audio input and feed in the audio signal into the FFT singleton in order to calculate the FFT of the current buffer
+        ///
+        /// \param buffer - the current audio buffer
         void audioIn( ofSoundBuffer& buffer );
         
 

@@ -8,7 +8,7 @@
 #   The location of your root openFrameworks installation
 #       (default) OF_ROOT = ../../.. 
 ################################################################################
-OF_ROOT = ../../../
+OF_ROOT = ../../../../../
 
 ################################################################################
 # PROJECT ROOT
@@ -37,7 +37,7 @@ PROJECT_ROOT = .
 #
 #   Note: Leave a leading space when adding list items with the += operator
 ################################################################################
-# PROJECT_EXTERNAL_SOURCE_PATHS = 
+#PROJECT_EXTERNAL_SOURCE_PATHS = ../../engine/src 
 
 ################################################################################
 # PROJECT EXCLUSIONS
@@ -77,7 +77,8 @@ PROJECT_ROOT = .
 # add a runtime path to search for those shared libraries, since they aren't 
 # incorporated directly into the final executable application binary.
 # TODO: should this be a default setting?
-# PROJECT_LDFLAGS=-Wl,-rpath=./libs
+#PROJECT_LDFLAGS=-Wl,-rpath=./libs
+PROJECT_LDFLAGS+=../../engine/lib/libEngine.a
 
 ################################################################################
 # PROJECT DEFINES
@@ -105,7 +106,7 @@ PROJECT_ROOT = .
 #
 #   Note: Leave a leading space when adding list items with the += operator
 ################################################################################
-# PROJECT_CFLAGS = 
+PROJECT_CFLAGS += -I $(shell find ../../engine -type d -exec printf -- "-I%s " {} \;)
 
 ################################################################################
 # PROJECT OPTIMIZATION CFLAGS
@@ -140,6 +141,5 @@ PROJECT_ROOT = .
 ################################################################################
 # PROJECT_CXX = 
 # PROJECT_CC = 
-
 
 

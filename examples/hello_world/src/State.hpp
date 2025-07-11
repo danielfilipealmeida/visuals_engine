@@ -8,7 +8,7 @@
 #ifndef State_h
 #define State_h
 
-#include "Engine/Set.hpp"
+#include "Set.hpp"
 #include "Transformations.hpp"
 
 
@@ -55,7 +55,9 @@ struct State {
         layerStackA->insert(new Layer(set->visuals[0]));
         
         layerStackB = new LayerStack(bufferWidth, bufferHeight);
-        layerStackB->insert(new Layer(set->visuals[5]));
+        layerStackB->insert(new Layer(set->visuals[1]));
+        
+        
         
         mixer = new Mixer(
                           TransformationFactory::GLSL(
