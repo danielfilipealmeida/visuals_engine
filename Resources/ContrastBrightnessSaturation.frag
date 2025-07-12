@@ -1,3 +1,16 @@
+/*
+ Implements Brightness, Contrast, Saturation filters
+ Values range from 0 to 2.
+ 
+ ```markdown
+ | Variable      | Min | Max | Default |
+ |---------------|-----|-----|---------|
+ | brightness    | 0   | 2   | 1       |
+ | saturation    | 0   | 2   | 1       |
+ | contrast      | 0   | 2   | 1       |
+ ```
+ */
+
 #extension GL_ARB_texture_rectangle : enable
 uniform sampler2DRect src_tex_unit0;
 uniform sampler2D tex;

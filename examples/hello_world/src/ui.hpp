@@ -55,6 +55,7 @@ class ui {
     ofParameter<float> blur;
     ofParameter<float> mix;
     ofParameter<float> brightness, contrast, saturation;
+    ofParameter<float> redTint, greenTint, blueTint;
     
     std::vector<std::unique_ptr<ParameterBinder<float>>> binders;
 
@@ -98,16 +99,28 @@ public:
         binders.emplace_back(std::make_unique<ParameterBinder<float>>(mix, &this->state->mixer->mix));
         
         // Brightness
-        mainOptionsPanel.add(brightness.set("brightness", 0, 0, 1));
+        mainOptionsPanel.add(brightness.set("brightness", 1, 0, 2));
         binders.emplace_back(std::make_unique<ParameterBinder<float>>(brightness, &this->state->brightness));
         
         // Contrast
-        mainOptionsPanel.add(contrast.set("contrast", 0, 0, 1));
+        mainOptionsPanel.add(contrast.set("contrast", 1, 0, 2));
         binders.emplace_back(std::make_unique<ParameterBinder<float>>(contrast, &this->state->contrast));
         
         // Saturation
-        mainOptionsPanel.add(saturation.set("saturation", 0, 0, 1));
+        mainOptionsPanel.add(saturation.set("saturation", 1, 0, 2));
         binders.emplace_back(std::make_unique<ParameterBinder<float>>(saturation, &this->state->saturation));
+        
+        // Red Tint
+        mainOptionsPanel.add(redTint.set("red Tint", 1, 0, 2));
+        binders.emplace_back(std::make_unique<ParameterBinder<float>>(redTint, &this->state->redTint));
+        
+        // Green Tint
+        mainOptionsPanel.add(greenTint.set("green Tint", 1, 0, 2));
+        binders.emplace_back(std::make_unique<ParameterBinder<float>>(greenTint, &this->state->greenTint));
+        
+        // Blue Tint
+        mainOptionsPanel.add(blueTint.set("blue Tint", 1, 0, 2));
+        binders.emplace_back(std::make_unique<ParameterBinder<float>>(blueTint, &this->state->blueTint));
     }
     
     
