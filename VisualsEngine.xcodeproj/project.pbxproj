@@ -44,7 +44,8 @@
 		65CDD0782E1DE13C0002668A /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65CDD06E2E1DE13C0002668A /* ofxToggle.cpp */; };
 		65CDD0792E1DE13C0002668A /* ofxSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65CDD06A2E1DE13C0002668A /* ofxSlider.cpp */; };
 		65CDD07A2E1DE13C0002668A /* ofxGuiGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65CDD0612E1DE13C0002668A /* ofxGuiGroup.cpp */; };
-		65F070262D4AF13F00019282 /* layerShader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65F070242D4AEFC900019282 /* layerShader.frag */; };
+		65EA16902E21AA1300769142 /* Utils.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 65EA168F2E21AA1300769142 /* Utils.hpp */; };
+		65EA16932E21E24900769142 /* LayerShader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65EA16922E21E24900769142 /* LayerShader.frag */; };
 		65F070272D4AF13F00019282 /* Base.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65F070252D4AEFC900019282 /* Base.vert */; };
 		65F0702A2D4AF72E00019282 /* FastBlur.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65F070282D4AF69800019282 /* FastBlur.frag */; };
 		65F101D92E1209E20013F416 /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = 65F1011C2E12046A0013F416 /* kiss_fft.c */; };
@@ -105,8 +106,8 @@
 			dstPath = data;
 			dstSubfolderSpec = 16;
 			files = (
+				65EA16932E21E24900769142 /* LayerShader.frag in CopyFiles */,
 				65F0702A2D4AF72E00019282 /* FastBlur.frag in CopyFiles */,
-				65F070262D4AF13F00019282 /* layerShader.frag in CopyFiles */,
 				65F070272D4AF13F00019282 /* Base.vert in CopyFiles */,
 				656DC8792D2193AC00A63D6E /* OpenSans-Regular.ttf in CopyFiles */,
 				659390742D1F7E4F00FC8957 /* 001.mov in CopyFiles */,
@@ -178,7 +179,9 @@
 		65CDD06E2E1DE13C0002668A /* ofxToggle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxToggle.cpp; sourceTree = "<group>"; };
 		65CDD07B2E1DE3400002668A /* ui.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ui.hpp; sourceTree = "<group>"; };
 		65CDD0802E1EAD240002668A /* DrawableGuiElement.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DrawableGuiElement.hpp; sourceTree = "<group>"; };
-		65F070242D4AEFC900019282 /* layerShader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = layerShader.frag; sourceTree = "<group>"; };
+		65EA168F2E21AA1300769142 /* Utils.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Utils.hpp; sourceTree = "<group>"; };
+		65EA16912E21D99A00769142 /* LayerShader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = LayerShader.frag; sourceTree = "<group>"; };
+		65EA16922E21E24900769142 /* LayerShader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = LayerShader.frag; path = Resources/LayerShader.frag; sourceTree = "<group>"; };
 		65F070252D4AEFC900019282 /* Base.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Base.vert; sourceTree = "<group>"; };
 		65F070282D4AF69800019282 /* FastBlur.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = FastBlur.frag; sourceTree = "<group>"; };
 		65F0708E2D4AF91A00019282 /* ContrastBrightnessSaturation.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = ContrastBrightnessSaturation.frag; sourceTree = "<group>"; };
@@ -286,10 +289,10 @@
 		6593906F2D1E3CB000FC8957 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				65EA16912E21D99A00769142 /* LayerShader.frag */,
 				65F0708F2D4AF9F600019282 /* RGBTint.frag */,
 				65F0708E2D4AF91A00019282 /* ContrastBrightnessSaturation.frag */,
 				65F070282D4AF69800019282 /* FastBlur.frag */,
-				65F070242D4AEFC900019282 /* layerShader.frag */,
 				65F070252D4AEFC900019282 /* Base.vert */,
 				656DC8782D21939C00A63D6E /* OpenSans-Regular.ttf */,
 				656DC8752D20E9B300A63D6E /* Cousine-Regular.ttf */,
@@ -347,6 +350,7 @@
 				65CDD0332E1DDFEF0002668A /* Set.hpp */,
 				65CDD0342E1DDFEF0002668A /* Set.cpp */,
 				65CDD0352E1DDFEF0002668A /* Transformations.hpp */,
+				65EA168F2E21AA1300769142 /* Utils.hpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -549,6 +553,7 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
+				65EA16922E21E24900769142 /* LayerShader.frag */,
 				65CDD0372E1DDFEF0002668A /* engine */,
 				65CDD0512E1DE01C0002668A /* examples */,
 				65CDD0182E1AD7110002668A /* WritingDocumentation.md */,
@@ -580,6 +585,7 @@
 				65F1025F2E120BFB0013F416 /* ofxMidiOut.h in Headers */,
 				65F102602E120BFB0013F416 /* ofxMidiConstants.h in Headers */,
 				65F102622E120BFB0013F416 /* ofxMidiClock.h in Headers */,
+				65EA16902E21AA1300769142 /* Utils.hpp in Headers */,
 				65F102632E120BFB0013F416 /* ofxBaseMidi.h in Headers */,
 				65F102652E120BFB0013F416 /* ofxRtMidiIn.h in Headers */,
 				65F102672E120BFB0013F416 /* ofxMidiTypes.h in Headers */,

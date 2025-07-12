@@ -24,6 +24,9 @@ struct State {
 #pragma mark State variables
     
     float blurAmount;
+    float contrast;
+    float saturation;
+    float brightness;
     
 #pragma mark Main Visuals
     
@@ -57,20 +60,33 @@ struct State {
         layerStackB = new LayerStack(bufferWidth, bufferHeight);
         layerStackB->insert(new Layer(set->visuals[1]));
         
-        
+        contrast = -0.5;
+        saturation = -0.5;
+        brightness = 10;
         
         mixer = new Mixer(
                           TransformationFactory::GLSL(
                                                       layerStackA,
-                                                      "FastBlur",
-                                                      true,
+                                                      { "LayerShader", "FastBlur"},
                                                       {
-                                                      {"blurH", &blurAmount},
-                                                      {"blurV", &blurAmount}
-                                                      }
+                                                          
+                                                      
+                                                        {
+                                                            {"contrast", &contrast},
+                                                            {"saturation", &saturation},
+                                                            {"brightness", &brightness}
+                                                              
+                                                        },
+                                                          {
+                                                          {"blurH", &blurAmount},
+                                                          {"blurV", &blurAmount}
+                                                          }
+                                                        
+                                                        }
                                                       ),
                           layerStackB,
                           bufferWidth, bufferHeight);
+    
         mixer->setMix(0.5);
         
         signal1.regist(mixer, mixer->parameters[MixerObservableParameters::MIX]);
