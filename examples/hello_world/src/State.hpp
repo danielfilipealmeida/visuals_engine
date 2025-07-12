@@ -14,19 +14,21 @@
 
 /// \brief Stores the state of the application.
 struct State {
-
+    
 #pragma mark State external references
     
     Set *set;
     float bufferWidth;
     float bufferHeight;
-
+    
 #pragma mark State variables
     
     float blurAmount;
     float contrast;
     float saturation;
     float brightness;
+    
+    float redTint, blueTint, greenTint;
     
 #pragma mark Main Visuals
     
@@ -64,29 +66,40 @@ struct State {
         saturation = -0.5;
         brightness = 10;
         
+        redTint = 0.1;
+        blueTint= 1;
+        greenTint = 1;
+        
         mixer = new Mixer(
                           TransformationFactory::GLSL(
                                                       layerStackA,
-                                                      { "LayerShader", "FastBlur"},
+                                                      { "LayerShader", "FastBlur", "RGBTint"},
                                                       {
+                                                          {
+                                                          {"contrast", &contrast},
+                                                          {"saturation", &saturation},
+                                                          {"brightness", &brightness}
                                                           
-                                                      
-                                                        {
-                                                            {"contrast", &contrast},
-                                                            {"saturation", &saturation},
-                                                            {"brightness", &brightness}
-                                                              
-                                                        },
+                                                          },
                                                           {
                                                           {"blurH", &blurAmount},
                                                           {"blurV", &blurAmount}
+                                                          },
+                                                      
+                                                          {
+                                                          
+                                                          {"redTint", &redTint},
+                                                          {"greenTint", &greenTint},
+                                                          {"blueTint", &blueTint}
+                                                          
                                                           }
-                                                        
-                                                        }
+                                                      
+                                                      }
+                                                      
                                                       ),
                           layerStackB,
                           bufferWidth, bufferHeight);
-    
+        
         mixer->setMix(0.5);
         
         signal1.regist(mixer, mixer->parameters[MixerObservableParameters::MIX]);

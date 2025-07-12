@@ -46,6 +46,7 @@
 		65CDD07A2E1DE13C0002668A /* ofxGuiGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65CDD0612E1DE13C0002668A /* ofxGuiGroup.cpp */; };
 		65EA16902E21AA1300769142 /* Utils.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 65EA168F2E21AA1300769142 /* Utils.hpp */; };
 		65EA16932E21E24900769142 /* LayerShader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65EA16922E21E24900769142 /* LayerShader.frag */; };
+		65EA16942E22999F00769142 /* RGBTint.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65F0708F2D4AF9F600019282 /* RGBTint.frag */; };
 		65F070272D4AF13F00019282 /* Base.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65F070252D4AEFC900019282 /* Base.vert */; };
 		65F0702A2D4AF72E00019282 /* FastBlur.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65F070282D4AF69800019282 /* FastBlur.frag */; };
 		65F101D92E1209E20013F416 /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = 65F1011C2E12046A0013F416 /* kiss_fft.c */; };
@@ -106,6 +107,7 @@
 			dstPath = data;
 			dstSubfolderSpec = 16;
 			files = (
+				65EA16942E22999F00769142 /* RGBTint.frag in CopyFiles */,
 				65EA16932E21E24900769142 /* LayerShader.frag in CopyFiles */,
 				65F0702A2D4AF72E00019282 /* FastBlur.frag in CopyFiles */,
 				65F070272D4AF13F00019282 /* Base.vert in CopyFiles */,

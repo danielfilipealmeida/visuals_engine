@@ -26,5 +26,5 @@ void main()
 	vec3 satColor = mix(intensity, brtColor, saturation);
 	vec3 conColor = mix(AvgLumin, satColor, contrast);
 
-	gl_FragColor = vec4(conColor, pixel.a);
+	gl_FragColor = vec4(conColor, 1);
 }

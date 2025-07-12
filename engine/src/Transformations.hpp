@@ -113,6 +113,8 @@ public:
     }
     
     /// \brief updates the decorated visual
+    ///
+    /// \details applies the ping-ping shader pipeline to the decorated visual. Will apply all visuals from top to bottom, which means the last shader is the one on top.
     void update() {
         visual->update();
         
