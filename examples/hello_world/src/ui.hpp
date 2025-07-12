@@ -13,13 +13,51 @@
 #include "DrawableGuiElement.hpp"
 #include "Mixer.hpp"
 
+/// \brief Implements a centralized two-way binding mechanism for binding GUI parameters with states variables
+///
+/// \details This successully allows the update of the app states by the GUI parameters, as well as the update of the GUI paremeters when the state changes via other means (i.e MIDI)
+template<typename T>
+class ParameterBinder {
+public:
+    ParameterBinder(ofParameter<T>& param, T* target) : param(param), target(target), lastSyncedValue(*target) {
+        param.addListener(this, &ParameterBinder::onChangeParameter);
+    }
+    
+    ~ParameterBinder() {
+        param.removeListener(this, &ParameterBinder::onChangeParameter);
+    }
+    
+    void onChangeParameter(T& newValue) {
+        *target = newValue;
+        lastSyncedValue = newValue;
+    }
+    
+    void sync() {
+        if(*target != lastSyncedValue) {
+            param = *target;
+            lastSyncedValue = *target;
+        }
+    }
+    
+private:
+    ofParameter<T>& param;
+    T* target;
+    T lastSyncedValue;
+};
+
+
+/// \brief Implements the UI of the application using the ofxGui addon
 class ui {
     shared_ptr<State> state;
     ofxPanel previewsPanel, audiAndFFTPanel, mainOptionsPanel;
+    std::vector<std::pair<string, VisualsInterface *>> additionalVisuals;
+    
     ofParameter<float> blur;
     ofParameter<float> mix;
+    ofParameter<float> brightness, contrast, saturation;
+    ofParameter<float> redTint, greenTint, blueTint;
     
-    std::vector<std::pair<string, VisualsInterface *>> additionalVisuals;
+    std::vector<std::unique_ptr<ParameterBinder<float>>> binders;
 
     float panelsWidth = 256;
     float panelsMargin = 8;
@@ -51,31 +89,48 @@ public:
         mainOptionsPanel.setup("Attributes", "attributesConfig");
         mainOptionsPanel.setWidthElements(panelsWidth);
         mainOptionsPanel.setPosition(panelsMargin*3 + panelsWidth * 2, panelsMargin);
+       
+        // Blur
         mainOptionsPanel.add(blur.set("blur", 0, 0, 10));
-        blur.addListener(this, &ui::onBlurChanged);
+        binders.emplace_back(std::make_unique<ParameterBinder<float>>(blur, &this->state->blurAmount));
         
-        mainOptionsPanel.add(mix.set("mix", 0, -1, 1));
-        mix.addListener(this, &ui::onMixChanged);
+        // Mix
+        mainOptionsPanel.add(mix.set("mix", this->state->mixer->mix, -1, 1));
+        binders.emplace_back(std::make_unique<ParameterBinder<float>>(mix, &this->state->mixer->mix));
+        
+        // Brightness
+        mainOptionsPanel.add(brightness.set("brightness", 1, 0, 2));
+        binders.emplace_back(std::make_unique<ParameterBinder<float>>(brightness, &this->state->brightness));
+        
+        // Contrast
+        mainOptionsPanel.add(contrast.set("contrast", 1, 0, 2));
+        binders.emplace_back(std::make_unique<ParameterBinder<float>>(contrast, &this->state->contrast));
+        
+        // Saturation
+        mainOptionsPanel.add(saturation.set("saturation", 1, 0, 2));
+        binders.emplace_back(std::make_unique<ParameterBinder<float>>(saturation, &this->state->saturation));
+        
+        // Red Tint
+        mainOptionsPanel.add(redTint.set("red Tint", 1, 0, 2));
+        binders.emplace_back(std::make_unique<ParameterBinder<float>>(redTint, &this->state->redTint));
+        
+        // Green Tint
+        mainOptionsPanel.add(greenTint.set("green Tint", 1, 0, 2));
+        binders.emplace_back(std::make_unique<ParameterBinder<float>>(greenTint, &this->state->greenTint));
+        
+        // Blue Tint
+        mainOptionsPanel.add(blueTint.set("blue Tint", 1, 0, 2));
+        binders.emplace_back(std::make_unique<ParameterBinder<float>>(blueTint, &this->state->blueTint));
     }
     
     
     void draw() {
-        // manually sync the parameters
-        blur.set(this->state->blurAmount);
-        mix.set(this->state->mixer->mix);
+        for (auto& b : binders) b->sync();
         
         // draw
         previewsPanel.draw();
         audiAndFFTPanel.draw();
         mainOptionsPanel.draw();
-    }
-    
-    void onBlurChanged(float& value) {
-        this->state->blurAmount = value;
-    }
-    
-    void onMixChanged(float& value) {
-        this->state->mixer->mix = value;
     }
     
 };

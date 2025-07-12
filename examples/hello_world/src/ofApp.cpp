@@ -91,7 +91,7 @@ void ofApp::update(){
 }
 
 void ofApp::draw(){    
-    state->mixer->draw(ofRectangle(0.0, 0.0, ofGetWidth(), ofGetHeight()));
+    state->decoratedMixer->draw(ofRectangle(0.0, 0.0, ofGetWidth(), ofGetHeight()));
     
     if (showInterface) {
         ui.draw();
