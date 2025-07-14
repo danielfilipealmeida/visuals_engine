@@ -94,3 +94,9 @@ ofJson LayerStack::encode() {
     
     return json;
 }
+
+void LayerStack::setVisualForLayer(unsigned int layerNumber, VisualsInterface *visual) {
+    // add the layer if it doesn't exist.
+    
+    
+    }

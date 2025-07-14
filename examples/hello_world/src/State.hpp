@@ -11,6 +11,11 @@
 #include "Set.hpp"
 #include "Transformations.hpp"
 
+enum Channel {
+    A,
+    Bi
+};
+
 
 /// \brief Stores the state of the application.
 struct State {
@@ -36,6 +41,9 @@ struct State {
     Mixer *mixer;
     VisualsInterface *decoratedMixer;
     Signal<float> signal1, signal2;
+    
+    Channel selectedChannel = A;
+    unsigned int selectedLayer = 0;
     
     
 #pragma mark Methods
@@ -110,6 +118,18 @@ struct State {
         signal1.update();
         signal2.update();
     }
+    
+    /// \brief Triggers a visual on the current selected channel/layer
+    ///
+    /// \param visual - the visual to play
+    void triggerVisualAtSelectedLayer(VisualsInterface *visual) {
+        // check if the selected channel and layers are allowed.
+        
+        LayerStack *layerStack = selectedLayer == A ? layerStackA : layerStackB;
+        
+        layerStack->setVisualForLayer(selectedLayer, visual);
+        
+    };
 };
 
 #endif /* State_h */

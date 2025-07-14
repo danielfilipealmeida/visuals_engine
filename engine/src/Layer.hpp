@@ -31,14 +31,14 @@ class Layer: public VisualsInterface {
 public:
     
     //! @brief Constructor
-    //! @param _visual the visual to display on the layer
-    //! @param alpha the transparency of the layer
-    //! @param blendMode which blend mode used to draw the layer
+    //! @param _visual -  the visual to display on the layer
+    //! @param _alpha - the transparency of the layer
+    //! @param _blendMode - which blend mode used to draw the layer
     Layer(
           VisualsInterface* _visual = NULL,
           float _alpha = 1,
           ofBlendMode _blendMode = OF_BLENDMODE_ADD
-        );
+          );
     
     //! @brief updates the visual
     //! @discussion will return if visual is null
@@ -47,12 +47,15 @@ public:
     //! @brief draws the visual with the blend mode and transparency
     //! @discussion will leave if visual is null
     void draw();
+
     
     //! @brief draws the visual in a specified rectangular area
     //! @param rect the rectangle
     void draw(ofRectangle rect);
-    
-    //! brief returns a JSON with the information of the Layer
+
+    /// \brief returns a json containing the serialized information of the Layer
+    ///
+    /// \returns a json representation
     ofJson encode();
 };
 
@@ -92,14 +95,19 @@ public:
     void draw();
     
     //! @brief draw the FBO in the specified rect
-    //! @param rect
+    //! @param rect - the rectangle where to draw
     void draw(ofRectangle rect);
+
     
     //! @brief add a new layer to the stack
     //! @param visual a pointer to a layer
     void insert(Layer* layer);
     
+    /// \brief Set the visual running on a layer
+    void setVisualForLayer(unsigned int layerNumber, VisualsInterface *visual);
+    
     //! @brief encode the data of the Layer stack into a JSON
     ofJson encode();
+
 };
 #endif

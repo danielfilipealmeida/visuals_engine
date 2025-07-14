@@ -2,6 +2,7 @@
 
 #include "FFT.hpp"
 #include "MIDI.hpp"
+#include "Keyboard.hpp"
 
 
 void ofApp::setup(){
@@ -37,36 +38,21 @@ void ofApp::setup(){
      */
     
     
-    ofSoundStreamSettings settings;
+    setupAudio();
+    setupMIDI(false);
     
-    // if you want to set the device id to be different than the default
-    // auto devices = soundStream.getDeviceList();
-    // settings.device = devices[4];
-    
-    // you can also get devices for an specific api
-    // auto devices = soundStream.getDevicesByApi(ofSoundDevice::Api::PULSE);
-    // settings.device = devices[0];
-    
-    // or get the default device for an specific api:
-    // settings.api = ofSoundDevice::Api::PULSE;
-    
-    // or by name
-    auto devices = soundStream.getMatchingDevices("default");
-    
-    if(!devices.empty()){
-        settings.setInDevice(devices[0]);
-    }
-     
-    settings.setInListener(this);
-    settings.sampleRate = 44100;
-    settings.numInputChannels = 1;
-    settings.bufferSize = bufferSize;
-    settings.numBuffers = 1;
-    soundStream.setup(settings);
-    
-    // midi setup
+    ui.setup(
+             state,
+             {
+             {"Audio input", audioPlotter},
+             {"FFT", fftPlotter}
+             });
+}
+
+
+void ofApp::setupMIDI(bool debug) {
     MIDI::getInstance().setup(0);
-    //MIDI::getInstance().debug = true;
+    //MIDI::getInstance().debug = debug;
     MIDI::getInstance().regist((MIDIAction){
         MIDI_CONTROL_CHANGE,
         1,
@@ -75,13 +61,31 @@ void ofApp::setup(){
     }, [&](ofxMidiMessage message) {
         state->blurAmount = (message.value /127.0) * 10;
     });
+}
+
+void ofApp::setupAudio() {
+    ofSoundStreamSettings settings;
+    auto devices = soundStream.getMatchingDevices("default");
     
-    ui.setup(
-             state,
-             {
-             {"Audio input", audioPlotter},
-             {"FFT", fftPlotter}
-             });
+    if(!devices.empty()){
+        settings.setInDevice(devices[0]);
+    }
+    
+    settings.setInListener(this);
+    settings.sampleRate = 44100;
+    settings.numInputChannels = 1;
+    settings.bufferSize = bufferSize;
+    settings.numBuffers = 1;
+    soundStream.setup(settings);
+}
+
+void ofApp::setupKeys() {
+    Keyboard keyboard = Keyboard::getInstance();
+    
+    keyboard.add(113, [](int key) {
+        //state->mixer->a->
+    });
+    
 }
 
 void ofApp::update(){
@@ -100,7 +104,7 @@ void ofApp::draw(){
      
     
 void ofApp::keyPressed(int key){
-
+    Keyboard::getInstance().handle(key);
 }
 
 void ofApp::keyReleased(int key){
