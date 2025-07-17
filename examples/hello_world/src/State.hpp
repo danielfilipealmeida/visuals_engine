@@ -10,6 +10,12 @@
 
 #include "Set.hpp"
 #include "Transformations.hpp"
+#include "LayerStack.hpp"
+
+enum Channel {
+    A,
+    B
+};
 
 
 /// \brief Stores the state of the application.
@@ -37,6 +43,9 @@ struct State {
     VisualsInterface *decoratedMixer;
     Signal<float> signal1, signal2;
     
+    Channel selectedChannel = Channel::A;
+    unsigned int selectedLayer = 0;
+    
     
 #pragma mark Methods
     
@@ -58,10 +67,12 @@ struct State {
         signal2 = SignalsFactory::Random(10, 1);
         
         layerStackA = new LayerStack(bufferWidth, bufferHeight);
-        layerStackA->insert(new Layer(set->visuals[0]));
+        layerStackA->insert(new Layer(bufferWidth, bufferHeight));
+        layerStackA->insert(new Layer(bufferWidth, bufferHeight));
         
         layerStackB = new LayerStack(bufferWidth, bufferHeight);
-        layerStackB->insert(new Layer(set->visuals[1]));
+        layerStackB->insert(new Layer(bufferWidth, bufferHeight));
+        layerStackB->insert(new Layer(bufferWidth, bufferHeight));
         
         contrast = 1;
         saturation = 1;
@@ -110,6 +121,21 @@ struct State {
         signal1.update();
         signal2.update();
     }
+    
+    /// \brief Triggers a visual on the current selected channel/layer
+    ///
+    /// \param visual - the visual to play
+    void triggerVisualAtSelectedLayer(VisualsInterface *visual) {
+        if (visual == NULL) {
+            return;
+        }
+        
+        LayerStack *layerStack = selectedChannel == Channel::A ? layerStackA : layerStackB;
+        
+        
+        layerStack->setVisualForLayer(selectedLayer, visual);
+        
+    };
 };
 
 #endif /* State_h */

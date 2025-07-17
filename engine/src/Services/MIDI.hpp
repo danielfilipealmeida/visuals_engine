@@ -74,7 +74,7 @@ public:
     /// @param {ofxMidiMessage} messate - the new midi message
     void newMidiMessage(ofxMidiMessage &message) {
         if (debug) {
-            cout << "New Message in: "<<message.toString() <<endl;
+            ofLog(OF_LOG_NOTICE, "MIDI message: " + message.toString());
         }
         
         // add the latest message to the messagie queue
@@ -121,7 +121,7 @@ public:
 private:
     
     MIDI() {
-        cout << "MIDI Singleton instanciated" <<endl;
+        ofLog(OF_LOG_NOTICE, "MIDI Singleton instanciated");
         midiIn.listInPorts();
     }
 };

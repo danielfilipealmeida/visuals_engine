@@ -57,6 +57,14 @@ public:
 };
 
 
+/// \brief Interface that defines the play and stop methods
+class Playable {
+public:
+    virtual void play() = 0;
+    virtual void stop() = 0;
+};
+
+
 /// @brief Interface that defines a method for returning the information of the object on a JSON
 class Encodable {
 public:
@@ -69,7 +77,7 @@ public:
 /// @brief gathers all interfaces needed for a Visual
 /// 
 /// all visuals (video-player, mixer. layers, generators) should inherit this class
-class VisualsInterface: public Drawable, public Encodable {
+class VisualsInterface: public Drawable, public Encodable, public Playable {
 };
 
 

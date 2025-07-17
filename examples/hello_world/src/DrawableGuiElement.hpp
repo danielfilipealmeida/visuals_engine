@@ -54,7 +54,12 @@ public:
     }
     
     void render() {
-        element->draw(b);
+        if (element) {
+            ofDisableAlphaBlending();
+            ofSetColor(255,255,255,0);
+            element->draw(b);
+        }
+        
         
         // draw the caption
         ofRectangle captionBoundingBox = getTextBoundingBox(caption, b.x + textPadding, b.y);

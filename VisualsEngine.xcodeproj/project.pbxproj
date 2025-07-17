@@ -28,7 +28,6 @@
 		65CDD0442E1DDFEF0002668A /* SignalPlotter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 65CDD0292E1DDFEF0002668A /* SignalPlotter.hpp */; };
 		65CDD0452E1DDFEF0002668A /* Set.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65CDD0342E1DDFEF0002668A /* Set.cpp */; };
 		65CDD0462E1DDFEF0002668A /* Plotter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65CDD0282E1DDFEF0002668A /* Plotter.cpp */; };
-		65CDD0472E1DDFEF0002668A /* Layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65CDD0302E1DDFEF0002668A /* Layer.cpp */; };
 		65CDD0482E1DDFEF0002668A /* SignalPlotter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65CDD02A2E1DDFEF0002668A /* SignalPlotter.cpp */; };
 		65CDD0492E1DDFEF0002668A /* BufferPlotter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65CDD0262E1DDFEF0002668A /* BufferPlotter.cpp */; };
 		65CDD04A2E1DDFEF0002668A /* Mixer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65CDD0322E1DDFEF0002668A /* Mixer.cpp */; };
@@ -47,6 +46,11 @@
 		65EA16902E21AA1300769142 /* Utils.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 65EA168F2E21AA1300769142 /* Utils.hpp */; };
 		65EA16932E21E24900769142 /* LayerShader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65EA16922E21E24900769142 /* LayerShader.frag */; };
 		65EA16942E22999F00769142 /* RGBTint.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65F0708F2D4AF9F600019282 /* RGBTint.frag */; };
+		65EA16962E24777900769142 /* Keyboard.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 65EA16952E24777900769142 /* Keyboard.hpp */; };
+		65EA16982E25644A00769142 /* Layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65EA16972E25644A00769142 /* Layer.cpp */; };
+		65EA169A2E25659700769142 /* LayerStack.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 65EA16992E25659700769142 /* LayerStack.hpp */; };
+		65EA169C2E2565C100769142 /* LayerStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65EA169B2E2565C100769142 /* LayerStack.cpp */; };
+		65EA169D2E2565C100769142 /* LayerStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65EA169B2E2565C100769142 /* LayerStack.cpp */; };
 		65F070272D4AF13F00019282 /* Base.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65F070252D4AEFC900019282 /* Base.vert */; };
 		65F0702A2D4AF72E00019282 /* FastBlur.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65F070282D4AF69800019282 /* FastBlur.frag */; };
 		65F101D92E1209E20013F416 /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = 65F1011C2E12046A0013F416 /* kiss_fft.c */; };
@@ -147,7 +151,6 @@
 		65CDD02C2E1DDFEF0002668A /* FFT.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FFT.hpp; sourceTree = "<group>"; };
 		65CDD02D2E1DDFEF0002668A /* MIDI.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MIDI.hpp; sourceTree = "<group>"; };
 		65CDD02F2E1DDFEF0002668A /* Layer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Layer.hpp; sourceTree = "<group>"; };
-		65CDD0302E1DDFEF0002668A /* Layer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Layer.cpp; sourceTree = "<group>"; };
 		65CDD0312E1DDFEF0002668A /* Mixer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Mixer.hpp; sourceTree = "<group>"; };
 		65CDD0322E1DDFEF0002668A /* Mixer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Mixer.cpp; sourceTree = "<group>"; };
 		65CDD0332E1DDFEF0002668A /* Set.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Set.hpp; sourceTree = "<group>"; };
@@ -184,6 +187,10 @@
 		65EA168F2E21AA1300769142 /* Utils.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Utils.hpp; sourceTree = "<group>"; };
 		65EA16912E21D99A00769142 /* LayerShader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = LayerShader.frag; sourceTree = "<group>"; };
 		65EA16922E21E24900769142 /* LayerShader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = LayerShader.frag; path = Resources/LayerShader.frag; sourceTree = "<group>"; };
+		65EA16952E24777900769142 /* Keyboard.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Keyboard.hpp; sourceTree = "<group>"; };
+		65EA16972E25644A00769142 /* Layer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Layer.cpp; sourceTree = "<group>"; };
+		65EA16992E25659700769142 /* LayerStack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LayerStack.hpp; sourceTree = "<group>"; };
+		65EA169B2E2565C100769142 /* LayerStack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LayerStack.cpp; sourceTree = "<group>"; };
 		65F070252D4AEFC900019282 /* Base.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Base.vert; sourceTree = "<group>"; };
 		65F070282D4AF69800019282 /* FastBlur.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = FastBlur.frag; sourceTree = "<group>"; };
 		65F0708E2D4AF91A00019282 /* ContrastBrightnessSaturation.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = ContrastBrightnessSaturation.frag; sourceTree = "<group>"; };
@@ -335,6 +342,7 @@
 			children = (
 				65CDD02C2E1DDFEF0002668A /* FFT.hpp */,
 				65CDD02D2E1DDFEF0002668A /* MIDI.hpp */,
+				65EA16952E24777900769142 /* Keyboard.hpp */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -346,7 +354,9 @@
 				65CDD02B2E1DDFEF0002668A /* Plotters */,
 				65CDD02E2E1DDFEF0002668A /* Services */,
 				65CDD02F2E1DDFEF0002668A /* Layer.hpp */,
-				65CDD0302E1DDFEF0002668A /* Layer.cpp */,
+				65EA16972E25644A00769142 /* Layer.cpp */,
+				65EA16992E25659700769142 /* LayerStack.hpp */,
+				65EA169B2E2565C100769142 /* LayerStack.cpp */,
 				65CDD0312E1DDFEF0002668A /* Mixer.hpp */,
 				65CDD0322E1DDFEF0002668A /* Mixer.cpp */,
 				65CDD0332E1DDFEF0002668A /* Set.hpp */,
@@ -591,10 +601,12 @@
 				65F102632E120BFB0013F416 /* ofxBaseMidi.h in Headers */,
 				65F102652E120BFB0013F416 /* ofxRtMidiIn.h in Headers */,
 				65F102672E120BFB0013F416 /* ofxMidiTypes.h in Headers */,
+				65EA16962E24777900769142 /* Keyboard.hpp in Headers */,
 				65F102692E120BFB0013F416 /* ofxRtMidiOut.h in Headers */,
 				65F1026A2E120BFB0013F416 /* ofxMidiTimecode.h in Headers */,
 				65F1026B2E120BFB0013F416 /* ofxMidi.h in Headers */,
 				65CDD0382E1DDFEF0002668A /* Signals.hpp in Headers */,
+				65EA169A2E25659700769142 /* LayerStack.hpp in Headers */,
 				65CDD0392E1DDFEF0002668A /* Set.hpp in Headers */,
 				65CDD03A2E1DDFEF0002668A /* FFT.hpp in Headers */,
 				65CDD03B2E1DDFEF0002668A /* Plotter.hpp in Headers */,
@@ -759,11 +771,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65EA16982E25644A00769142 /* Layer.cpp in Sources */,
 				65F101DA2E1209EC0013F416 /* kiss_fftr.c in Sources */,
+				65EA169C2E2565C100769142 /* LayerStack.cpp in Sources */,
 				65F101DB2E120A040013F416 /* ofxFft.cpp in Sources */,
 				65CDD0452E1DDFEF0002668A /* Set.cpp in Sources */,
 				65CDD0462E1DDFEF0002668A /* Plotter.cpp in Sources */,
-				65CDD0472E1DDFEF0002668A /* Layer.cpp in Sources */,
 				65CDD0482E1DDFEF0002668A /* SignalPlotter.cpp in Sources */,
 				65CDD0492E1DDFEF0002668A /* BufferPlotter.cpp in Sources */,
 				65CDD04A2E1DDFEF0002668A /* Mixer.cpp in Sources */,
@@ -799,6 +812,7 @@
 				65CDD0782E1DE13C0002668A /* ofxToggle.cpp in Sources */,
 				65CDD0792E1DE13C0002668A /* ofxSlider.cpp in Sources */,
 				65CDD07A2E1DE13C0002668A /* ofxGuiGroup.cpp in Sources */,
+				65EA169D2E2565C100769142 /* LayerStack.cpp in Sources */,
 				65CDD0522E1DE01C0002668A /* ofApp.cpp in Sources */,
 				65CDD0532E1DE01C0002668A /* main.cpp in Sources */,
 			);

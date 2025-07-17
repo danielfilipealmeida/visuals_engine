@@ -46,6 +46,14 @@ public:
     //! @abstract Loads the content of a json file storing a set
     //! @param path the path of the file to load in a string
     void load(std::string path);
+    
+    
+    /// \brief Returns the visual in the vector at the provided index or NULL if outside the elements
+    ///
+    /// \param index - the position of the visual in the visuals vector
+    ///
+    /// \returns the visual if inside the vector or NULL
+    VisualsInterface* getVisualAtIndex(unsigned int index);
 };
 
 #endif

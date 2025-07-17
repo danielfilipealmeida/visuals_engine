@@ -27,31 +27,43 @@ class ofApp : public ofBaseApp, public Observer<ofxMidiMessage> {
     
     ui ui;
     
-	public:
-		void setup();
-		void update();
-		void draw();
-		
-		void keyPressed(int key);
-		void keyReleased(int key);
-		void mouseMoved(int x, int y);
-		void mouseDragged(int x, int y, int button);
-		void mousePressed(int x, int y, int button);
-		void mouseReleased(int x, int y, int button);
-		void mouseEntered(int x, int y);
-		void mouseExited(int x, int y);
-		void windowResized(int w, int h);
-		void dragEvent(ofDragInfo dragInfo);
-		void gotMessage(ofMessage msg);
+public:
+    /// \brief app setup function.
+    /// \details initializes and sets up the state, midi, audio and ui
+    void setup();
     
-        ofSoundStream soundStream;
+    /// \brief sets up midi
+    void setupMIDI(bool debug);
     
-        /// \brief Handles audio input and feed in the audio signal into the FFT singleton in order to calculate the FFT of the current buffer
-        ///
-        /// \param buffer - the current audio buffer
-        void audioIn( ofSoundBuffer& buffer );
-        
-
+    /// \brief sets up audio
+    void setupAudio();
+    
+    /// \brief defines the keyboad handlers
+    void setupKeys();
+    
+    void update();
+    void draw();
+    
+    void keyPressed(int key);
+    void keyReleased(int key);
+    void mouseMoved(int x, int y);
+    void mouseDragged(int x, int y, int button);
+    void mousePressed(int x, int y, int button);
+    void mouseReleased(int x, int y, int button);
+    void mouseEntered(int x, int y);
+    void mouseExited(int x, int y);
+    void windowResized(int w, int h);
+    void dragEvent(ofDragInfo dragInfo);
+    void gotMessage(ofMessage msg);
+    
+    ofSoundStream soundStream;
+    
+    /// \brief Handles audio input and feed in the audio signal into the FFT singleton in order to calculate the FFT of the current buffer
+    ///
+    /// \param buffer - the current audio buffer
+    void audioIn( ofSoundBuffer& buffer );
+    
+    
     /** todo: move to its own class */
     vector<float> volHistory;
     vector<float> audioInput;
