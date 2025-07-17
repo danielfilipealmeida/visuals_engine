@@ -49,8 +49,10 @@ private:
 /// \brief Implements the UI of the application using the ofxGui addon
 class ui {
     shared_ptr<State> state;
-    ofxPanel previewsPanel, audiAndFFTPanel, mainOptionsPanel;
+    ofxPanel previewsPanel, audiAndFFTPanel, mainOptionsPanel, channelsPanel;
     std::vector<std::pair<string, VisualsInterface *>> additionalVisuals;
+    
+    ofxLabel channelALabel, channelBLabel;
     
     ofParameter<float> blur;
     ofParameter<float> mix;
@@ -59,7 +61,7 @@ class ui {
     
     std::vector<std::unique_ptr<ParameterBinder<float>>> binders;
 
-    float panelsWidth = 256;
+    float panelsWidth = 192;
     float panelsMargin = 8;
 public:
     ui() {};
@@ -76,10 +78,34 @@ public:
         previewsPanel.add(new DrawableGuiElement<VisualsInterface *>(this->state->mixer->a, "Channel A"));
         previewsPanel.add(new DrawableGuiElement<VisualsInterface *>(this->state->mixer->b, "Channel B"));
         
+        
+        // Channels previews
+        channelsPanel.setup("Channels Previews", "channelsPreviewsConfig");
+        channelsPanel.setWidthElements(panelsWidth);
+        channelsPanel.setPosition(panelsMargin*2 + panelsWidth, panelsMargin);
+        
+        unsigned int layerInChannelA = ((LayerStack*)this->state->mixer->a)->layers.size();
+        channelsPanel.add(channelALabel.setup("Channel A", ofToString(layerInChannelA) + " Layers"));
+        unsigned int count = 1;
+        for (Layer *layer : ((LayerStack*)this->state->mixer->a)->layers) {
+            channelsPanel.add(new DrawableGuiElement<VisualsInterface *>(layer , "Channel A / Layer " + ofToString(count)));
+            
+            count++;
+        }
+        
+        unsigned int layerInChannelB = ((LayerStack*)this->state->mixer->a)->layers.size();
+        channelsPanel.add(channelBLabel.setup("Channel B", ofToString(layerInChannelB) + " Layers"));
+        count = 1;
+        for (Layer *layer : ((LayerStack*)this->state->mixer->b)->layers) {
+            channelsPanel.add(new DrawableGuiElement<VisualsInterface *>(layer , "Channel B / Layer " + ofToString(count)));
+            
+            count++;
+        }
+        
         // add additional plots
         audiAndFFTPanel.setup("Audio and FFT", "audioAndFFTConfig");
         audiAndFFTPanel.setWidthElements(panelsWidth);
-        audiAndFFTPanel.setPosition(panelsMargin*2 + panelsWidth, panelsMargin);
+        audiAndFFTPanel.setPosition(panelsMargin*3 + panelsWidth * 2, panelsMargin);
         for(std::pair<string, VisualsInterface *> plot : this->additionalVisuals) {
             audiAndFFTPanel.add(new DrawableGuiElement<VisualsInterface *>(plot.second, plot.first));
         }
@@ -88,7 +114,7 @@ public:
         // setup. needs a listener to update the state
         mainOptionsPanel.setup("Attributes", "attributesConfig");
         mainOptionsPanel.setWidthElements(panelsWidth);
-        mainOptionsPanel.setPosition(panelsMargin*3 + panelsWidth * 2, panelsMargin);
+        mainOptionsPanel.setPosition(panelsMargin*4 + panelsWidth * 3, panelsMargin);
        
         // Blur
         mainOptionsPanel.add(blur.set("blur", 0, 0, 10));
@@ -129,6 +155,7 @@ public:
         
         // draw
         previewsPanel.draw();
+        channelsPanel.draw();
         audiAndFFTPanel.draw();
         mainOptionsPanel.draw();
     }

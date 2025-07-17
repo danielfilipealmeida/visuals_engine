@@ -10,6 +10,9 @@ int main( ){
 	settings.windowMode = OF_WINDOW; //can also be OF_FULLSCREEN
 
 	auto window = ofCreateWindow(settings);
+    
+    ofSetWindowShape(ofGetScreenWidth(), ofGetScreenHeight());
+    window->setFullscreen(true);
 
 	ofRunApp(window, make_shared<ofApp>());
 	ofRunMainLoop();

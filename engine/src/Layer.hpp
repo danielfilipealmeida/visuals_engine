@@ -15,6 +15,7 @@
 //! @abstract Inplements a Layer, which is the combination of a visual an alpha value and a blend mode.
 //! @discussion Layers can be stacked
 class Layer: public VisualsInterface {
+public:
     
     //! @var alpha
     //! @abstract the transparency value, from 0.0 to 1.0
@@ -28,13 +29,18 @@ class Layer: public VisualsInterface {
     //! @abstract defines which blend mode used to draw the visual in the layer
     ofBlendMode blendMode;
     
-public:
+
     
-    //! @brief Constructor
+    //! @brief Layer constructor.
+    //!
+    //! @param bufferWidth,
+    //! @param bufferHeight
     //! @param _visual -  the visual to display on the layer
     //! @param _alpha - the transparency of the layer
     //! @param _blendMode - which blend mode used to draw the layer
     Layer(
+          float bufferWidth,
+          float bufferHeight,
           VisualsInterface* _visual = NULL,
           float _alpha = 1,
           ofBlendMode _blendMode = OF_BLENDMODE_ADD
@@ -57,57 +63,15 @@ public:
     ///
     /// \returns a json representation
     ofJson encode();
+    
+    
+    /// \brief sets the running visual
+    ///
+    /// \param _visual - the visual that will be running on the the layer
+    void set(VisualsInterface* _visual);
+    
+    void play() {};
+    void stop() {};
 };
 
-//! @class LayerStack
-//! @abstract Implements a stack of layers
-class LayerStack: public VisualsInterface {
-    
-
-    //! @var buffer
-    //! @abstract an FBO to render the layer stack
-    ofFbo buffer;
-    
-    //! @var width
-    //! @abstract the width in pixels of the FBO
-    float width;
-    
-    //! @var height
-    //! @abstract the height in pixels of the FBO
-    float height;
-    
-public:
-    
-    //! @var layers
-    //! @abstract a vector with all layers in the stack
-    std::vector<Layer *> layers;
-    
-    
-    //! @brief Constructor
-    //! @param _width the width of the FBO
-    //! @param _height the height of the FBO
-    LayerStack(float _width, float _height);
-    
-    //! @brief update the layer stack by rendering to the FBO
-    void update();
-    
-    //! @brief update the layer stack by rendering to the FBO
-    void draw();
-    
-    //! @brief draw the FBO in the specified rect
-    //! @param rect - the rectangle where to draw
-    void draw(ofRectangle rect);
-
-    
-    //! @brief add a new layer to the stack
-    //! @param visual a pointer to a layer
-    void insert(Layer* layer);
-    
-    /// \brief Set the visual running on a layer
-    void setVisualForLayer(unsigned int layerNumber, VisualsInterface *visual);
-    
-    //! @brief encode the data of the Layer stack into a JSON
-    ofJson encode();
-
-};
 #endif

@@ -11,6 +11,7 @@
 
 
 Layer::Layer(
+             float bufferWidth,float bufferHeight,
              VisualsInterface* _visual,
              float _alpha,
              ofBlendMode _blendMode
@@ -18,6 +19,7 @@ Layer::Layer(
     visual = _visual;
     alpha = _alpha;
     blendMode = _blendMode;
+    rect = ofRectangle(0,0, bufferWidth, bufferHeight);
 }
 
 void Layer::draw() {
@@ -31,7 +33,7 @@ void Layer::draw(ofRectangle _rect) {
     ofEnableAlphaBlending();
     ofEnableBlendMode(blendMode);
     ofSetColor(255, 255, 255, (int) (alpha * 255.0));
-    visual->draw();
+    visual->draw(_rect);
     ofDisableBlendMode();
     ofDisableAlphaBlending();
 }
@@ -49,54 +51,6 @@ ofJson Layer::encode() {
     return json;
 }
 
-
-/** Layer Stack implementation */
-
-LayerStack::LayerStack(float _width, float _height) {
-    width = _width;
-    height = _height;
-    buffer.allocate(width, height);
-    rect = ofRectangle(0,0,width, height);
+void Layer::set(VisualsInterface* _visual) {
+    visual = _visual;
 }
-
-void LayerStack::update() {
-    // updates all
-    for (auto layer: layers) {
-        layer->update();
-    }
-    
-    // draws all into buffer
-    buffer.begin();
-    ofEnableAlphaBlending();
-    ofClear(0, 0, 0);
-    ofSetColor(255, 255, 255);
-    for (auto layer: layers) {
-        layer->draw();
-    }
-    ofDisableAlphaBlending();
-    buffer.end();
-}
-
-void LayerStack::draw() {
-    draw(rect);
-}
-
-void LayerStack::draw(ofRectangle _rect) {
-    buffer.draw(_rect);
-}
-
-void LayerStack::insert(Layer *layer) {
-    layers.push_back(layer);
-}
-
-ofJson LayerStack::encode() {
-    ofJson json;
-    
-    return json;
-}
-
-void LayerStack::setVisualForLayer(unsigned int layerNumber, VisualsInterface *visual) {
-    // add the layer if it doesn't exist.
-    
-    
-    }

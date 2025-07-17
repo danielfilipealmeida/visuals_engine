@@ -74,3 +74,11 @@ void Set::load(std::string path) {
     decode(data);
 }
 
+
+VisualsInterface* Set::getVisualAtIndex(unsigned int index) {
+    if (index >= visuals.size()) {
+        return NULL;
+    }
+    
+    return visuals[index];
+}

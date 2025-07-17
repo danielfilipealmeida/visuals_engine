@@ -10,10 +10,11 @@
 
 #include "Set.hpp"
 #include "Transformations.hpp"
+#include "LayerStack.hpp"
 
 enum Channel {
     A,
-    Bi
+    B
 };
 
 
@@ -42,7 +43,7 @@ struct State {
     VisualsInterface *decoratedMixer;
     Signal<float> signal1, signal2;
     
-    Channel selectedChannel = A;
+    Channel selectedChannel = Channel::A;
     unsigned int selectedLayer = 0;
     
     
@@ -66,10 +67,12 @@ struct State {
         signal2 = SignalsFactory::Random(10, 1);
         
         layerStackA = new LayerStack(bufferWidth, bufferHeight);
-        layerStackA->insert(new Layer(set->visuals[0]));
+        layerStackA->insert(new Layer(bufferWidth, bufferHeight));
+        layerStackA->insert(new Layer(bufferWidth, bufferHeight));
         
         layerStackB = new LayerStack(bufferWidth, bufferHeight);
-        layerStackB->insert(new Layer(set->visuals[1]));
+        layerStackB->insert(new Layer(bufferWidth, bufferHeight));
+        layerStackB->insert(new Layer(bufferWidth, bufferHeight));
         
         contrast = 1;
         saturation = 1;
@@ -123,9 +126,12 @@ struct State {
     ///
     /// \param visual - the visual to play
     void triggerVisualAtSelectedLayer(VisualsInterface *visual) {
-        // check if the selected channel and layers are allowed.
+        if (visual == NULL) {
+            return;
+        }
         
-        LayerStack *layerStack = selectedLayer == A ? layerStackA : layerStackB;
+        LayerStack *layerStack = selectedChannel == Channel::A ? layerStackA : layerStackB;
+        
         
         layerStack->setVisualForLayer(selectedLayer, visual);
         

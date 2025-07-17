@@ -26,15 +26,14 @@ NLOHMANN_JSON_SERIALIZE_ENUM(
                                  { VisualTypes::loop, "loop" },
                                  { VisualTypes::plot, "plot" }
                              }
-);
+                             );
 
-
+/// \brief Visual template class
+/// \details Template class that
 template<class T>
 class Visual: public VisualsInterface {
-private:
-    T visual;
-    
 public:
+    T visual;
     
     /// Will store needed data that cannot be accessed in the visual
     ofJson data;
@@ -43,7 +42,9 @@ public:
     Visual(T _visual, ofRectangle _rect) {
         visual = _visual;
         rect = _rect;
-        play();
+    }
+    ~Visual() {
+        visual.close();
     }
     void update() {
         visual.update();
@@ -54,7 +55,7 @@ public:
     void draw(ofRectangle _rect) {
         visual.draw(_rect);
     }
-
+    
     void play() {
         visual.play();
     }
@@ -64,8 +65,20 @@ public:
     ofJson encode() {
         return {};
     }
+    
+    /// \brief Copy assignment operator
+    Visual& operator=(const Visual& other) {
+        if(this != &other) {
+            if constexpr (std::is_same_v<T, ofVideoPlayer>) {
+                const string path = other.visual.getMoviePath();
+                visual.load(path);
+            }
+        }
+      
+        return *this;
+    }
+    
 };
-
 
 /** ofVideoGrabber partial specializations */
 template<> inline void Visual<ofVideoGrabber>::play(){};
@@ -98,28 +111,29 @@ template<> inline ofJson Visual<SignalPlotter>::encode() {
         {"width", visual.rect.width},
         {"height", visual.rect.height}
     };
-}; // no way to export a signal. 
+}; // no way to export a signal.
 
 
 
 
-//! Class containing a compilation of methods to work as builders of visuals
-//! It needs to know in advance the dimentions of the existing rendering buffers on the application.
+/// \brief Class containing a compilation of methods to work as builders of visuals
+/// It needs to know in advance the dimentions of the existing rendering buffers on the application.
 class VisualsFactory {
     float width;
     float height;
 public:
     
-    //! @abstract Factory constructor, used to set the default of width and height to be used when seting up new visuals
-    //!
-    //! @param _width: the width of the rendering buffer
-    //! @param _height: the height of the rendering buffers
+    /// \brief Factory constructor, used to set the default of width and height to be used when seting up new visuals
+    ///
+    /// @param _width: the width of the rendering buffer
+    /// @param _height: the height of the rendering buffers
     VisualsFactory(float _width, float _height) {
         width = _width;
         height = _height;
     }
     
-    /// Returns a configured video loop visual
+    /// \brief Returns a configured video loop visual
+    ///
     /// \param path
     Visual<ofVideoPlayer>* Video(std::string path) {
         Visual<ofVideoPlayer> *visual;
@@ -133,8 +147,9 @@ public:
         return visual;
     };
     
-    /// Returns a configured camera visual
-    /// \param deviceId
+    /// \brief Returns a configured camera visual
+    /// 
+    /// \param deviceId  - the identification of what camera to use
     Visual<ofVideoGrabber> *VideoGrabber(int _deviceId) {
         Visual<ofVideoGrabber> *visual;
         
@@ -154,7 +169,7 @@ public:
     
     //! @abstract Returns a signal plotter visual
     //!
-    //! @param *signal the actual signal to be printed.
+    //! @param signal -  the actual signal to be printed.
     Visual<SignalPlotter> *Plotter(Signal<float> *signal) {
         Visual<SignalPlotter> *visual;
         
@@ -168,7 +183,7 @@ public:
     
     //! @abstract Creates a Visual of type bufferPlotter and returns it configured
     //!
-    //! @param *buffer
+    //! @param buffer - the buffer to draw
     Visual<BufferPlotter> *Plotter(vector<float> *buffer) {
         Visual<BufferPlotter> *visual;
         

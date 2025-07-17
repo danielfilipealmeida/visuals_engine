@@ -47,6 +47,8 @@ void ofApp::setup(){
              {"Audio input", audioPlotter},
              {"FFT", fftPlotter}
              });
+    
+    setupKeys();
 }
 
 
@@ -80,11 +82,35 @@ void ofApp::setupAudio() {
 }
 
 void ofApp::setupKeys() {
-    Keyboard keyboard = Keyboard::getInstance();
+    Keyboard::getInstance().debug = true;
     
-    keyboard.add(113, [](int key) {
-        //state->mixer->a->
-    });
+    // assigns the keys used to trigger visuals on the selected channel and layer
+    unsigned int index = 0;
+    for (unsigned int key : Keyboard::getInstance().defaultVisualsTriggerKeys) {
+        Keyboard::getInstance().add(key, [this, index](int key) {
+            this->state->triggerVisualAtSelectedLayer(set.getVisualAtIndex(index));
+        });
+        
+        index++;
+    }
+    
+    index = 0;
+    for (unsigned int key : Keyboard::getInstance().defaultLayersTriggerKeys) {
+        Keyboard::getInstance().add(key, [this, index](int key) {
+            this->state->selectedLayer = index;
+        });
+        
+        index++;
+    }
+
+    index = 0;
+    for (unsigned int key : Keyboard::getInstance().defaultChannelTriggerKey) {
+        Keyboard::getInstance().add(key, [this, index](int key) {
+            this->state->selectedChannel = (Channel) index;
+        });
+        
+        index++;
+    }
     
 }
 
@@ -108,7 +134,7 @@ void ofApp::keyPressed(int key){
 }
 
 void ofApp::keyReleased(int key){
-    cout << ofToString(key) <<endl;
+    //cout << ofToString(key) <<endl;
     
     switch (key) {
     case 32:
