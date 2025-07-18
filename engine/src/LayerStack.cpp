@@ -49,6 +49,15 @@ void LayerStack::insert(Layer *layer) {
 ofJson LayerStack::encode() {
     ofJson json;
     
+    json["width"] = width;
+    json["height"] = height;
+    
+    std::vector<ofJson> layersEncode;
+    for(Layer* layer : layers) {
+        layersEncode.push_back(layer->encode());
+    }
+    json["layers"] = layersEncode;
+    
     return json;
 }
 

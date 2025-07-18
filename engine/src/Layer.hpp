@@ -11,6 +11,10 @@
 #include "BaseClasses.hpp"
 #include <vector>
 
+
+
+
+
 //! @class Layer
 //! @abstract Inplements a Layer, which is the combination of a visual an alpha value and a blend mode.
 //! @discussion Layers can be stacked

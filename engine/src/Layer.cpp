@@ -9,6 +9,14 @@
 #include "Layer.hpp"
 #include "ofMain.h"
 
+std::map<ofBlendMode, std::string>  blendModeMappings = {
+    {ofBlendMode::OF_BLENDMODE_DISABLED, "disabled"},
+    {ofBlendMode::OF_BLENDMODE_ALPHA, "alpha"},
+    {ofBlendMode::OF_BLENDMODE_ADD, "add"},
+    {ofBlendMode::OF_BLENDMODE_SUBTRACT, "subtract"},
+    {ofBlendMode::OF_BLENDMODE_MULTIPLY, "multiply"},
+    {ofBlendMode::OF_BLENDMODE_SCREEN, "screen"}
+};
 
 Layer::Layer(
              float bufferWidth,float bufferHeight,
@@ -47,6 +55,11 @@ void Layer::update() {
 
 ofJson Layer::encode() {
     ofJson json;
+    
+    json["width"] = rect.width;
+    json["height"] = rect.height;
+    json["alpha"] = alpha;
+    json["blendMode"] = blendModeMappings[blendMode];
     
     return json;
 }
