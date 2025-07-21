@@ -58,3 +58,17 @@ void Mixer::update(float val, std::string key) {
     }
     
 }
+
+
+ofJson Mixer::encode() {
+    ofJson json;
+    
+    json["type"] = "mixer";
+    json["width"] = rect.width;
+    json["height"] = rect.height;
+    json["a"] = a->encode();
+    json["b"] = b->encode();
+    json["mix"] = mix;
+    
+    return json;
+}

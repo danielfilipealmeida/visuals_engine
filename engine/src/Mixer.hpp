@@ -19,7 +19,7 @@ enum class MixerObservableParameters {
 //! @class Mixer
 //! @abstract Implements a simple two channel mixer.
 //! @discussion This mixer mixes two VisualInterfaces (channel A and B).
-class Mixer: public Drawable, public Observer<float> {
+class Mixer: public Drawable, public Observer<float>, public Encodable {
 public:
     
     //! @var mix
@@ -44,6 +44,7 @@ public:
     };
     
     /// The constructor
+    /// 
     /// @param _A the chanel A visual interface
     /// @param _B the channel B visual interface
     /// @param _bufferWidth the width dimention of the fbo that will store the mix
@@ -57,17 +58,25 @@ public:
     void draw() override;
     
     //! @brief draw the FBO in the specified rect
+    //!
     //! @param rect
     void draw(ofRectangle rect)  override;
     
     //! @brief sets the value of the mix of the mixer
+    //!
     //! @param _mix the value from 0.0 to 1.0 (channel A <-> channel B)
     void setMix(float _mix);
     
     //! @brief updates a value
+    //!
     //! @param val the value to update
     //! @param key the key of the value to update
     void update(float val, std::string key) override;
+    
+    /// \brief get a JSON representation of the mixer
+    ///
+    /// \returns a ofJson object
+    ofJson encode();
 };
 
 #endif

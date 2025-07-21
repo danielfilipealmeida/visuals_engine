@@ -56,6 +56,7 @@ void Layer::update() {
 ofJson Layer::encode() {
     ofJson json;
     
+    json["type"] = "layer";
     json["width"] = rect.width;
     json["height"] = rect.height;
     json["alpha"] = alpha;

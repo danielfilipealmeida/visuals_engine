@@ -49,6 +49,7 @@ void LayerStack::insert(Layer *layer) {
 ofJson LayerStack::encode() {
     ofJson json;
     
+    json["type"] = "layerstack";
     json["width"] = width;
     json["height"] = height;
     
@@ -66,7 +67,6 @@ void LayerStack::setVisualForLayer(unsigned int layerNumber, VisualsInterface *v
     if (layerNumber >= layers.size()) {
         return;
     }
-    
     
     // stop the current visual if it is still playing
     VisualsInterface *currentVisual = layers[layerNumber]->visual;

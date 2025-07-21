@@ -3,7 +3,7 @@
 #include "ofxUnitTests.h"
 #include "Layer.hpp"
 #include "LayerStack.hpp"
-
+#include "Mixer.hpp"
 
 class ofApp : public ofxUnitTestsApp {
     
@@ -17,6 +17,7 @@ public:
     
         ofJson encodedLayer = layer.encode();
         
+        ofxTestEq(encodedLayer["type"], "layer", "Layer type should be layer");
         ofxTestEq(encodedLayer["width"], 640, "encoded layer width is 640");
         ofxTestEq(encodedLayer["height"], 480, "encoded layer width is 640");
         ofxTestEq(encodedLayer["alpha"], 1, "encoded layer alpha is 1");
@@ -36,7 +37,8 @@ public:
     
         ofJson encoded = layerStack.encode();
         
-        ofxTestEq(encoded["width"], 320, "LayerStacj width should be 300");
+        ofxTestEq(encoded["type"], "layerstack", "LayerStack type should be layerstack");
+        ofxTestEq(encoded["width"], 320, "LayerStack width should be 300");
         ofxTestEq(encoded["height"], 200, "LayerStack height should be 200");
         ofxTestEq(encoded["layers"].size(), 0, "layers in LayerStack should be 0");
         
@@ -64,9 +66,22 @@ public:
 
     }
     
+    void testMixerCanEncode() {
+        Layer channelA = Layer(320, 200);
+        Layer channelB = Layer(640, 480);
+        Mixer mixer = Mixer(&channelA, &channelB, 320, 200);
+        
+        ofJson encoded = mixer.encode();
+        ofxTestEq(encoded["width"], 320, "Mixer width should be 300");
+        ofxTestEq(encoded["height"], 200, "Mixer height should be 200");
+        ofxTestEq(encoded["mix"], 0.5, "Mixer default mix value is 0.5");
+        ofxTestEq(encoded["mix"]["a"]["type"], "layer", "");
+    }
+    
     void run(){
         testLayerCanEncode();
         testLayerStackCanEncode();
+        testMixerCanEncode();
     }
 };
 
