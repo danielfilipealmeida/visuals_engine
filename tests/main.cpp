@@ -75,7 +75,14 @@ public:
         ofxTestEq(encoded["width"], 320, "Mixer width should be 300");
         ofxTestEq(encoded["height"], 200, "Mixer height should be 200");
         ofxTestEq(encoded["mix"], 0.5, "Mixer default mix value is 0.5");
-        ofxTestEq(encoded["mix"]["a"]["type"], "layer", "");
+        
+        ofxTestEq(encoded["a"]["type"], "layer", "Channel A as a layer visual instance");
+        ofxTestEq(encoded["a"]["width"], 320, "Channel A width should be 300");
+        ofxTestEq(encoded["a"]["height"], 200, "Channel A height should be 200");
+        
+        ofxTestEq(encoded["b"]["type"], "layer", "Channel B as a layer visual instance");
+        ofxTestEq(encoded["b"]["width"], 640, "Channel B width should be 300");
+        ofxTestEq(encoded["b"]["height"], 480, "Channel B height should be 200");
     }
     
     void run(){
