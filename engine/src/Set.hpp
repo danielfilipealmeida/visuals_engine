@@ -13,38 +13,46 @@
 #include "Elements/BaseClasses.hpp"
 
 
-//! @class Set
-//! @abstract Class that Gathers all data of a VJSet
+/// @class Set
+///
+/// @brief Class that Gathers all data of a VJSet
+///
+/// @details Gathers all visuals used on an App, as well as the thumbnails for displaying. This stores all visual instances used on an App.
+/// There can be several visual instance of the same base visual, with different configurations.
 class Set: public Encodable {
 public:
-    //! @var visuals
-    //! @abstract a vector containing all visuals to be used in the Set
+    /// @var visuals
+    /// @brief a vector containing all visuals to be used in the Set
     std::vector<VisualsInterface*> visuals;
     
-    //! @var thubnails
-    //! @abstract a vector of FBOs storing all thumbnails of all visuals
+    /// @var thubnails
+    /// @brief a vector of FBOs storing all thumbnails of all visuals
+    /// @todo: move this to the visual repositoryu
     std::vector<ofFbo> thumbnails;
     
-    //! \brief Adds a visual to the list of visuals in the set
-    //!
-    //! \param visual an object that inherints VisualsInterface
+    /// \brief Adds a visual to the list of visuals in the set
+    ///
+    /// \param visual an object that inherints VisualsInterface
     void addVisual(VisualsInterface* visual);
     
-    //! \brief Generates a JSON representation of the set
-    //!
-    //! \return a ofJson object representing the current state of the sets
+    /// \brief Generates a JSON representation of the set
+    ///
+    /// \return a ofJson object representing the current state of the sets
     ofJson encode();
     
-    //! @abstract Sets the set data from the json
-    //! @param data json data
+    /// @brief Sets the set data from the json
+    ///
+    /// @param data json data
     void decode(ofJson data);
     
-    //! @abstract Saves a set to the filesystem into a json gile
-    //! @param path a string defining the filepath
+    /// @brief Saves a set to the filesystem into a json file
+    ///
+    /// @param path a string defining the filepath
     void save(std::string path);
     
-    //! @abstract Loads the content of a json file storing a set
-    //! @param path the path of the file to load in a string
+    /// @brief Loads the content of a json file storing a set
+    ///
+    /// @param path the path of the file to load in a string
     void load(std::string path);
     
     

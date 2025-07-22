@@ -118,6 +118,7 @@ template<> inline ofJson Visual<SignalPlotter>::encode() {
 
 /// \brief Class containing a compilation of methods to work as builders of visuals
 /// It needs to know in advance the dimentions of the existing rendering buffers on the application.
+/// todo: turn this into a singleton in order to be used everywhere.
 class VisualsFactory {
     float width;
     float height;

@@ -131,11 +131,50 @@ struct State {
         }
         
         LayerStack *layerStack = selectedChannel == Channel::A ? layerStackA : layerStackB;
-        
-        
         layerStack->setVisualForLayer(selectedLayer, visual);
-        
     };
+    
+    /// \brief Saves the State into a json file inside the data folder
+    ///
+    /// \param filename - the json filename. needs the .json extension.
+    void save(of::filesystem::path filename) {
+        ofJson json = {};
+        
+        json["mixer"] = mixer->encode();
+        json["width"] = bufferWidth;
+        json["height"] = bufferHeight;
+        json["state"] = {
+            {"blur", blurAmount},
+            {"contrast", contrast},
+            {"saturation", saturation},
+            {"brightness", brightness},
+            {"redTint", redTint},
+            {"blueTint", blueTint},
+            {"greenTint", greenTint}
+        };
+        json["set"] = set->encode();
+        
+        ofSavePrettyJson(filename, json);
+    }
+    
+    
+    /// \brief Loads a State stored in a Json file inside the data folder
+    ///
+    /// \param filename - the json filename to load. needs the json extension.
+    void load(of::filesystem::path filename) {
+        
+    }
+    
+    
+    /// \brief adds the default set files to the state
+    ///
+    /// \param factory - the visual factory builder.
+    void defaultSet(VisualsFactory factory) {
+        set->addVisual(factory.Video("001.mov"));
+        set->addVisual(factory.Video("002.mov"));
+        set->addVisual(factory.Video("003.mov"));
+        set->addVisual(factory.Video("004.mov"));
+    }
 };
 
 #endif /* State_h */

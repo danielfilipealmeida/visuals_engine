@@ -17,20 +17,17 @@ void ofApp::setup(){
     showInterface = true;
    
     // todo: have this read from a file or a standard demo set generated elsewhere
+    
+
     VisualsFactory factory(bufferWidth, bufferHeight);
-    set.addVisual(factory.Video("001.mov"));
-    set.addVisual(factory.Video("002.mov"));
-    set.addVisual(factory.Video("003.mov"));
-    set.addVisual(factory.Video("004.mov"));
-
-
     
     state->setup(&set, bufferWidth, bufferHeight);
+    state->defaultSet(factory);
     
     audioPlotter = factory.Plotter(&audioInput);
     fftPlotter = factory.Plotter(&FFT::getInstance().audioBins);
     
-    
+    // todo: load from a file
     /*
     set.save("/Users/daniel/set.json");
     ofJson data = set.encode();
@@ -49,6 +46,8 @@ void ofApp::setup(){
              });
     
     setupKeys();
+    
+    state->save("data.json");
 }
 
 
