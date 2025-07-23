@@ -11,7 +11,9 @@
 		6507095B2E2A878C00F080C6 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F102392E120ACD0013F416 /* CoreMIDI.framework */; };
 		6507095C2E2A878C00F080C6 /* libEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6570371D2D7E454B00185E7B /* libEngine.a */; };
 		6507096D2E2A87B500F080C6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 650709462E2A86A300F080C6 /* main.cpp */; };
-		656DC8792D2193AC00A63D6E /* OpenSans-Regular.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 656DC8782D21939C00A63D6E /* OpenSans-Regular.ttf */; };
+		653D29F22E313FEB0051CF20 /* VisualsFactory.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 653D29F02E313FEB0051CF20 /* VisualsFactory.hpp */; };
+		653D29F32E313FEB0051CF20 /* VisualsFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 653D29F12E313FEB0051CF20 /* VisualsFactory.cpp */; };
+		653D29F42E3157450051CF20 /* ContrastBrightnessSaturation.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65F0708E2D4AF91A00019282 /* ContrastBrightnessSaturation.frag */; };
 		657037612D7E513900185E7B /* libEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6570371D2D7E454B00185E7B /* libEngine.a */; };
 		659390742D1F7E4F00FC8957 /* 001.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 659390692D1E3CB000FC8957 /* 001.mov */; };
 		659390752D1F7E4F00FC8957 /* 002.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6593906A2D1E3CB000FC8957 /* 002.mov */; };
@@ -123,10 +125,10 @@
 			dstPath = data;
 			dstSubfolderSpec = 16;
 			files = (
+				653D29F42E3157450051CF20 /* ContrastBrightnessSaturation.frag in CopyFiles */,
 				65EA16942E22999F00769142 /* RGBTint.frag in CopyFiles */,
 				65F0702A2D4AF72E00019282 /* FastBlur.frag in CopyFiles */,
 				65F070272D4AF13F00019282 /* Base.vert in CopyFiles */,
-				656DC8792D2193AC00A63D6E /* OpenSans-Regular.ttf in CopyFiles */,
 				659390742D1F7E4F00FC8957 /* 001.mov in CopyFiles */,
 				659390752D1F7E4F00FC8957 /* 002.mov in CopyFiles */,
 				659390762D1F7E4F00FC8957 /* 003.mov in CopyFiles */,
@@ -143,6 +145,8 @@
 		650709462E2A86A300F080C6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		6507096B2E2A878C00F080C6 /* Tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6507096C2E2A878C00F080C6 /* Hello World copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Hello World copy-Info.plist"; path = "/Users/daniel/of_v0.12.0_osx_release/apps/myApps/VisualsEngine/Hello World copy-Info.plist"; sourceTree = "<absolute>"; };
+		653D29F02E313FEB0051CF20 /* VisualsFactory.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = VisualsFactory.hpp; sourceTree = "<group>"; };
+		653D29F12E313FEB0051CF20 /* VisualsFactory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VisualsFactory.cpp; sourceTree = "<group>"; };
 		65471B152BE7F7CD0051FA78 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		656DC8752D20E9B300A63D6E /* Cousine-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cousine-Regular.ttf"; sourceTree = "<group>"; };
 		656DC8782D21939C00A63D6E /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
@@ -368,6 +372,8 @@
 				65CDD0212E1DDFEF0002668A /* Observer.hpp */,
 				65CDD0222E1DDFEF0002668A /* Signals.hpp */,
 				65CDD0232E1DDFEF0002668A /* Visuals.hpp */,
+				653D29F02E313FEB0051CF20 /* VisualsFactory.hpp */,
+				653D29F12E313FEB0051CF20 /* VisualsFactory.cpp */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -670,6 +676,7 @@
 				65CDD0422E1DDFEF0002668A /* Transformations.hpp in Headers */,
 				65CDD0432E1DDFEF0002668A /* MIDI.hpp in Headers */,
 				65CDD0442E1DDFEF0002668A /* SignalPlotter.hpp in Headers */,
+				653D29F22E313FEB0051CF20 /* VisualsFactory.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -884,6 +891,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				653D29F32E313FEB0051CF20 /* VisualsFactory.cpp in Sources */,
 				65EA16982E25644A00769142 /* Layer.cpp in Sources */,
 				65F101DA2E1209EC0013F416 /* kiss_fftr.c in Sources */,
 				65EA169C2E2565C100769142 /* LayerStack.cpp in Sources */,

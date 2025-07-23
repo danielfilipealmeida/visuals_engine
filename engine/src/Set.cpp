@@ -12,6 +12,7 @@
 //  Created by Daniel Almeida on 13/01/2025.
 //
 #include "Set.hpp"
+#include "VisualsFactory.hpp"
 
 void Set::addVisual(VisualsInterface* visual) {
     visuals.push_back(visual);
@@ -36,19 +37,24 @@ ofJson Set::encode() {
 void Set::decode(ofJson data){
     visuals.empty();
     
+    VisualsFactory& factory = VisualsFactory::getInstance();
+    
     for(auto visual : data["visuals"]) {
-        VisualsFactory *factory;
+        addVisual(factory.VisualFromJson(visual));
+        /*
         switch (visual["type"].get<VisualTypes>()){
             case VisualTypes::camera:
-                 factory = new VisualsFactory(visual["width"].get<float>(), visual["height"].get<float>());
-                addVisual(factory->VideoGrabber(visual["deviceId"]));
-                delete factory;
+                factory.width = visual["width"].get<float>();
+                factory.height = visual["height"].get<float>();
+                addVisual(factory.VideoGrabber(visual["deviceId"]));
+              
                 break;
                 
-            case VisualTypes::loop:
-                factory = new VisualsFactory(visual["width"].get<float>(), visual["height"].get<float>());
-                addVisual(factory->Video(visual["path"].get<string>()));
-                delete factory;
+            case VisualTypes::video:
+                factory.width = visual["width"].get<float>();
+                factory.height = visual["height"].get<float>();
+                addVisual(factory.Video(visual["path"].get<string>()));
+              
                 break;
                 
             case VisualTypes::plot:
@@ -58,6 +64,7 @@ void Set::decode(ofJson data){
             default:
                 break;
         }
+        */
         
     }
 }

@@ -19,7 +19,7 @@ enum class MixerObservableParameters {
 //! @class Mixer
 //! @abstract Implements a simple two channel mixer.
 //! @discussion This mixer mixes two VisualInterfaces (channel A and B).
-class Mixer: public Drawable, public Observer<float>, public Encodable {
+class Mixer: public Drawable, public Observer<float>, public Encodable, public Decodable {
 public:
     
     //! @var mix
@@ -29,7 +29,7 @@ public:
     
     
     ofFbo *buffer;
-
+    
     //! @var a
     //! @abstract the A channel as VisualInterface
     VisualsInterface *a;
@@ -43,14 +43,17 @@ public:
         {MixerObservableParameters::MIX, "mix"}
     };
     
-    /// The constructor
-    /// 
-    /// @param _A the chanel A visual interface
-    /// @param _B the channel B visual interface
-    /// @param _bufferWidth the width dimention of the fbo that will store the mix
-    /// @param _bufferHeight the height dimention of the fbo that will store the mix
+    /// \brief The constructor of the mixer--.
+    ///
+    /// \param _A - ihe chanel A visual interface
+    /// \param _B _the channel B visual interface
+    /// \param _bufferWidth - the width dimention of the fbo that will store the mix
+    /// \param _bufferHeight - the height dimention of the fbo that will store the mix
     Mixer(VisualsInterface* _A, VisualsInterface* _B, float _bufferWidth, float _bufferHeight);
-   
+    
+    /// \brief The destructor of the Mixer
+    ~Mixer();
+    
     //! @brief update the layer stack by rendering to the FBO
     void update() override;
     
@@ -77,6 +80,11 @@ public:
     ///
     /// \returns a ofJson object
     ofJson encode();
+    
+    /// @brief Sets the set data from the json
+    ///
+    /// @param data json data
+    void decode(ofJson data);
 };
 
 #endif

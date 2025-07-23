@@ -41,6 +41,9 @@ public:
     //! @param _height the height of the FBO
     LayerStack(float _width, float _height);
     
+    /// \brief LayerStack destructor. Will delete all layers
+    ~LayerStack();
+    
     //! @brief update the layer stack by rendering to the FBO
     void update();
     

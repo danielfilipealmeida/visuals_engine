@@ -19,7 +19,7 @@
 ///
 /// @details Gathers all visuals used on an App, as well as the thumbnails for displaying. This stores all visual instances used on an App.
 /// There can be several visual instance of the same base visual, with different configurations.
-class Set: public Encodable {
+class Set: public Encodable, public Decodable {
 public:
     /// @var visuals
     /// @brief a vector containing all visuals to be used in the Set

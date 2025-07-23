@@ -4,6 +4,9 @@
 #include "Layer.hpp"
 #include "LayerStack.hpp"
 #include "Mixer.hpp"
+#include "VisualsFactory.hpp"
+#include <typeinfo>
+#include <iostream>
 
 class ofApp : public ofxUnitTestsApp {
     
@@ -85,10 +88,32 @@ public:
         ofxTestEq(encoded["b"]["height"], 480, "Channel B height should be 200");
     }
     
+    void testVisualsFactoryCanReturnNewVisualFromJson() {
+        VisualsFactory& factory = VisualsFactory::getInstance();
+        
+        try {
+            factory.VisualFromJson({});
+        }
+        catch(const std::exception &e) {
+            ofxTestEq(std::string(e.what()), "Type not set in json.", "should throw exception if no type is set in the json");
+        }
+        
+        VisualsInterface *video = factory.VisualFromJson({
+            {"type", VisualTypes::video},
+            {"path", "001.mov"},
+            {"width", 640},
+            {"height", 480}
+        });
+        
+        ofxTestEq(video!= NULL, true, "Video should be set");
+        ofxTestEq((dynamic_cast<Visual<ofVideoPlayer>*>(video))->visual.isLoaded(), true, "video myst be loaded");
+    }
+    
     void run(){
         testLayerCanEncode();
         testLayerStackCanEncode();
         testMixerCanEncode();
+        testVisualsFactoryCanReturnNewVisualFromJson();
     }
 };
 

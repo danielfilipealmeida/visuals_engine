@@ -30,6 +30,14 @@ Layer::Layer(
     rect = ofRectangle(0,0, bufferWidth, bufferHeight);
 }
 
+Layer::~Layer() {
+    if (visual == NULL) {
+        return;
+    }
+    
+    delete(visual);
+}
+
 void Layer::draw() {
     draw(rect);
 }

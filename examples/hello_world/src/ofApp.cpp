@@ -15,25 +15,25 @@ void ofApp::setup(){
     FFT::getInstance().setup(bufferSize);
     
     showInterface = true;
-   
-    // todo: have this read from a file or a standard demo set generated elsewhere
+  
     
 
-    VisualsFactory factory(bufferWidth, bufferHeight);
+    VisualsFactory& visualsFactory = VisualsFactory::getInstance();
     
     state->setup(&set, bufferWidth, bufferHeight);
-    state->defaultSet(factory);
     
-    audioPlotter = factory.Plotter(&audioInput);
-    fftPlotter = factory.Plotter(&FFT::getInstance().audioBins);
+    try {
+        state->load("data.json");
+    }
+    catch (const std::exception &e) {
+        ofLog(OF_LOG_ERROR, e.what());
+        ofLog(OF_LOG_NOTICE, "Using Defaults instead.");
+        state->defaultSet();
+    }
+   
     
-    // todo: load from a file
-    /*
-    set.save("/Users/daniel/set.json");
-    ofJson data = set.encode();
-    set.decode(data);
-     */
-    
+    audioPlotter = visualsFactory.Plotter(&audioInput);
+    fftPlotter = visualsFactory.Plotter(&FFT::getInstance().audioBins);
     
     setupAudio();
     setupMIDI(false);

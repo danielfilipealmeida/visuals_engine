@@ -7,6 +7,7 @@
 
 #include "Mixer.hpp"
 #include <cmath>
+#include "VisualsFactory.hpp"
 
 
 Mixer::Mixer(VisualsInterface* _a, VisualsInterface* _b, float _bufferWidth, float _bufferHeight) {
@@ -18,6 +19,9 @@ Mixer::Mixer(VisualsInterface* _a, VisualsInterface* _b, float _bufferWidth, flo
     rect = ofRectangle(0,0, _bufferWidth, _bufferHeight);
 }
 
+Mixer::~Mixer() {
+    
+}
 
 void Mixer::update() {
     a->update();
@@ -72,3 +76,16 @@ ofJson Mixer::encode() {
     
     return json;
 }
+
+
+void Mixer::decode(ofJson json) {
+    if (a) {
+        delete(a);
+    }
+    if (b) {
+        delete(b);
+    }
+    VisualsFactory& factory = VisualsFactory::getInstance();
+    
+    a = factory.VisualFromJson(json["a"]);
+};

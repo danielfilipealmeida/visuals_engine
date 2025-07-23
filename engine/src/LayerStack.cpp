@@ -16,6 +16,17 @@ LayerStack::LayerStack(float _width, float _height) {
     rect = ofRectangle(0,0,width, height);
 }
 
+
+LayerStack::~LayerStack() {
+    for(Layer *layer : layers ) {
+        if (typeid(layer) == typeid(VisualsInterface)) {
+            delete (layer);
+        }
+    }
+    
+}
+
+
 void LayerStack::update() {
     // updates all
     for (auto layer: layers) {

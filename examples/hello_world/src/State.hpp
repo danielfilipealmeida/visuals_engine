@@ -11,6 +11,7 @@
 #include "Set.hpp"
 #include "Transformations.hpp"
 #include "LayerStack.hpp"
+#include "VisualsFactory.hpp"
 
 enum Channel {
     A,
@@ -86,7 +87,7 @@ struct State {
                           layerStackB,
                           bufferWidth, bufferHeight);
         decoratedMixer = TransformationFactory::GLSL((VisualsInterface *) mixer,
-                                                     { "LayerShader", "FastBlur", "RGBTint"},
+                                                     { "ContrastBrightnessSaturation", "FastBlur", "RGBTint"},
                                                      {
             {
             {"contrast", &contrast},
@@ -162,18 +163,34 @@ struct State {
     ///
     /// \param filename - the json filename to load. needs the json extension.
     void load(of::filesystem::path filename) {
+        ofJson json = ofLoadJson(filename);
         
+        if (json.is_null()) {
+            throw std::runtime_error("Error loading json file");
+        }
+        
+        bufferWidth = json["width"];
+        bufferHeight = json["height"];
+        blurAmount = json["state"]["blur"];
+        contrast = json["state"]["contrast"];
+        saturation = json["state"]["saturation"];
+        brightness = json["state"]["brightness"];
+        redTint = json["state"]["redTint"];
+        blueTint = json["state"]["blueTint"];
+        greenTint = json["state"]["greenTint"];
+        mixer->decode(json["mixer"]);
+        set->decode(json["set"]);
     }
     
     
     /// \brief adds the default set files to the state
-    ///
-    /// \param factory - the visual factory builder.
-    void defaultSet(VisualsFactory factory) {
-        set->addVisual(factory.Video("001.mov"));
-        set->addVisual(factory.Video("002.mov"));
-        set->addVisual(factory.Video("003.mov"));
-        set->addVisual(factory.Video("004.mov"));
+    void defaultSet() {
+        VisualsFactory& visualsFactory = VisualsFactory::getInstance();
+        
+        set->addVisual(visualsFactory.Video("001.mov"));
+        set->addVisual(visualsFactory.Video("002.mov"));
+        set->addVisual(visualsFactory.Video("003.mov"));
+        set->addVisual(visualsFactory.Video("004.mov"));
     }
 };
 

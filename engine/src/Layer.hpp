@@ -50,6 +50,9 @@ public:
           ofBlendMode _blendMode = OF_BLENDMODE_ADD
           );
     
+    /// \brief Layer Destructor
+    ~Layer();
+    
     //! @brief updates the visual
     //! @discussion will return if visual is null
     void update();
