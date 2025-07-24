@@ -73,6 +73,12 @@ ofJson LayerStack::encode() {
     return json;
 }
 
+
+void LayerStack::decode(ofJson json) {
+    
+}
+
+
 void LayerStack::setVisualForLayer(unsigned int layerNumber, VisualsInterface *visual) {
     // returns if the layerNumber is outside the layers
     if (layerNumber >= layers.size()) {

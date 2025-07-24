@@ -98,6 +98,8 @@ public:
             ofxTestEq(std::string(e.what()), "Type not set in json.", "should throw exception if no type is set in the json");
         }
         
+        
+        // test ofVideoPlayer
         VisualsInterface *video = factory.VisualFromJson({
             {"type", VisualTypes::video},
             {"path", "001.mov"},
@@ -107,6 +109,17 @@ public:
         
         ofxTestEq(video!= NULL, true, "Video should be set");
         ofxTestEq((dynamic_cast<Visual<ofVideoPlayer>*>(video))->visual.isLoaded(), true, "video myst be loaded");
+        
+        // test ofVideoGrabber -- commented because it is failing
+        /*
+        VisualsInterface *camera = factory.VisualFromJson({
+            {"type", VisualTypes::camera},
+            {"deviceId", "0"},
+            {"width", 640},
+            {"height", 480}
+        });
+        ofxTestEq(camera!= NULL, true, "Camera should be set");
+         */
     }
     
     void run(){

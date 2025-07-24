@@ -71,6 +71,8 @@ public:
     /// \returns a json representation
     ofJson encode();
     
+    /// \brief ---
+    void decode(ofJson json);
     
     /// \brief sets the running visual
     ///

@@ -66,6 +66,9 @@ public:
     //! @brief encode the data of the Layer stack into a JSON
     ofJson encode();
     
+    /// \brief decodes the data of layerstack encoded in a json
+    void decode(ofJson json);
+    
     void play() {};
     void stop() {};
 };

@@ -173,6 +173,9 @@ public:
     ofJson encode() {
         return {};
     }
+    
+    /// \brief Decode the data and set the object
+    void decode(ofJson json){}
 };
 
 

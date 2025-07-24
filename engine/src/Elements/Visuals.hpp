@@ -64,6 +64,7 @@ public:
     ofJson encode() {
         return {};
     }
+    void decode(ofJson json){}
     
     /// \brief Copy assignment operator
     Visual& operator=(const Visual& other) {
@@ -92,6 +93,9 @@ template<> inline ofJson Visual<ofVideoGrabber>::encode(){
         {"height", visual.getHeight()}
     };
 };
+template<> inline void Visual<ofVideoGrabber>::decode(ofJson json) {
+    
+}
 
 
 /**
@@ -106,6 +110,9 @@ template<> inline ofJson Visual<ofVideoPlayer>::encode(){
         {"height", visual.getHeight()}
     };
 };
+template<> inline void Visual<ofVideoPlayer>::decode(ofJson json) {
+    
+}
 
 /**
  SignalPloter partial specializations
@@ -119,7 +126,9 @@ template<> inline ofJson Visual<SignalPlotter>::encode() {
         {"height", visual.rect.height}
     };
 }; // no way to export a signal.
-
+template<> inline void Visual<SignalPlotter>::decode(ofJson json) {
+    
+}
 
 
 

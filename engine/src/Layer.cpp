@@ -73,6 +73,10 @@ ofJson Layer::encode() {
     return json;
 }
 
+void Layer::decode(ofJson json) {
+    
+}
+
 void Layer::set(VisualsInterface* _visual) {
     visual = _visual;
 }
