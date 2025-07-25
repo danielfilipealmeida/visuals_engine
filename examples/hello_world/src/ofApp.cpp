@@ -31,9 +31,12 @@ void ofApp::setup(){
         state->defaultSet();
     }
     
-    
+    // Create the Plotters, used to view signals
     audioPlotter = visualsFactory.Plotter(&audioInput);
     fftPlotter = visualsFactory.Plotter(&FFT::getInstance().audioBins);
+    signal1Plotter = visualsFactory.Plotter(&(state->signal1));
+    signal2Plotter = visualsFactory.Plotter(&(state->signal2));
+    signal2Plotter->visual.gain = 0.1;
     
     setupAudio();
     setupMIDI(false);
@@ -42,7 +45,9 @@ void ofApp::setup(){
              state,
              {
              {"Audio input", audioPlotter},
-             {"FFT", fftPlotter}
+             {"FFT", fftPlotter},
+             {"Signal 1", signal1Plotter},
+             {"Signasl 2", signal2Plotter}
              });
     
     setupKeys();
@@ -117,6 +122,8 @@ void ofApp::update(){
     state->update();
     audioPlotter->update();
     fftPlotter->update();
+    signal1Plotter->update();
+    signal2Plotter->update();
 }
 
 void ofApp::draw(){
