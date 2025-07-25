@@ -64,6 +64,9 @@ class ui {
     // the binders - for 2-way binding
     std::vector<std::unique_ptr<ParameterBinder<float>>> binders;
 
+    std::vector<ofParameter<float>> channeAAlpha;
+    std::vector<ofParameter<float>> channelBAlpha;
+    
         
     
     

@@ -33,6 +33,13 @@ void ui::setup(shared_ptr<State> state, std::vector<std::pair<string, VisualsInt
     for (Layer *layer : ((LayerStack*)this->state->mixer->a)->layers) {
         channelsPanel.add(new DrawableGuiElement<VisualsInterface *>(layer , "Channel A / Layer " + ofToString(count)));
         
+        // add the alpha slider
+        ofParameter<float> alpha;
+        alpha.set("Chanel "  +ofToString(count) + " Alpha", layer->alpha, 0, 1);
+        channeAAlpha.push_back(alpha);
+        channelsPanel.add(alpha);
+        binders.emplace_back(std::make_unique<ParameterBinder<float>>(alpha, &layer->alpha));
+        
         count++;
     }
     
@@ -41,6 +48,13 @@ void ui::setup(shared_ptr<State> state, std::vector<std::pair<string, VisualsInt
     count = 1;
     for (Layer *layer : ((LayerStack*)this->state->mixer->b)->layers) {
         channelsPanel.add(new DrawableGuiElement<VisualsInterface *>(layer , "Channel B / Layer " + ofToString(count)));
+        
+        // add the alpha slider
+        ofParameter<float> alpha;
+        alpha.set("Chanel "  +ofToString(count) + " Alpha", layer->alpha, 0, 1);
+        channelBAlpha.push_back(alpha);
+        channelsPanel.add(alpha);
+        binders.emplace_back(std::make_unique<ParameterBinder<float>>(alpha, &layer->alpha));
         
         count++;
     }
