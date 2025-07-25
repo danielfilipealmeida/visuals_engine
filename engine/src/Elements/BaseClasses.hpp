@@ -87,6 +87,9 @@ public:
 /// all visuals (video-player, mixer. layers, generators) should inherit this class
 class VisualsInterface: public Drawable, public Encodable, public Playable, public Decodable {
 public:
+    /// \brief The identifier of the visual
+    std::string id;
+    
     /// \brief Destructor
     virtual ~VisualsInterface() {};
 };

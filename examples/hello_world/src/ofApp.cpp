@@ -15,9 +15,9 @@ void ofApp::setup(){
     FFT::getInstance().setup(bufferSize);
     
     showInterface = true;
-  
     
-
+    
+    
     VisualsFactory& visualsFactory = VisualsFactory::getInstance();
     
     state->setup(&set, bufferWidth, bufferHeight);
@@ -30,7 +30,7 @@ void ofApp::setup(){
         ofLog(OF_LOG_NOTICE, "Using Defaults instead.");
         state->defaultSet();
     }
-   
+    
     
     audioPlotter = visualsFactory.Plotter(&audioInput);
     fftPlotter = visualsFactory.Plotter(&FFT::getInstance().audioBins);
@@ -47,7 +47,7 @@ void ofApp::setup(){
     
     setupKeys();
     
-    state->save("data.json");
+    state->save(currentFilename);
 }
 
 
@@ -101,7 +101,7 @@ void ofApp::setupKeys() {
         
         index++;
     }
-
+    
     index = 0;
     for (unsigned int key : Keyboard::getInstance().defaultChannelTriggerKey) {
         Keyboard::getInstance().add(key, [this, index](int key) {
@@ -119,16 +119,36 @@ void ofApp::update(){
     fftPlotter->update();
 }
 
-void ofApp::draw(){    
+void ofApp::draw(){
     state->decoratedMixer->draw(ofRectangle(0.0, 0.0, ofGetWidth(), ofGetHeight()));
     
     if (showInterface) {
         ui.draw();
     }
 }
-     
-    
+
+
 void ofApp::keyPressed(int key){
+    // handle keys with Control Key down
+    if (keyCmdOn) {
+        switch (key) {
+            case Key::s:
+                state->save(currentFilename);
+                return;
+                
+        };
+        
+        return;
+    }
+    
+    // handle no cmd key down
+    switch (key) {
+        case OF_KEY_COMMAND:
+            keyCmdOn = true;
+            return;
+            break;
+    }
+    
     Keyboard::getInstance().handle(key);
 }
 
@@ -136,48 +156,51 @@ void ofApp::keyReleased(int key){
     //cout << ofToString(key) <<endl;
     
     switch (key) {
-    case 32:
-        showInterface = !showInterface;
+        case OF_KEY_COMMAND:
+            keyCmdOn = false;
+            break;
+        case 32:
+            showInterface = !showInterface;
     }
 }
 
 void ofApp::mouseMoved(int x, int y){
-
+    
 }
 
 void ofApp::mouseDragged(int x, int y, int button){
-
+    
 }
 
 
 void ofApp::mousePressed(int x, int y, int button){
-
+    
 }
 
 void ofApp::mouseReleased(int x, int y, int button){
-
+    
 }
 
 
 void ofApp::mouseEntered(int x, int y){
-
+    
 }
 
 void ofApp::mouseExited(int x, int y){
-
+    
 }
 
 void ofApp::windowResized(int w, int h){
-
-
+    
+    
 }
 
 void ofApp::gotMessage(ofMessage msg){
-
+    
 }
 
 void ofApp::dragEvent(ofDragInfo dragInfo){
-
+    
 }
 
 
@@ -185,7 +208,7 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
 void ofApp::audioIn( ofSoundBuffer& buffer ) {
     float curVol = 0.0;
     float maxValue = 0;
-        
+    
     for (size_t i = 0; i < buffer.getNumFrames(); i++){
         audioInput[i] = buffer[i];
     }

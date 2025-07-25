@@ -71,7 +71,6 @@ VisualsInterface* VisualsFactory::VisualFromJson(ofJson json) {
         throw std::runtime_error("Type not set in json.");
     }
     
-    VisualsInterface *result = NULL;
     
     std::string stringType = json["type"].get<string>();
     if (stringType == "layerstack") {
@@ -84,19 +83,27 @@ VisualsInterface* VisualsFactory::VisualFromJson(ofJson json) {
     
     VisualTypes visualsType = json["type"].get<VisualTypes>();
     
+    VisualsInterface *result = NULL;
+    
     switch (visualsType) {
         case VisualTypes::camera:
-            return VideoGrabber(ofToInt(json["deviceId"].get<string>()));
+            result = VideoGrabber(ofToInt(json["deviceId"].get<string>()));
+            break;
             
         case VisualTypes::video:
-            return  Video(json["path"].get<string>());
-            
-        /*
-        case VisualTypes::plot:
+            result = Video(json["path"].get<string>());
             break;
-        */
+            
+        
+        case VisualTypes::plot:
+            result = NULL;
+            break;
+        
     }
     
+    if (result) {
+        result->id = json["id"].get<string>();
+    }
     
     return result;
 }

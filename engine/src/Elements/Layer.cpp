@@ -8,6 +8,7 @@
 
 #include "Layer.hpp"
 #include "ofMain.h"
+#include "Utils.hpp"
 
 std::map<ofBlendMode, std::string>  blendModeMappings = {
     {ofBlendMode::OF_BLENDMODE_DISABLED, "disabled"},
@@ -69,12 +70,13 @@ ofJson Layer::encode() {
     json["height"] = rect.height;
     json["alpha"] = alpha;
     json["blendMode"] = blendModeMappings[blendMode];
+    json["visualId"] = hashFromAddress(visual);
     
     return json;
 }
 
 void Layer::decode(ofJson json) {
-    
+    //todo
 }
 
 Layer* Layer::FromJson(ofJson json) {

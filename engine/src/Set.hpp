@@ -62,6 +62,17 @@ public:
     ///
     /// \returns the visual if inside the vector or NULL
     VisualsInterface* getVisualAtIndex(unsigned int index);
+    
+    
+    /// \brief Returns the visual with a given id
+    ///
+    /// \details This is used only when loading a file. the id is only generated on save so it is possible to associate what visual is set in what layer.
+    ///
+    /// \param id - the id of the visual
+    ///
+    /// \returns the visual with the given id
+    VisualsInterface* getVisualById(std::string id);
+    
 };
 
 #endif

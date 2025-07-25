@@ -13,6 +13,7 @@
 #import "Signals.hpp"
 #import "SignalPlotter.hpp"
 #import "BufferPlotter.hpp"
+#import "Utils.hpp"
 
 enum VisualTypes {
     camera,
@@ -94,7 +95,7 @@ template<> inline ofJson Visual<ofVideoGrabber>::encode(){
     };
 };
 template<> inline void Visual<ofVideoGrabber>::decode(ofJson json) {
-    
+    //todo
 }
 
 
@@ -104,6 +105,7 @@ template<> inline void Visual<ofVideoGrabber>::decode(ofJson json) {
 template<> inline Visual<ofVideoPlayer>::~Visual(){ visual.stop(); };
 template<> inline ofJson Visual<ofVideoPlayer>::encode(){
     return {
+        {"id", hashFromAddress(this)},
         {"type", VisualTypes::video},
         {"path", visual.getMoviePath()},
         {"width", visual.getWidth()},
@@ -111,7 +113,7 @@ template<> inline ofJson Visual<ofVideoPlayer>::encode(){
     };
 };
 template<> inline void Visual<ofVideoPlayer>::decode(ofJson json) {
-    
+    //todo
 }
 
 /**
@@ -127,7 +129,7 @@ template<> inline ofJson Visual<SignalPlotter>::encode() {
     };
 }; // no way to export a signal.
 template<> inline void Visual<SignalPlotter>::decode(ofJson json) {
-    
+    //todo
 }
 
 

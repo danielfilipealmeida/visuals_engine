@@ -34,6 +34,7 @@ ofJson Set::encode() {
     return result;
 };
 
+
 void Set::decode(ofJson data){
     visuals.empty();
     
@@ -41,39 +42,16 @@ void Set::decode(ofJson data){
     
     for(auto visual : data["visuals"]) {
         addVisual(factory.VisualFromJson(visual));
-        /*
-        switch (visual["type"].get<VisualTypes>()){
-            case VisualTypes::camera:
-                factory.width = visual["width"].get<float>();
-                factory.height = visual["height"].get<float>();
-                addVisual(factory.VideoGrabber(visual["deviceId"]));
-              
-                break;
-                
-            case VisualTypes::video:
-                factory.width = visual["width"].get<float>();
-                factory.height = visual["height"].get<float>();
-                addVisual(factory.Video(visual["path"].get<string>()));
-              
-                break;
-                
-            case VisualTypes::plot:
-                //addVisual(builder->Plotter(<#Signal<float> *signal#>))
-                break;
-                
-            default:
-                break;
-        }
-        */
-        
     }
 }
+
 
 void Set::save(std::string path) {
     ofJson data = encode();
     
     ofSaveJson(path, data);
 }
+
 
 void Set::load(std::string path) {
     ofJson data = ofLoadJson(path);
@@ -88,4 +66,17 @@ VisualsInterface* Set::getVisualAtIndex(unsigned int index) {
     }
     
     return visuals[index];
+}
+
+
+VisualsInterface* Set::getVisualById(std::string id) {
+    auto it = std::find_if(visuals.begin(), visuals.end(), [&](const VisualsInterface* visual) {
+        return visual->id == id;
+    });
+    
+    if(it != visuals.end()) {
+        return *it;
+    } else {
+        return NULL;
+    }
 }
