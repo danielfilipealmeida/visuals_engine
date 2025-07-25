@@ -77,6 +77,25 @@ void Layer::decode(ofJson json) {
     
 }
 
+Layer* Layer::FromJson(ofJson json) {
+    float width = json["width"].get<float>();
+    float height = json["height"].get<float>();
+    float alpha = json["alpha"].get<float>();
+    
+    // todo: move this elsewhere to be executed only once
+    std::map<std::string, ofBlendMode>  invertedBlendModeMapping;
+    for (const auto& pair : blendModeMappings) {
+        invertedBlendModeMapping[pair.second] = pair.first;
+    }
+    
+    ofBlendMode blendMode = invertedBlendModeMapping[json["blendMode"].get<string>()];
+    
+    
+    Layer *layer = new Layer(width, height, NULL, alpha, blendMode);
+    
+    return layer;
+}
+
 void Layer::set(VisualsInterface* _visual) {
     visual = _visual;
 }

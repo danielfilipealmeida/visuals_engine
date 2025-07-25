@@ -37,8 +37,8 @@ public:
     
     //! @brief Layer constructor.
     //!
-    //! @param bufferWidth,
-    //! @param bufferHeight
+    //! @param bufferWidth - the width
+    //! @param bufferHeight - the height
     //! @param _visual -  the visual to display on the layer
     //! @param _alpha - the transparency of the layer
     //! @param _blendMode - which blend mode used to draw the layer
@@ -52,6 +52,11 @@ public:
     
     /// \brief Layer Destructor
     ~Layer();
+    
+    /// \brief create a new layer from a json
+    ///
+    /// \param json  - the json data
+    static Layer* FromJson(ofJson json);
     
     //! @brief updates the visual
     //! @discussion will return if visual is null

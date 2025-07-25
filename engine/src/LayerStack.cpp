@@ -75,7 +75,10 @@ ofJson LayerStack::encode() {
 
 
 void LayerStack::decode(ofJson json) {
-    
+    for(const ofJson& layerJson : json["layers"]) {
+        Layer *layer = Layer::FromJson(layerJson);
+        layers.push_back(layer);
+    }
 }
 
 

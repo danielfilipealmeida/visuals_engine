@@ -6,6 +6,7 @@
 //
 
 #include "VisualsFactory.hpp"
+#include "LayerStack.hpp"
 
 
 
@@ -74,7 +75,11 @@ VisualsInterface* VisualsFactory::VisualFromJson(ofJson json) {
     
     std::string stringType = json["type"].get<string>();
     if (stringType == "layerstack") {
-        return NULL;
+        // todo: move to a static method.
+        LayerStack *layerStack = new LayerStack(json["width"].get<float>(), json["height"].get<float>());
+        layerStack->decode(json);
+        
+        return layerStack;
     }
     
     VisualTypes visualsType = json["type"].get<VisualTypes>();

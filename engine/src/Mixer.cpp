@@ -88,4 +88,5 @@ void Mixer::decode(ofJson json) {
     VisualsFactory& factory = VisualsFactory::getInstance();
     
     a = factory.VisualFromJson(json["a"]);
+    b = factory.VisualFromJson(json["b"]);
 };

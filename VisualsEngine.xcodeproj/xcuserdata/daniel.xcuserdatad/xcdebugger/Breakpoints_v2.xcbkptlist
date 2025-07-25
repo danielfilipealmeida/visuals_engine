@@ -232,7 +232,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "3A3ADF62-B9CB-4711-ADC7-E5770DD092F1"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "engine/src/Mixer.cpp"
@@ -279,15 +279,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "AAABD4D3-099F-4F19-9CC3-684A7FC14D3C"
-            shouldBeEnabled = "Yes"
+            uuid = "6C663CA1-6816-4872-B36E-F2DD7B1C9130"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "engine/src/Elements/VisualsFactory.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "VisualsFactory::VisualFromJson(json)"
             landmarkType = "7">
          </BreakpointContent>
