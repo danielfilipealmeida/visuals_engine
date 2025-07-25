@@ -11,6 +11,7 @@
 #include "ui.hpp"
 
 
+
 /// @brief Hello world main class
 ///
 /// This is the main class of the `Hello World` example, the highest level of code for the example.
@@ -26,6 +27,11 @@ class ofApp : public ofBaseApp, public Observer<ofxMidiMessage> {
     Visual<BufferPlotter> *audioPlotter, *fftPlotter;
     
     ui ui;
+    
+    
+    bool keyCmdOn = false;
+    
+    std::string currentFilename = "data.json";
     
 public:
     /// \brief app setup function.

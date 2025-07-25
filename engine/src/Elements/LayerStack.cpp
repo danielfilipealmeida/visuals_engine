@@ -16,6 +16,17 @@ LayerStack::LayerStack(float _width, float _height) {
     rect = ofRectangle(0,0,width, height);
 }
 
+
+LayerStack::~LayerStack() {
+    for(Layer *layer : layers ) {
+        if (typeid(layer) == typeid(VisualsInterface)) {
+            delete (layer);
+        }
+    }
+    
+}
+
+
 void LayerStack::update() {
     // updates all
     for (auto layer: layers) {
@@ -49,15 +60,33 @@ void LayerStack::insert(Layer *layer) {
 ofJson LayerStack::encode() {
     ofJson json;
     
+    json["type"] = "layerstack";
+    json["width"] = width;
+    json["height"] = height;
+    
+    std::vector<ofJson> layersEncode;
+    for(Layer* layer : layers) {
+        layersEncode.push_back(layer->encode());
+    }
+    json["layers"] = layersEncode;
+    
     return json;
 }
+
+
+void LayerStack::decode(ofJson json) {
+    for(const ofJson& layerJson : json["layers"]) {
+        Layer *layer = Layer::FromJson(layerJson);
+        layers.push_back(layer);
+    }
+}
+
 
 void LayerStack::setVisualForLayer(unsigned int layerNumber, VisualsInterface *visual) {
     // returns if the layerNumber is outside the layers
     if (layerNumber >= layers.size()) {
         return;
     }
-    
     
     // stop the current visual if it is still playing
     VisualsInterface *currentVisual = layers[layerNumber]->visual;

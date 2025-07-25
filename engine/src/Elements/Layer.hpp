@@ -11,6 +11,10 @@
 #include "BaseClasses.hpp"
 #include <vector>
 
+
+
+
+
 //! @class Layer
 //! @abstract Inplements a Layer, which is the combination of a visual an alpha value and a blend mode.
 //! @discussion Layers can be stacked
@@ -33,8 +37,8 @@ public:
     
     //! @brief Layer constructor.
     //!
-    //! @param bufferWidth,
-    //! @param bufferHeight
+    //! @param bufferWidth - the width
+    //! @param bufferHeight - the height
     //! @param _visual -  the visual to display on the layer
     //! @param _alpha - the transparency of the layer
     //! @param _blendMode - which blend mode used to draw the layer
@@ -45,6 +49,14 @@ public:
           float _alpha = 1,
           ofBlendMode _blendMode = OF_BLENDMODE_ADD
           );
+    
+    /// \brief Layer Destructor
+    ~Layer();
+    
+    /// \brief create a new layer from a json
+    ///
+    /// \param json  - the json data
+    static Layer* FromJson(ofJson json);
     
     //! @brief updates the visual
     //! @discussion will return if visual is null
@@ -59,6 +71,7 @@ public:
     //! @param rect the rectangle
     void draw(ofRectangle rect);
 
+    
     /// \brief returns a json containing the serialized information of the Layer
     ///
     /// \returns a json representation

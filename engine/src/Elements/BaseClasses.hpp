@@ -77,10 +77,14 @@ public:
 /// @brief gathers all interfaces needed for a Visual
 /// 
 /// all visuals (video-player, mixer. layers, generators) should inherit this class
-class VisualsInterface: public Drawable, public Encodable, public Playable {
+class VisualsInterface: public Drawable, public Playable, public Encodable {
+public:
+    /// \brief The identifier of the visual
+    std::string id;
+    
+    /// \brief Destructor
+    virtual ~VisualsInterface() {};
 };
-
-
 
 
 

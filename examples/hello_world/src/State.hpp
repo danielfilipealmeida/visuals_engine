@@ -11,6 +11,8 @@
 #include "Set.hpp"
 #include "Transformations.hpp"
 #include "LayerStack.hpp"
+#include "VisualsFactory.hpp"
+#include "Mixer.hpp"
 
 enum Channel {
     A,
@@ -57,85 +59,40 @@ struct State {
                Set* set,
                float bufferWidth,
                float bufferHeight
-               ) {
-        
-        this->set = set;
-        this->bufferWidth = bufferWidth;
-        this->bufferHeight = bufferHeight;
-        
-        signal1 = SignalsFactory::SineWave();
-        signal2 = SignalsFactory::Random(10, 1);
-        
-        layerStackA = new LayerStack(bufferWidth, bufferHeight);
-        layerStackA->insert(new Layer(bufferWidth, bufferHeight));
-        layerStackA->insert(new Layer(bufferWidth, bufferHeight));
-        
-        layerStackB = new LayerStack(bufferWidth, bufferHeight);
-        layerStackB->insert(new Layer(bufferWidth, bufferHeight));
-        layerStackB->insert(new Layer(bufferWidth, bufferHeight));
-        
-        contrast = 1;
-        saturation = 1;
-        brightness = 1;
-        
-        redTint = 1;
-        blueTint= 1;
-        greenTint = 1;
-        
-        mixer = new Mixer(layerStackA,
-                          layerStackB,
-                          bufferWidth, bufferHeight);
-        decoratedMixer = TransformationFactory::GLSL((VisualsInterface *) mixer,
-                                                     { "LayerShader", "FastBlur", "RGBTint"},
-                                                     {
-            {
-            {"contrast", &contrast},
-            {"saturation", &saturation},
-            {"brightness", &brightness}
-            
-            },
-            {
-            {"blurH", &blurAmount},
-            {"blurV", &blurAmount}
-            },
-        
-            {
-            
-            {"redTint", &redTint},
-            {"greenTint", &greenTint},
-            {"blueTint", &blueTint}
-            
-            }
-        
-        });
-        
-        mixer->setMix(0.5);
-        
-        signal1.regist(mixer, mixer->parameters[MixerObservableParameters::MIX]);
-        
-    }
+               );
     
     /// \brief Update everything in the state
-    void update() {
-        decoratedMixer->update();
-        signal1.update();
-        signal2.update();
-    }
+    void update();
     
     /// \brief Triggers a visual on the current selected channel/layer
     ///
     /// \param visual - the visual to play
-    void triggerVisualAtSelectedLayer(VisualsInterface *visual) {
-        if (visual == NULL) {
-            return;
-        }
-        
-        LayerStack *layerStack = selectedChannel == Channel::A ? layerStackA : layerStackB;
-        
-        
-        layerStack->setVisualForLayer(selectedLayer, visual);
-        
-    };
+    void triggerVisualAtSelectedLayer(VisualsInterface *visual);
+    
+    /// \brief Saves the State into a json file inside the data folder
+    ///
+    /// \param filename - the json filename. needs the .json extension.
+    void save(of::filesystem::path filename);
+    
+    
+    /// \brief Loads a State stored in a Json file inside the data folder
+    ///
+    /// \param filename - the json filename to load. needs the json extension.
+    void load(of::filesystem::path filename);
+    
+    
+    /// \brief adds the default set files to the state
+    void defaultSet();
+    
+    /// \brief update the visuals on a channel
+    ///
+    /// \param channel - the LayerStack that implements the channel
+    /// \param layersJson - the subset of the json defining the layers in the layerStack
+    void setPlayingVisualsInChannel(LayerStack *channel, ofJson layersJson);
+    
+
+
+
 };
 
 #endif /* State_h */

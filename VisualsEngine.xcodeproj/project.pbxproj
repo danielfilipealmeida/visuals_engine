@@ -7,7 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		656DC8792D2193AC00A63D6E /* OpenSans-Regular.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 656DC8782D21939C00A63D6E /* OpenSans-Regular.ttf */; };
+		6507095A2E2A878C00F080C6 /* CoreAudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F1027E2E12FAA40013F416 /* CoreAudioKit.framework */; };
+		6507095B2E2A878C00F080C6 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F102392E120ACD0013F416 /* CoreMIDI.framework */; };
+		6507095C2E2A878C00F080C6 /* libEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6570371D2D7E454B00185E7B /* libEngine.a */; };
+		6507096D2E2A87B500F080C6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 650709462E2A86A300F080C6 /* main.cpp */; };
+		653D29F22E313FEB0051CF20 /* VisualsFactory.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 653D29F02E313FEB0051CF20 /* VisualsFactory.hpp */; };
+		653D29F32E313FEB0051CF20 /* VisualsFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 653D29F12E313FEB0051CF20 /* VisualsFactory.cpp */; };
+		653D29F42E3157450051CF20 /* ContrastBrightnessSaturation.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65F0708E2D4AF91A00019282 /* ContrastBrightnessSaturation.frag */; };
+		653D29F72E33BD870051CF20 /* State.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 653D29F62E33BD870051CF20 /* State.cpp */; };
+		653D29F92E33C7C30051CF20 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 653D29F82E33C7C30051CF20 /* Utils.cpp */; };
 		657037612D7E513900185E7B /* libEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6570371D2D7E454B00185E7B /* libEngine.a */; };
 		659390742D1F7E4F00FC8957 /* 001.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 659390692D1E3CB000FC8957 /* 001.mov */; };
 		659390752D1F7E4F00FC8957 /* 002.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6593906A2D1E3CB000FC8957 /* 002.mov */; };
@@ -44,7 +52,6 @@
 		65CDD0792E1DE13C0002668A /* ofxSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65CDD06A2E1DE13C0002668A /* ofxSlider.cpp */; };
 		65CDD07A2E1DE13C0002668A /* ofxGuiGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65CDD0612E1DE13C0002668A /* ofxGuiGroup.cpp */; };
 		65EA16902E21AA1300769142 /* Utils.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 65EA168F2E21AA1300769142 /* Utils.hpp */; };
-		65EA16932E21E24900769142 /* LayerShader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65EA16922E21E24900769142 /* LayerShader.frag */; };
 		65EA16942E22999F00769142 /* RGBTint.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65F0708F2D4AF9F600019282 /* RGBTint.frag */; };
 		65EA16962E24777900769142 /* Keyboard.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 65EA16952E24777900769142 /* Keyboard.hpp */; };
 		65EA16982E25644A00769142 /* Layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65EA16972E25644A00769142 /* Layer.cpp */; };
@@ -87,6 +94,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		650709662E2A878C00F080C6 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		656DC8862D25E7A700A63D6E /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -111,11 +127,10 @@
 			dstPath = data;
 			dstSubfolderSpec = 16;
 			files = (
+				653D29F42E3157450051CF20 /* ContrastBrightnessSaturation.frag in CopyFiles */,
 				65EA16942E22999F00769142 /* RGBTint.frag in CopyFiles */,
-				65EA16932E21E24900769142 /* LayerShader.frag in CopyFiles */,
 				65F0702A2D4AF72E00019282 /* FastBlur.frag in CopyFiles */,
 				65F070272D4AF13F00019282 /* Base.vert in CopyFiles */,
-				656DC8792D2193AC00A63D6E /* OpenSans-Regular.ttf in CopyFiles */,
 				659390742D1F7E4F00FC8957 /* 001.mov in CopyFiles */,
 				659390752D1F7E4F00FC8957 /* 002.mov in CopyFiles */,
 				659390762D1F7E4F00FC8957 /* 003.mov in CopyFiles */,
@@ -128,6 +143,14 @@
 /* Begin PBXFileReference section */
 		191CD6FA2847E21E0085CBB6 /* of.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = of.entitlements; sourceTree = "<group>"; };
 		191EF70929D778A400F35F26 /* openFrameworks */ = {isa = PBXFileReference; lastKnownFileType = folder; name = openFrameworks; path = ../../../libs/openFrameworks; sourceTree = SOURCE_ROOT; };
+		650709422E296F2600F080C6 /* ofxUnitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxUnitTests.h; sourceTree = "<group>"; };
+		650709462E2A86A300F080C6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		6507096B2E2A878C00F080C6 /* Tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tests.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6507096C2E2A878C00F080C6 /* Hello World copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Hello World copy-Info.plist"; path = "/Users/daniel/of_v0.12.0_osx_release/apps/myApps/VisualsEngine/Hello World copy-Info.plist"; sourceTree = "<absolute>"; };
+		653D29F02E313FEB0051CF20 /* VisualsFactory.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = VisualsFactory.hpp; sourceTree = "<group>"; };
+		653D29F12E313FEB0051CF20 /* VisualsFactory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VisualsFactory.cpp; sourceTree = "<group>"; };
+		653D29F62E33BD870051CF20 /* State.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = State.cpp; sourceTree = "<group>"; };
+		653D29F82E33C7C30051CF20 /* Utils.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
 		65471B152BE7F7CD0051FA78 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		656DC8752D20E9B300A63D6E /* Cousine-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cousine-Regular.ttf"; sourceTree = "<group>"; };
 		656DC8782D21939C00A63D6E /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
@@ -186,7 +209,6 @@
 		65CDD0802E1EAD240002668A /* DrawableGuiElement.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DrawableGuiElement.hpp; sourceTree = "<group>"; };
 		65EA168F2E21AA1300769142 /* Utils.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Utils.hpp; sourceTree = "<group>"; };
 		65EA16912E21D99A00769142 /* LayerShader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = LayerShader.frag; sourceTree = "<group>"; };
-		65EA16922E21E24900769142 /* LayerShader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = LayerShader.frag; path = Resources/LayerShader.frag; sourceTree = "<group>"; };
 		65EA16952E24777900769142 /* Keyboard.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Keyboard.hpp; sourceTree = "<group>"; };
 		65EA16972E25644A00769142 /* Layer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Layer.cpp; sourceTree = "<group>"; };
 		65EA16992E25659700769142 /* LayerStack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LayerStack.hpp; sourceTree = "<group>"; };
@@ -258,6 +280,16 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		650709592E2A878C00F080C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6507095A2E2A878C00F080C6 /* CoreAudioKit.framework in Frameworks */,
+				6507095B2E2A878C00F080C6 /* CoreMIDI.framework in Frameworks */,
+				6507095C2E2A878C00F080C6 /* libEngine.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		656DC8852D25E7A700A63D6E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -285,6 +317,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		650709432E296F2600F080C6 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				650709422E296F2600F080C6 /* ofxUnitTests.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		650709442E296F2600F080C6 /* ofxUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				650709432E296F2600F080C6 /* src */,
+			);
+			path = ofxUnitTests;
+			sourceTree = "<group>";
+		};
+		650709452E2A855500F080C6 /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				650709462E2A86A300F080C6 /* main.cpp */,
+			);
+			path = tests;
+			sourceTree = "<group>";
+		};
 		657037602D7E513900185E7B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -320,6 +376,16 @@
 				65CDD0212E1DDFEF0002668A /* Observer.hpp */,
 				65CDD0222E1DDFEF0002668A /* Signals.hpp */,
 				65CDD0232E1DDFEF0002668A /* Visuals.hpp */,
+				653D29F02E313FEB0051CF20 /* VisualsFactory.hpp */,
+				653D29F12E313FEB0051CF20 /* VisualsFactory.cpp */,
+				65CDD02F2E1DDFEF0002668A /* Layer.hpp */,
+				65EA16972E25644A00769142 /* Layer.cpp */,
+				65EA16992E25659700769142 /* LayerStack.hpp */,
+				65EA169B2E2565C100769142 /* LayerStack.cpp */,
+				65CDD0312E1DDFEF0002668A /* Mixer.hpp */,
+				65CDD0322E1DDFEF0002668A /* Mixer.cpp */,
+				65CDD0332E1DDFEF0002668A /* Set.hpp */,
+				65CDD0342E1DDFEF0002668A /* Set.cpp */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -353,16 +419,9 @@
 				65CDD0242E1DDFEF0002668A /* Elements */,
 				65CDD02B2E1DDFEF0002668A /* Plotters */,
 				65CDD02E2E1DDFEF0002668A /* Services */,
-				65CDD02F2E1DDFEF0002668A /* Layer.hpp */,
-				65EA16972E25644A00769142 /* Layer.cpp */,
-				65EA16992E25659700769142 /* LayerStack.hpp */,
-				65EA169B2E2565C100769142 /* LayerStack.cpp */,
-				65CDD0312E1DDFEF0002668A /* Mixer.hpp */,
-				65CDD0322E1DDFEF0002668A /* Mixer.cpp */,
-				65CDD0332E1DDFEF0002668A /* Set.hpp */,
-				65CDD0342E1DDFEF0002668A /* Set.cpp */,
 				65CDD0352E1DDFEF0002668A /* Transformations.hpp */,
 				65EA168F2E21AA1300769142 /* Utils.hpp */,
+				653D29F82E33C7C30051CF20 /* Utils.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -382,6 +441,7 @@
 				65CDD04C2E1DE01C0002668A /* ofApp.h */,
 				65CDD04D2E1DE01C0002668A /* ofApp.cpp */,
 				65CDD04E2E1DE01C0002668A /* State.hpp */,
+				653D29F62E33BD870051CF20 /* State.cpp */,
 				65CDD07B2E1DE3400002668A /* ui.hpp */,
 				65CDD0802E1EAD240002668A /* DrawableGuiElement.hpp */,
 			);
@@ -554,6 +614,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				650709442E296F2600F080C6 /* ofxUnitTests */,
 				65CDD0702E1DE13C0002668A /* ofxGui */,
 				65F101E02E120A0F0013F416 /* ofxMidi */,
 				65F101302E12046A0013F416 /* ofxFft */,
@@ -565,7 +626,7 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
-				65EA16922E21E24900769142 /* LayerShader.frag */,
+				650709452E2A855500F080C6 /* tests */,
 				65CDD0372E1DDFEF0002668A /* engine */,
 				65CDD0512E1DE01C0002668A /* examples */,
 				65CDD0182E1AD7110002668A /* WritingDocumentation.md */,
@@ -581,6 +642,8 @@
 				656DC8892D25E7A700A63D6E /* Catch2Tests */,
 				6570371D2D7E454B00185E7B /* libEngine.a */,
 				657037602D7E513900185E7B /* Frameworks */,
+				6507096B2E2A878C00F080C6 /* Tests.app */,
+				6507096C2E2A878C00F080C6 /* Hello World copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -619,12 +682,32 @@
 				65CDD0422E1DDFEF0002668A /* Transformations.hpp in Headers */,
 				65CDD0432E1DDFEF0002668A /* MIDI.hpp in Headers */,
 				65CDD0442E1DDFEF0002668A /* SignalPlotter.hpp in Headers */,
+				653D29F22E313FEB0051CF20 /* VisualsFactory.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		650709492E2A878C00F080C6 /* Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 650709682E2A878C00F080C6 /* Build configuration list for PBXNativeTarget "Tests" */;
+			buildPhases = (
+				6507094A2E2A878C00F080C6 /* Run Script — Compile OF */,
+				6507094B2E2A878C00F080C6 /* Sources */,
+				650709592E2A878C00F080C6 /* Frameworks */,
+				650709662E2A878C00F080C6 /* CopyFiles */,
+				650709672E2A878C00F080C6 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Tests;
+			productName = myOFApp;
+			productReference = 6507096B2E2A878C00F080C6 /* Tests.app */;
+			productType = "com.apple.product-type.application";
+		};
 		656DC8872D25E7A700A63D6E /* Catch2Tests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 656DC88C2D25E7A700A63D6E /* Build configuration list for PBXNativeTarget "Catch2Tests" */;
@@ -718,12 +801,47 @@
 				E4B69B5A0A3A1756003C02F2 /* Hello World */,
 				656DC8872D25E7A700A63D6E /* Catch2Tests */,
 				6570371C2D7E454B00185E7B /* Engine */,
+				650709492E2A878C00F080C6 /* Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		19B789C429E5AB4A0082E9B8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$OF_PATH/scripts/osx/xcode_project.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6507094A2E2A878C00F080C6 /* Run Script — Compile OF */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script — Compile OF";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"💾 Compiling Openframeworks\"\nxcodebuild -project \"$OF_PATH/libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj\" -target openFrameworks -configuration \"${CONFIGURATION}\"  CLANG_CXX_LANGUAGE_STANDARD=$CLANG_CXX_LANGUAGE_STANDARD MACOSX_DEPLOYMENT_TARGET=$MACOSX_DEPLOYMENT_TARGET GCC_PREPROCESSOR_DEFINITIONS=$USER_PREPROCESSOR_DEFINITIONS\n";
+			showEnvVarsInLog = 0;
+		};
+		650709672E2A878C00F080C6 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -760,6 +878,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6507094B2E2A878C00F080C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6507096D2E2A87B500F080C6 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		656DC8842D25E7A700A63D6E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -771,6 +897,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				653D29F32E313FEB0051CF20 /* VisualsFactory.cpp in Sources */,
 				65EA16982E25644A00769142 /* Layer.cpp in Sources */,
 				65F101DA2E1209EC0013F416 /* kiss_fftr.c in Sources */,
 				65EA169C2E2565C100769142 /* LayerStack.cpp in Sources */,
@@ -779,6 +906,7 @@
 				65CDD0462E1DDFEF0002668A /* Plotter.cpp in Sources */,
 				65CDD0482E1DDFEF0002668A /* SignalPlotter.cpp in Sources */,
 				65CDD0492E1DDFEF0002668A /* BufferPlotter.cpp in Sources */,
+				653D29F92E33C7C30051CF20 /* Utils.cpp in Sources */,
 				65CDD04A2E1DDFEF0002668A /* Mixer.cpp in Sources */,
 				65F101DC2E120A040013F416 /* ofxEasyFft.cpp in Sources */,
 				65F102382E120A4A0013F416 /* RtMidi.cpp in Sources */,
@@ -813,6 +941,7 @@
 				65CDD0792E1DE13C0002668A /* ofxSlider.cpp in Sources */,
 				65CDD07A2E1DE13C0002668A /* ofxGuiGroup.cpp in Sources */,
 				65EA169D2E2565C100769142 /* LayerStack.cpp in Sources */,
+				653D29F72E33BD870051CF20 /* State.cpp in Sources */,
 				65CDD0522E1DE01C0002668A /* ofApp.cpp in Sources */,
 				65CDD0532E1DE01C0002668A /* main.cpp in Sources */,
 			);
@@ -821,6 +950,56 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		650709692E2A878C00F080C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GCC_DYNAMIC_NO_PIC = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					src,
+					"$(OFX_FFT_HEADER)",
+				);
+				INFOPLIST_FILE = "Hello World copy-Info.plist";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OFX_FFT = "\"$(OF_PATH)/addons/ofxFft/src\" \"$(OF_PATH)/addons/ofxFft/libs/kiss\"";
+				OTHER_LDFLAGS = (
+					"$(OF_CORE_LIBS)",
+					"$(OF_CORE_FRAMEWORKS)",
+					"$(LIB_OF_DEBUG)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6507096A2E2A878C00F080C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					src,
+					"$(OFX_FFT_HEADER)",
+				);
+				INFOPLIST_FILE = "Hello World copy-Info.plist";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OFX_FFT = "\"$(OF_PATH)/addons/ofxFft/src\" \"$(OF_PATH)/addons/ofxFft/libs/kiss\"";
+				OTHER_LDFLAGS = (
+					"$(OF_CORE_LIBS)",
+					"$(OF_CORE_FRAMEWORKS)",
+					"$(LIB_OF)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				baseConfigurationReference = E4EB6923138AFD0F00A09F29;
+			};
+			name = Release;
+		};
 		656DC88D2D25E7A700A63D6E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1189,6 +1368,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		650709682E2A878C00F080C6 /* Build configuration list for PBXNativeTarget "Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				650709692E2A878C00F080C6 /* Debug */,
+				6507096A2E2A878C00F080C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		656DC88C2D25E7A700A63D6E /* Build configuration list for PBXNativeTarget "Catch2Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

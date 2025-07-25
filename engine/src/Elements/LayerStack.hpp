@@ -41,6 +41,9 @@ public:
     //! @param _height the height of the FBO
     LayerStack(float _width, float _height);
     
+    /// \brief LayerStack destructor. Will delete all layers
+    ~LayerStack();
+    
     //! @brief update the layer stack by rendering to the FBO
     void update();
     
@@ -62,6 +65,9 @@ public:
     
     //! @brief encode the data of the Layer stack into a JSON
     ofJson encode();
+    
+    /// \brief decodes the data of layerstack encoded in a json
+    void decode(ofJson json);
     
     void play() {};
     void stop() {};

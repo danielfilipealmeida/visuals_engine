@@ -29,8 +29,6 @@ public:
         b.height = height;
         setNeedsRedraw();
         
-        
-        
         return this;
     }
     

@@ -13,17 +13,18 @@
 #import "Signals.hpp"
 #import "SignalPlotter.hpp"
 #import "BufferPlotter.hpp"
+#import "Utils.hpp"
 
 enum VisualTypes {
     camera,
-    loop,
+    video,
     plot
 };
 
 NLOHMANN_JSON_SERIALIZE_ENUM(
                              VisualTypes, {
                                  { VisualTypes::camera, "camera" },
-                                 { VisualTypes::loop, "loop" },
+                                 { VisualTypes::video, "video" },
                                  { VisualTypes::plot, "plot" }
                              }
                              );
@@ -35,7 +36,8 @@ class Visual: public VisualsInterface {
 public:
     T visual;
     
-    /// Will store needed data that cannot be accessed in the visual
+    /// Will store needed data that cannot be accessed in the visual?! is this really used
+    /// todo: confirm if this is used at alll*
     ofJson data;
     
     Visual(ofJson data) {}
@@ -43,9 +45,9 @@ public:
         visual = _visual;
         rect = _rect;
     }
-    ~Visual() {
-        visual.close();
-    }
+    ~Visual() {}
+    
+    
     void update() {
         visual.update();
     }
@@ -80,7 +82,9 @@ public:
     
 };
 
-/** ofVideoGrabber partial specializations */
+/**
+ ofVideoGrabber partial specializations
+ */
 template<> inline void Visual<ofVideoGrabber>::play(){};
 template<> inline void Visual<ofVideoGrabber>::stop(){};
 template<> inline ofJson Visual<ofVideoGrabber>::encode(){
@@ -92,17 +96,25 @@ template<> inline ofJson Visual<ofVideoGrabber>::encode(){
     };
 };
 
-/** ofVideoPlayer partial specializations */
+/**
+ ofVideoPlayer partial specializations
+ */
+template<> inline Visual<ofVideoPlayer>::~Visual(){ visual.stop(); };
 template<> inline ofJson Visual<ofVideoPlayer>::encode(){
     return {
-        {"type", VisualTypes::loop},
+        {"id", hashFromAddress(this)},
+        {"type", VisualTypes::video},
         {"path", visual.getMoviePath()},
         {"width", visual.getWidth()},
         {"height", visual.getHeight()}
     };
 };
 
-/** SignalPloter partial specializations */
+
+
+/**
+ SignalPloter partial specializations
+ */
 template<> inline ofJson Visual<SignalPlotter>::encode() {
     return {
         {"type", VisualTypes::plot},
@@ -116,85 +128,5 @@ template<> inline ofJson Visual<SignalPlotter>::encode() {
 
 
 
-/// \brief Class containing a compilation of methods to work as builders of visuals
-/// It needs to know in advance the dimentions of the existing rendering buffers on the application.
-class VisualsFactory {
-    float width;
-    float height;
-public:
-    
-    /// \brief Factory constructor, used to set the default of width and height to be used when seting up new visuals
-    ///
-    /// @param _width: the width of the rendering buffer
-    /// @param _height: the height of the rendering buffers
-    VisualsFactory(float _width, float _height) {
-        width = _width;
-        height = _height;
-    }
-    
-    /// \brief Returns a configured video loop visual
-    ///
-    /// \param path
-    Visual<ofVideoPlayer>* Video(std::string path) {
-        Visual<ofVideoPlayer> *visual;
-        
-        visual = new Visual<ofVideoPlayer>([&]{
-            ofVideoPlayer player;
-            player.load(path);
-            return player;
-        }(), ofRectangle(0, 0, width, height));
-        
-        return visual;
-    };
-    
-    /// \brief Returns a configured camera visual
-    /// 
-    /// \param deviceId  - the identification of what camera to use
-    Visual<ofVideoGrabber> *VideoGrabber(int _deviceId) {
-        Visual<ofVideoGrabber> *visual;
-        
-        visual = new Visual<ofVideoGrabber>([&] {
-            ofVideoGrabber grabber;
-            grabber.setDeviceID(_deviceId);
-            grabber.initGrabber(ofGetWidth(), ofGetHeight());
-            
-            return grabber;
-        }(), ofRectangle(0,0,width, height));
-        
-        // manually add the device id to the json variable because this isn't accessible on ofVideoGrabber
-        visual->data["deviceId"];
-        
-        return visual;
-    }
-    
-    //! @abstract Returns a signal plotter visual
-    //!
-    //! @param signal -  the actual signal to be printed.
-    Visual<SignalPlotter> *Plotter(Signal<float> *signal) {
-        Visual<SignalPlotter> *visual;
-        
-        visual = new Visual<SignalPlotter>([&](){
-            SignalPlotter plotter = SignalPlotter(signal);
-            return plotter;
-        }(), ofRectangle(0,0,width, height));
-        
-        return visual;
-    }
-    
-    //! @abstract Creates a Visual of type bufferPlotter and returns it configured
-    //!
-    //! @param buffer - the buffer to draw
-    Visual<BufferPlotter> *Plotter(vector<float> *buffer) {
-        Visual<BufferPlotter> *visual;
-        
-        visual = new Visual<BufferPlotter>([&](){
-            BufferPlotter plotter = BufferPlotter(buffer);
-            
-            return plotter;
-        }(), ofRectangle(0,0,width,height));
-        
-        return visual;
-    }
-};
 
 #endif

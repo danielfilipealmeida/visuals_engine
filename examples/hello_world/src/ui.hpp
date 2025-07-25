@@ -93,7 +93,7 @@ public:
             count++;
         }
         
-        unsigned int layerInChannelB = ((LayerStack*)this->state->mixer->a)->layers.size();
+        unsigned int layerInChannelB = ((LayerStack*)this->state->mixer->b)->layers.size();
         channelsPanel.add(channelBLabel.setup("Channel B", ofToString(layerInChannelB) + " Layers"));
         count = 1;
         for (Layer *layer : ((LayerStack*)this->state->mixer->b)->layers) {

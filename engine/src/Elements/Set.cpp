@@ -12,6 +12,8 @@
 //  Created by Daniel Almeida on 13/01/2025.
 //
 #include "Set.hpp"
+#include "VisualsFactory.hpp"
+#include "Visuals.hpp"
 
 void Set::addVisual(VisualsInterface* visual) {
     visuals.push_back(visual);
@@ -33,40 +35,24 @@ ofJson Set::encode() {
     return result;
 };
 
+
 void Set::decode(ofJson data){
     visuals.empty();
     
+    VisualsFactory& factory = VisualsFactory::getInstance();
+    
     for(auto visual : data["visuals"]) {
-        VisualsFactory *factory;
-        switch (visual["type"].get<VisualTypes>()){
-            case VisualTypes::camera:
-                 factory = new VisualsFactory(visual["width"].get<float>(), visual["height"].get<float>());
-                addVisual(factory->VideoGrabber(visual["deviceId"]));
-                delete factory;
-                break;
-                
-            case VisualTypes::loop:
-                factory = new VisualsFactory(visual["width"].get<float>(), visual["height"].get<float>());
-                addVisual(factory->Video(visual["path"].get<string>()));
-                delete factory;
-                break;
-                
-            case VisualTypes::plot:
-                //addVisual(builder->Plotter(<#Signal<float> *signal#>))
-                break;
-                
-            default:
-                break;
-        }
-        
+        addVisual(factory.VisualFromJson(visual));
     }
 }
+
 
 void Set::save(std::string path) {
     ofJson data = encode();
     
     ofSaveJson(path, data);
 }
+
 
 void Set::load(std::string path) {
     ofJson data = ofLoadJson(path);
@@ -81,4 +67,17 @@ VisualsInterface* Set::getVisualAtIndex(unsigned int index) {
     }
     
     return visuals[index];
+}
+
+
+VisualsInterface* Set::getVisualById(std::string id) {
+    auto it = std::find_if(visuals.begin(), visuals.end(), [&](const VisualsInterface* visual) {
+        return visual->id == id;
+    });
+    
+    if(it != visuals.end()) {
+        return *it;
+    } else {
+        return NULL;
+    }
 }
