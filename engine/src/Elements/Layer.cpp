@@ -75,10 +75,6 @@ ofJson Layer::encode() {
     return json;
 }
 
-void Layer::decode(ofJson json) {
-    //todo
-}
-
 Layer* Layer::FromJson(ofJson json) {
     float width = json["width"].get<float>();
     float height = json["height"].get<float>();

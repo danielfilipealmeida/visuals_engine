@@ -36,7 +36,8 @@ class Visual: public VisualsInterface {
 public:
     T visual;
     
-    /// Will store needed data that cannot be accessed in the visual
+    /// Will store needed data that cannot be accessed in the visual?! is this really used
+    /// todo: confirm if this is used at alll*
     ofJson data;
     
     Visual(ofJson data) {}
@@ -45,6 +46,7 @@ public:
         rect = _rect;
     }
     ~Visual() {}
+    
     
     void update() {
         visual.update();
@@ -65,7 +67,6 @@ public:
     ofJson encode() {
         return {};
     }
-    void decode(ofJson json){}
     
     /// \brief Copy assignment operator
     Visual& operator=(const Visual& other) {
@@ -94,10 +95,6 @@ template<> inline ofJson Visual<ofVideoGrabber>::encode(){
         {"height", visual.getHeight()}
     };
 };
-template<> inline void Visual<ofVideoGrabber>::decode(ofJson json) {
-    //todo
-}
-
 
 /**
  ofVideoPlayer partial specializations
@@ -112,9 +109,8 @@ template<> inline ofJson Visual<ofVideoPlayer>::encode(){
         {"height", visual.getHeight()}
     };
 };
-template<> inline void Visual<ofVideoPlayer>::decode(ofJson json) {
-    //todo
-}
+
+
 
 /**
  SignalPloter partial specializations
@@ -128,9 +124,7 @@ template<> inline ofJson Visual<SignalPlotter>::encode() {
         {"height", visual.rect.height}
     };
 }; // no way to export a signal.
-template<> inline void Visual<SignalPlotter>::decode(ofJson json) {
-    //todo
-}
+
 
 
 

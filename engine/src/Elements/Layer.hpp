@@ -71,13 +71,12 @@ public:
     //! @param rect the rectangle
     void draw(ofRectangle rect);
 
+    
     /// \brief returns a json containing the serialized information of the Layer
     ///
     /// \returns a json representation
     ofJson encode();
     
-    /// \brief ---
-    void decode(ofJson json);
     
     /// \brief sets the running visual
     ///

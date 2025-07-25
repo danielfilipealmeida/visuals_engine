@@ -8,6 +8,7 @@
 #include "Mixer.hpp"
 #include <cmath>
 #include "VisualsFactory.hpp"
+#include "LayerStack.hpp"
 
 
 Mixer::Mixer(VisualsInterface* _a, VisualsInterface* _b, float _bufferWidth, float _bufferHeight) {
@@ -70,8 +71,8 @@ ofJson Mixer::encode() {
     json["type"] = "mixer";
     json["width"] = rect.width;
     json["height"] = rect.height;
-    json["a"] = a->encode();
-    json["b"] = b->encode();
+    json["a"] = ((LayerStack*) a)->encode();
+    json["b"] = ((LayerStack*) b)->encode();
     json["mix"] = mix;
     
     return json;

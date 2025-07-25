@@ -19,7 +19,7 @@ enum class MixerObservableParameters {
 //! @class Mixer
 //! @abstract Implements a simple two channel mixer.
 //! @discussion This mixer mixes two VisualInterfaces (channel A and B).
-class Mixer: public Drawable, public Observer<float>, public Encodable, public Decodable {
+class Mixer: public Drawable, public Observer<float>, public Encodable {
 public:
     
     //! @var mix

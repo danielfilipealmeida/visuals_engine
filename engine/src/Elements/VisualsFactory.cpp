@@ -29,13 +29,13 @@ Visual<ofVideoGrabber>* VisualsFactory::VideoGrabber(int _deviceId) {
     visual = new Visual<ofVideoGrabber>([&] {
         ofVideoGrabber grabber;
         grabber.setDeviceID(_deviceId);
-        grabber.initGrabber(ofGetWidth(), ofGetHeight());
+        grabber.initGrabber(width, height);
         
         return grabber;
     }(), ofRectangle(0,0,width, height));
     
     // manually add the device id to the json variable because this isn't accessible on ofVideoGrabber
-    visual->data["deviceId"];
+    visual->data["deviceId"] = _deviceId;
     
     return visual;
 }

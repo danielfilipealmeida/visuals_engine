@@ -384,6 +384,8 @@
 				65EA169B2E2565C100769142 /* LayerStack.cpp */,
 				65CDD0312E1DDFEF0002668A /* Mixer.hpp */,
 				65CDD0322E1DDFEF0002668A /* Mixer.cpp */,
+				65CDD0332E1DDFEF0002668A /* Set.hpp */,
+				65CDD0342E1DDFEF0002668A /* Set.cpp */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -417,8 +419,6 @@
 				65CDD0242E1DDFEF0002668A /* Elements */,
 				65CDD02B2E1DDFEF0002668A /* Plotters */,
 				65CDD02E2E1DDFEF0002668A /* Services */,
-				65CDD0332E1DDFEF0002668A /* Set.hpp */,
-				65CDD0342E1DDFEF0002668A /* Set.cpp */,
 				65CDD0352E1DDFEF0002668A /* Transformations.hpp */,
 				65EA168F2E21AA1300769142 /* Utils.hpp */,
 				653D29F82E33C7C30051CF20 /* Utils.cpp */,

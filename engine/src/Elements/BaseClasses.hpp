@@ -74,18 +74,10 @@ public:
 };
 
 
-/// @brief Interface that defines a method for reading json data and set the object from it
-class Decodable {
-public:
-    /// \brief Update the class using the data on the json
-    /// \param json - the json data with the configuration of the object
-    virtual void decode(ofJson json) = 0;
-};
-
 /// @brief gathers all interfaces needed for a Visual
 /// 
 /// all visuals (video-player, mixer. layers, generators) should inherit this class
-class VisualsInterface: public Drawable, public Encodable, public Playable, public Decodable {
+class VisualsInterface: public Drawable, public Playable, public Encodable {
 public:
     /// \brief The identifier of the visual
     std::string id;
