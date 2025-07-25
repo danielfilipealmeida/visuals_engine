@@ -38,7 +38,24 @@ void ui::setup(shared_ptr<State> state, std::vector<std::pair<string, VisualsInt
         alpha.set("Chanel "  +ofToString(count) + " Alpha", layer->alpha, 0, 1);
         channeAAlpha.push_back(alpha);
         channelsPanel.add(alpha);
-        binders.emplace_back(std::make_unique<ParameterBinder<float>>(alpha, &layer->alpha));
+        floatBinders.emplace_back(std::make_unique<ParameterBinder<float>>(alpha, &layer->alpha));
+        
+        // add blend mode slider
+        ofParameter<int> blendMode;
+        blendMode.set("Chanel "  +ofToString(count) + " BlendMode", (int) layer->blendMode, 0, 5);
+        channelABlendMode.push_back(blendMode);
+        channelsPanel.add(blendMode);
+        intBinders.emplace_back(
+                                std::make_unique<ParameterBinder<int>>(
+                                                                       blendMode,
+                                                                       [layer]() {
+                                                                           return static_cast<int>(layer->blendMode);
+                                                                       },
+                                                                       [layer](int value) {
+                                                                           layer->blendMode = static_cast<ofBlendMode>(value);
+                                                                       }
+                                                                       )
+                                );
         
         count++;
     }
@@ -54,7 +71,25 @@ void ui::setup(shared_ptr<State> state, std::vector<std::pair<string, VisualsInt
         alpha.set("Chanel "  +ofToString(count) + " Alpha", layer->alpha, 0, 1);
         channelBAlpha.push_back(alpha);
         channelsPanel.add(alpha);
-        binders.emplace_back(std::make_unique<ParameterBinder<float>>(alpha, &layer->alpha));
+        floatBinders.emplace_back(std::make_unique<ParameterBinder<float>>(alpha, &layer->alpha));
+        
+        // add blend mode slider
+        ofParameter<int> blendMode;
+        blendMode.set("Chanel "  +ofToString(count) + " BlendMode", (int) layer->blendMode, 0, 5);
+        channelBBlendMode.push_back(blendMode);
+        channelsPanel.add(blendMode);
+        
+        intBinders.emplace_back(
+                                std::make_unique<ParameterBinder<int>>(
+                                                                       blendMode,
+                                                                       [layer]() {
+                                                                           return static_cast<int>(layer->blendMode);
+                                                                       },
+                                                                       [layer](int value) {
+                                                                           layer->blendMode = static_cast<ofBlendMode>(value);
+                                                                       }
+                                                                       )
+                                );
         
         count++;
     }
@@ -75,40 +110,42 @@ void ui::setup(shared_ptr<State> state, std::vector<std::pair<string, VisualsInt
     
     // Blur
     mainOptionsPanel.add(blur.set("blur", 0, 0, 10));
-    binders.emplace_back(std::make_unique<ParameterBinder<float>>(blur, &this->state->blurAmount));
+    floatBinders.emplace_back(std::make_unique<ParameterBinder<float>>(blur, &this->state->blurAmount));
     
     // Mix
     mainOptionsPanel.add(mix.set("mix", this->state->mixer->mix, -1, 1));
-    binders.emplace_back(std::make_unique<ParameterBinder<float>>(mix, &this->state->mixer->mix));
+    floatBinders.emplace_back(std::make_unique<ParameterBinder<float>>(mix, &this->state->mixer->mix));
     
     // Brightness
     mainOptionsPanel.add(brightness.set("brightness", 1, 0, 2));
-    binders.emplace_back(std::make_unique<ParameterBinder<float>>(brightness, &this->state->brightness));
+    floatBinders.emplace_back(std::make_unique<ParameterBinder<float>>(brightness, &this->state->brightness));
     
     // Contrast
     mainOptionsPanel.add(contrast.set("contrast", 1, 0, 2));
-    binders.emplace_back(std::make_unique<ParameterBinder<float>>(contrast, &this->state->contrast));
+    floatBinders.emplace_back(std::make_unique<ParameterBinder<float>>(contrast, &this->state->contrast));
     
     // Saturation
     mainOptionsPanel.add(saturation.set("saturation", 1, 0, 2));
-    binders.emplace_back(std::make_unique<ParameterBinder<float>>(saturation, &this->state->saturation));
+    floatBinders.emplace_back(std::make_unique<ParameterBinder<float>>(saturation, &this->state->saturation));
     
     // Red Tint
     mainOptionsPanel.add(redTint.set("red Tint", 1, 0, 2));
-    binders.emplace_back(std::make_unique<ParameterBinder<float>>(redTint, &this->state->redTint));
+    floatBinders.emplace_back(std::make_unique<ParameterBinder<float>>(redTint, &this->state->redTint));
     
     // Green Tint
     mainOptionsPanel.add(greenTint.set("green Tint", 1, 0, 2));
-    binders.emplace_back(std::make_unique<ParameterBinder<float>>(greenTint, &this->state->greenTint));
+    floatBinders.emplace_back(std::make_unique<ParameterBinder<float>>(greenTint, &this->state->greenTint));
     
     // Blue Tint
     mainOptionsPanel.add(blueTint.set("blue Tint", 1, 0, 2));
-    binders.emplace_back(std::make_unique<ParameterBinder<float>>(blueTint, &this->state->blueTint));
+    floatBinders.emplace_back(std::make_unique<ParameterBinder<float>>(blueTint, &this->state->blueTint));
 }
 
 
 void ui::draw() {
-    for (auto& b : binders) b->sync();
+    for (auto& b : floatBinders) b->sync();
+    for (auto& b : intBinders) b->sync();
+    
     
     // draw
     previewsPanel.draw();

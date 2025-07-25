@@ -19,7 +19,15 @@
 template<typename T>
 class ParameterBinder {
 public:
-    ParameterBinder(ofParameter<T>& param, T* target) : param(param), target(target), lastSyncedValue(*target) {
+    // Pointer-based constructor
+    ParameterBinder(ofParameter<T>& param, T* target)
+    : param(param), target(target), useFunctionBinding(false), lastSyncedValue(*target) {
+        param.addListener(this, &ParameterBinder::onChangeParameter);
+    }
+    
+    // Function-based constructor
+    ParameterBinder(ofParameter<T>& param, std::function<T()> getter, std::function<void(T)> setter)
+    : param(param), getter(getter), setter(setter), useFunctionBinding(true), lastSyncedValue(getter()) {
         param.addListener(this, &ParameterBinder::onChangeParameter);
     }
     
@@ -28,20 +36,36 @@ public:
     }
     
     void onChangeParameter(T& newValue) {
-        *target = newValue;
+        if (useFunctionBinding && setter) {
+            setter(newValue);
+        } else if (target) {
+            *target = newValue;
+        }
         lastSyncedValue = newValue;
     }
     
     void sync() {
-        if(*target != lastSyncedValue) {
-            param = *target;
-            lastSyncedValue = *target;
+        T currentValue;
+        if (useFunctionBinding && getter) {
+            currentValue = getter();
+        } else if (target) {
+            currentValue = *target;
+        } else {
+            return;
+        }
+        
+        if (currentValue != lastSyncedValue) {
+            param = currentValue;
+            lastSyncedValue = currentValue;
         }
     }
     
 private:
     ofParameter<T>& param;
-    T* target;
+    T* target = nullptr;
+    std::function<T()> getter;
+    std::function<void(T)> setter;
+    bool useFunctionBinding = false;
     T lastSyncedValue;
 };
 
@@ -62,10 +86,14 @@ class ui {
     ofParameter<float> redTint, greenTint, blueTint;
     
     // the binders - for 2-way binding
-    std::vector<std::unique_ptr<ParameterBinder<float>>> binders;
+    std::vector<std::unique_ptr<ParameterBinder<float>>> floatBinders;
+    std::vector<std::unique_ptr<ParameterBinder<int>>> intBinders;
 
+    // layer parameters
     std::vector<ofParameter<float>> channeAAlpha;
     std::vector<ofParameter<float>> channelBAlpha;
+    std::vector<ofParameter<int>> channelABlendMode;
+    std::vector<ofParameter<int>> channelBBlendMode;
     
         
     
