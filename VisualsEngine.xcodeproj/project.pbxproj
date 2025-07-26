@@ -17,6 +17,7 @@
 		653D29F72E33BD870051CF20 /* State.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 653D29F62E33BD870051CF20 /* State.cpp */; };
 		653D29F92E33C7C30051CF20 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 653D29F82E33C7C30051CF20 /* Utils.cpp */; };
 		655253002E34319E001B6DF6 /* ui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 655252FF2E34319E001B6DF6 /* ui.cpp */; };
+		655253302E3538FA001B6DF6 /* MIDI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6552532F2E3538FA001B6DF6 /* MIDI.cpp */; };
 		657037612D7E513900185E7B /* libEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6570371D2D7E454B00185E7B /* libEngine.a */; };
 		659390742D1F7E4F00FC8957 /* 001.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 659390692D1E3CB000FC8957 /* 001.mov */; };
 		659390752D1F7E4F00FC8957 /* 002.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6593906A2D1E3CB000FC8957 /* 002.mov */; };
@@ -154,6 +155,7 @@
 		653D29F82E33C7C30051CF20 /* Utils.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
 		65471B152BE7F7CD0051FA78 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		655252FF2E34319E001B6DF6 /* ui.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ui.cpp; sourceTree = "<group>"; };
+		6552532F2E3538FA001B6DF6 /* MIDI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MIDI.cpp; sourceTree = "<group>"; };
 		656DC8752D20E9B300A63D6E /* Cousine-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cousine-Regular.ttf"; sourceTree = "<group>"; };
 		656DC8782D21939C00A63D6E /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		656DC8882D25E7A700A63D6E /* Catch2Tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Catch2Tests; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -410,6 +412,7 @@
 			children = (
 				65CDD02C2E1DDFEF0002668A /* FFT.hpp */,
 				65CDD02D2E1DDFEF0002668A /* MIDI.hpp */,
+				6552532F2E3538FA001B6DF6 /* MIDI.cpp */,
 				65EA16952E24777900769142 /* Keyboard.hpp */,
 			);
 			path = Services;
@@ -900,6 +903,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				655253302E3538FA001B6DF6 /* MIDI.cpp in Sources */,
 				653D29F32E313FEB0051CF20 /* VisualsFactory.cpp in Sources */,
 				65EA16982E25644A00769142 /* Layer.cpp in Sources */,
 				65F101DA2E1209EC0013F416 /* kiss_fftr.c in Sources */,

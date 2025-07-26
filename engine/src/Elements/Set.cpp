@@ -15,6 +15,7 @@
 #include "VisualsFactory.hpp"
 #include "Visuals.hpp"
 
+
 void Set::addVisual(VisualsInterface* visual) {
     visuals.push_back(visual);
 };

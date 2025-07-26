@@ -7,6 +7,23 @@
 
 #include "State.hpp"
 #include "Mixer.hpp"
+#include <memory>
+
+
+State::~State(){
+    ofLog(OF_LOG_NOTICE, "Destroying State");
+    
+    for(auto layer : layerStackA->layers) {
+        delete layer;
+    }
+    free(layerStackA);
+    
+    for(auto layer : layerStackB->layers) {
+        delete layer;
+    }
+    free(layerStackB);
+     
+}
 
 void State::setup(
                   Set* set,
@@ -22,12 +39,12 @@ void State::setup(
     signal2 = SignalsFactory::Random(10, 1);
     
     layerStackA = new LayerStack(bufferWidth, bufferHeight);
-    layerStackA->insert(new Layer(bufferWidth, bufferHeight));
-    layerStackA->insert(new Layer(bufferWidth, bufferHeight));
+    layerStackA->insert(std::make_unique<Layer>(bufferWidth, bufferHeight).get());
+    layerStackA->insert(std::make_unique<Layer>(bufferWidth, bufferHeight).get());
     
     layerStackB = new LayerStack(bufferWidth, bufferHeight);
-    layerStackB->insert(new Layer(bufferWidth, bufferHeight));
-    layerStackB->insert(new Layer(bufferWidth, bufferHeight));
+    layerStackB->insert(std::make_unique<Layer>(bufferWidth, bufferHeight).get());
+    layerStackB->insert(std::make_unique<Layer>(bufferWidth, bufferHeight).get());
     
     contrast = 1;
     saturation = 1;

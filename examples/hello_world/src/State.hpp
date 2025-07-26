@@ -51,6 +51,8 @@ struct State {
     
 #pragma mark Methods
     
+    ~State();
+    
     /// \brief Sets up the state and initialize all visual eleme
     ///
     /// \param bufferWidth - the width for the visuals buffer

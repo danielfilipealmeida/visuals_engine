@@ -34,114 +34,41 @@ public:
     MIDI& operator=(const MIDI&) = delete;
     
     /// \brief Returns the instance of the MIDI singleton
-    static MIDI& getInstance() {
-        static MIDI instance;
-        return instance;
-    }
+    static MIDI& getInstance();
     
     
     /// \brief setups up midi to the selected port
+    ///
     /// \param {unsigned int} port - the port
-    void setup(unsigned int port) {
-        midiIn.openPort(port);
-        midiIn.ignoreTypes(false, false, false);
-        midiIn.addListener(this);
-        midiIn.setVerbose(true);
-    }
+    void setup(unsigned int port);
     
     
-    /// Handles update
-    void update() {
-        /// queued message handling
-        if(midiIn.hasWaitingMessages()) {
-            ofxMidiMessage message;
-            
-            
-            // add the latest message to the message queue
-            while(midiIn.getNextMessage(message)) {
-                midiMessages.push_back(message);
-            }
-            
-            // remove any old messages if we have too many
-            while(midiMessages.size() > maxMessages) {
-                midiMessages.erase(midiMessages.begin());
-            }
-        }
-    }
+    /// \brief Handles update
+    void update();
 
     
     /// Handles new Midi Message comming in
     /// @param {ofxMidiMessage} messate - the new midi message
-    void newMidiMessage(ofxMidiMessage &message) {
-        if (debug) {
-            ofLog(OF_LOG_NOTICE, "MIDI message: " + message.toString());
-        }
-        
-        // add the latest message to the messagie queue
-        midiMessages.push_back(message);
-        
-        // remove any old messages if we have too many
-        while(midiMessages.size() > maxMessages) {
-            midiMessages.erase(midiMessages.begin());
-        }
-        
-        notify(message);
-    }
+    void newMidiMessage(ofxMidiMessage &message);
     
     /// \brief add a new observer to midi.
     /// \abstract everytime the action condition is meet, the lambda is executed with the message
     /// \param action - the condition fot the midi action
     /// \param lambda - the anonymous function to be executed with the midi message as argument
-    void regist(MIDIAction action, std::function<void(ofxMidiMessage)> lambda) {
-        observers.push_back({action, lambda});
-    }
+    void regist(MIDIAction action, std::function<void(ofxMidiMessage)> lambda);
+    
     
     /// \brief Traverse all observers and execute all anonymous functions triggered by the current message
     /// \param message - the current midi message being handled
-    void notify(ofxMidiMessage message) {
-        for(const auto& pair: observers) {
-            MIDIAction action = pair.first;
-            if (message.status != action.status) {
-                continue;
-            }
-            if (message.status != action.status) {
-                continue;
-            }
-            if (message.control != action.control) {
-                continue;
-            }
-            if (message.portNum != action.portNum) {
-                continue;
-            }
-            
-            pair.second(message);
-        }
-        
-    }
+    void notify(ofxMidiMessage message);
+    
 private:
     
-    MIDI() {
-        ofLog(OF_LOG_NOTICE, "MIDI Singleton instanciated");
-        midiIn.listInPorts();
-    }
-};
-
-
-/// \brief Observer class to be used by the application
-/// \abstract Because an application can have several observers, it is needed to offload that behaviour into its own class in order for the main class to have several diferent kind of observers, for different situations
-/*
-class MIDIObserver : Observer<ofxMidiMessage> {
-
-public:
-    MIDIObserver() {
-        
-    }
+    /// \brief Constructor. Never executed directly.
+    MIDI();
     
-    void regist(){
-        
-    }
+    /// \brief Destructor, cleanup all resources.
+    ~MIDI();
 };
-
- */
 
 #endif /* __MIDI_h__ */
