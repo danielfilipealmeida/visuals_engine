@@ -28,6 +28,7 @@ public:
         b.width = width;
         b.height = height;
         setNeedsRedraw();
+        setName(_caption);
         
         return this;
     }

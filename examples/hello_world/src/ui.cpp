@@ -45,6 +45,7 @@ void ui::setup(shared_ptr<State> state, std::vector<std::pair<string, VisualsInt
         blendMode.set("Chanel "  +ofToString(count) + " BlendMode", (int) layer->blendMode, 0, 5);
         channelABlendMode.push_back(blendMode);
         channelsPanel.add(blendMode);
+  
         intBinders.emplace_back(
                                 std::make_unique<ParameterBinder<int>>(
                                                                        blendMode,
