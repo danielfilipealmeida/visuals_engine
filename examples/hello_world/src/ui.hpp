@@ -20,8 +20,10 @@ template<typename T>
 class ParameterBinder {
 public:
     // Pointer-based constructor
-    ParameterBinder(ofParameter<T>& param, T* target)
-    : param(param), target(target), useFunctionBinding(false), lastSyncedValue(*target) {
+    ParameterBinder(
+                    ofParameter<T>& param,
+                    T* target
+                    ) : param(param), target(target), useFunctionBinding(false), lastSyncedValue(*target) {
         param.addListener(this, &ParameterBinder::onChangeParameter);
     }
     
@@ -102,6 +104,7 @@ class ui {
     float panelsMargin = 8;
 public:
     ui() {};
+    ~ui();
     
     /// \brief sets up the UI and create all parameters
     ///
