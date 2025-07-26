@@ -32,23 +32,23 @@ void ui::setup(shared_ptr<State> state, std::vector<std::pair<string, VisualsInt
     unsigned int count = 1;
     for (Layer *layer : ((LayerStack*)this->state->mixer->a)->layers) {
         channelsPanel.add(new DrawableGuiElement<VisualsInterface *>(layer , "Channel A / Layer " + ofToString(count)));
-        
+       
         // add the alpha slider
-        ofParameter<float> alpha;
-        alpha.set("Chanel "  +ofToString(count) + " Alpha", layer->alpha, 0, 1);
-        channeAAlpha.push_back(alpha);
-        channelsPanel.add(alpha);
-        floatBinders.emplace_back(std::make_unique<ParameterBinder<float>>(alpha, &layer->alpha));
+        ofParameter<float> *alpha = new ofParameter<float>();
+        alpha->set("Chanel "  +ofToString(count) + " Alpha", layer->alpha, 0, 1);
+        channeAAlpha.push_back(*alpha);
+        channelsPanel.add(*alpha);
+        floatBinders
+            .emplace_back(std::make_unique<ParameterBinder<float>>(*alpha, &layer->alpha));
         
         // add blend mode slider
-        ofParameter<int> blendMode;
-        blendMode.set("Chanel "  +ofToString(count) + " BlendMode", (int) layer->blendMode, 0, 5);
-        channelABlendMode.push_back(blendMode);
-        channelsPanel.add(blendMode);
-  
+        ofParameter<int> *blendMode = new ofParameter<int>() ;
+        blendMode->set("Chanel "  +ofToString(count) + " BlendMode", (int) layer->blendMode, 0, 5);
+        channelABlendMode.push_back(*blendMode);
+        channelsPanel.add(*blendMode);
         intBinders.emplace_back(
                                 std::make_unique<ParameterBinder<int>>(
-                                                                       blendMode,
+                                                                       *blendMode,
                                                                        [layer]() {
                                                                            return static_cast<int>(layer->blendMode);
                                                                        },
@@ -68,21 +68,20 @@ void ui::setup(shared_ptr<State> state, std::vector<std::pair<string, VisualsInt
         channelsPanel.add(new DrawableGuiElement<VisualsInterface *>(layer , "Channel B / Layer " + ofToString(count)));
         
         // add the alpha slider
-        ofParameter<float> alpha;
-        alpha.set("Chanel "  +ofToString(count) + " Alpha", layer->alpha, 0, 1);
-        channelBAlpha.push_back(alpha);
-        channelsPanel.add(alpha);
-        floatBinders.emplace_back(std::make_unique<ParameterBinder<float>>(alpha, &layer->alpha));
+        ofParameter<float> *alpha = new ofParameter<float>();
+        alpha->set("Chanel "  +ofToString(count) + " Alpha", layer->alpha, 0, 1);
+        channelBAlpha.push_back(*alpha);
+        channelsPanel.add(*alpha);
+        floatBinders.emplace_back(std::make_unique<ParameterBinder<float>>(*alpha, &layer->alpha));
         
         // add blend mode slider
-        ofParameter<int> blendMode;
-        blendMode.set("Chanel "  +ofToString(count) + " BlendMode", (int) layer->blendMode, 0, 5);
-        channelBBlendMode.push_back(blendMode);
-        channelsPanel.add(blendMode);
-        
+        ofParameter<int> *blendMode = new ofParameter<int>();
+        blendMode->set("Chanel "  +ofToString(count) + " BlendMode", (int) layer->blendMode, 0, 5);
+        channelBBlendMode.push_back(*blendMode);
+        channelsPanel.add(*blendMode);
         intBinders.emplace_back(
                                 std::make_unique<ParameterBinder<int>>(
-                                                                       blendMode,
+                                                                       *blendMode,
                                                                        [layer]() {
                                                                            return static_cast<int>(layer->blendMode);
                                                                        },
@@ -91,7 +90,7 @@ void ui::setup(shared_ptr<State> state, std::vector<std::pair<string, VisualsInt
                                                                        }
                                                                        )
                                 );
-        
+    
         count++;
     }
     
@@ -153,4 +152,13 @@ void ui::draw() {
     channelsPanel.draw();
     audiAndFFTPanel.draw();
     mainOptionsPanel.draw();
+}
+
+ui::~ui() {
+    ofLog(OF_LOG_NOTICE, "Cleaning up UI");
+    
+    /**
+     todo:
+     confirm there is no memory leaks due to the pointers created for the dynamic parameters for the layers
+     */
 }
