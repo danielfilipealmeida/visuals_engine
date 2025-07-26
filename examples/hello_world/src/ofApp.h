@@ -25,6 +25,7 @@ class ofApp : public ofBaseApp, public Observer<ofxMidiMessage> {
     shared_ptr<State> state;
     
     Visual<BufferPlotter> *audioPlotter, *fftPlotter;
+    Visual<SignalPlotter> *signal1Plotter, *signal2Plotter;
     
     ui ui;
     

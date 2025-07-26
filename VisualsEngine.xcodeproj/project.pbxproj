@@ -16,6 +16,7 @@
 		653D29F42E3157450051CF20 /* ContrastBrightnessSaturation.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65F0708E2D4AF91A00019282 /* ContrastBrightnessSaturation.frag */; };
 		653D29F72E33BD870051CF20 /* State.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 653D29F62E33BD870051CF20 /* State.cpp */; };
 		653D29F92E33C7C30051CF20 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 653D29F82E33C7C30051CF20 /* Utils.cpp */; };
+		655253002E34319E001B6DF6 /* ui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 655252FF2E34319E001B6DF6 /* ui.cpp */; };
 		657037612D7E513900185E7B /* libEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6570371D2D7E454B00185E7B /* libEngine.a */; };
 		659390742D1F7E4F00FC8957 /* 001.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 659390692D1E3CB000FC8957 /* 001.mov */; };
 		659390752D1F7E4F00FC8957 /* 002.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6593906A2D1E3CB000FC8957 /* 002.mov */; };
@@ -152,6 +153,7 @@
 		653D29F62E33BD870051CF20 /* State.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = State.cpp; sourceTree = "<group>"; };
 		653D29F82E33C7C30051CF20 /* Utils.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
 		65471B152BE7F7CD0051FA78 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		655252FF2E34319E001B6DF6 /* ui.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ui.cpp; sourceTree = "<group>"; };
 		656DC8752D20E9B300A63D6E /* Cousine-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cousine-Regular.ttf"; sourceTree = "<group>"; };
 		656DC8782D21939C00A63D6E /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		656DC8882D25E7A700A63D6E /* Catch2Tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Catch2Tests; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -443,6 +445,7 @@
 				65CDD04E2E1DE01C0002668A /* State.hpp */,
 				653D29F62E33BD870051CF20 /* State.cpp */,
 				65CDD07B2E1DE3400002668A /* ui.hpp */,
+				655252FF2E34319E001B6DF6 /* ui.cpp */,
 				65CDD0802E1EAD240002668A /* DrawableGuiElement.hpp */,
 			);
 			path = src;
@@ -940,6 +943,7 @@
 				65CDD0782E1DE13C0002668A /* ofxToggle.cpp in Sources */,
 				65CDD0792E1DE13C0002668A /* ofxSlider.cpp in Sources */,
 				65CDD07A2E1DE13C0002668A /* ofxGuiGroup.cpp in Sources */,
+				655253002E34319E001B6DF6 /* ui.cpp in Sources */,
 				65EA169D2E2565C100769142 /* LayerStack.cpp in Sources */,
 				653D29F72E33BD870051CF20 /* State.cpp in Sources */,
 				65CDD0522E1DE01C0002668A /* ofApp.cpp in Sources */,
