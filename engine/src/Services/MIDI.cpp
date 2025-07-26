@@ -11,7 +11,7 @@
 
 MIDI::MIDI() {
     ofLog(OF_LOG_NOTICE, "MIDI Singleton instanciated");
-    midiIn.listInPorts();
+    //midiIn.listInPorts();
 }
 
 MIDI::~MIDI() {
