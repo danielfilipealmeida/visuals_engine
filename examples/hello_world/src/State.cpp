@@ -8,6 +8,23 @@
 #include "State.hpp"
 #include "Mixer.hpp"
 
+
+
+State::~State(){
+    ofLog(OF_LOG_NOTICE, "Destroying State");
+    /*
+    for(auto layer : layerStackA->layers) {
+        delete layer;
+    }
+    free(layerStackA);
+    
+    for(auto layer : layerStackB->layers) {
+        delete layer;
+    }
+    free(layerStackB);
+     */
+}
+
 void State::setup(
                   Set* set,
                   float bufferWidth,

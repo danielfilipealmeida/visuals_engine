@@ -21,6 +21,8 @@
 /// There can be several visual instance of the same base visual, with different configurations.
 class Set: public Encodable {
 public:
+    
+    
     /// @var visuals
     /// @brief a vector containing all visuals to be used in the Set
     std::vector<VisualsInterface*> visuals;
