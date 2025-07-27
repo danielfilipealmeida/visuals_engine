@@ -14,7 +14,7 @@ MIDI::MIDI() {
     //midiIn.listInPorts();
 }
 
-MIDI::~MIDI() {
+MIDI::~MIDI() {
     ofLog(OF_LOG_NOTICE, "MIDI Singleton destruction");
     midiIn.closePort();
 }

@@ -4,11 +4,11 @@
  
  
  ```markdown
- | Variable   | Min | Max | Default |
- |------------|-----|-----|---------|
- | redTint    | 0   | 2   | 1       |
- | greenTint  | 0   | 2   | 1       |
- | blueTint   | 0   | 2   | 1       |
+ | Variable        | Min    | Max    | Default   | Type  |
+ |-----------------|--------|--------|-----------|-------|
+ | redTint         | 0.0    | 2.0    | 1.0       | float |
+ | greenTint       | 0.0    | 2.0    | 1.0       | float |
+ | blueTint        | 0.0    | 2.0    | 1.0       | float |
  ```
  */
 
