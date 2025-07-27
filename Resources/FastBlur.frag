@@ -1,3 +1,17 @@
+/*
+ Implementes tinting.
+ Values range from 0 to infinte, but caping to 32.
+ 
+ 
+ ```markdown
+ | Variable        | Min    | Max    | Default   | Type  |
+ |-----------------|--------|--------|-----------|-------|
+ | blurH           | 0.0    | 32.0   | 0.0       | float |
+ | blurV           | 0.0    | 32.0   | 0.0       | float |
+ ```
+ */
+
+
 #extension GL_ARB_texture_rectangle : enable
 uniform sampler2DRect src_tex_unit0;
 uniform sampler2D tex;

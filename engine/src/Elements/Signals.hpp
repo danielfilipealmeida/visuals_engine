@@ -12,7 +12,7 @@
 #include "Observer.hpp"
 
 
-/// Signal template. will receive any value type and be configured with a callback that generates values with the template type
+/// \brief Signal template. will receive any value type and be configured with a callback that generates values with the template type
 template<class T>
 class Signal : public Subject<T> {
 private:
@@ -21,13 +21,15 @@ private:
     std::function<void(T)> callback;
 public:
     
-    /// Defines the anonymous function that will calculate the value in each  update cycle
+    /// \brief Defines the anonymous function that will calculate the value in each  update cycle
+    ///
     /// \param _calculator
     void setCalculator(std::function<T()> _calculator) {
         calculator = _calculator;
     }
     
-    /// Updates the signal by retrieving the value from the calculator and sending it to the callback if set
+    
+    ///  \brief Updates the signal by retrieving the value from the calculator and sending it to the callback if set
     void update() {
         value = calculator();
         this->notify(value);
@@ -37,16 +39,20 @@ public:
         }
     }
     
-    /// Returns the current value of the signal
+    
+    /// \brief Returns the current value of the signal
+    ///
     /// \return the current value
     T getValue() {
         return value;
     }
     
-    /// Sets the callback to be executed on update. This callback receives the value
+    
+    /// \brief Sets the callback to be executed on update. This callback receives the value
     void setCallback(std::function<void(T)> _callback) {
         callback = _callback;
     }
+    
     
     /// \brief defines a callback calculator that will return always a the same value
     ///
@@ -58,10 +64,9 @@ public:
     }
 };
 
-/***
- Factory for creating different kind od signals.
- Contains Static methods that return pre-configured signals.
- */
+
+/// \brief Factory for creating different kind od signals.
+/// \details Contains Static methods that return pre-configured signals.
 class SignalsFactory {
 public:
     
@@ -79,6 +84,7 @@ public:
         return signal;
     }
     
+    
     /// \brief Creates a sine wave signal
     ///
     /// \param freq - the frequency of the sine wave signal
@@ -92,6 +98,7 @@ public:
         
         return signal;
     }
+    
     
     /// \brief Creates a square wave signal
     ///
@@ -107,6 +114,7 @@ public:
         return signal;
     }
     
+    
     /// \brief Creates a Random signal
     ///
     /// \param amplitude the amplitude of the signal, starting from 0 to amplitude
@@ -120,6 +128,7 @@ public:
         
         return signal;
     }
+    
     
     /// \brief Create a Pulse signal
     ///
@@ -156,6 +165,7 @@ public:
         };
     }
     
+    
     /// \brief Returns a lambda configured to produce a squarewave
     ///
     /// This uses std::sin function.
@@ -174,6 +184,7 @@ public:
             return result;
         };
     }
+    
     
     /// \brief Returns a lambda that generates random numbers. This generator has a "sample-and-hold" functionality
     ///
@@ -196,6 +207,7 @@ public:
             return result;
         };
     }
+    
     
     /// \brief Returns a lambda that generates a pulso
     ///

@@ -9,7 +9,7 @@
 #define State_h
 
 #include "Set.hpp"
-#include "Transformations.hpp"
+#include "TransformationFactory.hpp"
 #include "LayerStack.hpp"
 #include "VisualsFactory.hpp"
 #include "Mixer.hpp"

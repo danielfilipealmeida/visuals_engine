@@ -33,7 +33,6 @@
 		65CDD03F2E1DDFEF0002668A /* Mixer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 65CDD0312E1DDFEF0002668A /* Mixer.hpp */; };
 		65CDD0402E1DDFEF0002668A /* Layer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 65CDD02F2E1DDFEF0002668A /* Layer.hpp */; };
 		65CDD0412E1DDFEF0002668A /* BaseClasses.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 65CDD0202E1DDFEF0002668A /* BaseClasses.hpp */; };
-		65CDD0422E1DDFEF0002668A /* Transformations.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 65CDD0352E1DDFEF0002668A /* Transformations.hpp */; };
 		65CDD0432E1DDFEF0002668A /* MIDI.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 65CDD02D2E1DDFEF0002668A /* MIDI.hpp */; };
 		65CDD0442E1DDFEF0002668A /* SignalPlotter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 65CDD0292E1DDFEF0002668A /* SignalPlotter.hpp */; };
 		65CDD0452E1DDFEF0002668A /* Set.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65CDD0342E1DDFEF0002668A /* Set.cpp */; };
@@ -182,7 +181,6 @@
 		65CDD0322E1DDFEF0002668A /* Mixer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Mixer.cpp; sourceTree = "<group>"; };
 		65CDD0332E1DDFEF0002668A /* Set.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Set.hpp; sourceTree = "<group>"; };
 		65CDD0342E1DDFEF0002668A /* Set.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Set.cpp; sourceTree = "<group>"; };
-		65CDD0352E1DDFEF0002668A /* Transformations.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Transformations.hpp; sourceTree = "<group>"; };
 		65CDD04B2E1DE01C0002668A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		65CDD04C2E1DE01C0002668A /* ofApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofApp.h; sourceTree = "<group>"; };
 		65CDD04D2E1DE01C0002668A /* ofApp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofApp.cpp; sourceTree = "<group>"; };
@@ -280,6 +278,7 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		6552534F2E3656D8001B6DF6 /* Transformations */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Transformations; sourceTree = "<group>"; };
 		656DC8892D25E7A700A63D6E /* Catch2Tests */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (65B9A5922D27555700ADCDBE /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Catch2Tests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -421,10 +420,10 @@
 		65CDD0362E1DDFEF0002668A /* src */ = {
 			isa = PBXGroup;
 			children = (
+				6552534F2E3656D8001B6DF6 /* Transformations */,
 				65CDD0242E1DDFEF0002668A /* Elements */,
 				65CDD02B2E1DDFEF0002668A /* Plotters */,
 				65CDD02E2E1DDFEF0002668A /* Services */,
-				65CDD0352E1DDFEF0002668A /* Transformations.hpp */,
 				65EA168F2E21AA1300769142 /* Utils.hpp */,
 				653D29F82E33C7C30051CF20 /* Utils.cpp */,
 			);
@@ -685,7 +684,6 @@
 				65CDD03F2E1DDFEF0002668A /* Mixer.hpp in Headers */,
 				65CDD0402E1DDFEF0002668A /* Layer.hpp in Headers */,
 				65CDD0412E1DDFEF0002668A /* BaseClasses.hpp in Headers */,
-				65CDD0422E1DDFEF0002668A /* Transformations.hpp in Headers */,
 				65CDD0432E1DDFEF0002668A /* MIDI.hpp in Headers */,
 				65CDD0442E1DDFEF0002668A /* SignalPlotter.hpp in Headers */,
 				653D29F22E313FEB0051CF20 /* VisualsFactory.hpp in Headers */,
@@ -747,6 +745,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				6552534F2E3656D8001B6DF6 /* Transformations */,
 			);
 			name = Engine;
 			packageProductDependencies = (
