@@ -71,7 +71,7 @@ void GLSLTransformationDecorator::setupPipeline(VisualsInterface *_visual) {
 void GLSLTransformationDecorator::applyParametersToShader(size_t index) {
     std::map<std::string, GLSLDataInputParameterType> floatParameters = shadersParameters[index];
     for (auto parameter : floatParameters) {
-        float value;
+        float value = 0.0;
         
         /// gets the actual value for the parameter
         if (std::holds_alternative<Signal<float>*>(parameter.second)) {

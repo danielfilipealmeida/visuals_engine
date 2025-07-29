@@ -16,7 +16,15 @@ Mixer::Mixer(VisualsInterface* _a, VisualsInterface* _b, float _bufferWidth, flo
     b = _b;
     mix = 0.5;
     buffer = new ofFbo();
-    buffer->allocate(_bufferWidth, _bufferHeight);
+    
+    // setup the fbo
+    ofFbo::Settings fboSettings ;
+    fboSettings.width = _bufferWidth;
+    fboSettings.height = _bufferHeight;
+    fboSettings.internalformat = GL_RGBA ;
+    fboSettings.textureTarget = GL_TEXTURE_2D;
+    buffer->allocate(fboSettings);
+
     rect = ofRectangle(0,0, _bufferWidth, _bufferHeight);
 }
 
@@ -91,3 +99,7 @@ void Mixer::decode(ofJson json) {
     a = factory.VisualFromJson(json["a"]);
     b = factory.VisualFromJson(json["b"]);
 };
+
+ofTexture Mixer::getTexture() {
+    return buffer->getTexture();
+}

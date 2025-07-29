@@ -85,6 +85,11 @@ public:
     ///
     /// @param data json data
     void decode(ofJson data);
+    
+    /// \brief returns the buffer texture
+    ///
+    /// @returns ofTexture
+    ofTexture getTexture();
 };
 
 #endif
